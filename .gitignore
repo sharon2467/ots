@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter / editor
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Generated datasets
+*.parquet
+
+# Model artifacts
+*.pickle
+*.pt
+*.pth
+*.ckpt
+
+# Generated figures/results
+result*.png
+quick_test_result.png
+
+# OS files
+.DS_Store
+Thumbs.db
