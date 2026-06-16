@@ -1,0 +1,37 @@
+#!/bin/bash
+#SBATCH --job-name=NN_hotE_large_lmRange             # Job name
+#SBATCH --partition=cpu         # cpu 队列
+#SBATCH --output=stdout.txt    # Stdout (%j expands to jobId)
+#SBATCH --error=errlog.txt     # Stderr (%j expands to jobId)
+#SBATCH -n 32                  # 总核数 80
+#SBATCH --ntasks-per-node=32    # 每节点核数
+#SBATCH --time=40:30:00                      # Wall time limit (days-hrs:min:sec)
+
+# Any other commands must follow all #SBATCH directives...
+export PATH=~/lib/miniconda3/bin:$PATH
+
+ulimit -s unlimited
+ulimit -l unlimited
+
+
+
+
+
+
+
+
+
+
+module list
+pwd
+date
+
+python genDataSet.py
+python main.py
+python singleSpectrum.py
+python evaluateModel.py
+python evaluateModel2.py
+python evaluateModel3.py
+
+date
+
