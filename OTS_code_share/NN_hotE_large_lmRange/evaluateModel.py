@@ -1,177 +1,561 @@
-# -*- coding: utf-8 -*-
-"""
-模型评估与可视化模块 - 对测试集进行批量推理并还原 EVDF
+"""Unified evaluation entry point for the OTS inversion model.
 
-创建于: 2025-06-24 Tue 18:40:16
-更新于: 2026-03-17 Tue 23:56:14
+Two data sources are supported:
 
-核心功能：
-1. 加载训练好的神经网络模型
-2. 在测试集上进行批量前向推理
-3. 从模型输出的 160 维 Fourier 系数恢复速度分布（傅里叶反变换）
-4. 绘制真实值与预测值的对比图
-5. 计算模型性能指标（可扩展）
+1. ``parquet`` reads spectra and Fourier labels from ``dataset_test.parquet``.
+2. ``synthetic`` creates EVDFs in memory, runs the OTS forward model, and
+   evaluates the neural network without writing a temporary dataset.
 
-评估流程：
-    for i in range(num_test_samples):
-        1. 读取第i个测试样本（光谱输入）
-        2. 前向推理获取模型预测的频域系数
-        3. 傅里叶反变换恢复速度空间分布
-        4. 与真实速度分布对比并绘图
-
-输出结果：
-    - result1.png：6个测试样本的速度分布对比（2×3网格）
-    - 定量误差分析（可添加）
-
-与论文的关系：
-    论文 Fig. 3 使用蓝线/红线对比真实 EVDF 与网络重建 EVDF；本脚本
-    执行同类可视化。Parquet 第 0 行保存 K 网格，所以脚本先读取第 0 行
-    取得 `Ks`，再对每个样本的 Re/Im 系数组成复数 F_e(K) 并调用 `ift_k`。
-
-应用场景：
-- 模型训练后的定性与定量评估
-- 物理可信度检查（恢复的速度分布是否合理）
-- 超参数调优的参考
+The summary figure compares reconstructed EVDFs for a batch. Passing
+``--detail-index`` also creates a spectrum/Fourier/EVDF single-sample view.
 """
 
-import torch, math
+from __future__ import annotations
+
+import argparse
+import math
+from dataclasses import dataclass
+from pathlib import Path
+
 import matplotlib.pyplot as plt
-import pickle
-import numpy as np
-import scipy
+import torch
 
-import pyarrow as pa
-import pyarrow.parquet as pq
-
-from model import ModelOTS as DynamicNet
 from model import load_model
+from phyEqns.ots_fourier import OTS_spectrum_fft, ft_x_n, ift_k
 from readData import readData_dataset
-from train import Loss_func
-
-from phyEqns.ots_superGaussian import OTS_spectrum_sg
-from phyEqns.ots_fourier import OTS_spectrum_fft, ft_x, ft_x_n, ift_k, ift_k_x
 
 
+SCRIPT_DIR = Path(__file__).resolve().parent
 
-### constants ############################################################
-e = torch.tensor(1.602176634e-19)  # Elementary charge (C)
-k_B = torch.tensor(1.380649e-23)   # Boltzmann constant (J/K)
-c = torch.tensor(2.99792458e8)     # Speed of light in vacuum (m/s)
-m_e = torch.tensor(9.10938356e-31) # Electron mass (kg)
-m_p = torch.tensor(1.67262192369e-27) # Proton mass (kg)
-epsilon_0 = torch.tensor(8.854187817e-12)
+ELEMENTARY_CHARGE = 1.602176634e-19
+BOLTZMANN_CONSTANT = 1.380649e-23
+SPEED_OF_LIGHT = 2.99792458e8
+PROTON_MASS = 1.67262192369e-27
 
-
-
-### OTS parameters ######################################################
-an_s=123/180*math.pi;
-ss=torch.tensor([math.cos(an_s),math.sin(an_s),0])
-# ss=torch.tensor([0,1,0])
-
-k_sh=torch.tensor([1,0,0])
-E_i0=torch.tensor([0,0,1])
-lm_0=351e-9
-T_e=1.4e3*e/k_B      # 1400 eV converted to K; retained for synthetic checks.
-T_i=0.223e3 *e/k_B   # 223 eV converted to K.
-n_e=1.81e26
-m=2.
-
-# C1H1
-Z_i1=1
-N_i1=0.55
-Z_i2=6
-N_i2=0.45
-
-m_i1=m_p
-m_i2=m_p*12
-R=1e-3
-V=R**3
-I_0=1
-v_te=torch.sqrt(k_B*T_e/m_e)
-
-u_e=torch.tensor([0,0,0])*c
-u_i1=torch.tensor([0,0,0])*c
-u_i2=torch.tensor([0,0,0])*c
+ION_BAND = slice(0, 579)
+RED_ELECTRON_BAND = slice(579, 883)
+BLUE_ELECTRON_BAND = slice(883, 1224)
+FOURIER_MODES = 80
 
 
-foldername_data="."
-foldername_model="."
+@dataclass
+class EvaluationBatch:
+    """Spectra, targets, and grids required by the evaluation pipeline."""
 
-data_path = '%s/dataset_test.parquet'%(foldername_data)
-model_path="%s/OTS_Te_model.pickle"%(foldername_model)
-
-# Read metadata row: first 1224 columns are wavelength grids, label columns
-# store the K grid used by the 80 retained Fourier modes.
-[lms,Kxs]=readData_dataset(data_path,0,1)
-Ks=Kxs[0][0:80]
-[vxs,_]=ift_k(Ks,Ks*0)
-
-def random_gaussians(num_gaussians, v_range, v):
-    """
-    Construct a normalized-looking Gaussian mixture on an existing velocity grid.
-
-    This helper is kept for ad-hoc synthetic checks; the main loop below evaluates
-    samples already stored in `dataset_test.parquet`.
-    """
-    f_v = 0*v
-    for _ in range(num_gaussians):
-        center = np.random.uniform(*v_range)*c  # 随机中心
-        sigma = np.random.uniform(0.02, 0.08)*c  # 控制半高宽（决定电子速度的扩展）
-        height = np.random.uniform(0.5, 1.5)  # 高斯核的高度
-        f_v += height * np.exp(-((v - center) ** 2) / (2 * sigma ** 2))
-
-    return f_v
-
-lms1=lms[0,0:579]
-lms2=lms[0,579:579+304]
-lms3=lms[0,579+304:1224]
-model=load_model(model_path)
-
-fv1s=[]
-fv2s=[]
-Sis=[]
-
-f_es1=random_gaussians(10, [-0.2,0.2], vxs)
-start=1
-
-fv1s=[]
-fv2s=[]
-model=load_model(model_path)
-for i0 in range(6):
-    i=i0+start
-
-    # Read one physical test sample. Row 0 is metadata, so start=1 selects
-    # the first actual EVDF/spectrum pair.
-    [xs,ys]=readData_dataset(data_path,i,i+1)
-    
-    # Re-read K metadata to make the EVDF inverse transform explicit.
-    [lms,Kxs]=readData_dataset(data_path,0,1)
-    Ks=Kxs[0][0:80]
-    
-    ys=ys.detach().numpy();
-    ys2=model(xs).detach().numpy()
-        
-    # Ground-truth EVDF from stored Fourier labels.
-    Fe=torch.Tensor(ys[0][0:80])+1j*torch.Tensor(ys[0][80:160])
-
-    [vxs,fv1]=ift_k(torch.Tensor(Ks),Fe)
-
-    # Predicted EVDF from the network output.
-    Fe=torch.Tensor(ys2[0][0:80])+1j*torch.Tensor(ys2[0][80:160])
-    [vxs,fv2]=ift_k(torch.Tensor(Ks),Fe)
-
-    fv1s.append(fv1)
-    fv2s.append(fv2)
+    spectra: torch.Tensor
+    coefficients: torch.Tensor
+    wavelengths_m: torch.Tensor
+    k_grid: torch.Tensor
+    labels: list[str]
 
 
+@dataclass
+class OtsPhysics:
+    """Physical parameters used to create synthetic OTS spectra."""
 
-    plt.subplot(2,3,i0+1)
-    plt.plot(vxs,fv1)
-    plt.plot(vxs,fv2)
+    scattering_direction: torch.Tensor
+    incident_direction: torch.Tensor
+    incident_polarization: torch.Tensor
+    probe_wavelength_m: float
+    electron_density_m3: float
+    electron_temperature_k: float
+    ion_temperature_k: float
+    ion_1_charge: float
+    ion_1_fraction: float
+    ion_1_mass_kg: float
+    ion_2_charge: float
+    ion_2_fraction: float
+    ion_2_mass_kg: float
+    plasma_volume_m3: float
+    electron_drift_m_s: torch.Tensor
+    ion_1_drift_m_s: torch.Tensor
+    ion_2_drift_m_s: torch.Tensor
 
-# plt.show()
-plt.savefig("result1.png")
+    @classmethod
+    def default(cls) -> "OtsPhysics":
+        scattering_angle = math.radians(123.0)
+        zero_drift = torch.zeros(3)
+        return cls(
+            scattering_direction=torch.tensor(
+                [math.cos(scattering_angle), math.sin(scattering_angle), 0.0]
+            ),
+            incident_direction=torch.tensor([1.0, 0.0, 0.0]),
+            incident_polarization=torch.tensor([0.0, 0.0, 1.0]),
+            probe_wavelength_m=351e-9,
+            electron_density_m3=1.81e26,
+            electron_temperature_k=1370.0
+            * ELEMENTARY_CHARGE
+            / BOLTZMANN_CONSTANT,
+            ion_temperature_k=171.3
+            * ELEMENTARY_CHARGE
+            / BOLTZMANN_CONSTANT,
+            ion_1_charge=1.0,
+            ion_1_fraction=0.55,
+            ion_1_mass_kg=PROTON_MASS,
+            ion_2_charge=6.0,
+            ion_2_fraction=0.45,
+            ion_2_mass_kg=12.0 * PROTON_MASS,
+            plasma_volume_m3=(1e-3) ** 3,
+            electron_drift_m_s=zero_drift.clone(),
+            ion_1_drift_m_s=zero_drift.clone(),
+            ion_2_drift_m_s=zero_drift.clone(),
+        )
+
+    def spectrum(
+        self,
+        wavelengths_m: torch.Tensor,
+        k_grid: torch.Tensor,
+        fourier_coefficients: torch.Tensor,
+    ) -> torch.Tensor:
+        return OTS_spectrum_fft(
+            wavelengths_m,
+            self.scattering_direction,
+            self.incident_direction,
+            self.incident_polarization,
+            self.probe_wavelength_m,
+            self.electron_density_m3,
+            self.electron_temperature_k,
+            self.ion_1_charge,
+            self.ion_1_fraction,
+            self.ion_1_mass_kg,
+            self.ion_2_charge,
+            self.ion_2_fraction,
+            self.ion_2_mass_kg,
+            self.ion_temperature_k,
+            self.plasma_volume_m3,
+            k_grid,
+            fourier_coefficients,
+            self.electron_drift_m_s,
+            self.ion_1_drift_m_s,
+            self.ion_2_drift_m_s,
+        )
 
 
+def default_wavelength_grid() -> torch.Tensor:
+    """Return the three wavelength bands used by the trained network."""
+
+    ion = torch.linspace(349.0, 353.0, 579) * 1e-9
+    red = torch.linspace(375.3552, 599.7064, 304) * 1e-9
+    blue = torch.linspace(100.1144, 339.6504, 341) * 1e-9
+    return torch.cat((ion, red, blue))
 
 
+def load_parquet_batch(path: Path, start: int, count: int) -> EvaluationBatch:
+    """Load metadata and physical samples from the legacy Parquet layout."""
+
+    metadata_spectra, metadata_coefficients = readData_dataset(
+        str(path), 0, 1
+    )
+    spectra, coefficients = readData_dataset(
+        str(path), start, start + count
+    )
+    if len(spectra) == 0:
+        raise ValueError(
+            f"No samples were read from {path} at physical row {start}."
+        )
+
+    wavelengths_m = metadata_spectra[0] * 1e-9
+    k_grid = metadata_coefficients[0, :FOURIER_MODES]
+    labels = [f"Parquet row {start + index}" for index in range(len(spectra))]
+    return EvaluationBatch(
+        spectra=spectra.float(),
+        coefficients=coefficients.float(),
+        wavelengths_m=wavelengths_m.float(),
+        k_grid=k_grid.float(),
+        labels=labels,
+    )
+
+
+def normalize_evdf(evdf: torch.Tensor, velocity: torch.Tensor) -> torch.Tensor:
+    integral = torch.trapz(evdf, velocity)
+    if not torch.isfinite(integral) or integral <= 0:
+        raise ValueError("Synthetic EVDF has an invalid normalization integral.")
+    return evdf / integral
+
+
+def random_uniform(
+    low: float, high: float, generator: torch.Generator
+) -> float:
+    sample = torch.rand((), generator=generator).item()
+    return low + (high - low) * sample
+
+
+def make_synthetic_evdf(
+    velocity: torch.Tensor,
+    profile: str,
+    index: int,
+    count: int,
+    generator: torch.Generator,
+) -> tuple[torch.Tensor, str]:
+    """Create one EVDF for a random or controlled synthetic test."""
+
+    if profile == "width-scan":
+        width_fraction = torch.linspace(0.01, 0.20, count)[index].item()
+        width = width_fraction * SPEED_OF_LIGHT
+        evdf = torch.exp(-(velocity**2) / width**2)
+        return normalize_evdf(evdf, velocity), f"width={width_fraction:.3f}c"
+
+    if profile == "hot-electron-scan":
+        center_fraction = torch.linspace(-0.51, 0.51, count)[index].item()
+        background_width = 0.08 * SPEED_OF_LIGHT
+        hot_width = 0.06 * SPEED_OF_LIGHT
+        hot_center = center_fraction * SPEED_OF_LIGHT
+        evdf = torch.exp(-(velocity**2) / background_width**2)
+        evdf += 0.5 * torch.exp(
+            -((velocity - hot_center) ** 2) / hot_width**2
+        )
+        return (
+            normalize_evdf(evdf, velocity),
+            f"hot center={center_fraction:.3f}c",
+        )
+
+    evdf = torch.zeros_like(velocity)
+    for _ in range(3):
+        center = random_uniform(-0.06, 0.06, generator) * SPEED_OF_LIGHT
+        sigma = random_uniform(0.01, 0.05, generator) * SPEED_OF_LIGHT
+        height = random_uniform(0.2, 2.5, generator)
+        evdf += height * torch.exp(
+            -((velocity - center) ** 2) / (2.0 * sigma**2)
+        )
+
+    hot_center = random_uniform(-0.4, 0.4, generator) * SPEED_OF_LIGHT
+    hot_sigma = random_uniform(0.01, 0.05, generator) * SPEED_OF_LIGHT
+    hot_height = random_uniform(0.001, 0.045, generator)
+    evdf += hot_height * torch.exp(
+        -((velocity - hot_center) ** 2) / (2.0 * hot_sigma**2)
+    )
+    return normalize_evdf(evdf, velocity), f"random sample {index + 1}"
+
+
+def generate_synthetic_batch(
+    count: int, profile: str, seed: int
+) -> EvaluationBatch:
+    """Generate spectra and labels directly from the OTS forward model."""
+
+    physics = OtsPhysics.default()
+    wavelengths_m = default_wavelength_grid()
+    velocity = (
+        torch.linspace(-0.8, 0.8, 1000) * SPEED_OF_LIGHT
+    )
+    generator = torch.Generator().manual_seed(seed)
+
+    spectra: list[torch.Tensor] = []
+    coefficients: list[torch.Tensor] = []
+    labels: list[str] = []
+    k_grid: torch.Tensor | None = None
+
+    for index in range(count):
+        evdf, label = make_synthetic_evdf(
+            velocity, profile, index, count, generator
+        )
+        sample_k_grid, sample_coefficients = ft_x_n(
+            velocity, evdf, FOURIER_MODES
+        )
+        if k_grid is None:
+            k_grid = sample_k_grid
+
+        spectrum = torch.cat(
+            (
+                physics.spectrum(
+                    wavelengths_m[ION_BAND],
+                    sample_k_grid,
+                    sample_coefficients,
+                ),
+                physics.spectrum(
+                    wavelengths_m[RED_ELECTRON_BAND],
+                    sample_k_grid,
+                    sample_coefficients,
+                ),
+                physics.spectrum(
+                    wavelengths_m[BLUE_ELECTRON_BAND],
+                    sample_k_grid,
+                    sample_coefficients,
+                ),
+            )
+        )
+        target = torch.cat(
+            (sample_coefficients.real, sample_coefficients.imag)
+        )
+        spectra.append(spectrum.float())
+        coefficients.append(target.float())
+        labels.append(label)
+
+    if k_grid is None:
+        raise ValueError("Synthetic sample count must be positive.")
+
+    return EvaluationBatch(
+        spectra=torch.stack(spectra),
+        coefficients=torch.stack(coefficients),
+        wavelengths_m=wavelengths_m,
+        k_grid=k_grid.float(),
+        labels=labels,
+    )
+
+
+def reconstruct_evdf(
+    k_grid: torch.Tensor, coefficients: torch.Tensor
+) -> tuple[torch.Tensor, torch.Tensor]:
+    mode_count = coefficients.numel() // 2
+    complex_coefficients = (
+        coefficients[:mode_count]
+        + 1j * coefficients[mode_count : 2 * mode_count]
+    )
+    velocity, evdf = ift_k(k_grid, complex_coefficients)
+    return velocity.real, evdf.real
+
+
+def evaluate(
+    batch: EvaluationBatch, model_path: Path
+) -> tuple[torch.Tensor, dict[str, float]]:
+    """Run inference and calculate coefficient- and EVDF-domain errors."""
+
+    model = load_model(str(model_path))
+    model.eval()
+    with torch.no_grad():
+        predictions = model(batch.spectra).cpu()
+
+    coefficient_error = predictions - batch.coefficients
+    true_evdfs: list[torch.Tensor] = []
+    predicted_evdfs: list[torch.Tensor] = []
+    for target, prediction in zip(batch.coefficients, predictions):
+        _, true_evdf = reconstruct_evdf(batch.k_grid, target)
+        _, predicted_evdf = reconstruct_evdf(batch.k_grid, prediction)
+        true_evdfs.append(true_evdf)
+        predicted_evdfs.append(predicted_evdf)
+
+    evdf_error = torch.stack(predicted_evdfs) - torch.stack(true_evdfs)
+    metrics = {
+        "coefficient_l1": coefficient_error.abs().mean().item(),
+        "coefficient_mse": coefficient_error.square().mean().item(),
+        "evdf_l1": evdf_error.abs().mean().item(),
+        "evdf_mse": evdf_error.square().mean().item(),
+    }
+    return predictions, metrics
+
+
+def plot_summary(
+    batch: EvaluationBatch,
+    predictions: torch.Tensor,
+    output_path: Path,
+) -> None:
+    """Plot true and predicted EVDFs for all selected samples."""
+
+    sample_count = len(batch.spectra)
+    columns = min(3, sample_count)
+    rows = math.ceil(sample_count / columns)
+    figure = plt.figure(figsize=(5 * columns, 3.5 * rows))
+
+    for index, (target, prediction) in enumerate(
+        zip(batch.coefficients, predictions)
+    ):
+        velocity, true_evdf = reconstruct_evdf(batch.k_grid, target)
+        _, predicted_evdf = reconstruct_evdf(batch.k_grid, prediction)
+        axis = figure.add_subplot(rows, columns, index + 1)
+        axis.plot(
+            velocity / SPEED_OF_LIGHT,
+            true_evdf,
+            label="Ground truth",
+            linewidth=2,
+        )
+        axis.plot(
+            velocity / SPEED_OF_LIGHT,
+            predicted_evdf,
+            label="Prediction",
+            linestyle="--",
+        )
+        axis.set_title(batch.labels[index])
+        axis.set_xlabel("Velocity / c")
+        axis.set_ylabel("EVDF")
+        axis.grid(True, alpha=0.3)
+        axis.legend()
+
+    figure.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    figure.savefig(output_path, dpi=150)
+    plt.close(figure)
+
+
+def plot_detail(
+    batch: EvaluationBatch,
+    predictions: torch.Tensor,
+    sample_index: int,
+    output_path: Path,
+) -> None:
+    """Plot one sample's spectra, Fourier coefficients, and EVDF."""
+
+    if sample_index < 0 or sample_index >= len(batch.spectra):
+        raise IndexError(
+            f"detail index {sample_index} is outside the selected batch "
+            f"of {len(batch.spectra)} samples"
+        )
+
+    spectrum = batch.spectra[sample_index]
+    target = batch.coefficients[sample_index]
+    prediction = predictions[sample_index]
+    velocity, true_evdf = reconstruct_evdf(batch.k_grid, target)
+    _, predicted_evdf = reconstruct_evdf(batch.k_grid, prediction)
+
+    figure, axes = plt.subplots(2, 3, figsize=(15, 8))
+    bands = (
+        (ION_BAND, "Ion feature"),
+        (RED_ELECTRON_BAND, "Red-shifted electron feature"),
+        (BLUE_ELECTRON_BAND, "Blue-shifted electron feature"),
+    )
+    for axis, (band, title) in zip(axes[0], bands):
+        axis.plot(batch.wavelengths_m[band] * 1e9, spectrum[band])
+        axis.set_title(title)
+        axis.set_xlabel("Wavelength (nm)")
+        axis.set_ylabel("Normalized intensity")
+        axis.grid(True, alpha=0.3)
+
+    axes[1, 0].plot(
+        target[:FOURIER_MODES], label="Ground truth", linewidth=2
+    )
+    axes[1, 0].plot(
+        prediction[:FOURIER_MODES], label="Prediction", linestyle="--"
+    )
+    axes[1, 0].set_title("Fourier coefficients: real")
+    axes[1, 0].set_xlabel("Mode index")
+    axes[1, 0].grid(True, alpha=0.3)
+    axes[1, 0].legend()
+
+    axes[1, 1].plot(
+        target[FOURIER_MODES:], label="Ground truth", linewidth=2
+    )
+    axes[1, 1].plot(
+        prediction[FOURIER_MODES:], label="Prediction", linestyle="--"
+    )
+    axes[1, 1].set_title("Fourier coefficients: imaginary")
+    axes[1, 1].set_xlabel("Mode index")
+    axes[1, 1].grid(True, alpha=0.3)
+    axes[1, 1].legend()
+
+    axes[1, 2].plot(
+        velocity / SPEED_OF_LIGHT,
+        true_evdf,
+        label="Ground truth",
+        linewidth=2,
+    )
+    axes[1, 2].plot(
+        velocity / SPEED_OF_LIGHT,
+        predicted_evdf,
+        label="Prediction",
+        linestyle="--",
+    )
+    axes[1, 2].set_title("Reconstructed EVDF")
+    axes[1, 2].set_xlabel("Velocity / c")
+    axes[1, 2].grid(True, alpha=0.3)
+    axes[1, 2].legend()
+
+    figure.suptitle(batch.labels[sample_index])
+    figure.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    figure.savefig(output_path, dpi=150)
+    plt.close(figure)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Evaluate the OTS inversion model on stored or generated data."
+    )
+    parser.add_argument(
+        "--source",
+        choices=("parquet", "synthetic"),
+        default="parquet",
+        help="Read a Parquet test set or generate samples in memory.",
+    )
+    parser.add_argument(
+        "--data-path",
+        type=Path,
+        default=SCRIPT_DIR / "dataset_test.parquet",
+        help="Legacy Parquet test dataset used by --source parquet.",
+    )
+    parser.add_argument(
+        "--model-path",
+        type=Path,
+        default=SCRIPT_DIR / "OTS_Te_model.pickle",
+        help="Trained ModelOTS checkpoint.",
+    )
+    parser.add_argument(
+        "--samples",
+        type=int,
+        default=6,
+        help="Number of samples to evaluate.",
+    )
+    parser.add_argument(
+        "--start-index",
+        type=int,
+        default=1,
+        help="First physical Parquet row; row 0 contains metadata.",
+    )
+    parser.add_argument(
+        "--synthetic-profile",
+        choices=("random", "width-scan", "hot-electron-scan"),
+        default="random",
+        help="EVDF family used by --source synthetic.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=0,
+        help="Random seed for synthetic random samples.",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=SCRIPT_DIR / "evaluation.png",
+        help="Batch EVDF comparison figure.",
+    )
+    parser.add_argument(
+        "--detail-index",
+        type=int,
+        default=None,
+        help="Optional zero-based index inside the selected batch.",
+    )
+    parser.add_argument(
+        "--detail-output",
+        type=Path,
+        default=SCRIPT_DIR / "evaluation_detail.png",
+        help="Detailed single-sample figure.",
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    if args.samples <= 0:
+        raise ValueError("--samples must be positive.")
+    if not args.model_path.is_file():
+        raise FileNotFoundError(f"Model checkpoint not found: {args.model_path}")
+
+    if args.source == "parquet":
+        if args.start_index < 1:
+            raise ValueError(
+                "--start-index must be at least 1 because row 0 is metadata."
+            )
+        if not args.data_path.is_file():
+            raise FileNotFoundError(f"Parquet test set not found: {args.data_path}")
+        batch = load_parquet_batch(
+            args.data_path, args.start_index, args.samples
+        )
+    else:
+        batch = generate_synthetic_batch(
+            args.samples, args.synthetic_profile, args.seed
+        )
+
+    predictions, metrics = evaluate(batch, args.model_path)
+    plot_summary(batch, predictions, args.output)
+    print(f"Evaluated {len(batch.spectra)} samples from {args.source}.")
+    for name, value in metrics.items():
+        print(f"{name}: {value:.6e}")
+    print(f"Summary figure: {args.output}")
+
+    if args.detail_index is not None:
+        plot_detail(
+            batch, predictions, args.detail_index, args.detail_output
+        )
+        print(f"Detail figure: {args.detail_output}")
+
+
+if __name__ == "__main__":
+    main()

@@ -175,7 +175,6 @@ def load_model(PATH):
     
     使用场景：
         - evaluateModel.py：model = load_model(model_path)
-        - singleSpectrum.py：model = load_model(model_path)
     
     工作流程：
         1. 新建空的 ModelOTS 实例

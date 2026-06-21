@@ -1,0 +1,402 @@
+{"kind":"deck","id":"pr/kxszeg","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"封面1","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"},{"name":"25"},{"name":"body","type":"body"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout2.xml","name":"封面2","placeholders":[{"name":"picture","type":"picture"},{"name":"25"},{"name":"body","type":"body"},{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout3.xml","name":"封面3","placeholders":[{"name":"picture","type":"picture"},{"name":"25"},{"name":"body","type":"body"},{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout4.xml","name":"封面3-dark","placeholders":[{"name":"picture","type":"picture"},{"name":"25"},{"name":"body","type":"body"},{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout5.xml","name":"封面4","placeholders":[{"name":"25"},{"name":"body","type":"body"},{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"},{"name":"picture","type":"picture"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout6.xml","name":"封面5","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"},{"name":"25"},{"name":"body","type":"body"},{"name":"picture","type":"picture"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout7.xml","name":"目录1","placeholders":[{"name":"picture","type":"picture"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout8.xml","name":"目录2","placeholders":[{"name":"picture","type":"picture"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout9.xml","name":"内页版式1","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑母版标题样式"},{"name":"4","textPreview":"编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout10.xml","name":"内页版式2","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑母版标题样式"},{"name":"4","textPreview":"编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout11.xml","name":"内页版式3","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑母版标题样式"},{"name":"4","textPreview":"编辑母版文本样式 | 第二级 | 第三级 | 第四级 | 第五级"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout12.xml","name":"过渡页1","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout13.xml","name":"过渡页2","placeholders":[{"name":"picture","type":"picture"},{"name":"title","type":"title","textPreview":"单击此处编辑母版标题样式"},{"name":"body","type":"body","textPreview":"编辑母版文本样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout14.xml","name":"封底1","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout15.xml","name":"封底2","placeholders":[{"name":"title","type":"title","textPreview":"单击此处编辑标题样式"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout16.xml","name":"封底3","placeholders":[{"name":"body","type":"body"}]}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout17.xml","name":"空白页"}
+{"kind":"slide","id":"sl/2x4nap4r","slide":1,"title":"OTS代码结构与训练全流程","textShapes":3}
+{"kind":"textbox","id":"sh/cvixczed","slide":1,"name":"标题 1","placeholder":"title","text":"OTS代码结构与训练全流程","textPreview":"OTS代码结构与训练全流程","textChars":13,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":1,"name":"内容占位符 2","text":"基于代码仓库与 Sheffield (2011) 前三章｜2026年6月","textPreview":"基于代码仓库与 Sheffield (2011) 前三章｜2026年6月","textChars":36,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":1,"name":"文本占位符 3","placeholder":"body","text":"从合成光谱到非 Maxwell 电子速度分布反演\n重点解析：ots_fourier 的物理与数值实现","textPreview":"从合成光谱到非 Maxwell 电子速度分布反演 | 重点解析：ots_fourier 的物理与数值实现","textChars":50,"textLines":2,"bbox":[0,0,0,0]}
+{"kind":"notes","id":"nt/2x4nap4r","slide":1,"text":""}
+{"kind":"slide","id":"sl/pg3ex0nu","slide":2,"title":"01","textShapes":13}
+{"kind":"shape","id":"sh/eloj2t83","slide":2,"name":"直接连接符 2","bbox":[100.31,384.95,1075.93,0]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":2,"name":"直接连接符 3","bbox":[455.09,136.13,0,497.65]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":2,"name":"直接连接符 4","bbox":[821.46,136.13,0,497.65]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":2,"name":"iśļíḓé","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[195.64,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":2,"name":"ïṩľîḓé","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[562,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":2,"name":"îṩľiḑé","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[928.37,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/yd0z6103","slide":2,"name":"îṩľiďé","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[195.64,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/wb2hwfyx","slide":2,"name":"îŝḻîḓê","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[562,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/lwval87e","slide":2,"name":"iṣļïḑe","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[928.37,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":2,"name":"矩形 11","text":"合成非 Maxwell EVDF\n3+1 Gaussian","textPreview":"合成非 Maxwell EVDF | 3+1 Gaussian","textChars":29,"textLines":2,"bbox":[141.04,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":2,"name":"矩形 12","text":"读取 Parquet\n跳过第 0 行元数据","textPreview":"读取 Parquet | 跳过第 0 行元数据","textChars":21,"textLines":2,"bbox":[141.04,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":2,"name":"矩形 13","text":"低通 Fourier 标签\n80 个复模式","textPreview":"低通 Fourier 标签 | 80 个复模式","textChars":21,"textLines":2,"bbox":[507.49,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/loj2t83i","slide":2,"name":"矩形 14","text":"正向生成 OTS 光谱\n三波段 1224 维","textPreview":"正向生成 OTS 光谱 | 三波段 1224 维","textChars":22,"textLines":2,"bbox":[873.86,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":2,"name":"矩形 15","text":"全批次训练 DNN\n1224→5000→5000→160","textPreview":"全批次训练 DNN | 1224→5000→5000→160","textChars":28,"textLines":2,"bbox":[507.32,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":2,"name":"矩形 16","text":"逆变换与评估\nF(K)→f(v)","textPreview":"逆变换与评估 | F(K)→f(v)","textChars":16,"textLines":2,"bbox":[873.77,514.17,261.73,88.85]}
+{"kind":"shape","id":"sh/lkjm1cfa","slide":2,"name":"矩形 18","bbox":[592.76,380.76,94.49,9.45]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":2,"name":"process-title-2","text":"训练全流程：从 EVDF 合成到反演验证","textPreview":"训练全流程：从 EVDF 合成到反演验证","textChars":20,"textLines":1,"bbox":[300,38,680,66]}
+{"kind":"image","id":"im/h4byhgn2","slide":2,"name":"图片 17","bbox":[0.05,634.31,1277.37,43.21]}
+{"kind":"notes","id":"nt/pg3ex0nu","slide":2,"text":""}
+{"kind":"slide","id":"sl/s72x4nap","slide":3,"title":"01","textShapes":12}
+{"kind":"shape","id":"sh/c7u54zid","slide":3,"name":"任意多边形: 形状 74","bbox":[960.13,0,320,720]}
+{"kind":"shape","id":"sh/u9knih4b","slide":3,"name":"任意多边形: 形状 72","bbox":[322.57,0,320,720]}
+{"kind":"shape","id":"sh/1orytsvu","slide":3,"name":"任意多边形: 形状 73","bbox":[2.62,0,320,720]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":3,"name":"任意多边形: 形状 37","bbox":[0,0,320,720]}
+{"kind":"shape","id":"sh/4vmtwra5","slide":3,"name":"任意多边形: 形状 38","bbox":[320,0,320,720]}
+{"kind":"shape","id":"sh/c3ylc7u5","slide":3,"name":"任意多边形: 形状 39","bbox":[638.67,0,320,720]}
+{"kind":"shape","id":"sh/1kre1w7m","slide":3,"name":"任意多边形: 形状 40","bbox":[960,0,320,720]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":3,"name":"文本框 42","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[33.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":3,"name":"文本框 43","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[356,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/1cfa9w3m","slide":3,"name":"文本框 44","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[674.67,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/ulwval87","slide":3,"name":"文本框 45","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[995.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":3,"name":"文本框 46","text":"输入是什么","textPreview":"输入是什么","textChars":5,"textLines":1,"bbox":[33.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":3,"name":"文本框 47","text":"标签如何来","textPreview":"标签如何来","textChars":5,"textLines":1,"bbox":[356,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":3,"name":"文本框 48","text":"模型学什么","textPreview":"模型学什么","textChars":5,"textLines":1,"bbox":[676,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":3,"name":"文本框 49","text":"如何验证","textPreview":"如何验证","textChars":4,"textLines":1,"bbox":[995.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":3,"name":"文本框 50","text":"三段独立归一化的 OTS 光谱：离子峰 579 点、红移电子峰 304 点、蓝移电子峰 341 点。","textPreview":"三段独立归一化的 OTS 光谱：离子峰 579 点、红移电子峰 304 点、蓝移电子峰 341 点。","textChars":50,"textLines":1,"bbox":[33.33,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":3,"name":"文本框 51","text":"将一维 EVDF 投影到 Fourier 空间，仅保留 80 个低频复系数，再拆成 160 个实数。","textPreview":"将一维 EVDF 投影到 Fourier 空间，仅保留 80 个低频复系数，再拆成 160 个实数。","textChars":50,"textLines":1,"bbox":[354.67,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/0bi9s36h","slide":3,"name":"文本框 52","text":"两层 5000 维全连接网络，学习“光谱形状 → EVDF 低通 Fourier 表示”的直接映射。","textPreview":"两层 5000 维全连接网络，学习“光谱形状 → EVDF 低通 Fourier 表示”的直接映射。","textChars":50,"textLines":1,"bbox":[674.67,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":3,"name":"文本框 53","text":"把预测的 Re/Im 重新组成 Fₑ(K)，经 ift_k 恢复 fₑ(v)，与真值并排比较。","textPreview":"把预测的 Re/Im 重新组成 Fₑ(K)，经 ift_k 恢复 fₑ(v)，与真值并排比较。","textChars":47,"textLines":1,"bbox":[996,315.52,269.33,201.6]}
+{"kind":"notes","id":"nt/s72x4nap","slide":3,"text":""}
+{"kind":"slide","id":"sl/val87ed8","slide":4,"title":"项目结构与数据生成","textShapes":2}
+{"kind":"textbox","id":"sh/je9cvixc","slide":4,"name":"标题 2","placeholder":"title","text":"项目结构与数据生成","textPreview":"项目结构与数据生成","textChars":9,"textLines":1,"bbox":[151.17,142.29,923.5,111.38]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":4,"name":"ïṥļiḋe","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[121.24,197.98,281.76,565.47]}
+{"kind":"notes","id":"nt/val87ed8","slide":4,"text":""}
+{"kind":"slide","id":"sl/mlkjm1cf","slide":5,"title":"代码结构：入口、物理层、训练层与评估层","textShapes":11}
+{"kind":"textbox","id":"sh/donyd0z6","slide":5,"name":"标题 22","placeholder":"title","text":"代码结构：入口、物理层、训练层与评估层","textPreview":"代码结构：入口、物理层、训练层与评估层","textChars":19,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/6psfil0r","slide":5,"name":"tree-root","text":"NN_hotE_large_lmRange/","textPreview":"NN_hotE_large_lmRange/","textChars":22,"textLines":1,"bbox":[65,145,410,52]}
+{"kind":"textbox","id":"sh/val87ed8","slide":5,"name":"tree-row-0","text":"phyEqns/\nots_fourier.py｜ots_superGaussian.py｜ots_arb_gaussian.py","textPreview":"phyEqns/ | ots_fourier.py｜ots_superGaussian.py｜ots_arb_gaussian.py","textChars":64,"textLines":2,"bbox":[95,218,510,62]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":5,"name":"tree-row-1","text":"数据\ngenDataSet.py → dataset_train/test.parquet → readData.py","textPreview":"数据 | genDataSet.py → dataset_train/test.parquet → readData.py","textChars":59,"textLines":2,"bbox":[95,300,510,62]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":5,"name":"tree-row-2","text":"网络\nmodel.py + train.py + main.py → OTS_Te_model.pickle","textPreview":"网络 | model.py + train.py + main.py → OTS_Te_model.pickle","textChars":54,"textLines":2,"bbox":[95,382,510,62]}
+{"kind":"textbox","id":"sh/2lszqtcj","slide":5,"name":"tree-row-3","text":"评估\nsingleSpectrum.py｜evaluateModel*.py｜quick_test.py","textPreview":"评估 | singleSpectrum.py｜evaluateModel*.py｜quick_test.py","textChars":52,"textLines":2,"bbox":[95,464,510,62]}
+{"kind":"shape","id":"sh/v6psfil0","slide":5,"name":"tree-to-call","bbox":[625,330,55,34]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":5,"name":"call-title","text":"主调用链","textPreview":"主调用链","textChars":4,"textLines":1,"bbox":[700,150,480,44]}
+{"kind":"shape","id":"sh/sji5snel","slide":5,"name":"flow-arrow-0","bbox":[436.33,283,18,24]}
+{"kind":"shape","id":"sh/3ylc7u54","slide":5,"name":"flow-arrow-1","bbox":[825.67,283,18,24]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":5,"name":"flow-step-0","text":"01\ngenDataSet\n合成训练对","textPreview":"01 | genDataSet | 合成训练对","textChars":19,"textLines":3,"bbox":[70,230,361.33,130]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":5,"name":"flow-step-1","text":"02\nmain\n组织训练","textPreview":"02 | main | 组织训练","textChars":12,"textLines":3,"bbox":[459.33,230,361.33,130]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":5,"name":"flow-step-2","text":"03\nevaluate\n频域→速度域","textPreview":"03 | evaluate | 频域→速度域","textChars":18,"textLines":3,"bbox":[848.67,230,361.33,130]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":5,"name":"outputs-note","text":"关键产物\n• dataset_train.parquet：5000 个样本 + 1 行元数据\n• dataset_test.parquet：100 个样本 + 1 行元数据\n• OTS_Te_model.pickle：state_dict 的 pickle 包装\n• result*.png：光谱、系数与 EVDF 对比","textPreview":"关键产物 | • dataset_train.parquet：5000 个样本 + 1 行元数据 | • dataset_test.parquet：100 个样本 + 1 行元数据 | • OTS_Te_model.pickle：state_dict 的 pickle 包装...","textChars":160,"textLines":5,"bbox":[700,435,480,138]}
+{"kind":"notes","id":"nt/mlkjm1cf","slide":5,"text":""}
+{"kind":"slide","id":"sl/58z25kb6","slide":6,"title":"01","textShapes":12}
+{"kind":"shape","id":"sh/i9s36hcr","slide":6,"name":"任意多边形: 形状 74","bbox":[960.13,0,320,720]}
+{"kind":"shape","id":"sh/032lszqt","slide":6,"name":"任意多边形: 形状 72","bbox":[322.57,0,320,720]}
+{"kind":"shape","id":"sh/bulwval8","slide":6,"name":"任意多边形: 形状 73","bbox":[2.62,0,320,720]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":6,"name":"任意多边形: 形状 37","bbox":[0,0,320,720]}
+{"kind":"shape","id":"sh/q1orytsv","slide":6,"name":"任意多边形: 形状 38","bbox":[320,0,320,720]}
+{"kind":"shape","id":"sh/65wjudg7","slide":6,"name":"任意多边形: 形状 39","bbox":[638.67,0,320,720]}
+{"kind":"shape","id":"sh/zqtcj6to","slide":6,"name":"任意多边形: 形状 40","bbox":[960,0,320,720]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":6,"name":"文本框 42","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[33.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":6,"name":"文本框 43","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[356,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":6,"name":"文本框 44","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[674.67,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":6,"name":"文本框 45","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[995.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":6,"name":"文本框 46","text":"物理正向层","textPreview":"物理正向层","textChars":5,"textLines":1,"bbox":[33.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":6,"name":"文本框 47","text":"数据接口层","textPreview":"数据接口层","textChars":5,"textLines":1,"bbox":[356,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/z61032ls","slide":6,"name":"文本框 48","text":"反演网络层","textPreview":"反演网络层","textChars":5,"textLines":1,"bbox":[676,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":6,"name":"文本框 49","text":"验证与诊断","textPreview":"验证与诊断","textChars":5,"textLines":1,"bbox":[995.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":6,"name":"文本框 50","text":"ots_fourier 负责 Fourier 变换、χₑ、ε、S(k,ω) 与归一化光谱；其输出是训练数据的物理来源。","textPreview":"ots_fourier 负责 Fourier 变换、χₑ、ε、S(k,ω) 与归一化光谱；其输出是训练数据的物理来源。","textChars":59,"textLines":1,"bbox":[33.33,315.52,269.33,240]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":6,"name":"文本框 51","text":"genDataSet 负责随机 EVDF 与 Parquet；readData 把前 1224 列和后 160 列切成 float32 张量。","textPreview":"genDataSet 负责随机 EVDF 与 Parquet；readData 把前 1224 列和后 160 列切成 float32 张量。","textChars":71,"textLines":1,"bbox":[354.67,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":6,"name":"文本框 52","text":"ModelOTS 是两层 5000 宽的 MLP；train 使用 Adam 与多阶段学习率，main 负责串联与保存。","textPreview":"ModelOTS 是两层 5000 宽的 MLP；train 使用 Adam 与多阶段学习率，main 负责串联与保存。","textChars":60,"textLines":1,"bbox":[674.67,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":6,"name":"文本框 53","text":"evaluateModel / singleSpectrum 把预测系数复原为 EVDF；quick_test 用小样本检查完整链路。","textPreview":"evaluateModel / singleSpectrum 把预测系数复原为 EVDF；quick_test 用小样本检查完整链路。","textChars":67,"textLines":1,"bbox":[996,315.52,269.33,240]}
+{"kind":"notes","id":"nt/58z25kb6","slide":6,"text":""}
+{"kind":"slide","id":"sl/0z61032l","slide":7,"title":"genDataSet.py：一个样本怎样被生成","textShapes":7}
+{"kind":"textbox","id":"sh/epkzupwb","slide":7,"name":"标题 22","placeholder":"title","text":"genDataSet.py：一个样本怎样被生成","textPreview":"genDataSet.py：一个样本怎样被生成","textChars":23,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/psfil0rq","slide":7,"name":"flow-arrow-0","bbox":[339,273,18,24]}
+{"kind":"shape","id":"sh/w7mp0bi9","slide":7,"name":"flow-arrow-1","bbox":[631,273,18,24]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":7,"name":"flow-arrow-2","bbox":[923,273,18,24]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":7,"name":"flow-step-0","text":"01\n随机 EVDF\n1000 点，[-0.8c,0.8c]","textPreview":"01 | 随机 EVDF | 1000 点，[-0.8c,0.8c]","textChars":30,"textLines":3,"bbox":[70,220,264,130]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":7,"name":"flow-step-1","text":"02\nFourier 编码\nft_x_n(...,80)","textPreview":"02 | Fourier 编码 | ft_x_n(...,80)","textChars":28,"textLines":3,"bbox":[362,220,264,130]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":7,"name":"flow-step-2","text":"03\n正向光谱\nOTS_spectrum_fft ×3","textPreview":"03 | 正向光谱 | OTS_spectrum_fft ×3","textChars":27,"textLines":3,"bbox":[654,220,264,130]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":7,"name":"flow-step-3","text":"04\n拼接存储\n1224 + 160","textPreview":"04 | 拼接存储 | 1224 + 160","textChars":18,"textLines":3,"bbox":[946,220,264,130]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":7,"name":"data-flow-details","text":"固定物理条件：λ₀=351 nm，nₑ=1.81×10²⁶ m⁻³，Tₑ=1370 eV，Tᵢ=171.3 eV，散射角 123°，CH 混合物（H:55%，C:45%）。\n变化量：每个样本的电子速度分布。三段光谱分别归一化到 max=1，再按 [离子峰, 红移电子峰, 蓝移电子峰] 拼接。","textPreview":"固定物理条件：λ₀=351 nm，nₑ=1.81×10²⁶ m⁻³，Tₑ=1370 eV，Tᵢ=171.3 eV，散射角 123°，CH 混合物（H:55%，C:45%）。 | 变化量：每个样本的电子速度分布。三段光谱分别归一化到 max=1，再按 [离子峰, 红移电子峰,...","textChars":146,"textLines":2,"bbox":[80,410,1120,155]}
+{"kind":"textbox","id":"sh/sfil0rqd","slide":7,"name":"citation-7","text":"代码：genDataSet.py；论文基准为 10 Gaussian，本分支实际为 3 个背景 Gaussian + 1 个弱热电子 Gaussian。","textPreview":"代码：genDataSet.py；论文基准为 10 Gaussian，本分支实际为 3 个背景 Gaussian + 1 个弱热电子 Gaussian。","textChars":76,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/0z61032l","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu18jqh0","slide":8,"title":"随机 EVDF：为什么是“3+1 Gaussian”","textShapes":3}
+{"kind":"textbox","id":"sh/z61032ls","slide":8,"name":"标题 22","placeholder":"title","text":"随机 EVDF：为什么是“3+1 Gaussian”","textPreview":"随机 EVDF：为什么是“3+1 Gaussian”","textChars":26,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/h0fepkzu","slide":8,"name":"evdf-params","bbox":[820,165,370,330]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":8,"name":"evdf-params-text","text":"背景 Gaussian ×3\n• 中心：±0.06c\n• 宽度：0.01–0.05c\n• 高度：0.2–2.5\n\n弱热电子 Gaussian ×1\n• 中心：±0.4c\n• 宽度：0.01–0.05c\n• 高度：0.001–0.045\n\n最后用 ∫fₑ(v)dv=1 归一化。","textPreview":"背景 Gaussian ×3 | • 中心：±0.06c | • 宽度：0.01–0.05c | • 高度：0.2–2.5 |  | 弱热电子 Gaussian ×1 | • 中心：±0.4c | • 宽度：0.01–0.05c | • 高度：0.001–0.045 |  ...","textChars":138,"textLines":11,"bbox":[842,184,328,285]}
+{"kind":"textbox","id":"sh/zupwb2hw","slide":8,"name":"citation-8","text":"代码：genDataSet.random_gaussians；远端小峰扩展了电子峰所需波长覆盖范围。","textPreview":"代码：genDataSet.random_gaussians；远端小峰扩展了电子峰所需波长覆盖范围。","textChars":50,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"chart","id":"ch/kzupwb2h","slide":8,"name":"","chartType":"line","title":"示意 EVDF：主体 + 弱热电子尾","bbox":[60,150,720,410]}
+{"kind":"notes","id":"nt/fu18jqh0","slide":8,"text":""}
+{"kind":"slide","id":"sl/qh0fepkz","slide":9,"title":"Fourier 标签：1000 个速度点如何压缩为 80 个复模式","textShapes":2}
+{"kind":"textbox","id":"sh/donyd0z6","slide":9,"name":"标题 22","placeholder":"title","text":"Fourier 标签：1000 个速度点如何压缩为 80 个复模式","textPreview":"Fourier 标签：1000 个速度点如何压缩为 80 个复模式","textChars":33,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":9,"name":"fourier-note","text":"ft_x_n 不是“FFT 后截取前 80 项”：它先由速度网格得到 ΔK=2π/L，再在以 K=0 为中心的有限区间上重新做 80 次梯形积分。标签排列为 [Re(Fₑ[0:80]), Im(Fₑ[0:80])]。","textPreview":"ft_x_n 不是“FFT 后截取前 80 项”：它先由速度网格得到 ΔK=2π/L，再在以 K=0 为中心的有限区间上重新做 80 次梯形积分。标签排列为 [Re(Fₑ[0:80]), Im(Fₑ[0:80])]。","textChars":108,"textLines":1,"bbox":[92,520,1090,88]}
+{"kind":"chart","id":"ch/idonyd0z","slide":9,"name":"","chartType":"line","title":"80 个模式：Re(Fₑ) 与 Im(Fₑ)","bbox":[52,150,600,355]}
+{"kind":"chart","id":"ch/byhgn29g","slide":9,"name":"","chartType":"line","title":"低通约束：保留可辨识的大尺度结构","bbox":[675,150,540,355]}
+{"kind":"notes","id":"nt/qh0fepkz","slide":9,"text":""}
+{"kind":"slide","id":"sl/29gr2p8n","slide":10,"title":"Parquet 数据结构：第 0 行不是样本","textShapes":11}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":10,"name":"标题 3","placeholder":"title","text":"Parquet 数据结构：第 0 行不是样本","textPreview":"Parquet 数据结构：第 0 行不是样本","textChars":22,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":10,"name":"schema-seg-0","text":"离子峰 579\n349–353 nm","textPreview":"离子峰 579 | 349–353 nm","textChars":18,"textLines":2,"bbox":[62,165,505,98]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":10,"name":"schema-seg-1","text":"红移电子峰 304\n375–600 nm","textPreview":"红移电子峰 304 | 375–600 nm","textChars":20,"textLines":2,"bbox":[567,165,265,98]}
+{"kind":"textbox","id":"sh/kjm1cfa9","slide":10,"name":"schema-seg-2","text":"蓝移电子峰 341\n100–340 nm","textPreview":"蓝移电子峰 341 | 100–340 nm","textChars":20,"textLines":2,"bbox":[832,165,297,98]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":10,"name":"schema-seg-3","text":"Re\n80","textPreview":"Re | 80","textChars":5,"textLines":2,"bbox":[1129,165,55,98]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":10,"name":"schema-seg-4","text":"Im\n80","textPreview":"Im | 80","textChars":5,"textLines":2,"bbox":[1184,165,55,98]}
+{"kind":"textbox","id":"sh/4fu18jqh","slide":10,"name":"schema-input-label","text":"输入 x：1224 维归一化光谱","textPreview":"输入 x：1224 维归一化光谱","textChars":16,"textLines":1,"bbox":[62,130,1065,30]}
+{"kind":"textbox","id":"sh/x0nuxc3y","slide":10,"name":"schema-label-label","text":"标签 y：160","textPreview":"标签 y：160","textChars":8,"textLines":1,"bbox":[1125,130,114,30]}
+{"kind":"textbox","id":"sh/m94fu18j","slide":10,"name":"metadata-row","text":"第 0 行（元数据）\n前 1224 列存 wavelength grid（nm）；后 160 列存 K grid，并为 Re/Im 各重复一次。","textPreview":"第 0 行（元数据） | 前 1224 列存 wavelength grid（nm）；后 160 列存 K grid，并为 Re/Im 各重复一次。","textChars":72,"textLines":2,"bbox":[62,315,1177,105]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":10,"name":"physical-rows","text":"第 1 行起（物理样本）\nreadData_dataset 默认 i_s=1 以跳过元数据；返回 xs:[N,1224] 与 ys:[N,160] 的 float32 Tensor。","textPreview":"第 1 行起（物理样本） | readData_dataset 默认 i_s=1 以跳过元数据；返回 xs:[N,1224] 与 ys:[N,160] 的 float32 Tensor。","textChars":91,"textLines":2,"bbox":[62,438,1177,105]}
+{"kind":"textbox","id":"sh/83itgfml","slide":10,"name":"slice-warning","text":"注意：默认 i_e=-1 会按 pandas 切片语义漏掉物理文件的最后一行。","textPreview":"注意：默认 i_e=-1 会按 pandas 切片语义漏掉物理文件的最后一行。","textChars":39,"textLines":1,"bbox":[62,555,1177,42]}
+{"kind":"notes","id":"nt/29gr2p8n","slide":10,"text":""}
+{"kind":"slide","id":"sl/re1w7mp0","slide":11,"title":"ots_fourier：从任意 EVDF 到 OTS 光谱","textShapes":2}
+{"kind":"textbox","id":"sh/vahoza1g","slide":11,"name":"标题 2","placeholder":"title","text":"ots_fourier：从任意 EVDF 到 OTS 光谱","textPreview":"ots_fourier：从任意 EVDF 到 OTS 光谱","textChars":29,"textLines":1,"bbox":[151.17,142.29,923.5,111.38]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":11,"name":"ïṥļiḋe","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[121.24,197.98,281.76,565.47]}
+{"kind":"notes","id":"nt/re1w7mp0","slide":11,"text":""}
+{"kind":"slide","id":"sl/4fu18jqh","slide":12,"title":"01","textShapes":13}
+{"kind":"shape","id":"sh/gbq1oryt","slide":12,"name":"任意多边形: 形状 74","bbox":[960.13,0,320,720]}
+{"kind":"shape","id":"sh/yhgn29gr","slide":12,"name":"任意多边形: 形状 72","bbox":[322.57,0,320,720]}
+{"kind":"shape","id":"sh/5wjudg7a","slide":12,"name":"任意多边形: 形状 73","bbox":[2.62,0,320,720]}
+{"kind":"shape","id":"sh/twra5gbq","slide":12,"name":"任意多边形: 形状 37","bbox":[0,0,320,720]}
+{"kind":"shape","id":"sh/4byhgn29","slide":12,"name":"任意多边形: 形状 38","bbox":[320,0,320,720]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":12,"name":"任意多边形: 形状 39","bbox":[638.67,0,320,720]}
+{"kind":"shape","id":"sh/18jqh0fe","slide":12,"name":"任意多边形: 形状 40","bbox":[960,0,320,720]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":12,"name":"文本框 42","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[33.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":12,"name":"文本框 43","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[356,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":12,"name":"文本框 44","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[674.67,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":12,"name":"文本框 45","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[995.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":12,"name":"文本框 46","text":"集体参数 α","textPreview":"集体参数 α","textChars":6,"textLines":1,"bbox":[33.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":12,"name":"文本框 47","text":"谱密度 S(k,ω)","textPreview":"谱密度 S(k,ω)","textChars":10,"textLines":1,"bbox":[356,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/1kre1w7m","slide":12,"name":"文本框 48","text":"介电响应 ε","textPreview":"介电响应 ε","textChars":6,"textLines":1,"bbox":[676,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/re1w7mp0","slide":12,"name":"文本框 49","text":"散射功率","textPreview":"散射功率","textChars":4,"textLines":1,"bbox":[995.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/2t83itgf","slide":12,"name":"文本框 50","text":"α≡1/(kλDe)。α≪1 时电子近似独立，谱形直接映射 EVDF；α≳1 时屏蔽相关和集体模显著。","textPreview":"α≡1/(kλDe)。α≪1 时电子近似独立，谱形直接映射 EVDF；α≳1 时屏蔽相关和集体模显著。","textChars":51,"textLines":1,"bbox":[33.33,315.52,269.33,240]}
+{"kind":"textbox","id":"sh/9knih4by","slide":12,"name":"文本框 51","text":"S(k,ω) 是电子密度涨落 |nₑ(k,ω)|² 的归一化统计量，是“微观速度分布→可测光谱”的桥梁。","textPreview":"S(k,ω) 是电子密度涨落 |nₑ(k,ω)|² 的归一化统计量，是“微观速度分布→可测光谱”的桥梁。","textChars":52,"textLines":1,"bbox":[354.67,315.52,269.33,240]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":12,"name":"文本框 52","text":"ε=1+χₑ+Σχᵢ。χₑ 来自任意 EVDF 的速度积分；离子在本代码中保持 Maxwellian。","textPreview":"ε=1+χₑ+Σχᵢ。χₑ 来自任意 EVDF 的速度积分；离子在本代码中保持 Maxwellian。","textChars":51,"textLines":1,"bbox":[674.67,315.52,269.33,201.6]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":12,"name":"文本框 53","text":"Pₛ∝(1+2Δω/ω₀)·S(k,ω)，并带极化、几何、密度与经典电子半径等绝对因子。","textPreview":"Pₛ∝(1+2Δω/ω₀)·S(k,ω)，并带极化、几何、密度与经典电子半径等绝对因子。","textChars":44,"textLines":1,"bbox":[996,315.52,269.33,163.2]}
+{"kind":"textbox","id":"sh/nuxc3ylc","slide":12,"name":"citation-12","text":"理论来源：Sheffield et al. (2011), Ch. 1 §1.8.3；Ch. 2 §2.1–2.3；Ch. 3 §3.3–3.4。","textPreview":"理论来源：Sheffield et al. (2011), Ch. 1 §1.8.3；Ch. 2 §2.1–2.3；Ch. 3 §3.3–3.4。","textChars":73,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/4fu18jqh","slide":12,"text":""}
+{"kind":"slide","id":"sl/lwval87e","slide":13,"title":"散射几何：代码里的 k_s 实际是散射波矢差的模","textShapes":8}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":13,"name":"标题 22","placeholder":"title","text":"散射几何：代码里的 k_s 实际是散射波矢差的模","textPreview":"散射几何：代码里的 k_s 实际是散射波矢差的模","textChars":24,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/lwval87e","slide":13,"name":"ki-arrow","bbox":[170,370,310,34]}
+{"kind":"shape","id":"sh/wb2hwfyx","slide":13,"name":"ks-arrow","bbox":[455,245,330,34]}
+{"kind":"shape","id":"sh/3q5o7qpg","slide":13,"name":"kdiff-arrow","bbox":[455,390,235,28]}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":13,"name":"scatter-volume","text":"V","textPreview":"V","textChars":1,"textLines":1,"bbox":[400,325,92,92]}
+{"kind":"textbox","id":"sh/l87ed8ba","slide":13,"name":"detector","text":"探测器\n方向 ss","textPreview":"探测器 | 方向 ss","textChars":9,"textLines":2,"bbox":[790,210,150,78]}
+{"kind":"textbox","id":"sh/sneloj2t","slide":13,"name":"ki-label","text":"入射：k₀ ∥ k_sh","textPreview":"入射：k₀ ∥ k_sh","textChars":12,"textLines":1,"bbox":[185,330,270,36]}
+{"kind":"textbox","id":"sh/6hcrmhk3","slide":13,"name":"ks-label","text":"散射光：ω/c · ss","textPreview":"散射光：ω/c · ss","textChars":12,"textLines":1,"bbox":[560,205,250,36]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":13,"name":"kd-label","text":"代码 k_s = |k₀ − (ω/c)ss|","textPreview":"代码 k_s = |k₀ − (ω/c)ss|","textChars":23,"textLines":1,"bbox":[505,430,270,36]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":13,"name":"geometry-map","text":"变量映射\n\nlm_0 → λ₀\nlms → λ\nomega_0 → ω₀\nomega → ω\nomega_s → Δω\nk_sh → 入射方向\nss → 观察方向\nk_s → |k|\nv_s → Δω/|k| − u·k̂","textPreview":"变量映射 |  | lm_0 → λ₀ | lms → λ | omega_0 → ω₀ | omega → ω | omega_s → Δω | k_sh → 入射方向 | ss → 观察方向 | k_s → |k| | v_s → Δω/|k| − u·k̂","textChars":111,"textLines":11,"bbox":[970,150,250,400]}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":13,"name":"citation-13","text":"Sheffield Ch. 2 Fig. 2.3 与 Eq. (2.3.13–14)：k = k_s − k_i，ω = ω_s − ω_i；代码采用相反差号但最终使用模与一致的频移约定。","textPreview":"Sheffield Ch. 2 Fig. 2.3 与 Eq. (2.3.13–14)：k = k_s − k_i，ω = ω_s − ω_i；代码采用相反差号但最终使用模与一致的频移约定。","textChars":94,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/lwval87e","slide":13,"text":""}
+{"kind":"slide","id":"sl/25kb6xkf","slide":14,"title":"01","textShapes":13}
+{"kind":"shape","id":"sh/9cvixcze","slide":14,"name":"直接连接符 2","bbox":[100.31,384.95,1075.93,0]}
+{"kind":"shape","id":"sh/yxobm58z","slide":14,"name":"直接连接符 3","bbox":[455.09,136.13,0,497.65]}
+{"kind":"shape","id":"sh/nih4byhg","slide":14,"name":"直接连接符 4","bbox":[821.46,136.13,0,497.65]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":14,"name":"iśļíḓé","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[195.64,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":14,"name":"ïṩľîḓé","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[562,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":14,"name":"îṩľiḑé","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[928.37,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":14,"name":"îṩľiďé","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[195.64,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/3ylc7u54","slide":14,"name":"îŝḻîḓê","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[562,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":14,"name":"iṣļïḑe","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[928.37,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/h4byhgn2","slide":14,"name":"矩形 11","text":"基本尺度\nλD、ωp、vte","textPreview":"基本尺度 | λD、ωp、vte","textChars":14,"textLines":2,"bbox":[141.04,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/sji5snel","slide":14,"name":"矩形 12","text":"恢复 fₑ(v_s)\nFourier 逆积分","textPreview":"恢复 fₑ(v_s) | Fourier 逆积分","textChars":22,"textLines":2,"bbox":[141.04,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":14,"name":"矩形 13","text":"散射几何\nλ→ω→k","textPreview":"散射几何 | λ→ω→k","textChars":10,"textLines":2,"bbox":[507.49,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":14,"name":"矩形 14","text":"相速度映射\nv_s=Δω/k−u∥","textPreview":"相速度映射 | v_s=Δω/k−u∥","textChars":17,"textLines":2,"bbox":[873.86,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":14,"name":"矩形 15","text":"响应与介电\nχₑ、χᵢ、ε","textPreview":"响应与介电 | χₑ、χᵢ、ε","textChars":13,"textLines":2,"bbox":[507.32,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/s72x4nap","slide":14,"name":"矩形 16","text":"谱密度与输出\nS→P→I","textPreview":"谱密度与输出 | S→P→I","textChars":12,"textLines":2,"bbox":[873.77,514.17,261.73,88.85]}
+{"kind":"shape","id":"sh/a1gvy90j","slide":14,"name":"矩形 18","bbox":[592.76,380.76,94.49,9.45]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":14,"name":"process-title-14","text":"OTS_spectrum_fft：九段代码可压缩成六个物理步骤","textPreview":"OTS_spectrum_fft：九段代码可压缩成六个物理步骤","textChars":31,"textLines":1,"bbox":[300,38,680,66]}
+{"kind":"image","id":"im/upwb2hwf","slide":14,"name":"图片 17","bbox":[0.05,634.31,1277.37,43.21]}
+{"kind":"notes","id":"nt/25kb6xkf","slide":14,"text":""}
+{"kind":"slide","id":"sl/7y1kre1w","slide":15,"title":"Fourier 工具函数：谁负责什么","textShapes":29}
+{"kind":"textbox","id":"sh/g7adsji5","slide":15,"name":"标题 3","placeholder":"title","text":"Fourier 工具函数：谁负责什么","textPreview":"Fourier 工具函数：谁负责什么","textChars":18,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":15,"name":"ft-head-0","text":"函数","textPreview":"函数","textChars":2,"textLines":1,"bbox":[50,120,190,48]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":15,"name":"ft-head-1","text":"输入 → 输出","textPreview":"输入 → 输出","textChars":7,"textLines":1,"bbox":[240,120,270,48]}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":15,"name":"ft-head-2","text":"核心算法","textPreview":"核心算法","textChars":4,"textLines":1,"bbox":[510,120,350,48]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":15,"name":"ft-head-3","text":"调用位置 / 注意点","textPreview":"调用位置 / 注意点","textChars":10,"textLines":1,"bbox":[860,120,370,48]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":15,"name":"ft-cell-0-0","text":"ft_x","textPreview":"ft_x","textChars":4,"textLines":1,"bbox":[50,168,190,67]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":15,"name":"ft-cell-0-1","text":"(v,f) → (K,F)","textPreview":"(v,f) → (K,F)","textChars":13,"textLines":1,"bbox":[240,168,270,67]}
+{"kind":"textbox","id":"sh/cvixczed","slide":15,"name":"ft-cell-0-2","text":"全 K 网格逐点梯形积分","textPreview":"全 K 网格逐点梯形积分","textChars":12,"textLines":1,"bbox":[510,168,350,67]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":15,"name":"ft-cell-0-3","text":"调试用完整变换","textPreview":"调试用完整变换","textChars":7,"textLines":1,"bbox":[860,168,370,67]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":15,"name":"ft-cell-1-0","text":"ft_x_n","textPreview":"ft_x_n","textChars":6,"textLines":1,"bbox":[50,235,190,67]}
+{"kind":"textbox","id":"sh/54zidony","slide":15,"name":"ft-cell-1-1","text":"(v,f,n) → n 模式","textPreview":"(v,f,n) → n 模式","textChars":14,"textLines":1,"bbox":[240,235,270,67]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":15,"name":"ft-cell-1-2","text":"围绕 K=0 重算有限带宽","textPreview":"围绕 K=0 重算有限带宽","textChars":13,"textLines":1,"bbox":[510,235,350,67]}
+{"kind":"textbox","id":"sh/nyd0z610","slide":15,"name":"ft-cell-1-3","text":"训练标签；n=80","textPreview":"训练标签；n=80","textChars":9,"textLines":1,"bbox":[860,235,370,67]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":15,"name":"ft-cell-2-0","text":"ift_k","textPreview":"ift_k","textChars":5,"textLines":1,"bbox":[50,302,190,67]}
+{"kind":"textbox","id":"sh/1032lszq","slide":15,"name":"ft-cell-2-1","text":"(K,F) → 自动 v 网格","textPreview":"(K,F) → 自动 v 网格","textChars":15,"textLines":1,"bbox":[240,302,270,67]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":15,"name":"ft-cell-2-2","text":"逆 Fourier 梯形积分","textPreview":"逆 Fourier 梯形积分","textChars":14,"textLines":1,"bbox":[510,302,350,67]}
+{"kind":"textbox","id":"sh/obm58z25","slide":15,"name":"ft-cell-2-3","text":"评估时恢复 EVDF","textPreview":"评估时恢复 EVDF","textChars":10,"textLines":1,"bbox":[860,302,370,67]}
+{"kind":"textbox","id":"sh/hwfyxobm","slide":15,"name":"ft-cell-3-0","text":"ift_k_x","textPreview":"ift_k_x","textChars":7,"textLines":1,"bbox":[50,369,190,67]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":15,"name":"ft-cell-3-1","text":"(K,F,v) → 指定 v","textPreview":"(K,F,v) → 指定 v","textChars":14,"textLines":1,"bbox":[240,369,270,67]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":15,"name":"ft-cell-3-2","text":"在给定速度点上逆积分","textPreview":"在给定速度点上逆积分","textChars":10,"textLines":1,"bbox":[510,369,350,67]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":15,"name":"ft-cell-3-3","text":"检查低通重建","textPreview":"检查低通重建","textChars":6,"textLines":1,"bbox":[860,369,370,67]}
+{"kind":"textbox","id":"sh/hk3q5o7q","slide":15,"name":"ft-cell-4-0","text":"w_ft","textPreview":"w_ft","textChars":4,"textLines":1,"bbox":[50,436,190,67]}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":15,"name":"ft-cell-4-1","text":"(v_s,K,F) → 响应核","textPreview":"(v_s,K,F) → 响应核","textChars":15,"textLines":1,"bbox":[240,436,270,67]}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":15,"name":"ft-cell-4-2","text":"仅积 K>0：K·F·e^{iKv}","textPreview":"仅积 K>0：K·F·e^{iKv}","textChars":18,"textLines":1,"bbox":[510,436,350,67]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":15,"name":"ft-cell-4-3","text":"构造 χₑ 的关键函数","textPreview":"构造 χₑ 的关键函数","textChars":11,"textLines":1,"bbox":[860,436,370,67]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":15,"name":"ft-cell-5-0","text":"OTS_spectrum_fft","textPreview":"OTS_spectrum_fft","textChars":16,"textLines":1,"bbox":[50,503,190,67]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":15,"name":"ft-cell-5-1","text":"λ 与等离子体参数 → I","textPreview":"λ 与等离子体参数 → I","textChars":13,"textLines":1,"bbox":[240,503,270,67]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":15,"name":"ft-cell-5-2","text":"几何→响应→S→归一化","textPreview":"几何→响应→S→归一化","textChars":11,"textLines":1,"bbox":[510,503,350,67]}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":15,"name":"ft-cell-5-3","text":"数据集正向模型","textPreview":"数据集正向模型","textChars":7,"textLines":1,"bbox":[860,503,370,67]}
+{"kind":"notes","id":"nt/7y1kre1w","slide":15,"text":""}
+{"kind":"slide","id":"sl/8z25kb6x","slide":16,"title":"步骤 1–2：基本尺度与波矢","textShapes":4}
+{"kind":"textbox","id":"sh/7mp0bi9s","slide":16,"name":"标题 3","placeholder":"title","text":"步骤 1–2：基本尺度与波矢","textPreview":"步骤 1–2：基本尺度与波矢","textChars":14,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/e1w7mp0b","slide":16,"name":"scale-left","bbox":[60,145,545,430]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":16,"name":"scale-equations","text":"Debye 长度\nλD = √(ε₀kBTₑ / nₑe²)\n\n电子等离子体频率\nωp = √(nₑe² / mₑε₀)\n\n热速度\nvte = √(kBTₑ/mₑ),  vti = √(kBTᵢ/mᵢ)\n\n入射波矢（冷等离子体修正）\nk₀ = √(ω₀²−ωp²)/c · k_sh","textPreview":"Debye 长度 | λD = √(ε₀kBTₑ / nₑe²) |  | 电子等离子体频率 | ωp = √(nₑe² / mₑε₀) |  | 热速度 | vte = √(kBTₑ/mₑ),  vti = √(kBTᵢ/mᵢ) |  | 入射波矢（冷等离子体修正） | ...","textChars":141,"textLines":11,"bbox":[85,170,495,350]}
+{"kind":"shape","id":"sh/w7mp0bi9","slide":16,"name":"scale-right","bbox":[645,145,575,430]}
+{"kind":"textbox","id":"sh/7u54zido","slide":16,"name":"scale-code","text":"每个测量波长 λ：\nω = 2πc/λ\nk⃗ = k⃗₀ − (ω/c)·ss\nk = √(kx²+ky²+kz²)\nΔω = ω−ω₀\n\n随后用 k 与 Δω 把“光谱横轴”换成沿散射波矢方向的速度坐标。\n\n实现观察：r_e 与 V 虽被计算/传入，但最终返回的是归一化谱形，绝对功率因子没有进入输出。","textPreview":"每个测量波长 λ： | ω = 2πc/λ | k⃗ = k⃗₀ − (ω/c)·ss | k = √(kx²+ky²+kz²) | Δω = ω−ω₀ |  | 随后用 k 与 Δω 把“光谱横轴”换成沿散射波矢方向的速度坐标。 |  | 实现观察：r_e 与 V 虽被计...","textChars":152,"textLines":9,"bbox":[675,165,520,365]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":16,"name":"citation-16","text":"代码：ots_fourier.py OTS_spectrum_fft 第 1–4 步；Sheffield Ch. 1 §1.4–1.5、Ch. 2 §2.3。","textPreview":"代码：ots_fourier.py OTS_spectrum_fft 第 1–4 步；Sheffield Ch. 1 §1.4–1.5、Ch. 2 §2.3。","textChars":79,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/8z25kb6x","slide":16,"text":""}
+{"kind":"slide","id":"sl/54zidony","slide":17,"title":"步骤 3–5：波长点如何读取电子分布","textShapes":9}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":17,"name":"标题 3","placeholder":"title","text":"步骤 3–5：波长点如何读取电子分布","textPreview":"步骤 3–5：波长点如何读取电子分布","textChars":18,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/qxs72x4n","slide":17,"name":"electron-arrow-0","bbox":[195,220,55,26]}
+{"kind":"shape","id":"sh/xobm58z2","slide":17,"name":"electron-arrow-1","bbox":[375,220,55,26]}
+{"kind":"shape","id":"sh/83itgfml","slide":17,"name":"electron-arrow-2","bbox":[580,220,55,26]}
+{"kind":"shape","id":"sh/fepkzupw","slide":17,"name":"electron-arrow-3","bbox":[845,220,55,26]}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":17,"name":"electron-node-0","text":"λ","textPreview":"λ","textChars":1,"textLines":1,"bbox":[65,190,145,90]}
+{"kind":"textbox","id":"sh/oj2t83it","slide":17,"name":"electron-node-1","text":"ω=2πc/λ","textPreview":"ω=2πc/λ","textChars":7,"textLines":1,"bbox":[245,190,145,90]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":17,"name":"electron-node-2","text":"k=|k₀−ωss/c|","textPreview":"k=|k₀−ωss/c|","textChars":12,"textLines":1,"bbox":[450,190,145,90]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":17,"name":"electron-node-3","text":"v_s=Δω/k−uₑ·k̂","textPreview":"v_s=Δω/k−uₑ·k̂","textChars":14,"textLines":1,"bbox":[715,190,230,90]}
+{"kind":"textbox","id":"sh/vy90je9c","slide":17,"name":"electron-node-4","text":"fₑ(v_s)","textPreview":"fₑ(v_s)","textChars":7,"textLines":1,"bbox":[1000,190,145,90]}
+{"kind":"textbox","id":"sh/o7qpg3ex","slide":17,"name":"inverse-formula","text":"fₑ(v_s) ≈ Σⱼ Fₑ(Kⱼ) · exp(iKⱼv_s) · ΔK / (2π)","textPreview":"fₑ(v_s) ≈ Σⱼ Fₑ(Kⱼ) · exp(iKⱼv_s) · ΔK / (2π)","textChars":45,"textLines":1,"bbox":[85,345,1110,150]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":17,"name":"inverse-explain","text":"这一步并不先重建整条 EVDF；它只在当前光谱波长所对应的 v_s 上求 fₑ(v_s)。因此一次向量化计算即可得到整段电子特征。","textPreview":"这一步并不先重建整条 EVDF；它只在当前光谱波长所对应的 v_s 上求 fₑ(v_s)。因此一次向量化计算即可得到整段电子特征。","textChars":65,"textLines":1,"bbox":[100,510,1080,80]}
+{"kind":"textbox","id":"sh/61032lsz","slide":17,"name":"citation-17","text":"代码：v_s、f_es；Sheffield Eq. (3.4.3) 中 fₑ(ω/k) 正是电子散射项的速度分布采样。","textPreview":"代码：v_s、f_es；Sheffield Eq. (3.4.3) 中 fₑ(ω/k) 正是电子散射项的速度分布采样。","textChars":59,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/54zidony","slide":17,"text":""}
+{"kind":"slide","id":"sl/m58z25kb","slide":18,"title":"步骤 5：w_ft 怎样把 Fourier 系数变成 χₑ","textShapes":6}
+{"kind":"textbox","id":"sh/bq1oryts","slide":18,"name":"标题 3","placeholder":"title","text":"步骤 5：w_ft 怎样把 Fourier 系数变成 χₑ","textPreview":"步骤 5：w_ft 怎样把 Fourier 系数变成 χₑ","textChars":29,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/m58z25kb","slide":18,"name":"book-chi","text":"一般形式（Sheffield Ch.3）\nχₑ(k,ω) ∝ (1/k²) ∫ dv\n[k·∂fₑ/∂v] / (ω−k·v−i0⁺)","textPreview":"一般形式（Sheffield Ch.3） | χₑ(k,ω) ∝ (1/k²) ∫ dv | [k·∂fₑ/∂v] / (ω−k·v−i0⁺)","textChars":67,"textLines":3,"bbox":[55,145,420,190]}
+{"kind":"shape","id":"sh/twra5gbq","slide":18,"name":"chi-transform-arrow","bbox":[490,220,75,32]}
+{"kind":"textbox","id":"sh/4byhgn29","slide":18,"name":"paper-chi","text":"Fourier 等价式（OTS paper Eq. 5）\nχₑ ∝ (1/k²) ∫₀^∞ dK · K Fₑ(K) exp(−iKω/k)","textPreview":"Fourier 等价式（OTS paper Eq. 5） | χₑ ∝ (1/k²) ∫₀^∞ dK · K Fₑ(K) exp(−iKω/k)","textChars":70,"textLines":2,"bbox":[575,145,650,190]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":18,"name":"wft-code","text":"w_ft(v_s,K,F_e)\nfor K_j:\n    response += relu(K_j) * F_e[j] * exp(i*K_j*v_s) * dK\nresponse /= 2*sqrt(2)*pi","textPreview":"w_ft(v_s,K,F_e) | for K_j: |     response += relu(K_j) * F_e[j] * exp(i*K_j*v_s) * dK | response /= 2*sqrt(2)*pi","textChars":106,"textLines":4,"bbox":[55,370,690,190]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":18,"name":"chi-notes","text":"理解要点\n• relu(K) 实现 K>0 半轴积分\n• 代码 Fourier 约定为 exp(−iKv)，因此响应核使用 exp(+iKv_s)\n• w_es 再乘尺度因子，χₑ=(1/kλD)²·w_es\n• Re/Im 同时保留非对称 EVDF 信息","textPreview":"理解要点 | • relu(K) 实现 K>0 半轴积分 | • 代码 Fourier 约定为 exp(−iKv)，因此响应核使用 exp(+iKv_s) | • w_es 再乘尺度因子，χₑ=(1/kλD)²·w_es | • Re/Im 同时保留非对称 EVDF 信息","textChars":128,"textLines":5,"bbox":[780,370,425,190]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":18,"name":"citation-18","text":"来源：Sheffield Eq. (3.3.9–10)、(3.4.3)；OTS_paper.pdf Eq. (3)、Eq. (5)；代码 w_ft。","textPreview":"来源：Sheffield Eq. (3.3.9–10)、(3.4.3)；OTS_paper.pdf Eq. (3)、Eq. (5)；代码 w_ft。","textChars":74,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/m58z25kb","slide":18,"text":""}
+{"kind":"slide","id":"sl/bat47y1k","slide":19,"title":"步骤 6–9：离子响应、介电函数与最终光谱","textShapes":7}
+{"kind":"textbox","id":"sh/87ed8bat","slide":19,"name":"标题 3","placeholder":"title","text":"步骤 6–9：离子响应、介电函数与最终光谱","textPreview":"步骤 6–9：离子响应、介电函数与最终光谱","textChars":21,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/xs72x4na","slide":19,"name":"spectrum-arrow-0","bbox":[300,328,52,28]}
+{"kind":"shape","id":"sh/q1orytsv","slide":19,"name":"spectrum-arrow-1","bbox":[600,328,52,28]}
+{"kind":"shape","id":"sh/fmlkjm1c","slide":19,"name":"spectrum-arrow-2","bbox":[900,328,52,28]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":19,"name":"spectrum-block-0","text":"离子分布与响应\n\nfᵢ(v)=Gaussian\nwᵢ=w_fast(ξᵢ)\nχᵢ∝(1/kλD)²·Zᵢ²pᵢ·(Tₑ/Tᵢ)wᵢ","textPreview":"离子分布与响应 |  | fᵢ(v)=Gaussian | wᵢ=w_fast(ξᵢ) | χᵢ∝(1/kλD)²·Zᵢ²pᵢ·(Tₑ/Tᵢ)wᵢ","textChars":65,"textLines":5,"bbox":[55,205,255,265]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":19,"name":"spectrum-block-1","text":"总介电函数\n\nε = 1 + χₑ + χᵢ₁ + χᵢ₂","textPreview":"总介电函数 |  | ε = 1 + χₑ + χᵢ₁ + χᵢ₂","textChars":29,"textLines":3,"bbox":[355,205,255,265]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":19,"name":"spectrum-block-2","text":"谱密度\n\nS = (2π/k)|1−χₑ/ε|²fₑ\n  + (2π/k)|χₑ/ε|²Σ(Zᵢ²pᵢ/Z̄)fᵢ","textPreview":"谱密度 |  | S = (2π/k)|1−χₑ/ε|²fₑ |   + (2π/k)|χₑ/ε|²Σ(Zᵢ²pᵢ/Z̄)fᵢ","textChars":57,"textLines":4,"bbox":[655,205,255,265]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":19,"name":"spectrum-block-3","text":"归一化输出\n\nP = Re[(1+2Δω/ω₀)S]\nI = P / max|P|","textPreview":"归一化输出 |  | P = Re[(1+2Δω/ω₀)S] | I = P / max|P|","textChars":41,"textLines":4,"bbox":[955,205,255,265]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":19,"name":"spectrum-interpret","text":"电子项同时包含“自由电子”与电子屏蔽修正；离子项通过 |χₑ/ε|² 被电子云“看见”，形成离子特征。三段波长分别调用同一正向模型，并各自归一化。","textPreview":"电子项同时包含“自由电子”与电子屏蔽修正；离子项通过 |χₑ/ε|² 被电子云“看见”，形成离子特征。三段波长分别调用同一正向模型，并各自归一化。","textChars":73,"textLines":1,"bbox":[90,510,1100,82]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":19,"name":"citation-19","text":"Sheffield Eq. (3.4.3)；OTS_paper.pdf Eq. (1–2)；代码 chi_e / chi_i1 / chi_i2 / epsilon / S_e / P_s / I。","textPreview":"Sheffield Eq. (3.4.3)；OTS_paper.pdf Eq. (1–2)；代码 chi_e / chi_i1 / chi_i2 / epsilon / S_e / P_s / I。","textChars":99,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/bat47y1k","slide":19,"text":""}
+{"kind":"slide","id":"sl/j2t83itg","slide":20,"title":"从理论公式到代码变量：逐项对应","textShapes":29}
+{"kind":"textbox","id":"sh/judg7ads","slide":20,"name":"标题 22","placeholder":"title","text":"从理论公式到代码变量：逐项对应","textPreview":"从理论公式到代码变量：逐项对应","textChars":15,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/c7u54zid","slide":20,"name":"map-head-0","text":"物理对象","textPreview":"物理对象","textChars":4,"textLines":1,"bbox":[50,135,235,46]}
+{"kind":"textbox","id":"sh/1orytsvu","slide":20,"name":"map-head-1","text":"理论表达","textPreview":"理论表达","textChars":4,"textLines":1,"bbox":[285,135,335,46]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":20,"name":"map-head-2","text":"代码实现","textPreview":"代码实现","textChars":4,"textLines":1,"bbox":[620,135,330,46]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":20,"name":"map-head-3","text":"输出含义","textPreview":"输出含义","textChars":4,"textLines":1,"bbox":[950,135,290,46]}
+{"kind":"textbox","id":"sh/cvixczed","slide":20,"name":"map-cell-0-0","text":"散射波矢/频移","textPreview":"散射波矢/频移","textChars":7,"textLines":1,"bbox":[50,181,235,68]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":20,"name":"map-cell-0-1","text":"k=k_s−k_i；ω=ω_s−ω_i","textPreview":"k=k_s−k_i；ω=ω_s−ω_i","textChars":19,"textLines":1,"bbox":[285,181,335,68]}
+{"kind":"textbox","id":"sh/val87ed8","slide":20,"name":"map-cell-0-2","text":"kx_s,ky_s,kz_s,k_s,omega_s","textPreview":"kx_s,ky_s,kz_s,k_s,omega_s","textChars":26,"textLines":1,"bbox":[620,181,330,68]}
+{"kind":"textbox","id":"sh/6psfil0r","slide":20,"name":"map-cell-0-3","text":"λ 点 → 相速度","textPreview":"λ 点 → 相速度","textChars":9,"textLines":1,"bbox":[950,181,290,68]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":20,"name":"map-cell-1-0","text":"电子分布采样","textPreview":"电子分布采样","textChars":6,"textLines":1,"bbox":[50,249,235,68]}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":20,"name":"map-cell-1-1","text":"fₑ(ω/k)","textPreview":"fₑ(ω/k)","textChars":7,"textLines":1,"bbox":[285,249,335,68]}
+{"kind":"textbox","id":"sh/vixczed8","slide":20,"name":"map-cell-1-2","text":"f_es 的 Fourier 逆积分","textPreview":"f_es 的 Fourier 逆积分","textChars":18,"textLines":1,"bbox":[620,249,330,68]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":20,"name":"map-cell-1-3","text":"电子特征包络","textPreview":"电子特征包络","textChars":6,"textLines":1,"bbox":[950,249,290,68]}
+{"kind":"textbox","id":"sh/donyd0z6","slide":20,"name":"map-cell-2-0","text":"电子极化率","textPreview":"电子极化率","textChars":5,"textLines":1,"bbox":[50,317,235,68]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":20,"name":"map-cell-2-1","text":"χₑ∝∫(∂f/∂v)/(ω−kv)","textPreview":"χₑ∝∫(∂f/∂v)/(ω−kv)","textChars":18,"textLines":1,"bbox":[285,317,335,68]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":20,"name":"map-cell-2-2","text":"w_ft → w_es → chi_e","textPreview":"w_ft → w_es → chi_e","textChars":19,"textLines":1,"bbox":[620,317,330,68]}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":20,"name":"map-cell-2-3","text":"屏蔽与 Landau 响应","textPreview":"屏蔽与 Landau 响应","textChars":13,"textLines":1,"bbox":[950,317,290,68]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":20,"name":"map-cell-3-0","text":"离子极化率","textPreview":"离子极化率","textChars":5,"textLines":1,"bbox":[50,385,235,68]}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":20,"name":"map-cell-3-1","text":"χᵢ：Maxwellian 物种求和","textPreview":"χᵢ：Maxwellian 物种求和","textChars":18,"textLines":1,"bbox":[285,385,335,68]}
+{"kind":"textbox","id":"sh/0bi9s36h","slide":20,"name":"map-cell-3-2","text":"w_fast, chi_i1, chi_i2","textPreview":"w_fast, chi_i1, chi_i2","textChars":22,"textLines":1,"bbox":[620,385,330,68]}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":20,"name":"map-cell-3-3","text":"离子声特征","textPreview":"离子声特征","textChars":5,"textLines":1,"bbox":[950,385,290,68]}
+{"kind":"textbox","id":"sh/ed8v6psf","slide":20,"name":"map-cell-4-0","text":"介电函数","textPreview":"介电函数","textChars":4,"textLines":1,"bbox":[50,453,235,68]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":20,"name":"map-cell-4-1","text":"ε=1+χₑ+Σχᵢ","textPreview":"ε=1+χₑ+Σχᵢ","textChars":10,"textLines":1,"bbox":[285,453,335,68]}
+{"kind":"textbox","id":"sh/wjudg7ad","slide":20,"name":"map-cell-4-2","text":"epsilon","textPreview":"epsilon","textChars":7,"textLines":1,"bbox":[620,453,330,68]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":20,"name":"map-cell-4-3","text":"集体共振分母","textPreview":"集体共振分母","textChars":6,"textLines":1,"bbox":[950,453,290,68]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":20,"name":"map-cell-5-0","text":"谱密度与功率","textPreview":"谱密度与功率","textChars":6,"textLines":1,"bbox":[50,521,235,68]}
+{"kind":"textbox","id":"sh/72x4nap4","slide":20,"name":"map-cell-5-1","text":"S(k,ω)，Pₛ∝(1+2ω/ω₀)S","textPreview":"S(k,ω)，Pₛ∝(1+2ω/ω₀)S","textChars":20,"textLines":1,"bbox":[285,521,335,68]}
+{"kind":"textbox","id":"sh/xc3ylc7u","slide":20,"name":"map-cell-5-2","text":"S_e → P_s → I","textPreview":"S_e → P_s → I","textChars":13,"textLines":1,"bbox":[620,521,330,68]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":20,"name":"map-cell-5-3","text":"归一化训练输入","textPreview":"归一化训练输入","textChars":7,"textLines":1,"bbox":[950,521,290,68]}
+{"kind":"notes","id":"nt/j2t83itg","slide":20,"text":""}
+{"kind":"slide","id":"sl/mhk3q5o7","slide":21,"title":"网络训练、推理与工程注意事项","textShapes":2}
+{"kind":"textbox","id":"sh/d8v6psfi","slide":21,"name":"标题 2","placeholder":"title","text":"网络训练、推理与工程注意事项","textPreview":"网络训练、推理与工程注意事项","textChars":14,"textLines":1,"bbox":[151.17,142.29,923.5,111.38]}
+{"kind":"textbox","id":"sh/6tovahoz","slide":21,"name":"ïṥļiḋe","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[121.24,197.98,281.76,565.47]}
+{"kind":"notes","id":"nt/mhk3q5o7","slide":21,"text":""}
+{"kind":"slide","id":"sl/5wjudg7a","slide":22,"title":"ModelOTS：一个大而直接的频谱反演 MLP","textShapes":6}
+{"kind":"textbox","id":"sh/eloj2t83","slide":22,"name":"标题 22","placeholder":"title","text":"ModelOTS：一个大而直接的频谱反演 MLP","textPreview":"ModelOTS：一个大而直接的频谱反演 MLP","textChars":24,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":22,"name":"net-arrow-0","bbox":[265,295,60,34]}
+{"kind":"shape","id":"sh/wfyxobm5","slide":22,"name":"net-arrow-1","bbox":[550,295,60,34]}
+{"kind":"shape","id":"sh/7u54zido","slide":22,"name":"net-arrow-2","bbox":[835,295,60,34]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":22,"name":"net-layer-0","text":"输入\n\n1224\n三段光谱\n\n参数 ≈0","textPreview":"输入 |  | 1224 | 三段光谱 |  | 参数 ≈0","textChars":20,"textLines":6,"bbox":[55,205,225,230]}
+{"kind":"textbox","id":"sh/psfil0rq","slide":22,"name":"net-layer-1","text":"隐藏层 1\n\nLinear 1224→5000\nLeakyReLU\n\n参数 ≈6.1M","textPreview":"隐藏层 1 |  | Linear 1224→5000 | LeakyReLU |  | 参数 ≈6.1M","textChars":43,"textLines":6,"bbox":[340,205,225,230]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":22,"name":"net-layer-2","text":"隐藏层 2\n\nLinear 5000→5000\nLeakyReLU\n\n参数 ≈25.0M","textPreview":"隐藏层 2 |  | Linear 5000→5000 | LeakyReLU |  | 参数 ≈25.0M","textChars":44,"textLines":6,"bbox":[625,205,225,230]}
+{"kind":"textbox","id":"sh/65wjudg7","slide":22,"name":"net-layer-3","text":"输出\n\nLinear 5000→160\n无激活\n\n参数 ≈0.8M","textPreview":"输出 |  | Linear 5000→160 | 无激活 |  | 参数 ≈0.8M","textChars":33,"textLines":6,"bbox":[910,205,225,230]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":22,"name":"net-rationale","text":"为什么不是 CNN？光谱不同波长位置具有明确物理含义，不天然满足平移不变性。两层超宽 MLP 用约 3200 万参数直接学习全局非线性映射；线性输出允许 Fourier 系数取任意正负值。","textPreview":"为什么不是 CNN？光谱不同波长位置具有明确物理含义，不天然满足平移不变性。两层超宽 MLP 用约 3200 万参数直接学习全局非线性映射；线性输出允许 Fourier 系数取任意正负值。","textChars":94,"textLines":1,"bbox":[120,475,1040,115]}
+{"kind":"notes","id":"nt/5wjudg7a","slide":22,"text":""}
+{"kind":"slide","id":"sl/crmhk3q5","slide":23,"title":"训练循环：119,000 次全批次 Adam 更新","textShapes":7}
+{"kind":"textbox","id":"sh/2p8nqxs7","slide":23,"name":"标题 22","placeholder":"title","text":"训练循环：119,000 次全批次 Adam 更新","textPreview":"训练循环：119,000 次全批次 Adam 更新","textChars":25,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/94fu18jq","slide":23,"name":"train-loop","text":"每一步\n\n1. y_pred = model(xs)\n2. loss = mean(|y_pred−ys|)\n3. optimizer.zero_grad()\n4. loss.backward()\n5. optimizer.step()\n\n每 200 步打印一次 loss","textPreview":"每一步 |  | 1. y_pred = model(xs) | 2. loss = mean(|y_pred−ys|) | 3. optimizer.zero_grad() | 4. loss.backward() | 5. optimizer.step() |  | 每...","textChars":136,"textLines":9,"bbox":[55,150,460,385]}
+{"kind":"shape","id":"sh/kjm1cfa9","slide":23,"name":"stage-arrow-0","bbox":[700,265,36,24]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":23,"name":"stage-0","text":"阶段 1\n3,000 步\nlr=1e−4","textPreview":"阶段 1 | 3,000 步 | lr=1e−4","textChars":20,"textLines":3,"bbox":[565,200,140,155]}
+{"kind":"shape","id":"sh/2hwfyxob","slide":23,"name":"stage-arrow-1","bbox":[835,265,36,24]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":23,"name":"stage-1","text":"阶段 2\n6,000 步\nlr=1e−5","textPreview":"阶段 2 | 6,000 步 | lr=1e−5","textChars":20,"textLines":3,"bbox":[730,200,140,155]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":23,"name":"stage-arrow-2","bbox":[970,265,36,24]}
+{"kind":"textbox","id":"sh/u9knih4b","slide":23,"name":"stage-2","text":"阶段 3\n10,000 步\nlr=1e−6","textPreview":"阶段 3 | 10,000 步 | lr=1e−6","textChars":21,"textLines":3,"bbox":[895,200,140,155]}
+{"kind":"textbox","id":"sh/judg7ads","slide":23,"name":"stage-3","text":"阶段 4\n100,000 步\nlr=1e−7","textPreview":"阶段 4 | 100,000 步 | lr=1e−7","textChars":22,"textLines":3,"bbox":[1060,200,140,155]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":23,"name":"train-warning","text":"实现与论文的关键差异\n• 当前 train.py：Fourier 系数域 L1\n• 论文文字：逆变换后的 EVDF 域 MSE\n• 当前：全批次，无 DataLoader、验证集、早停或动态 scheduler","textPreview":"实现与论文的关键差异 | • 当前 train.py：Fourier 系数域 L1 | • 论文文字：逆变换后的 EVDF 域 MSE | • 当前：全批次，无 DataLoader、验证集、早停或动态 scheduler","textChars":105,"textLines":4,"bbox":[565,400,645,145]}
+{"kind":"notes","id":"nt/crmhk3q5","slide":23,"text":""}
+{"kind":"slide","id":"sl/bq1oryts","slide":24,"title":"评估与推理：从 160 个实数返回 fₑ(v)","textShapes":8}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":24,"name":"标题 3","placeholder":"title","text":"评估与推理：从 160 个实数返回 fₑ(v)","textPreview":"评估与推理：从 160 个实数返回 fₑ(v)","textChars":23,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"shape","id":"sh/90je9cvi","slide":24,"name":"flow-arrow-0","bbox":[280.6,263,18,24]}
+{"kind":"shape","id":"sh/yd0z6103","slide":24,"name":"flow-arrow-1","bbox":[514.2,263,18,24]}
+{"kind":"shape","id":"sh/rytsvu9k","slide":24,"name":"flow-arrow-2","bbox":[747.8,263,18,24]}
+{"kind":"shape","id":"sh/gr2p8nqx","slide":24,"name":"flow-arrow-3","bbox":[981.4,263,18,24]}
+{"kind":"textbox","id":"sh/9cvixcze","slide":24,"name":"flow-step-0","text":"01\n加载模型\npickle → state_dict","textPreview":"01 | 加载模型 | pickle → state_dict","textChars":27,"textLines":3,"bbox":[70,210,205.6,130]}
+{"kind":"textbox","id":"sh/tovahoza","slide":24,"name":"flow-step-1","text":"02\n读取样本\nxs:[1,1224]","textPreview":"02 | 读取样本 | xs:[1,1224]","textChars":19,"textLines":3,"bbox":[303.6,210,205.6,130]}
+{"kind":"textbox","id":"sh/032lszqt","slide":24,"name":"flow-step-2","text":"03\n前向推理\nys_pred:[1,160]","textPreview":"03 | 前向推理 | ys_pred:[1,160]","textChars":23,"textLines":3,"bbox":[537.2,210,205.6,130]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":24,"name":"flow-step-3","text":"04\n组成复数\nRe + i·Im","textPreview":"04 | 组成复数 | Re + i·Im","textChars":17,"textLines":3,"bbox":[770.8,210,205.6,130]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":24,"name":"flow-step-4","text":"05\n逆 Fourier\nift_k(K,F)","textPreview":"05 | 逆 Fourier | ift_k(K,F)","textChars":23,"textLines":3,"bbox":[1004.4,210,205.6,130]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":24,"name":"eval-output","text":"evaluateModel.py：批量绘制真值/预测 EVDF（result1.png）\nsingleSpectrum.py：检查单个样本的三段输入光谱与 Fourier 实部/虚部\nquick_test.py：用 20+5 个样本验证“EVDF→光谱→DNN→EVDF”链路","textPreview":"evaluateModel.py：批量绘制真值/预测 EVDF（result1.png） | singleSpectrum.py：检查单个样本的三段输入光谱与 Fourier 实部/虚部 | quick_test.py：用 20+5 个样本验证“EVDF→光谱→DNN→EV...","textChars":138,"textLines":3,"bbox":[90,415,1100,145]}
+{"kind":"textbox","id":"sh/0fepkzup","slide":24,"name":"citation-24","text":"评估的物理终点不是系数误差，而是重建 fₑ(v) 的形状、归一化、非负性与尾部结构。","textPreview":"评估的物理终点不是系数误差，而是重建 fₑ(v) 的形状、归一化、非负性与尾部结构。","textChars":42,"textLines":1,"bbox":[44,646,1160,24]}
+{"kind":"notes","id":"nt/bq1oryts","slide":24,"text":""}
+{"kind":"slide","id":"sl/61032lsz","slide":25,"title":"01","textShapes":12}
+{"kind":"shape","id":"sh/83itgfml","slide":25,"name":"任意多边形: 形状 74","bbox":[960.13,0,320,720]}
+{"kind":"shape","id":"sh/m94fu18j","slide":25,"name":"任意多边形: 形状 72","bbox":[322.57,0,320,720]}
+{"kind":"shape","id":"sh/xobm58z2","slide":25,"name":"任意多边形: 形状 73","bbox":[2.62,0,320,720]}
+{"kind":"shape","id":"sh/loj2t83i","slide":25,"name":"任意多边形: 形状 37","bbox":[0,0,320,720]}
+{"kind":"shape","id":"sh/w3m94fu1","slide":25,"name":"任意多边形: 形状 38","bbox":[320,0,320,720]}
+{"kind":"shape","id":"sh/0fepkzup","slide":25,"name":"任意多边形: 形状 39","bbox":[638.67,0,320,720]}
+{"kind":"shape","id":"sh/p0bi9s36","slide":25,"name":"任意多边形: 形状 40","bbox":[960,0,320,720]}
+{"kind":"textbox","id":"sh/bulwval8","slide":25,"name":"文本框 42","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[33.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/032lszqt","slide":25,"name":"文本框 43","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[356,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/tovahoza","slide":25,"name":"文本框 44","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[674.67,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":25,"name":"文本框 45","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[995.33,78.75,129,114.71]}
+{"kind":"textbox","id":"sh/bi9s36hc","slide":25,"name":"文本框 46","text":"数据与论文不同","textPreview":"数据与论文不同","textChars":7,"textLines":1,"bbox":[33.33,231.67,180,182.4]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":25,"name":"文本框 47","text":"损失定义不同","textPreview":"损失定义不同","textChars":6,"textLines":1,"bbox":[356,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":25,"name":"文本框 48","text":"工程细节","textPreview":"工程细节","textChars":4,"textLines":1,"bbox":[676,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":25,"name":"文本框 49","text":"物理适用范围","textPreview":"物理适用范围","textChars":6,"textLines":1,"bbox":[995.33,231.67,180,124.8]}
+{"kind":"textbox","id":"sh/ulwval87","slide":25,"name":"文本框 50","text":"论文基准：10 Gaussian、电子峰 375–500/200–340 nm；当前分支：3+1 Gaussian，并扩展到约 100–600 nm。","textPreview":"论文基准：10 Gaussian、电子峰 375–500/200–340 nm；当前分支：3+1 Gaussian，并扩展到约 100–600 nm。","textChars":75,"textLines":1,"bbox":[33.33,315.52,269.33,240]}
+{"kind":"textbox","id":"sh/1cfa9w3m","slide":25,"name":"文本框 51","text":"代码优化 160 维系数 L1；论文写的是 EVDF 域 MSE。二者对高频/低频模式的权重并不等价。","textPreview":"代码优化 160 维系数 L1；论文写的是 EVDF 域 MSE。二者对高频/低频模式的权重并不等价。","textChars":51,"textLines":1,"bbox":[354.67,315.52,269.33,240]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":25,"name":"文本框 52","text":"i_e=-1 漏最后一行；genDataSet 导入即执行；pickle 兼容性较弱；训练无 mini-batch、验证与早停。","textPreview":"i_e=-1 漏最后一行；genDataSet 导入即执行；pickle 兼容性较弱；训练无 mini-batch、验证与早停。","textChars":64,"textLines":1,"bbox":[674.67,315.52,269.33,278.4]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":25,"name":"文本框 53","text":"离子默认 Maxwellian；三段独立归一化抹去相对强度；输出是谱形，不是绝对散射功率；未显式约束 EVDF 非负。","textPreview":"离子默认 Maxwellian；三段独立归一化抹去相对强度；输出是谱形，不是绝对散射功率；未显式约束 EVDF 非负。","textChars":59,"textLines":1,"bbox":[996,315.52,269.33,278.4]}
+{"kind":"notes","id":"nt/61032lsz","slide":25,"text":""}
+{"kind":"slide","id":"sl/psfil0rq","slide":26,"title":"01","textShapes":13}
+{"kind":"shape","id":"sh/zupwb2hw","slide":26,"name":"直接连接符 2","bbox":[100.31,384.95,1075.93,0]}
+{"kind":"shape","id":"sh/orytsvu9","slide":26,"name":"直接连接符 3","bbox":[455.09,136.13,0,497.65]}
+{"kind":"shape","id":"sh/hcrmhk3q","slide":26,"name":"直接连接符 4","bbox":[821.46,136.13,0,497.65]}
+{"kind":"textbox","id":"sh/q1orytsv","slide":26,"name":"iśļíḓé","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[195.64,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/fmlkjm1c","slide":26,"name":"ïṩľîḓé","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[562,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":26,"name":"îṩľiḑé","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[928.37,164.76,152.54,90.72]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":26,"name":"îṩľiďé","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[195.64,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":26,"name":"îŝḻîḓê","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[562,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/8bat47y1","slide":26,"name":"iṣļïḑe","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[928.37,413.85,152.54,90.72]}
+{"kind":"textbox","id":"sh/jqh0fepk","slide":26,"name":"矩形 11","text":"检查依赖\nTorch / NumPy / PyArrow","textPreview":"检查依赖 | Torch / NumPy / PyArrow","textChars":28,"textLines":2,"bbox":[141.04,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":26,"name":"矩形 12","text":"核对张量形状\n[N,1224]→[N,160]","textPreview":"核对张量形状 | [N,1224]→[N,160]","textChars":23,"textLines":2,"bbox":[141.04,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":26,"name":"矩形 13","text":"先跑 quick_test\n验证完整链路","textPreview":"先跑 quick_test | 验证完整链路","textChars":20,"textLines":2,"bbox":[507.49,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/8nqxs72x","slide":26,"name":"矩形 14","text":"生成数据集\npython genDataSet.py","textPreview":"生成数据集 | python genDataSet.py","textChars":26,"textLines":2,"bbox":[873.86,265.34,261.73,88.85]}
+{"kind":"textbox","id":"sh/j2t83itg","slide":26,"name":"矩形 15","text":"训练与保存\npython main.py","textPreview":"训练与保存 | python main.py","textChars":20,"textLines":2,"bbox":[507.32,514.17,261.73,88.85]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":26,"name":"矩形 16","text":"评估异常\n系数、EVDF、谱回代","textPreview":"评估异常 | 系数、EVDF、谱回代","textChars":16,"textLines":2,"bbox":[873.77,514.17,261.73,88.85]}
+{"kind":"shape","id":"sh/crmhk3q5","slide":26,"name":"矩形 18","bbox":[592.76,380.76,94.49,9.45]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":26,"name":"process-title-26","text":"复现与调试：推荐执行顺序","textPreview":"复现与调试：推荐执行顺序","textChars":12,"textLines":1,"bbox":[300,38,680,66]}
+{"kind":"image","id":"im/crmhk3q5","slide":26,"name":"图片 17","bbox":[0.05,634.31,1277.37,43.21]}
+{"kind":"notes","id":"nt/psfil0rq","slide":26,"text":""}
+{"kind":"slide","id":"sl/gfmlkjm1","slide":27,"title":"总结：理解这套代码要抓住三条主线","textShapes":6}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":27,"name":"标题 22","placeholder":"title","text":"总结：理解这套代码要抓住三条主线","textPreview":"总结：理解这套代码要抓住三条主线","textChars":16,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"textbox","id":"sh/al87ed8b","slide":27,"name":"takeaway-0","text":"1. 物理主线\nS(k,ω) 把密度涨落连接到散射光谱；ε 与 χ 决定集体响应。","textPreview":"1. 物理主线 | S(k,ω) 把密度涨落连接到散射光谱；ε 与 χ 决定集体响应。","textChars":41,"textLines":2,"bbox":[60,145,560,110]}
+{"kind":"textbox","id":"sh/z61032ls","slide":27,"name":"takeaway-1","text":"2. 数值主线\n80 个复 Fourier 模式既是低通正则，也是神经网络的可学习标签。","textPreview":"2. 数值主线 | 80 个复 Fourier 模式既是低通正则，也是神经网络的可学习标签。","textChars":44,"textLines":2,"bbox":[60,280,560,110]}
+{"kind":"textbox","id":"sh/orytsvu9","slide":27,"name":"takeaway-2","text":"3. 工程主线\ngenDataSet 构造监督对，MLP 直接反演，ift_k 把预测送回可解释的 EVDF。","textPreview":"3. 工程主线 | genDataSet 构造监督对，MLP 直接反演，ift_k 把预测送回可解释的 EVDF。","textChars":55,"textLines":2,"bbox":[60,415,560,110]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":27,"name":"references","text":"主要参考\n\n1. Sheffield et al., Plasma Scattering of Electromagnetic Radiation, 2011, Chapters 1–3.\n\n2. Cheng et al., Non-Maxwellian EVDF reconstruction from OTS using large neural networks, 2026, Eqs. (1)–(5).\n\n3. 仓库：OTS_code_share/NN_hotE_large_lmRange/\n   phyEqns/ots_fourier.py\n   genDataSet.py / model.py / train.py / main.py\n   evaluateModel.py","textPreview":"主要参考 |  | 1. Sheffield et al., Plasma Scattering of Electromagnetic Radiation, 2011, Chapters 1–3. |  | 2. Cheng et al., Non-Maxwellian E...","textChars":345,"textLines":10,"bbox":[660,145,560,380]}
+{"kind":"textbox","id":"sh/6xkf6dcb","slide":27,"name":"final-message","text":"核心一句话：网络预测的不是 EVDF 采样点，而是能够同时驱动正向光谱和逆向重建的低通 Fourier 表示。","textPreview":"核心一句话：网络预测的不是 EVDF 采样点，而是能够同时驱动正向光谱和逆向重建的低通 Fourier 表示。","textChars":55,"textLines":1,"bbox":[660,545,560,70]}
+{"kind":"notes","id":"nt/gfmlkjm1","slide":27,"text":""}
+{"kind":"slide","id":"sl/vahoza1g","slide":28,"title":"谢谢｜欢迎讨论 OTS 正向模型与 Fourier 反演","textShapes":1}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":28,"name":"文本占位符 2","placeholder":"body","text":"谢谢｜欢迎讨论 OTS 正向模型与 Fourier 反演","textPreview":"谢谢｜欢迎讨论 OTS 正向模型与 Fourier 反演","textChars":28,"textLines":1,"bbox":[0,0,0,0]}
+{"kind":"notes","id":"nt/vahoza1g","slide":28,"text":""}

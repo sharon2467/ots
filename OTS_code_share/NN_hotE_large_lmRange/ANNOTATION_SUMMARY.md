@@ -23,8 +23,7 @@ NN_hotE_large_lmRange/
 │
 ├── main.py                     # ★★ 主训练脚本（程序入口）
 ├── genDataSet.py               # ★★ 数据集生成
-├── evaluateModel.py            # 模型评估
-├── singleSpectrum.py           # 单样本推理
+├── evaluateModel.py            # 统一模型评估与单样本推理
 │
 └── [generated files]
     ├── dataset_train.parquet   # 生成的训练数据（5000样本）
@@ -46,7 +45,7 @@ main.py (训练)
     ↓ 生成
 OTS_Te_model.pickle
     ↓ 用于
-evaluateModel.py / singleSpectrum.py (评估推理)
+evaluateModel.py (评估推理)
 ```
 
 ---
@@ -229,8 +228,8 @@ for i in range(6):  # 处理6个测试样本
 
 ---
 
-#### singleSpectrum.py - 单样本推理
-简化版的evaluateModel，专注于单个测试样本的快速可视化
+`evaluateModel.py` 通过 `--detail-index` 提供单样本光谱、Fourier 系数和 EVDF 可视化。
+通过 `--source parquet` 读取已有测试集，通过 `--source synthetic` 现场生成测试样本。
 
 ---
 
@@ -321,8 +320,7 @@ f_velocity(v) 即为推断的电子速度分布
 | model.py | ✓ 详细 | ✓ 完整 | ✓ 架构设计 | 100% |
 | main.py | ✓ 详细 | ✓ 完整 | ✓ 控制流 | 100% |
 | genDataSet.py | ✓ 详细 | ✓ 完整 | ✓ 数据生成流程 | 95% |
-| evaluateModel.py | ✓ 详细 | ~ 完整 | ~ 部分 | 85% |
-| singleSpectrum.py | ✓ 详细 | ✓ 完整 | ✓ 可视化流程 | 100% |
+| evaluateModel.py | ✓ 详细 | ✓ 完整 | ✓ 双数据源与可视化流程 | 100% |
 
 ---
 
@@ -355,20 +353,16 @@ python genDataSet.py
 python main.py
 # 输出：OTS_Te_model.pickle
 
-# 3. 单样本测试与可视化（几秒钟）
-python singleSpectrum.py
-# 输出：result0.png
-
-# 4. 批量评估（1分钟）
-python evaluateModel.py
-# 输出：result1.png
+# 3. 批量评估并输出第一个样本的详细视图
+python evaluateModel.py --source parquet --samples 6 --detail-index 0
+# 输出：evaluation.png, evaluation_detail.png
 ```
 
 ### 后续使用（推理阶段）
 ```bash
 # 跳过数据生成和训练，直接评估
-python evaluateModel.py        # 批量评估
-python singleSpectrum.py       # 单样本推理
+python evaluateModel.py --source parquet
+python evaluateModel.py --source synthetic --synthetic-profile random
 ```
 
 ---

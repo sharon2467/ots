@@ -129,7 +129,7 @@ print(f"Label sample (first 10 values): {ys[0, :10].numpy()}")
 # （可选）后续步骤
 # ═════════════════════════════════════════════════════════════════
 
-# 进一步的 EVDF 还原和可视化在 evaluateModel.py / singleSpectrum.py 中进行；
+# 进一步的 EVDF 还原和可视化在 evaluateModel.py 中进行；
 # 本脚本只负责训练并保存权重。
 
 

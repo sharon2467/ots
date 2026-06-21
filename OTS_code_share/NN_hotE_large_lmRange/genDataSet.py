@@ -229,7 +229,7 @@ t_start=time.time()
 df=generate_data(5000)
 t_end=time.time()
 print("################# Finished! ########################")
-print("Totle time: %.2f"%(t_end-t_start))
+print("Total time: %.2f"%(t_end-t_start))
 
 table = pa.Table.from_pandas(df);
 pq.write_table(table, './dataset_train.parquet')

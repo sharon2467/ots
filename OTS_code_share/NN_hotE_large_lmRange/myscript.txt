@@ -28,10 +28,6 @@ date
 
 python genDataSet.py
 python main.py
-python singleSpectrum.py
-python evaluateModel.py
-python evaluateModel2.py
-python evaluateModel3.py
+python evaluateModel.py --source parquet --samples 6 --detail-index 0
 
 date
-
