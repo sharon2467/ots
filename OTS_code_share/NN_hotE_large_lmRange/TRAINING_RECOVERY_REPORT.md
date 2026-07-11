@@ -26,7 +26,7 @@
 
 ## 作业配置
 
-修复作业 `train_v2.slurm` 申请 π 2.0 的 `dgx2` 分区 1 张 GPU、8 个 CPU 核和 64 GB 内存，最长 4 小时。脚本保留旧模型和旧结果，输出写入 `runs/v2_<job_id>/`，成功后把最佳 checkpoint、指标和对比图复制到当前目录。
+修复作业 `train_v2.slurm` 申请 π 2.0 的 `dgx2` 分区 1 张 GPU、6 个 CPU 核和 64 GB 内存，最长 4 小时。`dgx2` 的提交策略会拒绝每张 GPU 超过 6 个 CPU 的请求；该限制已由 `sbatch` 实际校验确认。脚本先在 Slurm 模块环境中运行数值自检，自检通过才进入正式训练。旧模型和旧结果保持不变，输出写入 `runs/v2_<job_id>/`，成功后把最佳 checkpoint、指标和对比图复制到当前目录。
 
 资源配置依据上海交大超算平台的[队列说明](https://docs.hpc.sjtu.edu.cn/job/partition.html)：当前工程位于 π 2.0 的 `lustre` 文件系统，应使用 `dgx2` GPU 队列；思源一号的 `a100` 队列使用独立的 `dssg` 文件系统，不能直接把本目录的 Slurm 脚本改成 `a100` 后提交。
 
@@ -40,6 +40,11 @@
 - 作业配置：`--partition=cpu`、`--ntasks=32`，但训练代码是单进程全批量 PyTorch，32 个 Slurm task 没有被显式利用。
 
 ## 新训练结果
+
+- 受保护作业已提交：Slurm Job ID `59648208`；
+- 当前状态：`PENDING (Priority)`，资源请求有效，等待调度优先级；
+- 作业输出：`train_v2_59648208.out` / `train_v2_59648208.err`（开始运行后创建）；
+- 只读状态检查器：`monitor_v2.py`。
 
 训练完成后，将从 `metrics_v2.json` 回填：
 

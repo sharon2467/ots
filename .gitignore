@@ -25,6 +25,16 @@ env/
 # Generated figures/results
 result*.png
 quick_test_result.png
+evaluation*.png
+e2e_smoke/
+page*.png
+book_p42.png
+
+# Rendered/inspection artifacts
+tmp/
+outputs/*/
+outputs/*_montage.png
+outputs/*.inspect.ndjson
 
 # OS files
 .DS_Store

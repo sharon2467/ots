@@ -82,8 +82,6 @@ def random_gaussians(num_points):
         振幅 0.5-1.5”的基准描述不同；这里对应本目录名中的
         `hotE_large_lmRange` 变体。
     """
-    v_range=[-0.1,0.1]
-    n_range=[1,1]
     v = np.linspace(-1, 1, num_points)*0.8
 
     f_v = np.zeros_like(v)
@@ -103,7 +101,7 @@ def random_gaussians(num_points):
         f_v += height * np.exp(-((v - center) ** 2) / (2 * sigma ** 2))
 
     v=torch.tensor(v)*c
-    f_v /= np.trapz(f_v, v)
+    f_v /= np.trapezoid(f_v, v)
     f_v=torch.tensor(f_v)
 
     return v, f_v
@@ -189,7 +187,6 @@ def generate_data(num_samples):
         # Full transform is useful for debugging; the network label keeps n=80.
         [K,F_e]=ft_x(vxs,f_es1)
         [K2,F_e2]=ft_x_n(vxs,f_es1,80)
-        [vxs2,f_es2]=ift_k_x(K2,F_e2,vxs)
         label_K = torch.cat((K2,K2),0).numpy()
 
         y1=OTS_spectrum_fft(x1,ss,k_sh,E_i0,lm_0,n_e,T_e,Z_i1,N_i1,m_i1,Z_i2,N_i2,m_i2,T_i,V,K2,F_e2,u_e,u_i1,u_i2)
@@ -213,7 +210,6 @@ def generate_data(num_samples):
 
     df_data = pd.DataFrame(data, columns=["lm_%d"%i for i in range(len(I_0))])
     df_labels2 = pd.DataFrame(label_Fe, columns=["K_%d"%i for i in range(len(F_e))])
-    df_labels = pd.DataFrame(labels, columns=['T_i'])
 
     table_con=[]
     table_con.append(df_data)

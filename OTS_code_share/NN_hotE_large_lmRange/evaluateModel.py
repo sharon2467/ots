@@ -312,7 +312,7 @@ def evaluate(
     model = load_model(str(model_path))
     model.eval()
     with torch.no_grad():
-        predictions = model(batch.spectra).cpu()
+        predictions:torch.Tensor = model(batch.spectra).cpu()
 
     coefficient_error = predictions - batch.coefficients
     true_evdfs: list[torch.Tensor] = []

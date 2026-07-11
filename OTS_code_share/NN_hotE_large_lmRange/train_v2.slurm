@@ -3,7 +3,7 @@
 #SBATCH --partition=dgx2
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
+#SBATCH --cpus-per-task=6
 #SBATCH --gres=gpu:1
 #SBATCH --mem=64G
 #SBATCH --time=04:00:00
@@ -19,13 +19,17 @@ module list
 
 cd "${SLURM_SUBMIT_DIR:-$PWD}"
 export PYTHONPATH="$PWD/.python-packages:${PYTHONPATH:-}"
-export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
-export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-8}"
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-6}"
+export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-6}"
 
 OUTPUT_DIR="runs/v2_${SLURM_JOB_ID}"
 mkdir -p "$OUTPUT_DIR"
 
 date
+echo "Running v2 numerical self-test inside the Slurm module environment"
+python train_v2.py --self-test
+echo "SELF_TEST_PASSED; starting full training"
+
 python train_v2.py \
   --train-data dataset_train.parquet \
   --test-data dataset_test.parquet \

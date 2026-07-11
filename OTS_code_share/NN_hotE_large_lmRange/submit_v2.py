@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Self-test the OTS v2 pipeline and submit its Slurm job.
+"""Submit the guarded OTS v2 Slurm job.
 
-The self-test is deliberately executed before ``sbatch``.  A missing package,
-syntax/runtime incompatibility, or failed numerical invariant therefore stops
-the launcher without consuming compute allocation.
+The login-node Python does not expose the scientific modules used by the
+training image.  ``train_v2.slurm`` therefore runs the numerical self-test
+after loading the job environment and exits before training if it fails.
 """
 
 from __future__ import print_function
@@ -11,25 +11,24 @@ from __future__ import print_function
 import os
 import re
 import subprocess
-import sys
 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 def main():
-    training_script = os.path.join(HERE, "train_v2.py")
     slurm_script = os.path.join(HERE, "train_v2.slurm")
 
-    print("Running v2 self-test with {}".format(sys.executable), flush=True)
-    subprocess.check_call(
-        [sys.executable, training_script, "--self-test"], cwd=HERE
-    )
-
-    print("Self-test passed; submitting {}".format(slurm_script), flush=True)
-    output = subprocess.check_output(
-        ["sbatch", slurm_script], cwd=HERE, universal_newlines=True
-    ).strip()
+    print("Submitting guarded job {}".format(slurm_script), flush=True)
+    try:
+        output = subprocess.check_output(
+            ["sbatch", slurm_script],
+            cwd=HERE,
+            universal_newlines=True,
+            stderr=subprocess.STDOUT,
+        ).strip()
+    except subprocess.CalledProcessError as error:
+        raise RuntimeError("SBATCH_FAILED: {}".format(error.output.strip()))
     print(output, flush=True)
 
     match = re.search(r"(?:Submitted batch job\s+)?(\d+)$", output)
