@@ -470,7 +470,7 @@ def save_comparison_plot(k_grid, target, legacy, improved, output_path, count=6)
         axis = axes[index // 2][index % 2]
         axis.plot(velocity.numpy(), true_evdf[index].numpy(), "k-", label="truth")
         if legacy_evdf is not None:
-            axis.plot(velocity.numpy(), legacy_evdf[index].numpy(), color="#d97706", linestyle="--", label="legacy")
+            axis.plot(velocity.numpy(), legacy_evdf[index].numpy(), color="#de7b0a", linestyle="--", label="legacy")
         axis.plot(velocity.numpy(), improved_evdf[index].numpy(), color="#2563eb", linestyle="-.", label="v2")
         axis.set_title("test sample {}".format(index + 1))
         axis.set_xlabel("velocity (m/s)")
