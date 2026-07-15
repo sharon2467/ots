@@ -1,7 +1,7 @@
 # OTS 仓库知识库与工作协议
 
 > 本文件是本仓库唯一的长期知识入口。最后一次全量审阅：2026-07-15；最近运行状态更新：2026-07-15。
-> 审阅基线：分支 `codex/ots-training-recovery-20260710`，提交历史截至本文件所在提交（前序提交 `5956d29`）。
+> 审阅基线：分支 `codex/paper-fig3-reproduction-20260715`，提交历史截至本文件所在提交（Figure 3 管线实现提交 `ca1794c`）。
 
 ## 0. 每次会话必须执行的协议
 
@@ -67,6 +67,7 @@
 | `phyEqns/ots_superGaussian.py` | 超高斯 EVDF 的解析/数值 OTS 对照模型 |
 | `phyEqns/ots_arb_gaussian.py` | 早期多 Gaussian 参数化 OTS 模型，固定 263 nm 和特定几何，非主路径 |
 | `genDataSet.py` | 生成 legacy Parquet 训练/测试集；导入文件就会开始生成数据 |
+| `generate_paper_dataset.py` | 生成有固定 seed、独立目录和 manifest 的论文 10-Gaussian 基准 Parquet，不覆盖热电子数据 |
 | `readData.py` | 读取 metadata-first Parquet；另有固定列布局的 Excel 实验数据读取器 |
 | `model.py` | legacy `ModelOTS` 及 pickle 保存/加载 |
 | `train.py` | legacy Fourier 系数域 L1 与全批量 Adam 循环 |
@@ -78,6 +79,13 @@
 | `train_v2_capacity.slurm` | 上海交大 π 2.0 容量对照脚本；在相同数据和损失下比较 `2048x1024` 与 `5000x5000`，产物写入独立目录 |
 | `train_v2_rawloss.slurm` | 上海交大 π 2.0 目标函数对照脚本；用 `OTS_RAW_LOSS_WEIGHT` 控制原始系数 MSE 权重，默认 0.50 |
 | `train_v2_bscc.slurm` | 北京超算 BSCC-N32-H `gpu` 分区作业脚本；自检、按需生成数据、训练、测试并校验产物 |
+| `train_paper_fig3.py` | 按论文 5000×5000 网络、EVDF MSE 和 119000 步全批量 Adam 日程训练基准模型 |
+| `reproduce_paper_fig3.py` | 生成两个固定测试 EVDF、`m=3.5/5` 超高斯的 Figure 3 合图、四张单图和面板指标 |
+| `diagnose_paper_fig3_supergaussian.py` | 冻结论文模型，对照解析与 Fourier 超高斯 OTS 谱，区分正向模型差异和 OOD 泛化误差 |
+| `paper_fig3_bscc.slurm` | BSCC Figure 3 正式数据生成、可恢复训练、评估、哈希与模型注册脚本 |
+| `paper_fig3_diagnostic_bscc.slurm` | BSCC 冻结模型的短时超高斯正向路径诊断脚本，不训练或注册模型 |
+| `REMOTE_ARTIFACT_LAYOUT.md` | BSCC 两类数据集、作业目录和模型注册布局 |
+| `PAPER_FIG3_REPRODUCTION_REPORT.md` | Job 1347041 的论文 Figure 3 复现结果、限制与校验报告 |
 | `submit_v2.py` | 调用 `sbatch` 并解析 Job ID，会改变外部集群状态 |
 | `monitor_v2.py` | 只读查询 `squeue`/`sacct` 并读取日志尾部 |
 | `myscript.txt` | legacy CPU Slurm 脚本；会依次重新生成数据、训练和评估 |
@@ -264,7 +272,7 @@ imag = sqrt(pi) * x * exp(-x^2)
 - 1 个弱热电子 Gaussian：中心 `[-0.4c, 0.4c]`，sigma `0.01c–0.05c`，高度 `0.001–0.045`；
 - 最后按速度积分归一化到 `integral f_e(v) dv = 1`。
 
-论文基准数据集描述的是 10 个 Gaussian：中心 `[-0.2c,0.2c]`、宽度 `0.02c–0.08c`、振幅 `0.5–1.5`。当前代码不是这套基准生成器，更接近论文热电子增强数据集。
+论文基准数据集描述的是 10 个 Gaussian：中心 `[-0.2c,0.2c]`、宽度 `0.02c–0.08c`、振幅 `0.5–1.5`。`genDataSet.py` 仍不是这套基准生成器，更接近论文热电子增强数据集；严格基准由独立的 `generate_paper_dataset.py` 生成，二者不得共用物理数据文件或模型注册目录。
 
 ### 7.2 表布局
 
@@ -291,6 +299,14 @@ Parquet 有 1384 个有效列：
 - 2026-07-15 已移除每样本未使用的完整 `ft_x(v,f)` 调试计算；标签和正向模型仍只使用 `ft_x_n(v,f,80)`，数据定义不变。
 - 2026-07-15 已为 NumPy < 2.0 增加 `np.trapz` 回退；新环境仍优先使用 `np.trapezoid`。
 - 生成过程中混用 NumPy float64 与 Torch 默认 dtype，写入后读取为 float32；精度路径没有统一声明。
+
+### 7.4 论文 Figure 3 基准数据
+
+`generate_paper_dataset.py` 使用固定 seed，按 Gaussian 标准差解释论文的“宽度”，并生成 5000+100 个物理样本。它保留同一 1384 列 metadata-first 合同，但波段改为论文范围：349–353 nm（579 点）、375–500 nm（304 点）、200–340 nm（341 点）。
+
+BSCC 数据集 ID 为 `paper_10gaussian_v1_seed20260715`，物理路径为 `datasets/paper_10gaussian_v1_seed20260715/`。训练/测试 Parquet 的 SHA-256 分别为 `d2c5c3e7828b7e3df045e7cac55a0dc92a6abb4c563e662ba91bc48869d8ae02` 与 `a8f39fcd8f50078277a92961c5e2aa58dabc1aace3bc8cd82bfe3331a8a9cdf3`。现有热电子数据仍注册在 `datasets/hot_e_large_range_job1346661/`，不得被论文数据覆盖。
+
+论文没有公开 Figure 3 随机 seed、测试行 ID，也没有给出“宽度”的其他定义；manifest 明确记录 seed `20260715/20260716`、标准差解释和固定等离子体参数。这是一套确定性复现合同，不等于恢复论文作者未公开的原始随机数据。
 
 ## 8. 论文方法与结果声明
 
@@ -366,6 +382,16 @@ mean(abs(model(xs) - ys))
 ### 10.3 Legacy Slurm
 
 `myscript.txt` 请求 CPU 分区、32 个 task，但 Python 代码不使用多进程/分布式训练；资源没有被显式利用。它还会先运行 `genDataSet.py`，因此每次作业都会重新随机生成并覆盖数据集。
+
+## 10A. 论文 Figure 3 基准训练路径
+
+`train_paper_fig3.py` 与 legacy 模型同样使用 `1224 -> 5000 -> 5000 -> 160` 和两层 LeakyReLU，但模型以可信 `torch.save` checkpoint 保存，连续复用同一个 Adam 的动量状态，并对显式逆 Fourier 后的 EVDF 优化 MSE。为避免 SI 单位下数值过小，损失定义为 `MSE(c * f_e)`；论文没有公开损失缩放，因此正式运行的数值不能与论文 `1.68e-4` 直接比较。
+
+默认完整日程严格按论文文字执行：3000 步 `1e-4`、6000 步 `1e-5`、10000 步 `1e-6`、100000 步 `1e-7`，共 119000 次全批量更新。`paper_training_resume.pt` 每 1000 步原子更新并捕获 Slurm 终止信号；正式完成后写模型、metrics、history、训练曲线、Figure 3 合图/单图和 `SHA256SUMS.txt`，全部通过才更新模型注册的 `LATEST.txt`。
+
+BSCC 正式 Job `1347041` 已 `COMPLETED (0:0)`：A100 上训练 7074.93 秒，`completed_steps=119000`、`full_schedule_completed=true`，最终缩放 EVDF MSE `3.3541e-7`，测试 EVDF R2 `0.9782841`。Figure 3 面板 (a)–(d) 的 R2 分别为 `0.9660/0.9940/0.8892/0.8033`。测试样本表现好，但 `m=3.5/5` 超高斯存在中心幅值低估和旁瓣，不能声称严格复现论文展示的超高斯质量。
+
+诊断 Job `1347309` 使用冻结模型对照 `OTS_spectrum_sg` 与训练同源的 `OTS_spectrum_fft`：两种超高斯谱的 relative L2 小于 0.9%，换成 Fourier 谱并未实质改善重建，因此主要问题是当前模型的训练分布外泛化，不是两条正向模型不一致。不得通过把这两个测试超高斯直接加入训练或后处理曲线来冒充论文复现。
 
 ## 11. v2 恢复训练路径
 
@@ -486,7 +512,7 @@ time=04:00:00
 - `evaluateModel.py` 使用 dataclass、`list[str]`、`tuple[...]` 等写法，语法层面要求现代 Python；Slurm 指定 Python 3.10.10。
 - `train_v2.py` 自称兼容 Python 3.6 与 PyTorch 1.6/1.7，但实际集群脚本使用 Python 3.10.10 + PyTorch 1.6.0，仍应以 Slurm 自检为准。
 - 2026-07-15 本地 Codex bundled Python 仅检测到 NumPy/Pandas/PyPDF，缺 PyTorch、PyArrow、Matplotlib，且 shell 没有系统 `python`；因此只能做静态语法检查，不能在本机执行数值自检。
-- 13 个当前 Python 文件已通过不导入依赖的内存 `compile()` 语法检查。
+- 17 个当前 Python 文件已通过不导入依赖的内存 `compile()` 语法检查；论文 Figure 3 生成、训练、复现和诊断脚本另在 BSCC Python 3.10/PyTorch 2.4 环境通过自检或正式运行。
 - 2026-07-15 北京超算 GPU 计算节点实测环境：Python 3.10.14、PyTorch 2.4.0+cu121、NumPy 1.26.4、Pandas 2.3.3、PyArrow 22.0.0、Matplotlib 3.10.9；A100-PCIE-40GB 可见且 v2 数值自检通过。
 
 ## 14. 当前数据与产物状态（动态，使用前复核）
@@ -508,6 +534,8 @@ metrics_v2.json
 `evaluation*.png`、`result*.png`、`e2e_smoke/`、模型和数据集都被 `.gitignore` 视为生成产物。`quick_test_result.png` 因历史原因仍被 tracked。
 
 2026-07-15 北京超算动态快照：GPU 账号 `scx6090@BSCC-N32-H` 的 `/home/bingxing2/home/scx6090/yhh/ots` 保留正式 `dataset_train.parquet`（5001×1384）、`dataset_test.parquet`（101×1384）和 Job `1346661` 的结果目录 `runs/bscc_v2_1346661/`。Job `1346661` 已 `COMPLETED (0:0)`；最佳模型为 `1024x512`，测试 EVDF R2 为 `0.9727474`。结果、图表、checkpoint 和日志已下载到本地忽略目录 `bscc_results/job_1346661/` 并通过 SHA-256 校验。回答未来状态前仍须现场复核。
+
+2026-07-15 北京超算 Figure 3 动态快照：独立论文数据位于 `datasets/paper_10gaussian_v1_seed20260715/`，正式 Job `1347041` 已 `COMPLETED (0:0)`，结果位于 `runs/paper_fig3_1347041/`，模型注册 `models/paper_10gaussian_v1_seed20260715/LATEST.txt` 指向 `job_1347041`，10 个正式产物 SHA-256 全部通过。轻量日志/JSON/history/六张图下载至本地忽略目录 `bscc_results/paper_fig3_1347041/` 并通过本地哈希；两个论文 Parquet 与 checkpoint 均未下载。诊断 Job `1347309` 已完成并保存在 `runs/paper_fig3_diagnostic_1347309/`。完整结论见 `PAPER_FIG3_REPRODUCTION_REPORT.md`。
 
 2026-07-15 上海交大 π 动态快照：`/lustre/home/acct-phywsm/sharon2467/myfolder/OTS_code_share/NN_hotE_large_lmRange` 保留数据、legacy checkpoint，以及 Jobs `59648208`、`59739405`、`59740000`、`59740036` 的日志和 `runs/` 结果。四个作业均 `COMPLETED (0:0)`；最终 Job `59740036` 的 `5000x5000`、raw-loss 1.0 模型测试 EVDF R2 `0.9629309`，高于 legacy `0.9609201`。基线与最终完整产物、两次中间实验的小型指标/图表/日志已下载到本地 `pi_results/job_<id>/`，哈希核验通过。
 
@@ -554,6 +582,18 @@ python monitor_v2.py
 
 `submit_v2.py`、`sbatch`、`scancel` 可在当前任务需要时直接使用；`monitor_v2.py` 是只读查询。删除用户已有的远端数据仍需先确认。
 
+### 论文 Figure 3（BSCC）
+
+```bash
+python generate_paper_dataset.py --output-dir datasets/paper_10gaussian_v1_seed20260715 --self-test
+python train_paper_fig3.py --self-test
+python reproduce_paper_fig3.py --self-test
+sbatch paper_fig3_bscc.slurm
+sbatch paper_fig3_diagnostic_bscc.slurm
+```
+
+正式脚本默认执行完整 119000 步并注册模型；运行前先确认 `datasets/paper_10gaussian_v1_seed20260715/`、目标 `runs/paper_fig3_<jobid>/` 与注册目录。诊断脚本只读取 Job `1347041` 的冻结 checkpoint 和论文测试集，不训练或更新 `LATEST.txt`。数据和 checkpoint 保持在超算，本地仅同步轻量报告产物。
+
 ## 16. 已知风险与审查清单
 
 ### 最高优先级
@@ -570,6 +610,8 @@ python monitor_v2.py
 4. `genDataSet` 导入即运行、无 seed、会覆盖数据；未使用的完整 Fourier 变换已在 2026-07-15 移除。
 5. 三段独立归一化抹去相对幅度，模型只学习谱形。
 6. legacy 输出不保证 Hermitian、EVDF 非负或积分归一。
+7. 论文 10-Gaussian 数据把未说明的“宽度”解释为标准差，并固定论文没有完整公布的 seed/物理参数；它是明确版本化的复现合同，不是作者原始数据恢复。
+8. Job `1347041` 没有验证集或早停，因为目标是严格执行论文全日程；其测试集 R2 较高，但超高斯 OOD 面板相对 L2 达 31%/42%，不能用训练损失替代泛化结论。
 
 ### 物理与数值
 
@@ -578,6 +620,7 @@ python monitor_v2.py
 3. 显式 Fourier 梯形积分很慢，网格端点/步长必须与 metadata 保持一致。
 4. 光谱归一化缺少全零保护。
 5. `OTS_spectrum_fft_real`、多 Gaussian 和超高斯模块属于对照/legacy，修改前需单独数值验证。
+6. Job `1347309` 只证明本次 `m=3.5/5` 条件下解析与 Fourier 超高斯谱相差不到 0.9%；不能把该结论外推到任意参数或其他正向实现。
 
 ### 工程与可复现性
 
@@ -628,6 +671,8 @@ python monitor_v2.py
 
 ## 20. 维护记录
 
+- 2026-07-15：在 BSCC 完成论文 Figure 3 正式 Job `1347041`：独立生成并保留 5000+100 条 10-Gaussian 论文数据，严格执行 119000 步 5000×5000 全批量 Adam 日程，测试 EVDF R2 `0.9782841`，Figure 3 四面板 R2 为 `0.9660/0.9940/0.8892/0.8033`；所有正式哈希与模型注册通过，只下载轻量产物，数据和 checkpoint 留在超算。
+- 2026-07-15：完成超高斯正向模型诊断 Job `1347309`；解析与 Fourier 谱 relative L2 小于 0.9%，换用训练同源谱不改善 `m=3.5/5` 重建，确认当前差距主要来自 OOD 泛化。新增诊断脚本、Slurm 入口和 `PAPER_FIG3_REPRODUCTION_REPORT.md`，保留原始不理想面板而不做结果美化。
 - 2026-07-15：完成 π 容量和目标函数对照 Jobs `59739405`、`59740000`、`59740036`。最终将 raw coefficient MSE 权重设为 1.0，选择 `5000x5000`，测试 EVDF R2 `0.9629309`，在同一数据上超过 legacy `0.9609201`；最终模型与核心产物下载到 `pi_results/job_59740036/` 并通过 SHA-256 校验。
 - 2026-07-15：通过 `$sjtu-pi-ssh-login` 现场复核 π Job `59648208` 已完成并下载产物；确认 V100/CUDA/自检正常，但 v2 EVDF R2 `0.9475271` 低于 legacy `0.9609201`。新增并提交容量对照脚本 `train_v2_capacity.slurm`，对应 Job `59739405`，初始状态 `PENDING`。
 - 2026-07-15：在北京超算 GPU 账号 `/home/bingxing2/home/scx6090/yhh/ots` 完成全量 v2 数据生成、训练和测试。自检 Job `1346659` 与正式 Job `1346661` 均完成；正式作业生成 5000+100 物理样本，选择 `1024x512` 模型，测试 EVDF R2 `0.9727474`，结果下载至 `bscc_results/job_1346661/` 并通过哈希与 checkpoint 加载验证。
