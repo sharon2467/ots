@@ -27,6 +27,8 @@ result*.png
 quick_test_result.png
 evaluation*.png
 e2e_smoke/
+OTS_code_share/NN_hotE_large_lmRange/bscc_results/
+OTS_code_share/NN_hotE_large_lmRange/pi_results/
 page*.png
 book_p42.png
 
@@ -39,3 +41,7 @@ outputs/*.inspect.ndjson
 # OS files
 .DS_Store
 Thumbs.db
+
+# Local credentials
+/bscc_key
+/pi_key.txt

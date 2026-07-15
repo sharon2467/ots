@@ -101,7 +101,9 @@ def random_gaussians(num_points):
         f_v += height * np.exp(-((v - center) ** 2) / (2 * sigma ** 2))
 
     v=torch.tensor(v)*c
-    f_v /= np.trapezoid(f_v, v)
+    # NumPy < 2.0 exposes the same trapezoidal rule as ``np.trapz``.
+    trapezoid = getattr(np, "trapezoid", np.trapz)
+    f_v /= trapezoid(f_v, v)
     f_v=torch.tensor(f_v)
 
     return v, f_v
@@ -184,8 +186,8 @@ def generate_data(num_samples):
         # Generate one non-Maxwellian EVDF and its low-pass Fourier label.
         [vxs,f_es1]=random_gaussians(1000)
         
-        # Full transform is useful for debugging; the network label keeps n=80.
-        [K,F_e]=ft_x(vxs,f_es1)
+        # The network label and forward model only use the 80-mode transform.
+        # Avoid the unused 1000-mode debug transform during full generation.
         [K2,F_e2]=ft_x_n(vxs,f_es1,80)
         label_K = torch.cat((K2,K2),0).numpy()
 
