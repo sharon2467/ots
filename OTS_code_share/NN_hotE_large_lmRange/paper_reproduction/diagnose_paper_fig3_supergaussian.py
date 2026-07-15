@@ -12,6 +12,13 @@ from __future__ import print_function
 import argparse
 import json
 from pathlib import Path
+import sys
+
+TASK_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = TASK_DIR.parent
+for search_path in (PROJECT_ROOT, TASK_DIR):
+    if str(search_path) not in sys.path:
+        sys.path.insert(0, str(search_path))
 
 import torch
 

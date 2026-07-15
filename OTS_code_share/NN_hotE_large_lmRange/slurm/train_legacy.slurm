@@ -8,6 +8,10 @@
 #SBATCH --time=40:30:00                      # Wall time limit (days-hrs:min:sec)
 
 # Any other commands must follow all #SBATCH directives...
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$PROJECT_ROOT"
+
 export PATH=~/lib/miniconda3/bin:$PATH
 
 ulimit -s unlimited

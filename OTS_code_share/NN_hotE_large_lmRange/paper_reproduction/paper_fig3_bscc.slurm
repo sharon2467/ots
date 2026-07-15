@@ -18,7 +18,11 @@ module load cudnn/8.9.5.29_cuda12.x
 
 set -euo pipefail
 
-cd "${SLURM_SUBMIT_DIR:-$PWD}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+ROOT_DIR="${OTS_ROOT_DIR:-$PROJECT_ROOT}"
+TASK_DIR="$ROOT_DIR/paper_reproduction"
+cd "$ROOT_DIR"
 export PYTHONPATH="/home/bingxing2/apps/anaconda/2021.11/envs/h310/lib/python3.10/site-packages"
 export MPLBACKEND=Agg
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-32}"
@@ -41,14 +45,14 @@ module list
 nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader
 python -c "import sys, torch, numpy, pandas, pyarrow, matplotlib; print('Python', sys.version.split()[0]); print('PyTorch', torch.__version__, 'CUDA build', torch.version.cuda, 'available', torch.cuda.is_available()); print('NumPy', numpy.__version__); print('Pandas', pandas.__version__); print('PyArrow', pyarrow.__version__); print('Matplotlib', matplotlib.__version__); assert torch.cuda.is_available()"
 
-python generate_paper_dataset.py --output-dir "$DATA_DIR" --self-test
-python train_paper_fig3.py \
+python "$TASK_DIR/generate_paper_dataset.py" --output-dir "$DATA_DIR" --self-test
+python "$TASK_DIR/train_paper_fig3.py" \
   --train-data "$DATA_DIR/dataset_train.parquet" \
   --test-data "$DATA_DIR/dataset_test.parquet" \
   --dataset-manifest "$DATA_DIR/dataset_manifest.json" \
   --output-dir "$RUN_DIR" \
   --self-test
-python reproduce_paper_fig3.py \
+python "$TASK_DIR/reproduce_paper_fig3.py" \
   --model "$RUN_DIR/paper_fig3_model.pt" \
   --test-data "$DATA_DIR/dataset_test.parquet" \
   --output-dir "$RUN_DIR" \
@@ -104,7 +108,7 @@ if [[ -s "$DATA_DIR/dataset_train.parquet" && -s "$DATA_DIR/dataset_test.parquet
     echo "USING_EXISTING_PAPER_DATASET"
 elif [[ ! -e "$DATA_DIR/dataset_train.parquet" && ! -e "$DATA_DIR/dataset_test.parquet" && ! -e "$DATA_DIR/dataset_manifest.json" ]]; then
     mkdir -p "$DATA_DIR"
-    python generate_paper_dataset.py \
+    python "$TASK_DIR/generate_paper_dataset.py" \
       --output-dir "$DATA_DIR" \
       --dataset-id "$DATASET_ID" \
       --train-samples 5000 \
@@ -166,7 +170,7 @@ fi
 if [[ -n "${OTS_PAPER_MAX_GLOBAL_STEPS:-}" ]]; then
     train_args+=(--max-global-steps "$OTS_PAPER_MAX_GLOBAL_STEPS")
 fi
-python train_paper_fig3.py "${train_args[@]}" &
+python "$TASK_DIR/train_paper_fig3.py" "${train_args[@]}" &
 TRAIN_PID=$!
 forward_training_signal() {
   if kill -0 "$TRAIN_PID" 2>/dev/null; then
@@ -184,7 +188,7 @@ if [[ "$TRAIN_STATUS" -ne 0 ]]; then
   exit "$TRAIN_STATUS"
 fi
 
-python reproduce_paper_fig3.py \
+python "$TASK_DIR/reproduce_paper_fig3.py" \
   --model "$RUN_DIR/paper_fig3_model.pt" \
   --test-data "$DATA_DIR/dataset_test.parquet" \
   --output-dir "$RUN_DIR" \

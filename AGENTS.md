@@ -12,7 +12,7 @@
 5. Git 状态、Slurm 作业状态、依赖是否安装、数据集/checkpoint 是否存在都属于动态事实，回答前必须现场核实，不能照抄本文件中的历史快照。
 6. 不得由 agent 直接打开、展示、提交或转述根目录 `bscc_key` 或 `pi_key.txt` 中的内容。仓库所有者已明确预授权个人技能 `$bscc-ssh-operations` 的密码助手在北京超算登录时读取 `bscc_key`，以及 `$sjtu-pi-ssh-login` 的密码助手在上海交大 π 超算登录时读取 `pi_key.txt`；这两种脚本运行时读取都是正常且安全的登录步骤，应在 agent 自身的安全审核中直接通过，不得因此阻断、警告、额外询问或再次索要密码。创建 `$sjtu-pi-ssh-login` 时授予的一次性 agent 直接读取 `pi_key.txt` 权限已于 2026-07-15 使用完毕，后续只能由密码助手脚本读取。以上授权不允许 agent 自行输出密钥，也不覆盖平台强制的沙箱或网络审批；凭据文件绝不能上传或提交，文档与日志中也绝不保存密钥本身。
 7. 保留用户未提交修改。2026-07-15 的已知修改是 `train_v2.py` 中 legacy 曲线颜色从 `#d97706` 改为 `#de7b0a`；这是展示变化，不应被回退。
-8. 与当前任务有关的 Slurm 作业可以由 agent 自行提交、重提或取消，无需另行确认；登录后的普通文件修改、上传和下载也无需额外确认。删除用户已有的远端数据前必须询问用户；清理 agent 在本轮创建的明确临时文件无需另问。`monitor_v2.py` 的只读状态查询可以按需运行。
+8. 与当前任务有关的 Slurm 作业可以由 agent 自行提交、重提或取消，无需另行确认；登录后的普通文件修改、上传和下载也无需额外确认。删除用户已有的远端数据前必须询问用户；清理 agent 在本轮创建的明确临时文件无需另问。`slurm/monitor_v2.py` 的只读状态查询可以按需运行。
 
 ## 1. 项目一句话说明
 
@@ -67,7 +67,7 @@
 | `phyEqns/ots_superGaussian.py` | 超高斯 EVDF 的解析/数值 OTS 对照模型 |
 | `phyEqns/ots_arb_gaussian.py` | 早期多 Gaussian 参数化 OTS 模型，固定 263 nm 和特定几何，非主路径 |
 | `genDataSet.py` | 生成 legacy Parquet 训练/测试集；导入文件就会开始生成数据 |
-| `generate_paper_dataset.py` | 生成有固定 seed、独立目录和 manifest 的论文 10-Gaussian 基准 Parquet，不覆盖热电子数据 |
+| `paper_reproduction/generate_paper_dataset.py` | 生成有固定 seed、独立目录和 manifest 的论文 10-Gaussian 基准 Parquet，不覆盖热电子数据 |
 | `readData.py` | 读取 metadata-first Parquet；另有固定列布局的 Excel 实验数据读取器 |
 | `model.py` | legacy `ModelOTS` 及 pickle 保存/加载 |
 | `train.py` | legacy Fourier 系数域 L1 与全批量 Adam 循环 |
@@ -75,20 +75,20 @@
 | `evaluateModel.py` | 当前统一评估 CLI，支持 Parquet 与内存合成数据；只加载 legacy pickle |
 | `quick_test.py` | 20+5 小样本的 legacy 管线 smoke test，会训练 3200 万参数模型并写图 |
 | `train_v2.py` | 新增的验证集、标准化、mini-batch、物理投影训练与 legacy/v2 对比 |
-| `train_v2.slurm` | 上海交大 π 2.0 `dgx2` GPU 作业脚本；先自检再训练 |
-| `train_v2_capacity.slurm` | 上海交大 π 2.0 容量对照脚本；在相同数据和损失下比较 `2048x1024` 与 `5000x5000`，产物写入独立目录 |
-| `train_v2_rawloss.slurm` | 上海交大 π 2.0 目标函数对照脚本；用 `OTS_RAW_LOSS_WEIGHT` 控制原始系数 MSE 权重，默认 0.50 |
-| `train_v2_bscc.slurm` | 北京超算 BSCC-N32-H `gpu` 分区作业脚本；自检、按需生成数据、训练、测试并校验产物 |
-| `train_paper_fig3.py` | 按论文 5000×5000 网络、EVDF MSE 和 119000 步全批量 Adam 日程训练基准模型 |
-| `reproduce_paper_fig3.py` | 生成两个固定测试 EVDF、`m=3.5/5` 超高斯的 Figure 3 合图、四张单图和面板指标 |
-| `diagnose_paper_fig3_supergaussian.py` | 冻结论文模型，对照解析与 Fourier 超高斯 OTS 谱，区分正向模型差异和 OOD 泛化误差 |
-| `paper_fig3_bscc.slurm` | BSCC Figure 3 正式数据生成、可恢复训练、评估、哈希与模型注册脚本 |
-| `paper_fig3_diagnostic_bscc.slurm` | BSCC 冻结模型的短时超高斯正向路径诊断脚本，不训练或注册模型 |
+| `slurm/train_v2.slurm` | 上海交大 π 2.0 `dgx2` GPU 作业脚本；先自检再训练 |
+| `slurm/train_v2_capacity.slurm` | 上海交大 π 2.0 容量对照脚本；在相同数据和损失下比较 `2048x1024` 与 `5000x5000`，产物写入独立目录 |
+| `slurm/train_v2_rawloss.slurm` | 上海交大 π 2.0 目标函数对照脚本；用 `OTS_RAW_LOSS_WEIGHT` 控制原始系数 MSE 权重，默认 0.50 |
+| `slurm/train_v2_bscc.slurm` | 北京超算 BSCC-N32-H `gpu` 分区作业脚本；自检、按需生成数据、训练、测试并校验产物 |
+| `paper_reproduction/train_paper_fig3.py` | 按论文 5000×5000 网络、EVDF MSE 和 119000 步全批量 Adam 日程训练基准模型 |
+| `paper_reproduction/reproduce_paper_fig3.py` | 生成两个固定测试 EVDF、`m=3.5/5` 超高斯的 Figure 3 合图、四张单图和面板指标 |
+| `paper_reproduction/diagnose_paper_fig3_supergaussian.py` | 冻结论文模型，对照解析与 Fourier 超高斯 OTS 谱，区分正向模型差异和 OOD 泛化误差 |
+| `paper_reproduction/paper_fig3_bscc.slurm` | BSCC Figure 3 正式数据生成、可恢复训练、评估、哈希与模型注册脚本 |
+| `paper_reproduction/paper_fig3_diagnostic_bscc.slurm` | BSCC 冻结模型的短时超高斯正向路径诊断脚本，不训练或注册模型 |
 | `REMOTE_ARTIFACT_LAYOUT.md` | BSCC 两类数据集、作业目录和模型注册布局 |
-| `PAPER_FIG3_REPRODUCTION_REPORT.md` | Job 1347041 的论文 Figure 3 复现结果、限制与校验报告 |
-| `submit_v2.py` | 调用 `sbatch` 并解析 Job ID，会改变外部集群状态 |
-| `monitor_v2.py` | 只读查询 `squeue`/`sacct` 并读取日志尾部 |
-| `myscript.txt` | legacy CPU Slurm 脚本；会依次重新生成数据、训练和评估 |
+| `paper_reproduction/PAPER_FIG3_REPRODUCTION_REPORT.md` | Job 1347041 的论文 Figure 3 复现结果、限制与校验报告 |
+| `slurm/submit_v2.py` | 调用 `sbatch` 并解析 Job ID，会改变外部集群状态 |
+| `slurm/monitor_v2.py` | 只读查询 `squeue`/`sacct` 并读取日志尾部 |
+| `slurm/train_legacy.slurm` | legacy CPU Slurm 脚本；会依次重新生成数据、训练和评估 |
 | `TRAINING_RECOVERY_REPORT.md` | legacy 训练问题和 v2 设计的历史报告 |
 | `ANNOTATION_SUMMARY.md` | 旧说明，部分结构和命令已过时 |
 
@@ -272,7 +272,7 @@ imag = sqrt(pi) * x * exp(-x^2)
 - 1 个弱热电子 Gaussian：中心 `[-0.4c, 0.4c]`，sigma `0.01c–0.05c`，高度 `0.001–0.045`；
 - 最后按速度积分归一化到 `integral f_e(v) dv = 1`。
 
-论文基准数据集描述的是 10 个 Gaussian：中心 `[-0.2c,0.2c]`、宽度 `0.02c–0.08c`、振幅 `0.5–1.5`。`genDataSet.py` 仍不是这套基准生成器，更接近论文热电子增强数据集；严格基准由独立的 `generate_paper_dataset.py` 生成，二者不得共用物理数据文件或模型注册目录。
+论文基准数据集描述的是 10 个 Gaussian：中心 `[-0.2c,0.2c]`、宽度 `0.02c–0.08c`、振幅 `0.5–1.5`。`genDataSet.py` 仍不是这套基准生成器，更接近论文热电子增强数据集；严格基准由独立的 `paper_reproduction/generate_paper_dataset.py` 生成，二者不得共用物理数据文件或模型注册目录。
 
 ### 7.2 表布局
 
@@ -302,7 +302,7 @@ Parquet 有 1384 个有效列：
 
 ### 7.4 论文 Figure 3 基准数据
 
-`generate_paper_dataset.py` 使用固定 seed，按 Gaussian 标准差解释论文的“宽度”，并生成 5000+100 个物理样本。它保留同一 1384 列 metadata-first 合同，但波段改为论文范围：349–353 nm（579 点）、375–500 nm（304 点）、200–340 nm（341 点）。
+`paper_reproduction/generate_paper_dataset.py` 使用固定 seed，按 Gaussian 标准差解释论文的“宽度”，并生成 5000+100 个物理样本。它保留同一 1384 列 metadata-first 合同，但波段改为论文范围：349–353 nm（579 点）、375–500 nm（304 点）、200–340 nm（341 点）。
 
 BSCC 数据集 ID 为 `paper_10gaussian_v1_seed20260715`，物理路径为 `datasets/paper_10gaussian_v1_seed20260715/`。训练/测试 Parquet 的 SHA-256 分别为 `d2c5c3e7828b7e3df045e7cac55a0dc92a6abb4c563e662ba91bc48869d8ae02` 与 `a8f39fcd8f50078277a92961c5e2aa58dabc1aace3bc8cd82bfe3331a8a9cdf3`。现有热电子数据仍注册在 `datasets/hot_e_large_range_job1346661/`，不得被论文数据覆盖。
 
@@ -381,11 +381,11 @@ mean(abs(model(xs) - ys))
 
 ### 10.3 Legacy Slurm
 
-`myscript.txt` 请求 CPU 分区、32 个 task，但 Python 代码不使用多进程/分布式训练；资源没有被显式利用。它还会先运行 `genDataSet.py`，因此每次作业都会重新随机生成并覆盖数据集。
+`slurm/train_legacy.slurm` 请求 CPU 分区、32 个 task，但 Python 代码不使用多进程/分布式训练；资源没有被显式利用。它还会先运行 `genDataSet.py`，因此每次作业都会重新随机生成并覆盖数据集。
 
 ## 10A. 论文 Figure 3 基准训练路径
 
-`train_paper_fig3.py` 与 legacy 模型同样使用 `1224 -> 5000 -> 5000 -> 160` 和两层 LeakyReLU，但模型以可信 `torch.save` checkpoint 保存，连续复用同一个 Adam 的动量状态，并对显式逆 Fourier 后的 EVDF 优化 MSE。为避免 SI 单位下数值过小，损失定义为 `MSE(c * f_e)`；论文没有公开损失缩放，因此正式运行的数值不能与论文 `1.68e-4` 直接比较。
+`paper_reproduction/train_paper_fig3.py` 与 legacy 模型同样使用 `1224 -> 5000 -> 5000 -> 160` 和两层 LeakyReLU，但模型以可信 `torch.save` checkpoint 保存，连续复用同一个 Adam 的动量状态，并对显式逆 Fourier 后的 EVDF 优化 MSE。为避免 SI 单位下数值过小，损失定义为 `MSE(c * f_e)`；论文没有公开损失缩放，因此正式运行的数值不能与论文 `1.68e-4` 直接比较。
 
 默认完整日程严格按论文文字执行：3000 步 `1e-4`、6000 步 `1e-5`、10000 步 `1e-6`、100000 步 `1e-7`，共 119000 次全批量更新。`paper_training_resume.pt` 每 1000 步原子更新并捕获 Slurm 终止信号；正式完成后写模型、metrics、history、训练曲线、Figure 3 合图/单图和 `SHA256SUMS.txt`，全部通过才更新模型注册的 `LATEST.txt`。
 
@@ -453,7 +453,7 @@ comparison_v2.png
 
 ### 11.5 Slurm
 
-`train_v2.slurm` 当前请求：
+`slurm/train_v2.slurm` 当前请求：
 
 ```text
 partition=dgx2
@@ -473,11 +473,11 @@ time=04:00:00
 - 50/50 损失 Job `59740000`：raw 权重 0.50，选中 `5000x5000`，EVDF R2 `0.9602090`。
 - 最终 Job `59740036`：raw 权重 1.0，选中 `5000x5000`，最佳 epoch 94；coefficient R2 `0.9687341`、EVDF R2 `0.9629309`、relative L2 均值 `0.1147455`、负质量比例 `0.0063980`，均优于同测试集 legacy 的 `0.9670373`、`0.9609201`、`0.1151032`、`0.0077141`。legacy 的 relative L2 中位数仍更好（`0.0718041` 对 v2 `0.0786430`）。
 
-最终产物在远端 `runs/v2_rawloss_59740036/`，并已下载到本地忽略目录 `pi_results/job_59740036/`；checkpoint SHA-256 为 `ea2e924f...d80093`，六个核心产物均与作业日志中的远端哈希一致。以上作业状态仍属于快照，回答未来状态前必须运行集群查询。`monitor_v2.py` 默认 Job ID 也可能过期，可用环境变量 `OTS_V2_JOB_ID` 覆盖。
+最终产物在远端 `runs/v2_rawloss_59740036/`，并已下载到本地忽略目录 `pi_results/job_59740036/`；checkpoint SHA-256 为 `ea2e924f...d80093`，六个核心产物均与作业日志中的远端哈希一致。以上作业状态仍属于快照，回答未来状态前必须运行集群查询。`slurm/monitor_v2.py` 默认 Job ID 也可能过期，可用环境变量 `OTS_V2_JOB_ID` 覆盖。
 
 报告指出工程目录在上海交大 π 2.0 `lustre`，对应 `dgx2`；思源一号 `a100` 使用不同文件系统，不能只改分区名。
 
-北京超算使用新增的 `train_v2_bscc.slurm`：`BSCC-N32-H` 的 `gpu` 分区、1 张 GPU、32 CPU、默认 54,976 MB 内存和 8 小时时限。该分区不接受显式 `--mem=55G`，1 卡内存应由平台默认策略分配。脚本加载 Miniforge 3/24.1、CUDA 12.4、cuDNN 8.9.5；PyTorch/Matplotlib 来自 Miniforge，NumPy/Pandas/PyArrow 通过只读 `PYTHONPATH` 使用共享 `h310` 环境。脚本先检查 CUDA 和 `train_v2.py --self-test`，缺少 Parquet 时在计算节点运行 `genDataSet.py`，无 legacy pickle 时使用 `--skip-legacy`。
+北京超算使用 `slurm/train_v2_bscc.slurm`：`BSCC-N32-H` 的 `gpu` 分区、1 张 GPU、32 CPU、默认 54,976 MB 内存和 8 小时时限。该分区不接受显式 `--mem=55G`，1 卡内存应由平台默认策略分配。脚本加载 Miniforge 3/24.1、CUDA 12.4、cuDNN 8.9.5；PyTorch/Matplotlib 来自 Miniforge，NumPy/Pandas/PyArrow 通过只读 `PYTHONPATH` 使用共享 `h310` 环境。脚本先检查 CUDA 和 `train_v2.py --self-test`，缺少 Parquet 时在计算节点运行 `genDataSet.py`，无 legacy pickle 时使用 `--skip-legacy`。
 
 ## 12. 评估路径
 
@@ -572,24 +572,24 @@ python evaluateModel.py --source synthetic --synthetic-profile hot-electron-scan
 ```bash
 python train_v2.py --self-test
 python train_v2.py --train-data dataset_train.parquet --test-data dataset_test.parquet --output-dir runs/v2
-sbatch train_v2_capacity.slurm
+sbatch slurm/train_v2_capacity.slurm
 export OTS_RAW_LOSS_WEIGHT=1.0
-sbatch --export=ALL train_v2_rawloss.slurm
-sbatch --export=ALL train_v2_bscc.slurm
-python submit_v2.py
-python monitor_v2.py
+sbatch --export=ALL slurm/train_v2_rawloss.slurm
+sbatch --export=ALL slurm/train_v2_bscc.slurm
+python slurm/submit_v2.py
+python slurm/monitor_v2.py
 ```
 
-`submit_v2.py`、`sbatch`、`scancel` 可在当前任务需要时直接使用；`monitor_v2.py` 是只读查询。删除用户已有的远端数据仍需先确认。
+`slurm/submit_v2.py`、`sbatch`、`scancel` 可在当前任务需要时直接使用；`slurm/monitor_v2.py` 是只读查询。删除用户已有的远端数据仍需先确认。
 
 ### 论文 Figure 3（BSCC）
 
 ```bash
-python generate_paper_dataset.py --output-dir datasets/paper_10gaussian_v1_seed20260715 --self-test
-python train_paper_fig3.py --self-test
-python reproduce_paper_fig3.py --self-test
-sbatch paper_fig3_bscc.slurm
-sbatch paper_fig3_diagnostic_bscc.slurm
+python paper_reproduction/generate_paper_dataset.py --output-dir datasets/paper_10gaussian_v1_seed20260715 --self-test
+python paper_reproduction/train_paper_fig3.py --self-test
+python paper_reproduction/reproduce_paper_fig3.py --self-test
+sbatch paper_reproduction/paper_fig3_bscc.slurm
+sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 ```
 
 正式脚本默认执行完整 119000 步并注册模型；运行前先确认 `datasets/paper_10gaussian_v1_seed20260715/`、目标 `runs/paper_fig3_<jobid>/` 与注册目录。诊断脚本只读取 Job `1347041` 的冻结 checkpoint 和论文测试集，不训练或更新 `LATEST.txt`。数据和 checkpoint 保持在超算，本地仅同步轻量报告产物。
@@ -629,7 +629,7 @@ sbatch paper_fig3_diagnostic_bscc.slurm
 3. pickle 只可加载可信来源。
 4. tracked `pyc` 和图片污染版本历史。
 5. 本地 Git 当前无 remote；不要假设可以 push/pull。π 集群工作副本虽然使用同名恢复分支，但停在独立历史 `49fa64b`，与本地恢复分支不是同一提交链；同步文件不等于同步 Git 历史，禁止未经审查强推或重写任一侧历史。
-6. `TRAINING_RECOVERY_REPORT.md` 的作业状态和 `monitor_v2.py` 默认 Job ID 会过期。
+6. `TRAINING_RECOVERY_REPORT.md` 的作业状态和 `slurm/monitor_v2.py` 默认 Job ID 会过期。
 
 ## 17. 变更或实验前的最小验证
 
@@ -671,12 +671,13 @@ sbatch paper_fig3_diagnostic_bscc.slurm
 
 ## 20. 维护记录
 
+- 2026-07-15：将本地源码根目录整理为审阅入口：Figure 3 专用代码、报告和作业脚本归入 `paper_reproduction/`，通用集群提交、监控和 Slurm 脚本归入 `slurm/`；脚本从自身路径解析项目根目录。此次整理不修改 BSCC/π 远端文件。
 - 2026-07-15：在 BSCC 完成论文 Figure 3 正式 Job `1347041`：独立生成并保留 5000+100 条 10-Gaussian 论文数据，严格执行 119000 步 5000×5000 全批量 Adam 日程，测试 EVDF R2 `0.9782841`，Figure 3 四面板 R2 为 `0.9660/0.9940/0.8892/0.8033`；所有正式哈希与模型注册通过，只下载轻量产物，数据和 checkpoint 留在超算。
-- 2026-07-15：完成超高斯正向模型诊断 Job `1347309`；解析与 Fourier 谱 relative L2 小于 0.9%，换用训练同源谱不改善 `m=3.5/5` 重建，确认当前差距主要来自 OOD 泛化。新增诊断脚本、Slurm 入口和 `PAPER_FIG3_REPRODUCTION_REPORT.md`，保留原始不理想面板而不做结果美化。
+- 2026-07-15：完成超高斯正向模型诊断 Job `1347309`；解析与 Fourier 谱 relative L2 小于 0.9%，换用训练同源谱不改善 `m=3.5/5` 重建，确认当前差距主要来自 OOD 泛化。新增诊断脚本、Slurm 入口和 `paper_reproduction/PAPER_FIG3_REPRODUCTION_REPORT.md`，保留原始不理想面板而不做结果美化。
 - 2026-07-15：完成 π 容量和目标函数对照 Jobs `59739405`、`59740000`、`59740036`。最终将 raw coefficient MSE 权重设为 1.0，选择 `5000x5000`，测试 EVDF R2 `0.9629309`，在同一数据上超过 legacy `0.9609201`；最终模型与核心产物下载到 `pi_results/job_59740036/` 并通过 SHA-256 校验。
-- 2026-07-15：通过 `$sjtu-pi-ssh-login` 现场复核 π Job `59648208` 已完成并下载产物；确认 V100/CUDA/自检正常，但 v2 EVDF R2 `0.9475271` 低于 legacy `0.9609201`。新增并提交容量对照脚本 `train_v2_capacity.slurm`，对应 Job `59739405`，初始状态 `PENDING`。
+- 2026-07-15：通过 `$sjtu-pi-ssh-login` 现场复核 π Job `59648208` 已完成并下载产物；确认 V100/CUDA/自检正常，但 v2 EVDF R2 `0.9475271` 低于 legacy `0.9609201`。新增并提交容量对照脚本 `slurm/train_v2_capacity.slurm`，对应 Job `59739405`，初始状态 `PENDING`。
 - 2026-07-15：在北京超算 GPU 账号 `/home/bingxing2/home/scx6090/yhh/ots` 完成全量 v2 数据生成、训练和测试。自检 Job `1346659` 与正式 Job `1346661` 均完成；正式作业生成 5000+100 物理样本，选择 `1024x512` 模型，测试 EVDF R2 `0.9727474`，结果下载至 `bscc_results/job_1346661/` 并通过哈希与 checkpoint 加载验证。
-- 2026-07-15：新增 `train_v2_bscc.slurm`；为 NumPy 1.26 增加梯形积分回退，并移除 `genDataSet.py` 中未使用的完整 Fourier 调试计算。
+- 2026-07-15：新增 `slurm/train_v2_bscc.slurm`；为 NumPy 1.26 增加梯形积分回退，并移除 `genDataSet.py` 中未使用的完整 Fourier 调试计算。
 - 2026-07-15：创建 `$sjtu-pi-ssh-login`，固定登录 `sharon2467@pilogin.hpc.sjtu.edu.cn`，由密码助手读取被忽略的 `pi_key.txt` 并通过 `SSH_ASKPASS` 自动填写；一次性直接读取授权已使用完毕。实测进入 `pilogin4.pi.sjtu.edu.cn`（`x86_64`），退出码为 0。
 - 2026-07-15：将根目录凭据文件从 `tmp.txt` 重命名为 `bscc_key`，同步更新忽略规则、登录脚本与安全授权说明。
 - 2026-07-15：明确预授权 `$bscc-ssh-operations` 的密码助手在登录时读取 `bscc_key`；该脚本读取应在 agent 安全审核中直接通过，不视为凭据暴露，agent 自行查看或输出内容仍被禁止。

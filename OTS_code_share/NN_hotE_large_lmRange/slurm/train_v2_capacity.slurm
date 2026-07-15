@@ -17,8 +17,10 @@ module load python/3.10.10-intel-2021.4.0
 module load pytorch/1.6.0
 module list
 
-cd "${SLURM_SUBMIT_DIR:-$PWD}"
-export PYTHONPATH="$PWD/.python-packages:${PYTHONPATH:-}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$PROJECT_ROOT"
+export PYTHONPATH="$PROJECT_ROOT/.python-packages:${PYTHONPATH:-}"
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK:-6}"
 export MKL_NUM_THREADS="${SLURM_CPUS_PER_TASK:-6}"
 

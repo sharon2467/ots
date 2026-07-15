@@ -13,17 +13,18 @@ import re
 import subprocess
 
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 
 
 def main():
-    slurm_script = os.path.join(HERE, "train_v2.slurm")
+    slurm_script = os.path.join(SCRIPT_DIR, "train_v2.slurm")
 
     print("Submitting guarded job {}".format(slurm_script), flush=True)
     try:
         output = subprocess.check_output(
             ["sbatch", slurm_script],
-            cwd=HERE,
+            cwd=PROJECT_ROOT,
             universal_newlines=True,
             stderr=subprocess.STDOUT,
         ).strip()

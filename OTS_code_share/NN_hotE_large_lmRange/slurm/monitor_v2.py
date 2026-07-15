@@ -7,7 +7,8 @@ import os
 import subprocess
 
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 JOB_ID = os.environ.get("OTS_V2_JOB_ID", "59648208")
 
 
@@ -15,7 +16,7 @@ def run_status(command):
     try:
         return subprocess.check_output(
             command,
-            cwd=HERE,
+            cwd=PROJECT_ROOT,
             universal_newlines=True,
             stderr=subprocess.STDOUT,
         ).strip()
@@ -61,7 +62,7 @@ def main():
     print("SACCT_END")
 
     for suffix in ("out", "err"):
-        path = os.path.join(HERE, "train_v2_{}.{}".format(JOB_ID, suffix))
+        path = os.path.join(PROJECT_ROOT, "train_v2_{}.{}".format(JOB_ID, suffix))
         print("{}_TAIL_BEGIN".format(suffix.upper()))
         print(tail(path))
         print("{}_TAIL_END".format(suffix.upper()))

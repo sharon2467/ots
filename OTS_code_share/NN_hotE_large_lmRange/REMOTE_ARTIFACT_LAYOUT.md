@@ -55,6 +55,11 @@ From the BSCC OTS directory:
 sbatch paper_fig3_bscc.slurm
 ```
 
+The tracked workstation source is organized under
+`paper_reproduction/paper_fig3_bscc.slurm`.  The already-deployed BSCC copy
+remains at the remote project root; the 2026-07-15 local reorganization did
+not upload, move, or otherwise modify remote files.
+
 The default run performs the paper's complete 119,000-step full-batch Adam
 schedule.  `paper_training_resume.pt` is updated periodically and removed only
 after the full schedule succeeds.  The result directory contains a combined

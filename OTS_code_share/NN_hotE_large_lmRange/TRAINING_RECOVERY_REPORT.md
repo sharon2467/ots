@@ -28,7 +28,7 @@
 
 ## 作业配置
 
-修复作业 `train_v2.slurm` 申请 π 2.0 的 `dgx2` 分区 1 张 GPU、6 个 CPU 核和 64 GB 内存，最长 4 小时。`dgx2` 的提交策略会拒绝每张 GPU 超过 6 个 CPU 的请求；该限制已由 `sbatch` 实际校验确认。脚本先在 Slurm 模块环境中运行数值自检，自检通过才进入正式训练。旧模型和旧结果保持不变，输出写入 `runs/v2_<job_id>/`，成功后把最佳 checkpoint、指标和对比图复制到当前目录。
+修复作业 `slurm/train_v2.slurm` 申请 π 2.0 的 `dgx2` 分区 1 张 GPU、6 个 CPU 核和 64 GB 内存，最长 4 小时。`dgx2` 的提交策略会拒绝每张 GPU 超过 6 个 CPU 的请求；该限制已由 `sbatch` 实际校验确认。脚本先在 Slurm 模块环境中运行数值自检，自检通过才进入正式训练。旧模型和旧结果保持不变，输出写入 `runs/v2_<job_id>/`，成功后把最佳 checkpoint、指标和对比图复制到当前目录。
 
 资源配置依据上海交大超算平台的[队列说明](https://docs.hpc.sjtu.edu.cn/job/partition.html)：当前工程位于 π 2.0 的 `lustre` 文件系统，应使用 `dgx2` GPU 队列；思源一号的 `a100` 队列使用独立的 `dssg` 文件系统，不能直接把本目录的 Slurm 脚本改成 `a100` 后提交。
 
@@ -81,7 +81,7 @@
 
 ### π 集群容量对照作业
 
-为检验 π 基线的主要瓶颈是否为容量，新增 `train_v2_capacity.slurm`，比较约 477.7 万参数的 `2048×1024` 与约 3195.0 万参数的 `5000×5000`。它沿用相同数据划分、损失和 legacy 测试基线，只改变网络容量；产物写入独立目录，不覆盖 Job `59648208`。
+为检验 π 基线的主要瓶颈是否为容量，新增 `slurm/train_v2_capacity.slurm`，比较约 477.7 万参数的 `2048×1024` 与约 3195.0 万参数的 `5000×5000`。它沿用相同数据划分、损失和 legacy 测试基线，只改变网络容量；产物写入独立目录，不覆盖 Job `59648208`。
 
 - Slurm Job ID：`59739405`
 - 状态：`COMPLETED`，退出码 `0:0`，运行时间 2 分 19 秒
@@ -93,7 +93,7 @@
 
 ### π 集群目标函数对照与最终模型
 
-默认 v2 损失为 `0.90 × standardized MSE + 0.10 × raw MSE`。在均匀 Fourier 网格上，原始 Fourier 系数 L2 与重建 EVDF L2 由 Parseval 关系对应；因此将原始系数 MSE 权重作为显式参数 `--raw-loss-weight`，并把取值写入 checkpoint 和 `metrics_v2.json`。`train_v2_rawloss.slurm` 保持数据、划分、网络候选和其他优化设置不变，仅改变该权重。
+默认 v2 损失为 `0.90 × standardized MSE + 0.10 × raw MSE`。在均匀 Fourier 网格上，原始 Fourier 系数 L2 与重建 EVDF L2 由 Parseval 关系对应；因此将原始系数 MSE 权重作为显式参数 `--raw-loss-weight`，并把取值写入 checkpoint 和 `metrics_v2.json`。`slurm/train_v2_rawloss.slurm` 保持数据、划分、网络候选和其他优化设置不变，仅改变该权重。
 
 | 同一测试集模型 | raw loss 权重 | coefficient R² | EVDF R² | EVDF relative L2 均值 | 中位数 | 负质量比例 |
 |---|---:|---:|---:|---:|---:|---:|
