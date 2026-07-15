@@ -62,6 +62,12 @@ def parse_args():
     parser.add_argument("--learning-rate", type=float, default=1.0e-3)
     parser.add_argument("--weight-decay", type=float, default=1.0e-5)
     parser.add_argument(
+        "--raw-loss-weight",
+        type=float,
+        default=0.10,
+        help="Weight of raw coefficient MSE; the remainder weights standardized MSE.",
+    )
+    parser.add_argument(
         "--candidates",
         default="512,256;1024,512",
         help="Semicolon-separated hidden layer sizes.",
@@ -187,7 +193,9 @@ def hermitian_project(coefficients):
     return torch.cat((projected_real, projected_imag), dim=1)
 
 
-def coefficient_loss(predicted_normalized, target_raw, y_mean, y_scale):
+def coefficient_loss(
+    predicted_normalized, target_raw, y_mean, y_scale, raw_loss_weight
+):
     predicted_raw = predicted_normalized * y_scale + y_mean
     predicted_raw = hermitian_project(predicted_raw)
     predicted_projected = (predicted_raw - y_mean) / y_scale
@@ -196,10 +204,19 @@ def coefficient_loss(predicted_normalized, target_raw, y_mean, y_scale):
     scaled_mse = F.mse_loss(predicted_projected, target_normalized)
     raw_scale = y_scale.square().mean().clamp(min=1.0e-16)
     raw_mse = F.mse_loss(predicted_raw, target_raw) / raw_scale
-    return 0.90 * scaled_mse + 0.10 * raw_mse
+    return (1.0 - raw_loss_weight) * scaled_mse + raw_loss_weight * raw_mse
 
 
-def run_epoch(model, loader, optimizer, device, y_mean, y_scale, training):
+def run_epoch(
+    model,
+    loader,
+    optimizer,
+    device,
+    y_mean,
+    y_scale,
+    raw_loss_weight,
+    training,
+):
     model.train(training)
     total_loss = 0.0
     total_count = 0
@@ -210,7 +227,9 @@ def run_epoch(model, loader, optimizer, device, y_mean, y_scale, training):
             optimizer.zero_grad()
         with torch.set_grad_enabled(training):
             predicted = model(spectra)
-            loss = coefficient_loss(predicted, target, y_mean, y_scale)
+            loss = coefficient_loss(
+                predicted, target, y_mean, y_scale, raw_loss_weight
+            )
             if training:
                 loss.backward()
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)
@@ -260,6 +279,7 @@ def train_candidate(
             device,
             y_mean_device,
             y_scale_device,
+            args.raw_loss_weight,
             training=True,
         )
         validation_loss = run_epoch(
@@ -269,6 +289,7 @@ def train_candidate(
             device=device,
             y_mean=y_mean_device,
             y_scale=y_scale_device,
+            raw_loss_weight=args.raw_loss_weight,
             training=False,
         )
         scheduler.step(validation_loss)
@@ -483,6 +504,8 @@ def run_self_test():
 
 def main():
     args = parse_args()
+    if not 0.0 <= args.raw_loss_weight <= 1.0:
+        raise ValueError("--raw-loss-weight must be between 0 and 1.")
     if args.self_test:
         run_self_test()
         return
@@ -499,6 +522,12 @@ def main():
     print("Device:", device, flush=True)
     if device.type == "cuda":
         print("GPU:", torch.cuda.get_device_name(0), flush=True)
+    print(
+        "Loss weights: standardized={:.2f} raw={:.2f}".format(
+            1.0 - args.raw_loss_weight, args.raw_loss_weight
+        ),
+        flush=True,
+    )
 
     spectra, coefficients, wavelengths_nm, k_grid = load_parquet_dataset(args.train_data)
     test_spectra, test_coefficients, _, test_k_grid = load_parquet_dataset(args.test_data)
@@ -603,6 +632,7 @@ def main():
         "wavelengths_nm": wavelengths_nm,
         "seed": args.seed,
         "validation_fraction": args.validation_fraction,
+        "raw_loss_weight": args.raw_loss_weight,
         "test_metrics": improved_metrics,
     }
     torch.save(checkpoint, checkpoint_path)
@@ -611,6 +641,7 @@ def main():
         "device": str(device),
         "gpu": torch.cuda.get_device_name(0) if device.type == "cuda" else None,
         "seed": args.seed,
+        "raw_loss_weight": args.raw_loss_weight,
         "rows": {
             "train": len(x_train),
             "validation": len(x_validation),

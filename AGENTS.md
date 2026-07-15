@@ -1,7 +1,7 @@
 # OTS 仓库知识库与工作协议
 
 > 本文件是本仓库唯一的长期知识入口。最后一次全量审阅：2026-07-15；最近运行状态更新：2026-07-15。
-> 审阅基线：分支 `codex/ots-training-recovery-20260710`，提交 `1f0733c`。
+> 审阅基线：分支 `codex/ots-training-recovery-20260710`，提交历史截至本文件所在提交（前序提交 `5956d29`）。
 
 ## 0. 每次会话必须执行的协议
 
@@ -76,6 +76,7 @@
 | `train_v2.py` | 新增的验证集、标准化、mini-batch、物理投影训练与 legacy/v2 对比 |
 | `train_v2.slurm` | 上海交大 π 2.0 `dgx2` GPU 作业脚本；先自检再训练 |
 | `train_v2_capacity.slurm` | 上海交大 π 2.0 容量对照脚本；在相同数据和损失下比较 `2048x1024` 与 `5000x5000`，产物写入独立目录 |
+| `train_v2_rawloss.slurm` | 上海交大 π 2.0 目标函数对照脚本；用 `OTS_RAW_LOSS_WEIGHT` 控制原始系数 MSE 权重，默认 0.50 |
 | `train_v2_bscc.slurm` | 北京超算 BSCC-N32-H `gpu` 分区作业脚本；自检、按需生成数据、训练、测试并校验产物 |
 | `submit_v2.py` | 调用 `sbatch` 并解析 Job ID，会改变外部集群状态 |
 | `monitor_v2.py` | 只读查询 `squeue`/`sacct` 并读取日志尾部 |
@@ -318,7 +319,7 @@ Parquet 有 1384 个有效列：
 | 等离子体参数 | 声称随机 CH 比例、碳电离度、离子温度和漂移 | CH 比例、电离度、温度、密度和漂移固定 | 不改变标签，仅标准化输入/输出 |
 | 网络输出 | 文中甚至称可同时反演关键参数 | 只输出 160 个 EVDF Fourier 分量 | 同样只输出 160 个 Fourier 分量 |
 | 网络 | 两个 5000 宽层，约 31.93M 参数 | 与论文结构相同 | 比较 `512x256`（约 0.80M）和 `1024x512`（约 1.86M） |
-| 损失 | 逆变换 EVDF 域 MSE | 原始 Fourier 系数域 L1 | 标准化/原始 Fourier 系数混合 MSE，权重 0.90/0.10 |
+| 损失 | 逆变换 EVDF 域 MSE | 原始 Fourier 系数域 L1 | 标准化/原始 Fourier 系数混合 MSE；默认 0.90/0.10，可用 `--raw-loss-weight` 调整 |
 | 训练 | 四阶段 Adam | 四次重新创建 Adam，全批量 119000 步 | mini-batch AdamW、ReduceLROnPlateau、裁剪、早停 |
 | 验证 | 论文主要报告训练损失和图 | 无验证集、早停或最佳权重 | 固定 seed，90/10 train/validation，test 仅最终评估 |
 | 物理约束 | 未写硬投影 | 无 Hermitian/非负约束 | 输出投影到 Hermitian；仍无 EVDF 非负硬约束 |
@@ -380,6 +381,7 @@ max_epochs = 250
 patience = 25
 learning_rate = 1e-3
 weight_decay = 1e-5
+raw_loss_weight = 0.10
 candidates = 512,256;1024,512
 device = auto
 ```
@@ -392,7 +394,7 @@ device = auto
 - 固定随机划分 90% 训练 / 10% 验证；独立 test 只做最终指标。
 - `x_mean/x_scale` 和每个输出分量的 `y_mean/y_scale` 只由训练集统计。
 - Hermitian 投影：实部与翻转后的实部取平均，虚部与翻转后的虚部取反对称平均。
-- 损失为 `0.90 * standardized_MSE + 0.10 * normalized_raw_MSE`，不是 EVDF 域损失。
+- 损失为 `(1 - raw_loss_weight) * standardized_MSE + raw_loss_weight * normalized_raw_MSE`，默认权重 0.10；CLI `--raw-loss-weight` 限制在 `[0,1]`。均匀 Fourier 网格下，raw coefficient L2 由 Parseval 关系对应 EVDF L2；权重 1.0 是本轮与论文 EVDF-MSE 目标对齐的理论端点。
 - 优化器 AdamW；验证损失驱动 ReduceLROnPlateau；梯度范数裁剪到 5；验证无改善达到 patience 后早停。
 
 ### 11.3 指标
@@ -409,7 +411,7 @@ EVDF 使用显式 `Re(F)cos(Kv) - Im(F)sin(Kv)` 梯形积分，避免把复数 T
 
 ### 11.4 checkpoint 和产物
 
-`OTS_Te_model_v2.pt` 包含：模型状态、隐藏层、dropout、输入/输出标准化统计、K 网格、波长、seed、验证比例和测试指标。
+`OTS_Te_model_v2.pt` 包含：模型状态、隐藏层、dropout、输入/输出标准化统计、K 网格、波长、seed、验证比例、`raw_loss_weight` 和测试指标。`metrics_v2.json` 也记录 `raw_loss_weight`。
 
 输出目录还包含：
 
@@ -439,7 +441,13 @@ time=04:00:00
 
 脚本加载 Python 3.10.10 与 PyTorch 1.6.0 模块，实际容器报告 Python 3.6.10 与 PyTorch 1.7.0a0；先执行 `train_v2.py --self-test`，通过后才训练。Job `59648208` 已于 2026-07-11 `COMPLETED (0:0)`，V100 可见且自检通过；选中 `1024x512`，但测试 EVDF R2 `0.9475271` 低于同数据 legacy 的 `0.9609201`。该结果已下载到本地忽略目录 `pi_results/job_59648208/` 并通过模型和指标哈希校验。
 
-2026-07-15 提交容量对照 Job `59739405`，使用新增 `train_v2_capacity.slurm` 比较约 477.7 万参数的 `2048x1024` 与约 3195.0 万参数的 `5000x5000`，沿用同一数据划分、损失和 legacy 对照，不覆盖 Job `59648208`；初始状态为 `PENDING`，输出目录 `runs/v2_capacity_59739405/`。以上作业状态都是快照，回答当前状态前仍必须运行集群查询。`monitor_v2.py` 默认 Job ID 也可能过期，可用环境变量 `OTS_V2_JOB_ID` 覆盖。
+2026-07-15 的三次 π 对照作业均已 `COMPLETED (0:0)`：
+
+- 容量 Job `59739405`：默认 raw 权重 0.10，选中 `5000x5000`，EVDF R2 `0.9587845`；容量显著改善但仍低于 legacy `0.9609201`。
+- 50/50 损失 Job `59740000`：raw 权重 0.50，选中 `5000x5000`，EVDF R2 `0.9602090`。
+- 最终 Job `59740036`：raw 权重 1.0，选中 `5000x5000`，最佳 epoch 94；coefficient R2 `0.9687341`、EVDF R2 `0.9629309`、relative L2 均值 `0.1147455`、负质量比例 `0.0063980`，均优于同测试集 legacy 的 `0.9670373`、`0.9609201`、`0.1151032`、`0.0077141`。legacy 的 relative L2 中位数仍更好（`0.0718041` 对 v2 `0.0786430`）。
+
+最终产物在远端 `runs/v2_rawloss_59740036/`，并已下载到本地忽略目录 `pi_results/job_59740036/`；checkpoint SHA-256 为 `ea2e924f...d80093`，六个核心产物均与作业日志中的远端哈希一致。以上作业状态仍属于快照，回答未来状态前必须运行集群查询。`monitor_v2.py` 默认 Job ID 也可能过期，可用环境变量 `OTS_V2_JOB_ID` 覆盖。
 
 报告指出工程目录在上海交大 π 2.0 `lustre`，对应 `dgx2`；思源一号 `a100` 使用不同文件系统，不能只改分区名。
 
@@ -501,7 +509,7 @@ metrics_v2.json
 
 2026-07-15 北京超算动态快照：GPU 账号 `scx6090@BSCC-N32-H` 的 `/home/bingxing2/home/scx6090/yhh/ots` 保留正式 `dataset_train.parquet`（5001×1384）、`dataset_test.parquet`（101×1384）和 Job `1346661` 的结果目录 `runs/bscc_v2_1346661/`。Job `1346661` 已 `COMPLETED (0:0)`；最佳模型为 `1024x512`，测试 EVDF R2 为 `0.9727474`。结果、图表、checkpoint 和日志已下载到本地忽略目录 `bscc_results/job_1346661/` 并通过 SHA-256 校验。回答未来状态前仍须现场复核。
 
-2026-07-15 上海交大 π 动态快照：`/lustre/home/acct-phywsm/sharon2467/myfolder/OTS_code_share/NN_hotE_large_lmRange` 保留 Job `59648208` 的数据、legacy checkpoint、日志和 `runs/v2_59648208/`。该作业已 `COMPLETED (0:0)`；v2 测试 EVDF R2 `0.9475271`，legacy 投影后为 `0.9609201`。产物已下载到本地忽略目录 `pi_results/job_59648208/`。容量对照 Job `59739405` 已提交，快照状态为 `PENDING`。
+2026-07-15 上海交大 π 动态快照：`/lustre/home/acct-phywsm/sharon2467/myfolder/OTS_code_share/NN_hotE_large_lmRange` 保留数据、legacy checkpoint，以及 Jobs `59648208`、`59739405`、`59740000`、`59740036` 的日志和 `runs/` 结果。四个作业均 `COMPLETED (0:0)`；最终 Job `59740036` 的 `5000x5000`、raw-loss 1.0 模型测试 EVDF R2 `0.9629309`，高于 legacy `0.9609201`。基线与最终完整产物、两次中间实验的小型指标/图表/日志已下载到本地 `pi_results/job_<id>/`，哈希核验通过。
 
 ## 15. 常用命令
 
@@ -537,6 +545,8 @@ python evaluateModel.py --source synthetic --synthetic-profile hot-electron-scan
 python train_v2.py --self-test
 python train_v2.py --train-data dataset_train.parquet --test-data dataset_test.parquet --output-dir runs/v2
 sbatch train_v2_capacity.slurm
+export OTS_RAW_LOSS_WEIGHT=1.0
+sbatch --export=ALL train_v2_rawloss.slurm
 sbatch --export=ALL train_v2_bscc.slurm
 python submit_v2.py
 python monitor_v2.py
@@ -618,6 +628,7 @@ python monitor_v2.py
 
 ## 20. 维护记录
 
+- 2026-07-15：完成 π 容量和目标函数对照 Jobs `59739405`、`59740000`、`59740036`。最终将 raw coefficient MSE 权重设为 1.0，选择 `5000x5000`，测试 EVDF R2 `0.9629309`，在同一数据上超过 legacy `0.9609201`；最终模型与核心产物下载到 `pi_results/job_59740036/` 并通过 SHA-256 校验。
 - 2026-07-15：通过 `$sjtu-pi-ssh-login` 现场复核 π Job `59648208` 已完成并下载产物；确认 V100/CUDA/自检正常，但 v2 EVDF R2 `0.9475271` 低于 legacy `0.9609201`。新增并提交容量对照脚本 `train_v2_capacity.slurm`，对应 Job `59739405`，初始状态 `PENDING`。
 - 2026-07-15：在北京超算 GPU 账号 `/home/bingxing2/home/scx6090/yhh/ots` 完成全量 v2 数据生成、训练和测试。自检 Job `1346659` 与正式 Job `1346661` 均完成；正式作业生成 5000+100 物理样本，选择 `1024x512` 模型，测试 EVDF R2 `0.9727474`，结果下载至 `bscc_results/job_1346661/` 并通过哈希与 checkpoint 加载验证。
 - 2026-07-15：新增 `train_v2_bscc.slurm`；为 NumPy 1.26 增加梯形积分回退，并移除 `genDataSet.py` 中未使用的完整 Fourier 调试计算。
