@@ -1,35 +1,24 @@
 # -*- coding: utf-8 -*-
-"""OTS forward model with Fourier velocity distributions for every species.
+"""OTS forward model with explicit velocity distributions for all species.
 
-This module extends :mod:`phyEqns.ots_fourier`.  The electron, ion-1, and
-ion-2 one-dimensional velocity distributions are all supplied as normalized
-Fourier transforms,
+Each electron or ion distribution is supplied on its own uniformly sampled
+one-dimensional velocity grid.  The forward model validates the normalized
+distributions, constructs the requested low-pass Fourier representation, and
+uses the original velocity grids for phase-velocity interpolation.  Values
+outside a distribution's supplied velocity interval are zero; they are never
+periodically wrapped or extrapolated.
 
-    F_s(K) = integral f_s(v) exp(-i K v) dv,
+The Fourier convention is
 
-and are evaluated with
+    F_s(K) = integral f_s(v) exp(-i K v) dv.
 
-    f_s(v) = (1 / 2 pi) integral F_s(K) exp(i K v) dK.
-
-The susceptibility of each species uses the same positive-K Landau response,
-
-    chi_s = (omega_ps / k)^2
-            integral_0^infinity K F_s(K) exp(i K v_s) dK.
-
-Consequently the forward-model interface contains no electron or ion
-temperature.  Temperatures may still be used upstream to construct a fixed
-Maxwellian distribution, but the OTS calculation only receives its Fourier
-representation.
-
-For a uniformly sampled K grid, ``Delta K`` also fixes the non-aliased
-velocity interval ``|v| <= pi / Delta K``.  Values outside that interval are
-set to zero instead of allowing the discrete representation to repeat
-periodically into another species' spectral feature.
+The corresponding positive-K Landau response is used for every species.
 """
 
 from __future__ import division
 
 import math
+from numbers import Integral
 
 import torch
 
@@ -41,75 +30,144 @@ VACUUM_PERMITTIVITY = 8.8541878128e-12
 
 
 def _real_dtype(tensor):
-    if tensor.dtype in (torch.float64, torch.complex128):
+    if tensor.dtype == torch.float64:
         return torch.float64
     return torch.float32
 
 
-def _prepare_fourier_pair(k_grid, coefficients, device, dtype, name):
-    """Validate and move one Fourier grid/coefficient pair."""
+def _as_real_tensor(value, device, dtype, name):
+    tensor = torch.as_tensor(value, device=device)
+    if torch.is_complex(tensor):
+        raise ValueError("{} must be real-valued.".format(name))
+    return tensor.to(dtype=dtype)
 
-    k_grid = torch.as_tensor(k_grid, device=device, dtype=dtype)
-    complex_dtype = torch.complex128 if dtype == torch.float64 else torch.complex64
-    coefficients = torch.as_tensor(coefficients, device=device).to(complex_dtype)
 
-    if k_grid.ndim != 1 or coefficients.ndim != 1:
-        raise ValueError("{} K/F arrays must both be one-dimensional.".format(name))
-    if len(k_grid) < 3 or len(k_grid) != len(coefficients):
+def _validate_grid_and_values(v, f, name):
+    """Validate a real finite distribution grid without requiring unit mass."""
+
+    v_tensor = torch.as_tensor(v)
+    if torch.is_complex(v_tensor):
+        raise ValueError("{} velocity grid must be real-valued.".format(name))
+    if v_tensor.dtype == torch.float64:
+        dtype = torch.float64
+    else:
+        dtype = torch.float32
+    v_tensor = v_tensor.to(dtype=dtype)
+
+    f_tensor = torch.as_tensor(f, device=v_tensor.device)
+    if torch.is_complex(f_tensor):
+        raise ValueError("{} distribution must be real-valued.".format(name))
+    f_tensor = f_tensor.to(dtype=dtype)
+
+    if v_tensor.ndim != 1 or f_tensor.ndim != 1:
         raise ValueError(
-            "{} K/F arrays must have the same length and at least three modes.".format(
-                name
-            )
+            "{} velocity and distribution arrays must be one-dimensional.".format(name)
         )
-    if not torch.isfinite(k_grid).all():
-        raise ValueError("{} K grid contains non-finite values.".format(name))
-    if not torch.isfinite(coefficients.real).all() or not torch.isfinite(
-        coefficients.imag
-    ).all():
-        raise ValueError("{} Fourier coefficients contain non-finite values.".format(name))
-    if not torch.all(k_grid[1:] > k_grid[:-1]):
-        raise ValueError("{} K grid must be strictly increasing.".format(name))
-    if not bool((k_grid[0] < 0).item()) or not bool((k_grid[-1] > 0).item()):
-        raise ValueError("{} K grid must span negative and positive modes.".format(name))
+    if len(v_tensor) != len(f_tensor) or len(v_tensor) < 3:
+        raise ValueError(
+            "{} velocity and distribution arrays must have equal length and at "
+            "least three points.".format(name)
+        )
+    if not torch.isfinite(v_tensor).all():
+        raise ValueError("{} velocity grid contains non-finite values.".format(name))
+    if not torch.isfinite(f_tensor).all():
+        raise ValueError("{} distribution contains non-finite values.".format(name))
+
+    spacing = v_tensor[1:] - v_tensor[:-1]
+    if not torch.all(spacing > 0):
+        raise ValueError("{} velocity grid must be strictly increasing.".format(name))
+    mean_spacing = spacing.mean()
+    tolerance = torch.abs(mean_spacing) * 1.0e-4
+    if not torch.all(torch.abs(spacing - mean_spacing) <= tolerance):
+        raise ValueError("{} velocity grid must be approximately uniform.".format(name))
+    return v_tensor, f_tensor
+
+
+def ft_x_n(v, f, n):
+    """Return ``n`` low-pass Fourier modes for a sampled real distribution.
+
+    ``v`` and ``f`` must be equal-length, finite one-dimensional arrays on a
+    strictly increasing approximately uniform grid.  This transform does not
+    require ``f`` to be non-negative or normalized; the OTS public interface
+    applies those stronger physical checks separately.
+    """
+
+    v, f = _validate_grid_and_values(v, f, "Fourier input")
+    sample_count = len(v)
+    if (
+        not isinstance(n, Integral)
+        or isinstance(n, bool)
+        or int(n) <= 0
+        or int(n) > sample_count
+    ):
+        raise ValueError(
+            "Fourier mode count n={} must be an integer satisfying 0 < n <= N "
+            "with N={}.".format(n, sample_count)
+        )
+    n = int(n)
+
+    dx = v[2] - v[1]
+    domain_length = sample_count * dx
+    dk = 2.0 * math.pi / domain_length
+    k_grid = torch.linspace(-1.0, 1.0, n, device=v.device, dtype=v.dtype) * dk * n / 2.0
+    phase = k_grid.reshape(-1, 1) * v.reshape(1, -1)
+    integrand = f.reshape(1, -1) * torch.exp(-1j * phase)
+    coefficients = torch.trapz(integrand, v, dim=1)
     return k_grid, coefficients
 
 
-def reciprocal_velocity_support(k_grid):
-    """Return the non-aliased velocity half-width implied by a uniform K grid."""
+def _validate_distribution(v, f, name):
+    """Validate a non-negative, unit-normalized sampled velocity distribution."""
 
-    spacing = k_grid[1:] - k_grid[:-1]
-    mean_spacing = spacing.mean()
-    tolerance = torch.abs(mean_spacing) * 1.0e-4 + 1.0e-14
-    if not torch.all(torch.abs(spacing - mean_spacing) <= tolerance):
+    v, f = _validate_grid_and_values(v, f, name)
+    if not torch.all(f >= 0):
+        raise ValueError("{} distribution must be non-negative.".format(name))
+
+    integral = torch.trapz(f, v)
+    if not torch.isfinite(integral):
+        raise ValueError("{} distribution integral is non-finite.".format(name))
+    if not torch.isclose(
+        integral,
+        torch.ones((), device=integral.device, dtype=integral.dtype),
+        rtol=1.0e-5,
+        atol=1.0e-8,
+    ):
         raise ValueError(
-            "Fourier K grid must be uniform to define its valid velocity domain."
+            "{} distribution must integrate to one; got {:.9g}.".format(
+                name, integral.item()
+            )
         )
-    return math.pi / mean_spacing
+    return v, f
 
 
-def _zero_outside_reciprocal_domain(values, k_grid, velocity):
-    """Suppress periodic aliases outside the velocity domain encoded by ΔK."""
+def interpolate_distribution(v, f, query_velocity):
+    """Linearly interpolate a distribution and return zero outside its grid."""
 
-    support = reciprocal_velocity_support(k_grid)
-    mask = torch.abs(velocity) <= support * (1.0 + 1.0e-7)
-    return torch.where(mask, values, torch.zeros_like(values))
+    v, f = _validate_grid_and_values(v, f, "Interpolation input")
+    query_tensor = torch.as_tensor(query_velocity, device=v.device)
+    if torch.is_complex(query_tensor):
+        raise ValueError("query_velocity must be real-valued.")
+    query_tensor = query_tensor.to(dtype=v.dtype)
+    if not torch.isfinite(query_tensor).all():
+        raise ValueError("query_velocity contains non-finite values.")
 
-
-def inverse_fourier_at(k_grid, coefficients, velocity):
-    """Evaluate a Fourier VDF inside the non-aliased domain implied by ΔK."""
-
-    velocity = torch.as_tensor(
-        velocity, device=k_grid.device, dtype=_real_dtype(k_grid)
-    )
-    phase = k_grid.reshape(-1, 1) * velocity.reshape(1, -1)
-    integrand = coefficients.reshape(-1, 1) * torch.exp(1j * phase)
-    values = torch.trapz(integrand, k_grid, dim=0) / (2.0 * math.pi)
-    values = values.reshape(velocity.shape)
-    return _zero_outside_reciprocal_domain(values, k_grid, velocity)
+    original_shape = query_tensor.shape
+    query_flat = query_tensor.reshape(-1)
+    upper = torch.searchsorted(v, query_flat, right=False).clamp(1, len(v) - 1)
+    lower = upper - 1
+    v_lower = v[lower]
+    v_upper = v[upper]
+    fraction = (query_flat - v_lower) / (v_upper - v_lower)
+    interpolated = f[lower] + fraction * (f[upper] - f[lower])
+    outside = (query_flat < v[0]) | (query_flat > v[-1])
+    interpolated = torch.where(outside, torch.zeros_like(interpolated), interpolated)
+    interpolated = torch.where(query_flat == v[0], f[0], interpolated)
+    interpolated = torch.where(query_flat == v[-1], f[-1], interpolated)
+    return interpolated.reshape(original_shape)
 
 
 def fourier_landau_response(k_grid, coefficients, velocity):
-    """Evaluate the positive-K response inside the K grid's velocity domain."""
+    """Evaluate the positive-K Landau response for one species."""
 
     velocity = torch.as_tensor(
         velocity, device=k_grid.device, dtype=_real_dtype(k_grid)
@@ -117,13 +175,10 @@ def fourier_landau_response(k_grid, coefficients, velocity):
     positive_k = torch.clamp(k_grid, min=0.0)
     phase = k_grid.reshape(-1, 1) * velocity.reshape(1, -1)
     integrand = (
-        positive_k.reshape(-1, 1)
-        * coefficients.reshape(-1, 1)
-        * torch.exp(1j * phase)
+        positive_k.reshape(-1, 1) * coefficients.reshape(-1, 1) * torch.exp(1j * phase)
     )
     response = torch.trapz(integrand, k_grid, dim=0)
-    response = response.reshape(velocity.shape)
-    return _zero_outside_reciprocal_domain(response, k_grid, velocity)
+    return response.reshape(velocity.shape)
 
 
 def _projected_phase_velocity(omega_shift, k_magnitude, k_components, drift):
@@ -149,32 +204,30 @@ def OTS_spectrum_full_fourier(
     N_i2,
     m_i2,
     V,
-    K_e,
-    F_e,
-    K_i1,
-    F_i1,
-    K_i2,
-    F_i2,
+    *,
+    v_e,
+    f_e,
+    v_i1,
+    f_i1,
+    v_i2,
+    f_i2,
     u_e,
     u_i1,
     u_i2,
+    fourier_modes=80,
 ):
-    """Calculate a normalized OTS spectrum using three arbitrary VDFs.
+    """Calculate one independently normalized OTS wavelength segment.
 
-    ``F_e``, ``F_i1``, and ``F_i2`` must describe distributions normalized to
-    unit velocity integral.  ``N_i1`` and ``N_i2`` are ion number fractions.
-    Quasi-neutrality gives
-
-        n_i,j = n_e * N_i,j / (Z_i1*N_i1 + Z_i2*N_i2).
-
-    The distributions are interpreted in their species rest frames; the
-    optional three-component drift vectors shift the phase velocities.
-    ``E_i0`` and ``V`` are retained for interface compatibility.  As in the
-    existing training pipeline, the absolute Thomson prefactor is omitted
-    because every wavelength segment is normalized independently.
+    All three species are supplied as normalized sampled velocity
+    distributions.  Their grids may have different lengths.  The function
+    constructs a separate Fourier representation for each species while
+    obtaining phase-velocity distribution values by non-periodic interpolation
+    of the original samples.
     """
 
     lms = torch.as_tensor(lms)
+    if torch.is_complex(lms):
+        raise ValueError("lms must be real-valued.")
     if not lms.dtype.is_floating_point:
         lms = lms.to(torch.float64)
     dtype = _real_dtype(lms)
@@ -186,35 +239,27 @@ def OTS_spectrum_full_fourier(
     if not torch.isfinite(lms).all() or not torch.all(lms > 0):
         raise ValueError("lms contains invalid wavelengths.")
 
-    ss = torch.as_tensor(ss, device=device, dtype=dtype)
-    k_sh = torch.as_tensor(k_sh, device=device, dtype=dtype)
-    u_e = torch.as_tensor(u_e, device=device, dtype=dtype)
-    u_i1 = torch.as_tensor(u_i1, device=device, dtype=dtype)
-    u_i2 = torch.as_tensor(u_i2, device=device, dtype=dtype)
-    for vector, name in (
+    vectors = {}
+    for value, name in (
         (ss, "ss"),
         (k_sh, "k_sh"),
+        (E_i0, "E_i0"),
         (u_e, "u_e"),
         (u_i1, "u_i1"),
         (u_i2, "u_i2"),
     ):
+        vector = _as_real_tensor(value, device, dtype, name)
         if vector.shape != (3,) or not torch.isfinite(vector).all():
             raise ValueError("{} must be a finite three-component vector.".format(name))
+        vectors[name] = vector
+    ss = vectors["ss"]
+    k_sh = vectors["k_sh"]
+    u_e = vectors["u_e"]
+    u_i1 = vectors["u_i1"]
+    u_i2 = vectors["u_i2"]
 
-    K_e, F_e = _prepare_fourier_pair(K_e, F_e, device, dtype, "electron")
-    K_i1, F_i1 = _prepare_fourier_pair(K_i1, F_i1, device, dtype, "ion-1")
-    K_i2, F_i2 = _prepare_fourier_pair(K_i2, F_i2, device, dtype, "ion-2")
-
-    n_e = torch.as_tensor(n_e, device=device, dtype=dtype)
-    lm_0 = torch.as_tensor(lm_0, device=device, dtype=dtype)
-    Z_i1 = torch.as_tensor(Z_i1, device=device, dtype=dtype)
-    N_i1 = torch.as_tensor(N_i1, device=device, dtype=dtype)
-    m_i1 = torch.as_tensor(m_i1, device=device, dtype=dtype)
-    Z_i2 = torch.as_tensor(Z_i2, device=device, dtype=dtype)
-    N_i2 = torch.as_tensor(N_i2, device=device, dtype=dtype)
-    m_i2 = torch.as_tensor(m_i2, device=device, dtype=dtype)
-
-    scalar_values = (
+    scalars = {}
+    for value, name in (
         (n_e, "n_e"),
         (lm_0, "lm_0"),
         (Z_i1, "Z_i1"),
@@ -223,16 +268,30 @@ def OTS_spectrum_full_fourier(
         (Z_i2, "Z_i2"),
         (N_i2, "N_i2"),
         (m_i2, "m_i2"),
-    )
-    for value, name in scalar_values:
-        if value.numel() != 1 or not torch.isfinite(value):
+        (V, "V"),
+    ):
+        scalar = _as_real_tensor(value, device, dtype, name)
+        if scalar.numel() != 1 or not torch.isfinite(scalar).all():
             raise ValueError("{} must be a finite scalar.".format(name))
+        scalars[name] = scalar.reshape(())
+    n_e = scalars["n_e"]
+    lm_0 = scalars["lm_0"]
+    Z_i1 = scalars["Z_i1"]
+    N_i1 = scalars["N_i1"]
+    m_i1 = scalars["m_i1"]
+    Z_i2 = scalars["Z_i2"]
+    N_i2 = scalars["N_i2"]
+    m_i2 = scalars["m_i2"]
+    V = scalars["V"]
+
     if not bool((n_e > 0).item()) or not bool((lm_0 > 0).item()):
         raise ValueError("n_e and lm_0 must be positive.")
     if not bool((m_i1 > 0).item()) or not bool((m_i2 > 0).item()):
         raise ValueError("Ion masses must be positive.")
     if not bool((N_i1 >= 0).item()) or not bool((N_i2 >= 0).item()):
         raise ValueError("Ion fractions must be non-negative.")
+    if not bool((V > 0).item()):
+        raise ValueError("V must be positive.")
 
     charge_weight = Z_i1 * N_i1 + Z_i2 * N_i2
     if not bool((charge_weight > 0).item()):
@@ -245,11 +304,37 @@ def OTS_spectrum_full_fourier(
     ss = ss / ss_norm
     k_sh = k_sh / k_sh_norm
 
+    v_e = _as_real_tensor(v_e, device, dtype, "electron velocity grid")
+    f_e = _as_real_tensor(f_e, device, dtype, "electron distribution")
+    v_i1 = _as_real_tensor(v_i1, device, dtype, "ion-1 velocity grid")
+    f_i1 = _as_real_tensor(f_i1, device, dtype, "ion-1 distribution")
+    v_i2 = _as_real_tensor(v_i2, device, dtype, "ion-2 velocity grid")
+    f_i2 = _as_real_tensor(f_i2, device, dtype, "ion-2 distribution")
+    v_e, f_e = _validate_distribution(v_e, f_e, "electron")
+    v_i1, f_i1 = _validate_distribution(v_i1, f_i1, "ion-1")
+    v_i2, f_i2 = _validate_distribution(v_i2, f_i2, "ion-2")
+
+    minimum_samples = min(len(v_e), len(v_i1), len(v_i2))
+    if (
+        not isinstance(fourier_modes, Integral)
+        or isinstance(fourier_modes, bool)
+        or int(fourier_modes) <= 0
+        or int(fourier_modes) > minimum_samples
+    ):
+        raise ValueError(
+            "Fourier mode count n={} must be an integer satisfying 0 < n <= N "
+            "with N={} (the smallest species grid).".format(
+                fourier_modes, minimum_samples
+            )
+        )
+    fourier_modes = int(fourier_modes)
+    K_e, F_e = ft_x_n(v_e, f_e, fourier_modes)
+    K_i1, F_i1 = ft_x_n(v_i1, f_i1, fourier_modes)
+    K_i2, F_i2 = ft_x_n(v_i2, f_i2, fourier_modes)
+
     omega_0 = 2.0 * math.pi * SPEED_OF_LIGHT / lm_0
     omega_pe_squared = (
-        n_e
-        * ELEMENTARY_CHARGE**2
-        / (ELECTRON_MASS * VACUUM_PERMITTIVITY)
+        n_e * ELEMENTARY_CHARGE**2 / (ELECTRON_MASS * VACUUM_PERMITTIVITY)
     )
     incident_argument = omega_0.square() - omega_pe_squared
     if not bool((incident_argument > 0).item()):
@@ -263,28 +348,30 @@ def OTS_spectrum_full_fourier(
         k_0[2] - ss[2] * omega / SPEED_OF_LIGHT,
     )
     k_magnitude = torch.sqrt(
-        k_components[0].square()
-        + k_components[1].square()
-        + k_components[2].square()
+        k_components[0].square() + k_components[1].square() + k_components[2].square()
     )
+    if not torch.isfinite(k_magnitude).all() or not torch.all(k_magnitude > 0):
+        raise ValueError(
+            "Scattering wave-vector magnitude must be finite and positive."
+        )
     omega_shift = omega - omega_0
 
-    v_e = _projected_phase_velocity(
+    phase_velocity_e = _projected_phase_velocity(
         omega_shift, k_magnitude, k_components, u_e
     )
-    v_i1 = _projected_phase_velocity(
+    phase_velocity_i1 = _projected_phase_velocity(
         omega_shift, k_magnitude, k_components, u_i1
     )
-    v_i2 = _projected_phase_velocity(
+    phase_velocity_i2 = _projected_phase_velocity(
         omega_shift, k_magnitude, k_components, u_i2
     )
 
-    f_e = inverse_fourier_at(K_e, F_e, v_e)
-    f_i1 = inverse_fourier_at(K_i1, F_i1, v_i1)
-    f_i2 = inverse_fourier_at(K_i2, F_i2, v_i2)
-    response_e = fourier_landau_response(K_e, F_e, v_e)
-    response_i1 = fourier_landau_response(K_i1, F_i1, v_i1)
-    response_i2 = fourier_landau_response(K_i2, F_i2, v_i2)
+    f_e_phase = interpolate_distribution(v_e, f_e, phase_velocity_e)
+    f_i1_phase = interpolate_distribution(v_i1, f_i1, phase_velocity_i1)
+    f_i2_phase = interpolate_distribution(v_i2, f_i2, phase_velocity_i2)
+    response_e = fourier_landau_response(K_e, F_e, phase_velocity_e)
+    response_i1 = fourier_landau_response(K_i1, F_i1, phase_velocity_i1)
+    response_i2 = fourier_landau_response(K_i2, F_i2, phase_velocity_i2)
 
     ion_1_density = n_e * N_i1 / charge_weight
     ion_2_density = n_e * N_i2 / charge_weight
@@ -308,10 +395,15 @@ def OTS_spectrum_full_fourier(
     ion_screening = torch.abs(chi_e / dielectric).square()
     ion_1_weight = Z_i1.square() * N_i1 / charge_weight
     ion_2_weight = Z_i2.square() * N_i2 / charge_weight
-    structure_factor = 2.0 * math.pi / k_magnitude * (
-        electron_screening * f_e
-        + ion_screening * ion_1_weight * f_i1
-        + ion_screening * ion_2_weight * f_i2
+    structure_factor = (
+        2.0
+        * math.pi
+        / k_magnitude
+        * (
+            electron_screening * f_e_phase
+            + ion_screening * ion_1_weight * f_i1_phase
+            + ion_screening * ion_2_weight * f_i2_phase
+        )
     )
 
     power = torch.real((1.0 + 2.0 * omega_shift / omega_0) * structure_factor)
@@ -322,10 +414,7 @@ def OTS_spectrum_full_fourier(
     if not torch.isfinite(intensity).all():
         raise ValueError("OTS spectrum contains non-finite values.")
 
-    # Retained only to make intentional compatibility explicit.
-    _ = E_i0, V
+    # These validated inputs are retained by the public interface even though
+    # segment normalization intentionally omits the absolute-power prefactor.
+    _ = vectors["E_i0"], V
     return intensity
-
-
-# The familiar name is available when callers import it from this module.
-OTS_spectrum_fft = OTS_spectrum_full_fourier
