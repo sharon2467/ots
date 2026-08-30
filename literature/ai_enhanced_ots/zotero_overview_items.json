@@ -1,0 +1,63 @@
+{
+  "sessionID": "codex-ai-enhanced-ots-20260824",
+  "uri": "https://localhost/ai-enhanced-ots-literature-map",
+  "items": [
+    {
+      "itemType": "report",
+      "title": "AI Enhanced OTS：由浅入深阅读路线与知识框架",
+      "creators": [],
+      "date": "2026-08-24",
+      "reportType": "专题文献导航",
+      "institution": "AI Enhanced OTS literature project",
+      "abstractNote": "直接光学 Thomson 散射（OTS）学习路线：基础理论与动态结构因子 → 集体性参数与谱形 → 仪器函数、杂散光和噪声 → 磁约束/低温/HEDP 实验 → Maxwellian 与参数化拟合 → 非参数和贝叶斯反演 → AI 加速与不确定度。阅读时必须区分直接光学 OTS 证据与微波 collective Thomson scattering 等邻近证据。现有筛选中，没有发现已经同行评审、与当前任务完全同构的“光学 OTS 光谱直接回归完整电子速度分布”神经网络先例；最接近的直接光学传统非参数基线是 TSADAR 的可微物理优化。详细版见工作区 AI_ENHANCED_OTS_LITERATURE_MAP.md。",
+      "tags": [
+        {"tag": "project::AI-Enhanced-OTS-guide", "type": 1},
+        {"tag": "route::00-overview", "type": 1},
+        {"tag": "OTS::review", "type": 1}
+      ],
+      "notes": [
+        {
+          "note": "<h1>七阶段阅读路线</h1><ol><li>Sheffield/Froula：散射几何、动态结构因子、介电响应与 Landau 处方。</li><li>用 α=1/(kλ<sub>D</sub>) 区分非集体与集体谱；理解电子特征和离子声特征。</li><li>加入真实观测算子：光谱仪 IRF、notch、杂散光、背景、Poisson/读出噪声与绝对标定。</li><li>按 MCF、低温等离子体、HEDP/ICF 三类读实验论文，记录实际参数而非只看综述包络。</li><li>先做 Maxwellian/漂移 Maxwellian/多组分和 super-Gaussian 参数拟合。</li><li>再做确定性非参数、Fourier/基函数正则化和贝叶斯后验。</li><li>最后比较 AI 的摊销推理、分布外鲁棒性、校准和不确定度。</li></ol><p><strong>证据边界：</strong>微波 CTS 的速度空间层析与机器学习只作为邻近方法学证据，不能冒充直接光学 OTS 验证。</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "report",
+      "title": "OTS 实验应用参数证据表与当前代码配置审计",
+      "creators": [],
+      "date": "2026-08-24",
+      "reportType": "实验参数与配置审计",
+      "institution": "AI Enhanced OTS literature project",
+      "abstractNote": "选定实验锚点显示 OTS 跨越低温放电、磁约束聚变和高能量密度等离子体，但参数范围不能脱离具体仪器与论文语境。当前 canonical 配置 λ0=351 nm、θ=123°、ne=1.81×10^26 m^-3、Te(ref)=1370 eV、Ti=171.3 eV、固定 H/C，对应 k≈3.146×10^7 m^-1、λD≈2.045×10^-8 m、α≈1.55，属于集体性 HEDP/ICF 风格配置。当前三波段独立归一化、固定 nuisance 参数、无 IRF/notch/背景/真实噪声、单视线一维投影，以及速度网格延伸到 0.8c 而正向模型仍非相对论，是代码贴近实验前的主要风险。详细版见 OTS_EXPERIMENTAL_PARAMETER_EVIDENCE.md 与 CURRENT_CONFIG_AUDIT.md。",
+      "tags": [
+        {"tag": "project::AI-Enhanced-OTS-guide", "type": 1},
+        {"tag": "route::04-experiment", "type": 1},
+        {"tag": "OTS::experiment", "type": 1}
+      ],
+      "notes": [
+        {
+          "note": "<h1>实验使用地图</h1><ul><li><strong>磁约束聚变：</strong>典型任务是 n<sub>e</sub>、T<sub>e</sub> 剖面和高重复率时空演化；选定系统/设计锚点覆盖约 10<sup>18</sup>–3×10<sup>20</sup> m<sup>−3</sup>、约 1 eV–40 keV。</li><li><strong>低温/放电：</strong>常见目标是非 Maxwellian EEDF、尾部、放电功率耦合与空间非均匀；选定直接测量锚点约 10<sup>18</sup>–10<sup>20</sup> m<sup>−3</sup>、0.1–10 eV。</li><li><strong>HEDP/ICF：</strong>常测 T<sub>e</sub>、n<sub>e</sub>、流速、离子温度、平均电离度、Langdon/super-Gaussian 和热电子；选定锚点约 10<sup>23</sup>–10<sup>27</sup> m<sup>−3</sup>、10 eV–数 keV。</li></ul><p>这些是“代表论文锚点 + 工程包络”，不是 OTS 的全球极限。训练集应按目标实验族分层，而不是用一个超宽统一先验。</p>"
+        }
+      ]
+    },
+    {
+      "itemType": "report",
+      "title": "传统 OTS 反演基线：从参数拟合到非参数贝叶斯反演",
+      "creators": [],
+      "date": "2026-08-24",
+      "reportType": "反演基线合同",
+      "institution": "AI Enhanced OTS literature project",
+      "abstractNote": "建议建立四层传统基线：B0 Maxwellian/漂移 Maxwellian 的加权最小二乘或 Poisson 最大似然；B1 super-Gaussian、双 Maxwellian、Gaussian mixture 或 spline 等有限维参数族；B2 在速度网格/Fourier/基函数上直接优化、带非负/归一化/平滑正则的确定性非参数反演；B3 用 MCMC、变分推断或 Laplace 近似给出后验与可信区间。TSADAR（Milder et al., 2024, DOI 10.1088/2632-2153/ad2493）是目前最实用的直接光学 B2 起点。公平比较时，AI 与基线必须共享同一物理前向、仪器响应、谱窗、归一化、噪声 realization、nuisance 参数和测试集。详细版见 OTS_TRADITIONAL_BASELINES.md。",
+      "tags": [
+        {"tag": "project::AI-Enhanced-OTS-guide", "type": 1},
+        {"tag": "route::05-inverse", "type": 1},
+        {"tag": "OTS::inverse", "type": 1}
+      ],
+      "notes": [
+        {
+          "note": "<h1>B0–B3 基线合同</h1><ul><li><strong>B0：</strong>θ={n<sub>e</sub>,T<sub>e</sub>,T<sub>i</sub>,u,Z,background,…}，用加权 χ² 或 Poisson likelihood 拟合。</li><li><strong>B1：</strong>以 super-Gaussian 指数 m、双温组分或 Gaussian mixture 表示偏离 Maxwellian；用 AIC/BIC、交叉验证或先验抑制不可辨识自由度。</li><li><strong>B2：</strong>minimize −log p(y|f,η)+λR(f)，同时强制 f≥0、∫f dv=1；可用 Fourier 低通、Tikhonov/TV/entropy 正则。</li><li><strong>B3：</strong>采样或近似 p(f,η|y)，报告后验区间、参数相关性和 posterior predictive check。</li></ul><p><strong>共同评价：</strong>谱域 likelihood/χ²、EVDF relative L2、矩误差、负质量、归一误差、置信区间覆盖率、运行时间，以及跨实验域 OOD 失效。</p>"
+        }
+      ]
+    }
+  ]
+}

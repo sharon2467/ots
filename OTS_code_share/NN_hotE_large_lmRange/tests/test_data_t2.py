@@ -88,7 +88,12 @@ def _install_arrow_fixture_if_needed():
 
 
 USING_ARROW_FIXTURE = _install_arrow_fixture_if_needed()
-REAL_ARROW_PYTHON = Path(r"D:\anaconda1\python.exe")
+REAL_ARROW_PYTHON = Path(
+    os.environ.get(
+        "OTS_TEST_REAL_ARROW_PYTHON",
+        r"D:\anaconda1\python.exe" if USING_ARROW_FIXTURE else sys.executable,
+    )
+)
 
 import data  # noqa: E402
 
@@ -308,7 +313,7 @@ class TestDistributionConstruction(unittest.TestCase):
                 data.sample_electron_evdf(invalid_points, np.random.default_rng(1))
 
     def test_fixed_ion_vdfs_have_species_grids_and_unit_mass(self):
-        ions = data.build_fixed_ion_distributions(171.3)
+        ions = data.build_fixed_ion_distributions(data.ION_SPECIES, 171.3)
         self.assertEqual(set(ions), {"v_i1", "f_i1", "v_i2", "f_i2"})
         self.assertEqual(ions["v_i1"].shape, (1000,))
         self.assertEqual(ions["v_i2"].shape, (1000,))
@@ -328,7 +333,9 @@ class TestDistributionConstruction(unittest.TestCase):
             )
         for invalid_temperature in (0.0, -1.0, math.nan, math.inf):
             with self.subTest(value=invalid_temperature), self.assertRaises(ValueError):
-                data.build_fixed_ion_distributions(invalid_temperature)
+                data.build_fixed_ion_distributions(
+                    data.ION_SPECIES, invalid_temperature
+                )
 
     def test_wavelength_contract(self):
         bands = data.build_wavelength_bands(torch.float64)
@@ -402,7 +409,9 @@ class TestMomentsAndStatistics(unittest.TestCase):
 class TestRealFullFourierSample(unittest.TestCase):
     def test_one_real_sample_uses_three_full_fourier_calls_and_contract_shapes(self):
         config = data._physical_config()
-        ions = data.build_fixed_ion_distributions(data.ION_REFERENCE_TEMPERATURE_EV)
+        ions = data.build_fixed_ion_distributions(
+            data.ION_SPECIES, data.ION_REFERENCE_TEMPERATURE_EV
+        )
         original_forward = data.ots_full_fourier.OTS_spectrum_full_fourier
         with mock.patch.object(
             data.ots_full_fourier,

@@ -353,8 +353,13 @@ class TestEvaluateCheckpointFullPath(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             test_path = write_real_test_parquet(root, 3)
-            manifest_path = write_evaluation_manifest(root, test_path, 3)
-            checkpoint_path = write_checkpoint(root)
+            manifest_path = write_evaluation_manifest(
+                root, test_path, 3, run_id="DATA_SOURCE_RUN", dataset_id="EVAL_DATA"
+            )
+            checkpoint_payload = t3_fixture.valid_checkpoint_payload()
+            checkpoint_payload["run_id"] = "TRAIN_SOURCE_RUN"
+            checkpoint_payload["dataset_id"] = "TRAIN_DATA"
+            checkpoint_path = write_checkpoint(root, checkpoint_payload)
             history_path = root / "training_history.json"
             history_path.write_bytes(b'{"training":"sentinel"}\n')
             checkpoint_before = checkpoint_path.read_bytes()
@@ -366,7 +371,14 @@ class TestEvaluateCheckpointFullPath(unittest.TestCase):
                 evaluation, "plt", RecordingPyplot()
             ):
                 result = evaluation.evaluate_checkpoint(
-                    "RUN", "DATA", "CHECKPOINT", checkpoint_path, test_path, manifest_path, output_dir, config
+                    "EVAL_RUN",
+                    "EVAL_DATA",
+                    "CHECKPOINT",
+                    checkpoint_path,
+                    test_path,
+                    manifest_path,
+                    output_dir,
+                    config,
                 )
 
             self.assertEqual(checkpoint_path.read_bytes(), checkpoint_before)
@@ -378,12 +390,25 @@ class TestEvaluateCheckpointFullPath(unittest.TestCase):
             metrics_payload = json.loads(result["metrics_path"].read_text(encoding="utf-8"))
             self.assertEqual(
                 set(metrics_payload),
-                {"run_id", "dataset_id", "checkpoint_id", "checkpoint", "test_data", "metrics"},
+                {
+                    "run_id",
+                    "dataset_id",
+                    "dataset_source_run_id",
+                    "checkpoint_id",
+                    "checkpoint_source_run_id",
+                    "checkpoint_training_dataset_id",
+                    "checkpoint",
+                    "test_data",
+                    "metrics",
+                },
             )
             self.assertEqual(
                 (metrics_payload["run_id"], metrics_payload["dataset_id"], metrics_payload["checkpoint_id"]),
-                ("RUN", "DATA", "CHECKPOINT"),
+                ("EVAL_RUN", "EVAL_DATA", "CHECKPOINT"),
             )
+            self.assertEqual(metrics_payload["dataset_source_run_id"], "DATA_SOURCE_RUN")
+            self.assertEqual(metrics_payload["checkpoint_source_run_id"], "TRAIN_SOURCE_RUN")
+            self.assertEqual(metrics_payload["checkpoint_training_dataset_id"], "TRAIN_DATA")
             self.assertEqual(metrics_payload["checkpoint"], "../model.pt")
             self.assertEqual(metrics_payload["test_data"], "../dataset_test.parquet")
             self.assertEqual(metrics_payload["metrics"], result["metrics"])
@@ -396,14 +421,14 @@ class TestEvaluateCheckpointFullPath(unittest.TestCase):
             output_snapshot = {path.name: path.read_bytes() for path in output_dir.iterdir()}
             with self.assertRaises(FileExistsError):
                 evaluation.evaluate_checkpoint(
-                    "RUN", "DATA", "CHECKPOINT", checkpoint_path, test_path, manifest_path, output_dir, config
+                    "EVAL_RUN", "EVAL_DATA", "CHECKPOINT", checkpoint_path, test_path, manifest_path, output_dir, config
                 )
             self.assertEqual(output_snapshot, {path.name: path.read_bytes() for path in output_dir.iterdir()})
             with mock.patch.object(data.pq, "read_table", side_effect=t3_fixture.t2_fixture._real_arrow_read), mock.patch.object(
                 evaluation, "plt", RecordingPyplot()
             ):
                 overwritten = evaluation.evaluate_checkpoint(
-                    "RUN", "DATA", "CHECKPOINT", checkpoint_path, test_path, manifest_path, output_dir, config, overwrite=True
+                    "EVAL_RUN", "EVAL_DATA", "CHECKPOINT", checkpoint_path, test_path, manifest_path, output_dir, config, overwrite=True
                 )
             self.assertTrue(overwritten["metrics_path"].is_file())
             self.assertEqual(checkpoint_path.read_bytes(), checkpoint_before)

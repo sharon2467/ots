@@ -676,10 +676,10 @@ def train_model(
 
     with manifest_path.open("r", encoding="utf-8") as stream:
         manifest = json.load(stream)
-    if manifest.get("run_id") != run_id or manifest.get("dataset_id") != dataset_id:
-        raise ValueError(
-            "Manifest run_id/dataset_id do not match the training request."
-        )
+    if manifest.get("dataset_id") != dataset_id:
+        raise ValueError("Manifest dataset_id does not match the training request.")
+    dataset_source_run_id = manifest.get("run_id")
+    _validate_id(dataset_source_run_id, "manifest run_id")
     try:
         manifest_train_path = manifest_path.parent / manifest["splits"]["train"]["file"]
     except (KeyError, TypeError) as error:
@@ -778,6 +778,7 @@ def train_model(
     history = {
         "run_id": run_id,
         "dataset_id": dataset_id,
+        "dataset_source_run_id": dataset_source_run_id,
         "checkpoint_id": checkpoint_id,
         "train_data": _relative_path(train_data_path, history_path.parent),
         "dataset_manifest": _relative_path(manifest_path, history_path.parent),

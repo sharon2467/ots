@@ -27,7 +27,7 @@ OUTPUT_DIM = 160
 ELECTRON_VELOCITY_POINTS = 1000
 ELECTRON_REFERENCE_TEMPERATURE_EV = 1370.0
 ION_REFERENCE_TEMPERATURE_EV = 171.3
-
+ION_SPECIES = (("i1", PROTON_MASS), ("i2", 12.0 * PROTON_MASS))
 
 @dataclass(frozen=True)
 class OTSDataset:
@@ -99,7 +99,7 @@ def sample_electron_evdf(num_points, rng):
     return velocity, distribution
 
 
-def build_fixed_ion_distributions(reference_temperature_ev=171.3):
+def build_fixed_ion_distributions(ion_species,reference_temperature_ev):
     """Build normalized H and C Maxwellian VDFs on species-specific grids."""
 
     reference_temperature_ev = float(reference_temperature_ev)
@@ -107,7 +107,7 @@ def build_fixed_ion_distributions(reference_temperature_ev=171.3):
         raise ValueError("reference_temperature_ev must be finite and positive.")
 
     distributions = {}
-    for suffix, mass in (("i1", PROTON_MASS), ("i2", 12.0 * PROTON_MASS)):
+    for suffix, mass in ion_species:
         thermal_speed = math.sqrt(reference_temperature_ev * ELEMENTARY_CHARGE / mass)
         velocity = torch.linspace(
             -12.0 * thermal_speed,
@@ -377,7 +377,7 @@ def generate_dataset_pair(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     physical_config = _physical_config()
-    ion_distributions = build_fixed_ion_distributions(ION_REFERENCE_TEMPERATURE_EV)
+    ion_distributions = build_fixed_ion_distributions(ION_SPECIES, ION_REFERENCE_TEMPERATURE_EV)
     train_rows, train_records = _generate_split(
         train_samples, seed, physical_config, ion_distributions
     )

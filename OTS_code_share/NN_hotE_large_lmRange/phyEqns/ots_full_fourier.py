@@ -342,10 +342,18 @@ def OTS_spectrum_full_fourier(
     k_0 = torch.sqrt(incident_argument) / SPEED_OF_LIGHT * k_sh
 
     omega = 2.0 * math.pi * SPEED_OF_LIGHT / lms
+    scattered_argument = omega.square() - omega_pe_squared
+    if not torch.isfinite(scattered_argument).all() or not torch.all(
+        scattered_argument > 0
+    ):
+        raise ValueError(
+            "Scattered-light frequencies must exceed the electron plasma frequency."
+        )
+    k_scattered_magnitude = torch.sqrt(scattered_argument) / SPEED_OF_LIGHT
     k_components = (
-        k_0[0] - ss[0] * omega / SPEED_OF_LIGHT,
-        k_0[1] - ss[1] * omega / SPEED_OF_LIGHT,
-        k_0[2] - ss[2] * omega / SPEED_OF_LIGHT,
+        k_0[0] - ss[0] * k_scattered_magnitude,
+        k_0[1] - ss[1] * k_scattered_magnitude,
+        k_0[2] - ss[2] * k_scattered_magnitude,
     )
     k_magnitude = torch.sqrt(
         k_components[0].square() + k_components[1].square() + k_components[2].square()
@@ -418,3 +426,125 @@ def OTS_spectrum_full_fourier(
     # segment normalization intentionally omits the absolute-power prefactor.
     _ = vectors["E_i0"], V
     return intensity
+if __name__ == "__main__":
+    """
+    测试与演示代码：验证 OTS 光谱计算正向模型
+
+    流程：
+    1. 设定等离子体参数（温度、密度、离子组成）
+    2. 生成超高斯速度分布（参数化后进行傅里叶变换）
+    3. 调用正向模型计算光谱
+    4. 绘图对比两个版本（复数模式 vs 分离实部虚部）
+    """
+    import math
+    import matplotlib.pyplot as plt
+
+    # 常数定义（物理单位）
+    e = torch.tensor(1.602176634e-19)              # 基本电荷 (C)
+    k_B = torch.tensor(1.380649e-23)               # 玻尔兹曼常数 (J/K)
+    c = torch.tensor(2.99792458e8)                 # 光速 (m/s)
+    m_e = torch.tensor(9.10938356e-31)             # 电子质量 (kg)
+    m_p = torch.tensor(1.67262192369e-27)          # 质子质量 (kg)
+    epsilon_0 = torch.tensor(8.854187817e-12)      # 真空介电常数 (F/m)
+    # ─────────────────────────────────────────────────────────────
+    # 物理常数与参数设置
+    # ─────────────────────────────────────────────────────────────
+    k_sh = torch.tensor([1., 0., 0.])                # 入射波矢方向（沿x轴）
+    ss = torch.tensor([0., 1., 0.])                 # 散射方向（沿y轴）
+    E_i0 = torch.tensor([0., 0., 1.])               # 入射光极化（沿z轴）
+    lm_0 = 263e-9                                    # 入射光波长 (263 nm)
+
+    # 等离子体参数：以 eV 设定，再转换为 K 供正向模型使用
+    T_e = 1.4e3 * e / k_B                           # 电子温度 1400 eV -> K
+    T_i = 0.5e3 * e / k_B                           # 离子温度 500 eV -> K
+    n_e = 1e26                                       # 电子密度 (m⁻³)
+    m = 2.                                           # 超高斯指数
+
+    # 测量参数
+    lms = torch.linspace(-1, 1, 5000) * 120e-9 + lm_0  # 测量波长范围
+
+    # 离子种类（C1H1 混合物）
+    Z_i1 = 1                                         # 氢离子：核电荷数 = 1
+    N_i1 = 1                                         # 相对浓度
+    Z_i2 = 6                                         # 碳离子：核电荷数 = 6
+    N_i2 = 0                                         # 不存在
+    ZN = Z_i1 * N_i1 + Z_i2 * N_i2
+
+    # 离子质量
+    m_i1 = m_p                                       # 质子
+    m_i2 = m_p * 12                                  # 碳12
+
+    # 参数化速度分布
+    R = 1e-3                                         # 等离子体尺度
+    V = R**3                                         # 体积
+    I_0 = 1
+    v_te = torch.sqrt(k_B * T_e / m_e)              # 电子热速度
+    v_ti1 = torch.sqrt(k_B * T_i / m_i1)              # 离子热速度
+    v_ti2 = torch.sqrt(k_B * T_i / m_i2)              # 离子热速度
+    # ─────────────────────────────────────────────────────────────
+    # 生成超高斯速度分布
+    # ─────────────────────────────────────────────────────────────
+
+    u_e = torch.tensor([0., 0., 0.]) * c
+    u_i1 = torch.tensor([0., 0., 0.]) * c
+    u_i2 = torch.tensor([0., 0., 0.]) * c
+
+    # 超高斯分布参数
+    a = lambda m: (2 * math.gamma(5 / m)) / (3 * math.gamma(3 / m))
+    g = lambda x, m: torch.exp(-(a(m) * x**2)**(m / 2))
+    C = lambda v_te, m: m / (4 * math.pi * math.gamma(3 / m)) * (a(m) / 2 / v_te**2)**(3 / 2)
+    f_ev = lambda v: C(v_te, m) * g(v / math.sqrt(2) / v_te, m)
+
+    # 在实空间进行傅里叶变换
+    vxs = torch.linspace(-1, 1, 1000) * 10 * v_te * math.sqrt(2)  # 速度网格
+    vrs = torch.linspace(0, 1, 1000) * 10 * v_te * math.sqrt(2)   # 径向速度
+    vi1 = torch.linspace(-1, 1, 1000) * 10 * v_ti1 * math.sqrt(2)  # 离子1速度网格
+    vi2 = torch.linspace(-1, 1, 1000) * 10 * v_ti2 * math.sqrt(2)  # 离子2速度网格
+    # 二维积分得到一维速度分布
+    f_es1 = torch.zeros_like(vxs)
+    f_i1 = torch.zeros_like(vxs)
+    f_i2 = torch.zeros_like(vxs)
+    for i in range(len(vxs)):
+        vx = vxs[i]
+        v = torch.sqrt(vx**2 + vrs**2)
+        f_es1[i] = 2 * math.pi * torch.trapz(vrs * f_ev(v), vrs)
+    f_i1 = torch.exp(-vi1**2 / (2 * v_ti1**2))
+    f_i2 = torch.exp(-vi2**2 / (2 * v_ti2**2))
+    f_es1 = f_es1 / torch.trapz(f_es1, vxs)
+    f_i1 = f_i1 / torch.trapz(f_i1, vi1)
+    f_i2 = f_i2 / torch.trapz(f_i2, vi2)
+    # ─────────────────────────────────────────────────────────────
+    # 计算光谱并对比两个版本
+    # ─────────────────────────────────────────────────────────────
+
+
+    # 版本1：复数傅里叶系数
+    P,chi_e,chi_i1,chi_i2 = OTS_spectrum_full_fourier(lms, ss, k_sh, E_i0, lm_0, n_e, Z_i1, N_i1, m_i1,
+                                Z_i2, N_i2, m_i2, V, v_e=vxs, f_e=f_es1, v_i1=vi1, f_i1=f_i1, v_i2=vi2, f_i2=f_i2,
+                                u_e=u_e, u_i1=u_i1, u_i2=u_i2)
+    # 绘制对比图
+    plt.plot(lms, P, label='Complex FFT')
+    plt.xlabel('Wavelength (m)')
+    plt.ylabel('Spectral Intensity')
+    plt.legend()
+    plt.show()
+    plt.figure()
+    plt.subplot(2, 2, 1)
+    plt.plot(lms, chi_e.real, label='Electron Chi Real')
+    plt.plot(lms, chi_e.imag, label='Electron Chi Imag')
+    plt.xlabel('Wavelength (m)')
+    plt.ylabel('Susceptibility')
+    plt.legend()
+    plt.subplot(2, 2, 2)
+    plt.plot(lms, chi_i1.real, label='Ion 1 Chi')
+    plt.plot(lms, chi_i1.imag, label='Ion 1 Chi Imag')
+    plt.xlabel('Wavelength (m)')
+    plt.ylabel('Susceptibility')
+    plt.legend()
+    plt.subplot(2, 2, 3)
+    plt.plot(lms, (1+chi_e + chi_i1 + chi_i2).real, label='Dielectric Function Real')
+    plt.plot(lms, (1+chi_e + chi_i1 + chi_i2).imag, label='Dielectric Function Imag')
+    plt.xlabel('Wavelength (m)')
+    plt.ylabel('Susceptibility')
+    plt.legend()
+    plt.show()

@@ -321,7 +321,7 @@ sum and normalize the distribution
 return v_e,f_e
 ```
 
-#### `build_fixed_ion_distributions(reference_temperature_ev: float=171.3) -> dict`
+#### `build_fixed_ion_distributions(ion_species: tuple, reference_temperature_ev: float=171.3) -> dict`
 
 ```text
 for H and C masses compute v_th=sqrt(T_ev*e/mass)

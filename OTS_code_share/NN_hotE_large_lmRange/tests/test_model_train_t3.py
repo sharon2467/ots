@@ -286,28 +286,29 @@ class TestCheckpointContract(unittest.TestCase):
             with self.subTest(index=index), self.assertRaises(ValueError):
                 model.validate_checkpoint(payload)
 
-    def test_strict_load_and_three_id_matching(self):
+    def test_strict_load_matches_checkpoint_id_and_preserves_training_source(self):
         payload = valid_checkpoint_payload()
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "model.pt"
             torch.save(payload, path)
             loaded, returned = model.load_model_checkpoint(
-                path, torch.device("cpu"), "RUN", "DATA", "CHECKPOINT"
+                path, torch.device("cpu"), "CHECKPOINT"
             )
             self.assertFalse(loaded.training)
             self.assertEqual(returned["checkpoint_id"], "CHECKPOINT")
             for name, expected in payload["model_state"].items():
                 torch.testing.assert_close(loaded.state_dict()[name], expected)
-            for ids in (("WRONG", "DATA", "CHECKPOINT"), ("RUN", "WRONG", "CHECKPOINT"), ("RUN", "DATA", "WRONG")):
-                with self.subTest(ids=ids), self.assertRaises(ValueError):
-                    model.load_model_checkpoint(path, "cpu", *ids)
+            self.assertEqual(returned["run_id"], "RUN")
+            self.assertEqual(returned["dataset_id"], "DATA")
+            with self.assertRaises(ValueError):
+                model.load_model_checkpoint(path, "cpu", "WRONG")
 
             broken = valid_checkpoint_payload()
             del broken["model_state"][next(iter(broken["model_state"]))]
             broken_path = Path(temporary) / "broken.pt"
             torch.save(broken, broken_path)
             with self.assertRaises(RuntimeError):
-                model.load_model_checkpoint(broken_path, "cpu", "RUN", "DATA", "CHECKPOINT")
+                model.load_model_checkpoint(broken_path, "cpu", "CHECKPOINT")
 
 
 class TestSeedDeviceAndCandidates(unittest.TestCase):
@@ -523,6 +524,7 @@ class TestTrainModelFullPath(unittest.TestCase):
             self.assertEqual(set(checkpoint["training_config"]), model.TRAINING_CONFIG_FIELDS)
             self.assertEqual(history["training_config"], checkpoint["training_config"])
             self.assertEqual(history["sample_counts"], {"train": 6, "validation": 2})
+            self.assertEqual(history["dataset_source_run_id"], "RUN")
             self.assertNotIn("test", history)
             self.assertNotIn("test_metrics", checkpoint)
             expected_split = train.split_train_validation(loaded_dataset, 0.25, 123)
@@ -544,7 +546,7 @@ class TestTrainModelFullPath(unittest.TestCase):
             root = Path(temporary)
             train_path = root / "dataset_train.parquet"
             train_path.write_bytes(b"fixture path only")
-            manifest_path = write_manifest(root, train_path)
+            manifest_path = write_manifest(root, train_path, run_id="SOURCE_RUN")
             output_dir = root / "training"
             config = {
                 "seed": 5,
@@ -580,9 +582,13 @@ class TestTrainModelFullPath(unittest.TestCase):
             with mock.patch.object(train, "load_dataset", return_value=dataset), mock.patch.object(
                 train, "train_candidate", side_effect=fake_candidate
             ):
-                result = train.train_model("RUN", "DATA", "CKPT", train_path, manifest_path, output_dir, config)
+                result = train.train_model(
+                    "RUN", "DATA", "CKPT", train_path, manifest_path, output_dir, config
+                )
             self.assertEqual(result["selected_candidate"]["hidden_sizes"], [6, 3])
             self.assertEqual(result["selected_candidate"]["best_validation_loss"], 1.0)
+            history = json.loads(result["history_path"].read_text(encoding="utf-8"))
+            self.assertEqual(history["dataset_source_run_id"], "SOURCE_RUN")
             self.assertEqual(len(observed_loaders), 2)
             for train_loader, validation_loader, statistics in observed_loaders:
                 self.assertIsInstance(train_loader, DataLoader)
@@ -604,7 +610,7 @@ class TestTrainModelFullPath(unittest.TestCase):
             train_path.write_bytes(b"fixture")
             manifest_path = write_manifest(root, train_path)
             config = {"candidates": [{"hidden_sizes": [4, 2], "dropout": 0.0}], "max_epochs": 1, "patience": 1, "device": "cpu"}
-            for ids in (("", "DATA", "CKPT"), ("RUN", "", "CKPT"), ("RUN", "DATA", ""), ("WRONG", "DATA", "CKPT"), ("RUN", "WRONG", "CKPT")):
+            for ids in (("", "DATA", "CKPT"), ("RUN", "", "CKPT"), ("RUN", "DATA", ""), ("RUN", "WRONG", "CKPT")):
                 with self.subTest(ids=ids), self.assertRaises(ValueError):
                     train.train_model(*ids, train_path, manifest_path, root / "out", config)
             other_path = root / "other.parquet"

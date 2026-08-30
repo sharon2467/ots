@@ -452,8 +452,10 @@ def evaluate_checkpoint(
 
     with manifest_path.open("r", encoding="utf-8") as stream:
         manifest = json.load(stream)
-    if manifest.get("run_id") != run_id or manifest.get("dataset_id") != dataset_id:
-        raise ValueError("Manifest run_id/dataset_id do not match the request.")
+    if manifest.get("dataset_id") != dataset_id:
+        raise ValueError("Manifest dataset_id does not match the evaluation request.")
+    dataset_source_run_id = manifest.get("run_id")
+    _validate_id(dataset_source_run_id, "manifest run_id")
     try:
         manifest_test_path = manifest_path.parent / manifest["splits"]["test"]["file"]
     except (KeyError, TypeError) as error:
@@ -463,9 +465,7 @@ def evaluate_checkpoint(
     if not _same_path(test_data_path, manifest_test_path):
         raise ValueError("test_data_path does not match manifest splits.test.file.")
 
-    model, checkpoint = load_model_checkpoint(
-        checkpoint_path, device, run_id, dataset_id, checkpoint_id
-    )
+    model, checkpoint = load_model_checkpoint(checkpoint_path, device, checkpoint_id)
     dataset = load_dataset(test_data_path)
     manifest_sample_count = manifest["splits"]["test"].get("physical_samples")
     if manifest_sample_count != len(dataset.spectra):
@@ -497,7 +497,10 @@ def evaluate_checkpoint(
     metrics_payload = {
         "run_id": run_id,
         "dataset_id": dataset_id,
+        "dataset_source_run_id": dataset_source_run_id,
         "checkpoint_id": checkpoint_id,
+        "checkpoint_source_run_id": checkpoint["run_id"],
+        "checkpoint_training_dataset_id": checkpoint["dataset_id"],
         "checkpoint": _relative_path(checkpoint_path, metrics_path.parent),
         "test_data": _relative_path(test_data_path, metrics_path.parent),
         "metrics": metrics,

@@ -202,6 +202,19 @@ class TestDistributionValidationAndInterpolation(unittest.TestCase):
 
 
 class TestPublicForwardModel(unittest.TestCase):
+    def _capture_first_projected_geometry(self, positional, keyword):
+        original_projected_velocity = full._projected_phase_velocity
+        with mock.patch.object(
+            full,
+            "_projected_phase_velocity",
+            wraps=original_projected_velocity,
+        ) as phase_velocity_spy:
+            full.OTS_spectrum_full_fourier(*positional, **keyword)
+
+        self.assertEqual(phase_velocity_spy.call_count, 3)
+        first_call = phase_velocity_spy.call_args_list[0]
+        return first_call.args[1], first_call.args[2]
+
     def test_signature_is_keyword_only_and_old_alias_is_absent(self) -> None:
         signature = inspect.signature(full.OTS_spectrum_full_fourier)
         keyword_only = (
@@ -250,6 +263,116 @@ class TestPublicForwardModel(unittest.TestCase):
         torch.testing.assert_close(
             torch.max(torch.abs(intensity)), torch.tensor(1.0, dtype=torch.float64)
         )
+
+    def test_scattered_wavevector_uses_plasma_dispersion_at_default_density(self) -> None:
+        positional, keyword = make_forward_inputs(torch.float64)
+        captured_magnitude, captured_components = self._capture_first_projected_geometry(
+            positional, keyword
+        )
+
+        lms, ss, k_sh = positional[:3]
+        lm_0 = torch.as_tensor(positional[4], device=lms.device).to(dtype=lms.dtype)
+        n_e = torch.as_tensor(positional[5], device=lms.device).to(dtype=lms.dtype)
+        ss = ss / torch.linalg.vector_norm(ss)
+        k_sh = k_sh / torch.linalg.vector_norm(k_sh)
+        omega_0 = 2.0 * math.pi * full.SPEED_OF_LIGHT / lm_0
+        omega_s = 2.0 * math.pi * full.SPEED_OF_LIGHT / lms
+        omega_pe_squared = (
+            n_e
+            * full.ELEMENTARY_CHARGE**2
+            / (full.ELECTRON_MASS * full.VACUUM_PERMITTIVITY)
+        )
+        k_incident = torch.sqrt(omega_0.square() - omega_pe_squared) / full.SPEED_OF_LIGHT
+        k_scattered = torch.sqrt(omega_s.square() - omega_pe_squared) / full.SPEED_OF_LIGHT
+        expected_components = tuple(
+            k_incident * k_sh[index] - k_scattered * ss[index]
+            for index in range(3)
+        )
+        expected_magnitude = torch.sqrt(
+            sum(component.square() for component in expected_components)
+        )
+
+        for actual, expected in zip(captured_components, expected_components):
+            torch.testing.assert_close(actual, expected, rtol=1.0e-12, atol=1.0e-6)
+        torch.testing.assert_close(
+            captured_magnitude, expected_magnitude, rtol=1.0e-12, atol=1.0e-6
+        )
+
+        vacuum_components = tuple(
+            k_incident * k_sh[index]
+            - (omega_s / full.SPEED_OF_LIGHT) * ss[index]
+            for index in range(3)
+        )
+        vacuum_magnitude = torch.sqrt(
+            sum(component.square() for component in vacuum_components)
+        )
+        self.assertGreater(
+            torch.max(torch.abs(captured_magnitude - vacuum_magnitude)).item(),
+            1.0e4,
+        )
+
+    def test_elastic_scattering_has_equal_medium_wave_numbers(self) -> None:
+        positional, keyword = make_forward_inputs(torch.float64)
+        elastic_wavelengths = torch.as_tensor(positional[4]).to(
+            dtype=torch.float64
+        ).reshape(1)
+        elastic_positional = (elastic_wavelengths,) + positional[1:]
+        captured_magnitude, captured_components = self._capture_first_projected_geometry(
+            elastic_positional, keyword
+        )
+
+        ss = positional[1] / torch.linalg.vector_norm(positional[1])
+        k_sh = positional[2] / torch.linalg.vector_norm(positional[2])
+        lm_0 = torch.as_tensor(positional[4]).to(dtype=torch.float64)
+        n_e = torch.as_tensor(positional[5]).to(dtype=torch.float64)
+        omega = 2.0 * math.pi * full.SPEED_OF_LIGHT / lm_0
+        omega_s = 2.0 * math.pi * full.SPEED_OF_LIGHT / elastic_wavelengths
+        omega_pe_squared = (
+            n_e
+            * full.ELEMENTARY_CHARGE**2
+            / (full.ELECTRON_MASS * full.VACUUM_PERMITTIVITY)
+        )
+        k_incident = torch.sqrt(omega.square() - omega_pe_squared) / full.SPEED_OF_LIGHT
+        k_scattered = torch.sqrt(omega_s.square() - omega_pe_squared) / full.SPEED_OF_LIGHT
+        torch.testing.assert_close(
+            k_scattered,
+            k_incident.expand_as(k_scattered),
+            rtol=0.0,
+            atol=0.0,
+        )
+
+        expected_components = tuple(
+            k_incident * k_sh[index] - k_scattered * ss[index]
+            for index in range(3)
+        )
+        for actual, expected in zip(captured_components, expected_components):
+            torch.testing.assert_close(actual, expected, rtol=1.0e-12, atol=1.0e-6)
+
+        angle = torch.acos(torch.clamp(torch.dot(k_sh, ss), min=-1.0, max=1.0))
+        expected_magnitude = 2.0 * k_incident * torch.sin(angle / 2.0)
+        torch.testing.assert_close(
+            captured_magnitude,
+            expected_magnitude.expand_as(captured_magnitude),
+            rtol=1.0e-12,
+            atol=1.0e-6,
+        )
+
+    def test_rejects_scattered_wavelength_below_plasma_cutoff(self) -> None:
+        positional, keyword = make_forward_inputs(torch.float64)
+        omega_pe = math.sqrt(
+            positional[5]
+            * full.ELEMENTARY_CHARGE**2
+            / (full.ELECTRON_MASS * full.VACUUM_PERMITTIVITY)
+        )
+        omega_0 = 2.0 * math.pi * full.SPEED_OF_LIGHT / positional[4]
+        self.assertGreater(omega_0, omega_pe)
+        cutoff_wavelength = 2.0 * math.pi * full.SPEED_OF_LIGHT / omega_pe
+        invalid_positional = (
+            torch.tensor([1.01 * cutoff_wavelength], dtype=torch.float64),
+        ) + positional[1:]
+
+        with self.assertRaisesRegex(ValueError, "Scattered-light"):
+            full.OTS_spectrum_full_fourier(*invalid_positional, **keyword)
 
     def test_float32_precision_is_inherited_from_lms(self) -> None:
         positional, keyword = make_forward_inputs(torch.float64)

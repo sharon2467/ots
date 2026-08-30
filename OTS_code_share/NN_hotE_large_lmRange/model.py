@@ -358,25 +358,19 @@ def validate_checkpoint(payload):
         raise ValueError("dtype must be float32 or float64.")
 
 
-def load_model_checkpoint(path, device, run_id, dataset_id, checkpoint_id):
-    """Load a trusted canonical checkpoint and require exact ID agreement."""
+def load_model_checkpoint(path, device, checkpoint_id):
+    """Load a trusted canonical checkpoint selected by its checkpoint ID."""
 
     device = torch.device(device)
     payload = torch.load(str(Path(path)), map_location=device)
     validate_checkpoint(payload)
-    expected_ids = {
-        "run_id": run_id,
-        "dataset_id": dataset_id,
-        "checkpoint_id": checkpoint_id,
-    }
-    for name, expected in expected_ids.items():
-        _require_nonempty_id(expected, name)
-        if payload[name] != expected:
-            raise ValueError(
-                "Checkpoint {} {!r} does not match requested {!r}.".format(
-                    name, payload[name], expected
-                )
+    _require_nonempty_id(checkpoint_id, "checkpoint_id")
+    if payload["checkpoint_id"] != checkpoint_id:
+        raise ValueError(
+            "Checkpoint checkpoint_id {!r} does not match requested {!r}.".format(
+                payload["checkpoint_id"], checkpoint_id
             )
+        )
 
     dtype = torch.float64 if payload["dtype"] == "float64" else torch.float32
     regressor = OTSRegressor(

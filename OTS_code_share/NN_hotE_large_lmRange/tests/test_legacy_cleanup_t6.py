@@ -7,14 +7,12 @@ import contextlib
 import importlib.util
 import io
 from pathlib import Path
-import subprocess
 import sys
 import unittest
 from unittest import mock
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY_ROOT = PROJECT_ROOT.parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -74,20 +72,13 @@ class TestExplicitDeletionList(unittest.TestCase):
             with self.subTest(module=module_name):
                 self.assertIsNone(importlib.util.find_spec(module_name))
 
-    def test_git_deletion_scope_contains_only_the_six_specified_root_files(self):
-        result = subprocess.run(
-            ["git", "diff", "--name-only", "--diff-filter=D", "--", str(PROJECT_ROOT.relative_to(REPOSITORY_ROOT))],
-            cwd=REPOSITORY_ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-        deleted = {
-            Path(line.strip()).name
-            for line in result.stdout.splitlines()
-            if line.strip()
+    def test_no_deleted_legacy_name_is_reintroduced_under_another_root_path(self):
+        found = {
+            path.name
+            for path in PROJECT_ROOT.glob("*.py")
+            if path.name in DELETED_ROOT_FILES
         }
-        self.assertEqual(deleted, DELETED_ROOT_FILES)
+        self.assertEqual(found, set())
 
 
 class TestNoRetainedLegacyCaller(unittest.TestCase):
@@ -146,42 +137,26 @@ class TestNoRetainedLegacyCaller(unittest.TestCase):
 
 
 class TestRetainedBoundary(unittest.TestCase):
-    def test_required_physics_paper_reproduction_and_reports_are_preserved(self):
+    def test_required_physics_sources_are_preserved(self):
         required = [
             PROJECT_ROOT / "phyEqns" / "ots_fourier.py",
             PROJECT_ROOT / "phyEqns" / "ots_full_fourier.py",
-            PROJECT_ROOT / "paper_reproduction" / "generate_paper_dataset.py",
-            PROJECT_ROOT / "paper_reproduction" / "train_paper_fig3.py",
-            PROJECT_ROOT / "paper_reproduction" / "reproduce_paper_fig3.py",
-            PROJECT_ROOT / "paper_reproduction" / "diagnose_paper_fig3_supergaussian.py",
-            PROJECT_ROOT / "paper_reproduction" / "PAPER_FIG3_REPRODUCTION_REPORT.md",
-            PROJECT_ROOT / "REMOTE_ARTIFACT_LAYOUT.md",
-            PROJECT_ROOT / "TRAINING_RECOVERY_REPORT.md",
-            REPOSITORY_ROOT / ".git",
         ]
-        missing = [str(path.relative_to(REPOSITORY_ROOT)) for path in required if not path.exists()]
+        missing = [str(path.relative_to(PROJECT_ROOT)) for path in required if not path.exists()]
         self.assertEqual(missing, [])
 
-    def test_slurm_worktree_is_untouched_and_known_scripts_remain(self):
+    def test_only_canonical_bscc_slurm_remains_active(self):
         slurm_dir = PROJECT_ROOT / "slurm"
-        required_scripts = {
-            "train_legacy.slurm",
-            "train_v2.slurm",
-            "train_v2_capacity.slurm",
-            "train_v2_rawloss.slurm",
-            "train_v2_bscc.slurm",
-            "submit_v2.py",
-            "monitor_v2.py",
-        }
-        self.assertTrue(required_scripts.issubset({path.name for path in slurm_dir.iterdir()}))
-        result = subprocess.run(
-            ["git", "status", "--porcelain", "--", str(slurm_dir.relative_to(REPOSITORY_ROOT))],
-            cwd=REPOSITORY_ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
+        self.assertEqual(
+            {path.name for path in slurm_dir.iterdir()}, {"canonical_all_bscc.slurm"}
         )
-        self.assertEqual(result.stdout, "")
+        source = (slurm_dir / "canonical_all_bscc.slurm").read_text(encoding="utf-8")
+        self.assertNotIn("#SBATCH --output", source)
+        self.assertNotIn("#SBATCH --error", source)
+        self.assertIn("CUBLAS_WORKSPACE_CONFIG", source)
+        self.assertLess(source.index("CUBLAS_WORKSPACE_CONFIG"), source.index("python main.py all"))
+        for legacy in ("train_v2.py", "genDataSet.py", "evaluateModel.py", "readData.py"):
+            self.assertNotIn(legacy, source)
 
 
 class TestCoreEntryAfterCleanup(unittest.TestCase):
