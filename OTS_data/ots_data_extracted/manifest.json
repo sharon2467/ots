@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-09-14T03:41:26.179252+00:00",
+  "input_dir": "C:\\Users\\win\\OneDrive\\Desktop\\ots\\OTS_data",
+  "output_dir": "C:\\Users\\win\\OneDrive\\Desktop\\ots\\outputs\\ots_data_extracted\\20260914_quicklook",
+  "environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "executable": "C:\\Users\\win\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\\python.exe",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "numpy": "2.2.3",
+    "scipy": "1.15.2",
+    "matplotlib": "3.10.1"
+  },
+  "source_files": [
+    {
+      "path": "20160909153.fig",
+      "size_bytes": 7344758,
+      "suffix": ".fig",
+      "sha256": "bd904a0d4ccf5554a403bde1853c6965c27932b09129d75ca42cf7b41039f9b3"
+    },
+    {
+      "path": "20160919163.fig",
+      "size_bytes": 7340212,
+      "suffix": ".fig",
+      "sha256": "cbba468dde9ebe5972e1c8b8d0acf6d8122e01972ee43d5fc72efce99b307d18"
+    },
+    {
+      "path": "20170811020.fig",
+      "size_bytes": 5049297,
+      "suffix": ".fig",
+      "sha256": "b0dcfc540aa3bf20f20841321af2adda5a655c99cb62c884adbbaf72443edb7a"
+    },
+    {
+      "path": "Notes.txt",
+      "size_bytes": 177,
+      "suffix": ".txt",
+      "sha256": "9593675f2580f5241b0698971dbcdc076269de538e3cf6f8b650af4982ab0a37"
+    },
+    {
+      "path": "exp_ref_para.pdf",
+      "size_bytes": 4649079,
+      "suffix": ".pdf",
+      "sha256": "e41b8d9efadee509f9a3f04ed2e9c08e50be8023f391ed73e3cf453d239d5dbc"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160909153/metadata.json",
+      "size_bytes": 1477,
+      "suffix": ".json",
+      "sha256": "2b4c0aa225e472dfd40857a3fe799fa68ee1f6ca1be7c435964c5b8c890364af"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160909153/ordered_arrays.npz",
+      "size_bytes": 4351753,
+      "suffix": ".npz",
+      "sha256": "ba666cf7662f0aaa7428268c6598f1c20dbc41870d9b39695fa674e9dffd7620"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160909153/quicklook.png",
+      "size_bytes": 1117776,
+      "suffix": ".png",
+      "sha256": "6b27ab0729c9a5f1b707ca03a7d2f455113776fd9df76bf2426b4ce6cb72f1ef"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160909153/raw_arrays.npz",
+      "size_bytes": 4347346,
+      "suffix": ".npz",
+      "sha256": "72f89d3abee93a1bd76ec39c0716d009682521368a7bf9207b4e5dd5a79b01db"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160919163/metadata.json",
+      "size_bytes": 1476,
+      "suffix": ".json",
+      "sha256": "33c4dbb0371c43dfefd162c6484123db5c5f3efa9bd49295a0f16fe41ab1dd34"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160919163/ordered_arrays.npz",
+      "size_bytes": 4241408,
+      "suffix": ".npz",
+      "sha256": "d7df4202beda94e1e58cac0ad21b40412ba49b0ec74ff14279b827276e87e95b"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160919163/quicklook.png",
+      "size_bytes": 1448787,
+      "suffix": ".png",
+      "sha256": "078e484b3f9d9e33f64416a8172f62099976e3214ed68889f74cfa06eb7ca609"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20160919163/raw_arrays.npz",
+      "size_bytes": 4237644,
+      "suffix": ".npz",
+      "sha256": "12062fb12264704aa6ca726fab57bf4851ef1f8925fe9443c8acfb9f2d843a0d"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20170811020/metadata.json",
+      "size_bytes": 1450,
+      "suffix": ".json",
+      "sha256": "b328530bfaafb5db4ddd7a64d46096ce83546e16378e39909f64ffae9859a8c8"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20170811020/ordered_arrays.npz",
+      "size_bytes": 1855400,
+      "suffix": ".npz",
+      "sha256": "71cfea8a89216e08d6a2a6d3ad454061ad00bd2956be0ce60a64e6583fcb5617"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20170811020/quicklook.png",
+      "size_bytes": 1642830,
+      "suffix": ".png",
+      "sha256": "af02d7ed6f273c9550429c3629eab2ec0e01649b96e1b9594b03d41b2f0a71e2"
+    },
+    {
+      "path": "ots_data_extracted/20260914/20170811020/raw_arrays.npz",
+      "size_bytes": 1851235,
+      "suffix": ".npz",
+      "sha256": "3555a1e6715400a6b651ac5f378917fe2128364526471a1107e327321f81d31a"
+    },
+    {
+      "path": "ots_data_extracted/20260914/manifest.json",
+      "size_bytes": 5251,
+      "suffix": ".json",
+      "sha256": "04e340c323ef9e10c39759a8d548b102b7e6007cc626fb51c903002f75dd5df1"
+    },
+    {
+      "path": "para.txt",
+      "size_bytes": 2912,
+      "suffix": ".txt",
+      "sha256": "2cdeaa4d9bb7649963bf4433ec56de5ec2ba55e42d66565f4c2a4b1059adabdc"
+    }
+  ],
+  "shots": [
+    {
+      "shot_id": "20160909153",
+      "shape": [
+        1024,
+        1344
+      ],
+      "intensity_values": 1376256,
+      "readback_verified": true,
+      "outputs": [
+        {
+          "path": "20160909153/metadata.json",
+          "size_bytes": 1477,
+          "suffix": ".json",
+          "sha256": "2b4c0aa225e472dfd40857a3fe799fa68ee1f6ca1be7c435964c5b8c890364af"
+        },
+        {
+          "path": "20160909153/ordered_arrays.npz",
+          "size_bytes": 4351753,
+          "suffix": ".npz",
+          "sha256": "ba666cf7662f0aaa7428268c6598f1c20dbc41870d9b39695fa674e9dffd7620"
+        },
+        {
+          "path": "20160909153/quicklook.png",
+          "size_bytes": 941314,
+          "suffix": ".png",
+          "sha256": "e9fa18376d9784dacd2126e8c09b63b25e173ebe5b6a7ac2177ab234c72cb06a"
+        },
+        {
+          "path": "20160909153/raw_arrays.npz",
+          "size_bytes": 4347346,
+          "suffix": ".npz",
+          "sha256": "72f89d3abee93a1bd76ec39c0716d009682521368a7bf9207b4e5dd5a79b01db"
+        }
+      ]
+    },
+    {
+      "shot_id": "20160919163",
+      "shape": [
+        1024,
+        1344
+      ],
+      "intensity_values": 1376256,
+      "readback_verified": true,
+      "outputs": [
+        {
+          "path": "20160919163/metadata.json",
+          "size_bytes": 1476,
+          "suffix": ".json",
+          "sha256": "33c4dbb0371c43dfefd162c6484123db5c5f3efa9bd49295a0f16fe41ab1dd34"
+        },
+        {
+          "path": "20160919163/ordered_arrays.npz",
+          "size_bytes": 4241408,
+          "suffix": ".npz",
+          "sha256": "d7df4202beda94e1e58cac0ad21b40412ba49b0ec74ff14279b827276e87e95b"
+        },
+        {
+          "path": "20160919163/quicklook.png",
+          "size_bytes": 1172699,
+          "suffix": ".png",
+          "sha256": "d2e8b13f59bdad89d81f717d288b375d3e94eb9c86b070b712633e4817448602"
+        },
+        {
+          "path": "20160919163/raw_arrays.npz",
+          "size_bytes": 4237644,
+          "suffix": ".npz",
+          "sha256": "12062fb12264704aa6ca726fab57bf4851ef1f8925fe9443c8acfb9f2d843a0d"
+        }
+      ]
+    },
+    {
+      "shot_id": "20170811020",
+      "shape": [
+        1024,
+        1344
+      ],
+      "intensity_values": 1376256,
+      "readback_verified": true,
+      "outputs": [
+        {
+          "path": "20170811020/metadata.json",
+          "size_bytes": 1450,
+          "suffix": ".json",
+          "sha256": "b328530bfaafb5db4ddd7a64d46096ce83546e16378e39909f64ffae9859a8c8"
+        },
+        {
+          "path": "20170811020/ordered_arrays.npz",
+          "size_bytes": 1855400,
+          "suffix": ".npz",
+          "sha256": "71cfea8a89216e08d6a2a6d3ad454061ad00bd2956be0ce60a64e6583fcb5617"
+        },
+        {
+          "path": "20170811020/quicklook.png",
+          "size_bytes": 1246366,
+          "suffix": ".png",
+          "sha256": "1c32bb143407774aeba3c177ba5e2842020c0611bc9e2c86179f3e3a970ce6ac"
+        },
+        {
+          "path": "20170811020/raw_arrays.npz",
+          "size_bytes": 1851235,
+          "suffix": ".npz",
+          "sha256": "3555a1e6715400a6b651ac5f378917fe2128364526471a1107e327321f81d31a"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "source_files_unchanged": true,
+  "total_intensity_values": 4128768,
+  "finished_at_utc": "2026-09-14T03:41:37.040477+00:00"
+}

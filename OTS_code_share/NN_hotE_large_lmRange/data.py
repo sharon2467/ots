@@ -175,7 +175,7 @@ def generate_sample(rng, physical_config, ion_distributions):
     spectra = []
     for wavelengths in physical_config["wavelength_bands"]:
         spectra.append(
-            ots_full_fourier.OTS_spectrum_full_fourier(
+            ots_full_fourier.OTS_spectrum_PV(
                 wavelengths,
                 physical_config["ss"],
                 physical_config["k_sh"],

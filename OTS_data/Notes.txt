@@ -1,0 +1,12 @@
+图像信息提取：
+h = get(gca,'children')；
+xx = h.XData;
+yy = h.YData;
+zz = h.CData;
+
+光谱分辨：
+#2016-153、#2016-163
+0.065nm FWHM
+
+#2017-020
+0.057nm FWHM

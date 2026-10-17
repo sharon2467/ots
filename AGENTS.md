@@ -1,6 +1,6 @@
 # OTS 仓库知识库与工作协议
 
-> 本文件是本仓库唯一的长期知识入口。canonical 本地主线同步日期：2026-08-30。
+> 本文件是本仓库唯一的长期知识入口。知识库更新日期：2026-10-17（用户授权仅插入已验收OTS_spectrum_PV及私有响应函数；实际桌面模块50项物理回归通过；现有数据/拟合/CLI不自动切换，实验拟合full未运行）；canonical本地主线同步日期仍为2026-09-09，未同步远端。
 > 当前实现事实来自同步时的 Git 工作树，不代表已提交版本。BSCC GPU 账号已发布本轮 canonical 候选并完成实机验收；π 集群仍保留旧版本，本轮未刷新。
 
 ## 0. 每次会话必须执行的协议
@@ -64,12 +64,15 @@ canonical 主数据流：
 
 | 文件 | 责任 |
 |---|---|
-| `phyEqns/ots_full_fourier.py` | 三物种归一化 `v/f`、显式低通 Fourier、相速度插值和分段归一化 OTS 正向模型 |
+| `phyEqns/ots_full_fourier.py` | 三物种归一化 `v/f` 的 full-Fourier 正向模型，以及独立的双离子 Maxwellian 式 (7)–(9) 解析 OTS 路径 |
 | `data.py` | 生成/读取 metadata-first Parquet，构造温度派生值和 `dataset_manifest.json` |
 | `model.py` | `OTSRegressor`、Hermitian 投影、严格 checkpoint 验证与加载 |
 | `train.py` | 仅 train/validation 的训练、早停、候选选择和 checkpoint/history/曲线输出 |
 | `evaluation.py` | 冻结 checkpoint 的独立 test 推理、指标、预测和两张图 |
 | `main.py` | 唯一 canonical CLI：`generate/train/evaluate/all` |
+| `extract_ots_data.py` | 独立实验 FIG 提取入口：读取完整时间—波长二维强度，导出原样/升序 NPZ、JSON 元数据和预览；不接入 canonical CLI 或训练格式 |
+| `fit_ots_experiments.py` / `improve_ots_pilot.py` | 独立实验逐行拟合与 pilot 受控改进；前者保存每行 scale、源索引及质量标记，后者保留相同八参数/边界并加强多初值搜索，另做论文条件对照；不接入 canonical CLI，当前未运行 full |
+| `spectral_fitting.py` | Zhao et al. (2019) IAW 八参数最小二乘拟合；输入波长/光谱及固定密度和仪器 FWHM，返回 `Te/Ti1/Ti2/uik/uek/A/B1/B2`；可绘制拟合/真实谱与温度 `Delta R` 等高线，也可对比纯 ion-1、纯 ion-2、平均离子和双离子理论谱 |
 | `phyEqns/ots_fourier.py` | 保留的非 canonical Fourier/论文复现相关实现；主数据生成不调用它 |
 | `phyEqns/ots_superGaussian.py` | 保留的超高斯解析/数值对照模型，非 canonical 主线 |
 | `paper_reproduction/generate_paper_dataset.py` | 独立生成论文 10-Gaussian 基准 Parquet，不覆盖 canonical 热电子数据 |
@@ -89,9 +92,9 @@ canonical 主数据流：
 
 当前工作树中六个被替代的根目录 Python 文件均不存在：`evaluateModel.py`、`genDataSet.py`、`genDataSet_full_fourier.py`、`quick_test.py`、`readData.py`、`train_v2.py`。它们不是当前入口，也不应恢复。
 
-当前存在七个 `unittest` 模块。BSCC 初始 staging Job `1463936` 与同步范围调整 staging Job `1464076` 均于 2026-08-30 运行 101 项，结果 `OK`，其中 2 项按设计跳过。
+当前存在七个 `unittest` 模块。2026-09-05 Windows 本机现场发现 119 项；目标物理模块 38 项全部通过（CUDA 可用，无跳过）。完整 discovery 中 109 项通过，另有 1 项失败和 9 项错误，均因当前 Windows 账户创建测试临时符号链接时报 `WinError 1314`；本轮未修改 registry/main 测试或实现。BSCC 初始 staging Job `1463936` 与同步范围调整 staging Job `1464076` 均于 2026-08-30 运行当时的 101 项，结果 `OK`，其中 2 项按设计跳过，该历史结果不能覆盖当前源码。
 
-- `tests/test_ots_full_fourier_t1.py`：Fourier、分布验证/插值、公共正向和源码合同；
+- `tests/test_ots_full_fourier_t1.py`：Fourier、分布验证/插值、full-Fourier 公共正向、解析式 (7)–(9) 双离子 Maxwellian 路径和源码合同；
 - `tests/test_data_t2.py`：分布构造、温度统计、样本、manifest 和 metadata-first loader；
 - `tests/test_model_train_t3.py`：网络、投影、checkpoint、划分/标准化、损失、候选和训练隔离；
 - `tests/test_evaluation_t4.py`：EVDF 重建、预测、指标、产物/图和评估隔离；
@@ -118,21 +121,21 @@ all:       新 run + 新 dataset + 新 checkpoint；输出到同一 run 的三�
 
 OTS 用探针激光照射等离子体，测量散射光的频率/波长分布。散射谱由电子密度涨落的动态结构因子 `S(k, omega)` 决定，因而携带沿散射波矢方向的电子速度信息。
 
-探测波矢和频移在论文中写成：
+仓库 `OTS_paper.pdf` 中的探测波矢和频移写成：
 
 ```text
 k_vector = k_i - k_s
 omega = omega_i - omega_s
 ```
 
-代码采用与之相反的差号来定义中间量：
+当前代码采用整体相反、彼此配套的差号来定义中间量：
 
 ```text
-k_vector_code = k_0 - (omega/c) * scattering_direction
+k_vector_code = (omega/c) * scattering_direction - k_0
 omega_shift_code = omega_scattered - omega_0
 ```
 
-只要波矢和频移符号保持配套，映射到相速度时可保持一致。canonical 的 `k_magnitude` 是入射与散射波矢差的模，不是单独的散射光波矢。
+这是 2026-09-05 实施前已存在、必须保留的用户未提交修改；它同时与 Zhao et al. (2019) 解析路径采用的 `k_s-k_i`、`omega_s-omega_i` 约定一致。只要波矢和频移符号保持配套，映射到相速度时可保持一致。canonical 的 `k_magnitude` 是入射与散射波矢差的模，不是单独的散射光波矢。
 
 ### 4.2 散射功率与动态结构因子
 
@@ -209,7 +212,7 @@ real ≈ 1 - rational_approximation(x)
 imag = sqrt(pi) * x * exp(-x^2)
 ```
 
-因此它更准确的名称是“基于 Faddeeva/等离子体色散函数的 Maxwellian 响应快速近似”。它不是类似 `scipy.special.wofz` 的通用复平面 Faddeeva 求值器。canonical `ots_full_fourier.py` 不调用它，而是对电子、H 和 C 的实际分布都生成 Fourier 表示并计算响应；`w_fast` 只属于保留的非 canonical 实现语境。
+因此它更准确的名称是“基于 Faddeeva/等离子体色散函数的 Maxwellian 响应快速近似”。它不是类似 `scipy.special.wofz` 的通用复平面 Faddeeva 求值器。canonical full-Fourier 路径不调用它，而是对电子、H 和 C 的实际分布都生成 Fourier 表示并计算响应；新增解析 Maxwellian 路径也不调用 `w_fast`，而是用 64 点 Gauss-Legendre 求积和大 `|x|` 十项渐近展开稳定计算 Zhao et al. 式 (9) 的 Dawson 形式。`w_fast` 只属于保留的非 canonical 实现语境。
 
 ### 4.6 超高斯分布
 
@@ -251,6 +254,20 @@ canonical 公共函数是 `OTS_spectrum_full_fourier`，流程为：
 - 网络原始 `forward` 不投影；损失和评估阶段对输出执行独立 Hermitian 投影，保证 `F(-K)=conj(F(K))`。
 - 这些 Fourier 函数是显式梯形积分，计算复杂度高，不是快速 FFT 实现。
 - `phyEqns/ots_fourier.py` 与其他对照正向模块仍存在，但不属于 canonical 数据生成路径。
+
+### 5.1 双离子 Maxwellian 解析路径
+
+`OTS_spectrum_maxwellian_two_ion(...)` 是与 full-Fourier 并列的公开基础函数，不被 `data.py` 或现有 CLI 自动调用。它接收 eV 单位的 `T_e_ev/T_i1_ev/T_i2_ev` 和三套独立漂移，直接计算一维解析 Maxwellian、Zhao et al. (2019) 式 (7) 的 `chi_e`、式 (8) 的两套独立 `chi_i`、式 (9) 的复响应及式 (2) 的双离子结构因子，再乘波长相关频移修正并按 `max(abs(power))` 归一化。
+
+数值实现 `_dawson_integral_eq9(...)` 在 `|x|<=8` 使用固定 64 点 Gauss-Legendre 计算无溢出的 `x*integral_0^1 exp[-x^2(1-t^2)]dt`，在更大 `|x|` 使用十项渐近展开；`_maxwellian_response_eq9(...)` 明确返回 `1-2*x*D(x)+i*sqrt(pi)*x*exp(-x^2)`。该路径不构造速度网格，不调用 `ft_x_n`、`fourier_landau_response`、`OTS_spectrum_full_fourier` 或 legacy `w_fast`。`E_i0/V` 仅为接口兼容而验证，归一化信号不含绝对功率、仪器卷积、背景、体元积分、碰撞、磁化或相对论修正。
+
+### 5.2 IAW 八参数 spectral fitting
+
+`spectral_fitting.fit_spectrum(...)` 是独立于 canonical CLI 的轻量拟合入口。它接收绝对波长 `wavelength_nm`、相对实验强度、预设电子密度 `electron_density_cm3` 和 Gaussian 仪器分辨率 `instrument_fwhm_nm`，复用 `OTS_spectrum_maxwellian_two_ion(...)`，按 Zhao et al. (2019) 式 (10) 的幅度和线性背景形式，用 `scipy.optimize.least_squares` 拟合并返回 `T_e_ev/T_i1_ev/T_i2_ev/u_ik_cm_s/u_ek_cm_s/A/B1/B2`。两种离子温度独立，仍共用 `u_ik`；默认物理条件为 `263.3 nm`、`90°`、完全电离 `C5H12`（H:C 数目比 12:5，`Z_H=1/Z_C=6`），调用者可通过关键字覆盖几何和双离子物性。实现只做一次有界局部优化，不含文件输入、CLI、梯度、`k` 展宽或 Monte Carlo。2026-09-06 在指定 Windows Python 3.11.9 下用不相等的双离子温度完成九种 H-He、H-C 和 Au-B 状态的无噪声正向/反向闭环，全部通过；最大重建光谱 relative L2 为 `2.846e-7`。
+
+`spectral_fitting.plot_fit_result(...)` 生成一张三联图：真实/测量光谱与最佳拟合谱对比，以及 `Te-Ti1`、`Te-Ti2` 两个温度平面的 `Delta R = R-R_min` 等高线；`R=sqrt(mean((P_fit-P_measured)^2))/A_fit`。扫描一个温度对时，其余参数固定在最佳拟合值，因此这些图表达局部参数敏感性，不是对其余参数重新优化后的 profile likelihood，也不能直接当作完整联合置信区间。可选 `true_result` 只负责标记合成真值，可选 `output_path` 保存 PNG。`main()` 为九种状态各保存一张三联图到源码旁的 `spectral_fitting_plots/`；不绘制论文中的梯度、`k` 展宽或 ±100 ps 样本点。
+
+`spectral_fitting.plot_ion_composition_spectra(...)` 对每个拟合结果生成 2×2 四联理论谱：纯 ion-1、纯 ion-2、数目分数加权的平均离子和原始双离子混合。平均离子采用 `Zbar=x*Z1+(1-x)*Z2`、同形式的平均质量和平均温度；例如 H-He `x_H=0.5` 得到 `Zbar=1.5`。四种谱直接调用 `OTS_spectrum_maxwellian_two_ion(...)`，不调用 `_fit_model` 或 `_gaussian_convolve`，因此不含 Gaussian 仪器展宽、拟合幅度 `A` 或背景 `B1/B2`；这些独立归一化谱用于比较假想组分描述，不是绝对功率的可加贡献分解。`main()` 将九张图写到 `spectral_fitting_composition_plots/`。
 
 ## 6. 当前代码使用的默认物理参数
 
@@ -489,8 +506,11 @@ canonical 子项目当前没有 `requirements.txt`、`pyproject.toml`、Conda en
 
 - 必需：Python、PyTorch、NumPy、PyArrow、Matplotlib；`load_dataset` 调用 PyArrow 的 `to_pandas()`，实际运行还需其 Pandas 转换依赖可用；
 - canonical 主线没有 Excel 读取器、SciPy 或额外训练框架依赖；
+- 独立 `spectral_fitting.py` 额外依赖 SciPy 的 `scipy.optimize.least_squares` 和 Matplotlib，不改变 canonical 四命令流水线依赖；
 - Slurm 路径需要 `sbatch`、`squeue`、`sacct` 和集群 module；
 - PDF/PPT 不是训练运行依赖。
+
+解析 Maxwellian 路径继续使用 PyTorch；`ots_full_fourier.py` 现在直接导入既有依赖 NumPy，仅在模块加载时生成固定 Gauss-Legendre 节点/权重。生产实现不依赖 SciPy，CUDA 路径也不做 NumPy 数据往返。
 
 版本注意：
 
@@ -504,7 +524,9 @@ canonical 子项目当前没有 `requirements.txt`、`pyproject.toml`、Conda en
 - 初始发布候选的 19 个 Python 文件已通过 AST/语法解析；删除远端 `docs/` 与 `paper_reproduction/` 后，当前 BSCC manifest 包含 15 个 Python 文件和 1 个 Slurm 文件。同步范围调整 staging Job `1464076` 在 Python 3.10/PyTorch 2.4 计算节点环境共运行 101 项 unittest，结果 `OK`（其中 2 项按设计跳过），CLI help、依赖导入、CUDA 可见性和 registry 临时目录检查也通过。
 - 2026-07-15 北京超算 GPU 计算节点实测环境：Python 3.10.14、PyTorch 2.4.0+cu121、NumPy 1.26.4、Pandas 2.3.3、PyArrow 22.0.0、Matplotlib 3.10.9；A100-PCIE-40GB 可见且 v2 数值自检通过。
 
-本地只完成静态、语法、发布清单和工作树检查；完整 unittest 在 BSCC staging 计算节点执行。不得据此推断当前 Windows 本机依赖齐全。
+2026-09-05 本机目标测试使用 `D:\anaconda1\envs\venus\python.exe`（Python 3.10、PyTorch 2.5.1+cu121、NumPy 2.1.2，CUDA 可用）；PyArrow 16.1.0 来自 `D:\anaconda1\python.exe`。目标模块 38 项 `OK`。完整 discovery 通过显式 `OTS_TEST_REAL_ARROW_PYTHON` 消除了分离环境的 PyArrow 问题，但当前账户即使请求非沙箱运行仍无 Windows 符号链接权限，最终为 119 项中 109 通过、1 失败、9 错误、0 跳过；失败/错误都发生在 registry/main 的临时符号链接测试，物理、data、model/train、evaluation 与 cleanup 测试均通过。
+
+截至 2026-08-30 的上一轮同步，本地只完成静态、语法、发布清单和工作树检查，完整 unittest 在 BSCC staging 计算节点执行；2026-09-05 的新增本机验证结果以上一段为准。不得由任一历史记录推断其他 Windows 环境依赖齐全或具备符号链接权限。
 
 ## 14. 当前数据与产物状态（动态，使用前复核）
 
@@ -643,8 +665,9 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 3. 相速度插值在网格外严格置零；扩大物理参数范围时必须检查相速度是否大量落在支持域外。
 4. 分段归一化已有 finite/正比例保护，但仍主动丢弃波段间相对强度。
 5. `phyEqns/ots_fourier.py`、超高斯和论文复现实现是保留的对照边界，不能未经验证替代 canonical `ots_full_fourier.py`。
+6. 新解析路径只适用于无碰撞、无磁、非相对论的一维 Maxwellian 单体元；其分段归一化同样丢弃绝对幅度。Dawson 的 64 点/阈值 8/十项渐近常数由当前验收范围验证，扩大 dtype、参数域或更改数值算法时必须重新对照高精度基准。
 下面一项是受保护的具体诊断任务结论，不能外推为 canonical 普遍性质。
-6. Job `1347309` 只证明本次 `m=3.5/5` 条件下解析与 Fourier 超高斯谱相差不到 0.9%；不能把该结论外推到任意参数或其他正向实现。
+7. Job `1347309` 只证明本次 `m=3.5/5` 条件下解析与 Fourier 超高斯谱相差不到 0.9%；不能把该结论外推到任意参数或其他正向实现。
 
 ### 工程与可复现性
 
@@ -654,6 +677,7 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 4. 生成、训练、评估都默认拒绝覆盖；复用 run 目录前必须明确检查目标路径或显式承担 `--overwrite` 后果。
 5. 本地 Git 当前无 remote；不要假设可以 push/pull。π 集群工作副本虽然使用同名恢复分支，但停在独立历史 `49fa64b`，与本地恢复分支不是同一提交链；同步文件不等于同步 Git 历史，禁止未经审查强推或重写任一侧历史。
 6. `TRAINING_RECOVERY_REPORT.md` 的作业状态和 `slurm/monitor_v2.py` 默认 Job ID 会过期。
+7. `spectral_fitting.py` 的 `C6+`、Gaussian 仪器线型、默认参数边界和单初值局部优化是第一版明确假设；应用到实验数据前应确认电离度、电子密度、仪器函数和初值，不能把局部最优直接解释为唯一物理解。
 
 ## 17. 变更或实验前的最小验证
 
@@ -671,6 +695,7 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 10. 按改动范围运行相应现有测试；没有现场运行时只记录测试存在，不声称通过。
 11. 修改物理公式后用已知归一化分布做数值对照，并确认所有输出、归一化比例和指标 finite。
 12. 保持论文复现、Slurm、远程记录和已完成训练证据的历史边界，不用本地主线现状重新解释既有结果。
+13. 修改解析 Maxwellian 路径时，须继续验证式 (9) 的奇偶性、阈值连续性和大参数渐近，两种离子各自的温度/质量/漂移、零组分惰性、离子完整参数交换不变性，以及解析路径不调用任何 Fourier helper。
 
 ## 18. 术语表
 
@@ -702,6 +727,20 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 
 ## 20. 维护记录
 
+- 2026-09-16：按用户要求在Fig.1(a/b/c)原位图上叠加旧算法选中位置，新增`docs/SPEC_PAPER_CURVE_PIXEL_OVERLAY_REVIEW.md`及独立产物`outputs/ots_experimental_fits/pixel_selection_review_20260916/`。重放旧RGB阈值、蓝线附近搜索和中位数规则，375/401/376个点与保存NPZ坐标完全一致；输出三张最终取点叠图、三张原图/全部候选/最终取点对照及逐列JSON。绿色标示中位数落在候选像素上，橙色标示落在候选之间（包含半像素，不自动等于误选）；遮挡不恢复、缺失点不连线。原位图、旧取点与旧算法哈希不变，六PNG回读和视觉检查完成。只用于用户审查取点可靠性，未重新配准、修改图轴、重新拟合或更改已有结果。
+- 2026-09-15：按用户目标改进pilot并解释review，先写`docs/SPEC_OTS_PILOT_IMPROVEMENT.md`，再新增八函数独立`improve_ots_pilot.py`。保持TH/TC独立、原A/B边界和每行scale；外层搜索五个非线性参数，A/B1/B2用有界线性最小二乘求解。复用原解析物理函数，8σ一维Gaussian核与原卷积数值等价；不平滑拟合输入。完成同15行/同范围、IAW范围、论文样本、论文坐标及共同Ti、密度共71例/1211候选；1个候选到迭代上限但未选中，所有最终解收敛。同15行SSE均未变差，最大两项下降24.43%和20.99%；自动6 ok/9 review，原8条review保留，新发现163行726温度多解。153行305强窄谱在部分配置中虽自动ok，仍标明人工复核，杂光来源仅为与论文描述相符的推断。
+- 2026-09-15：发表图像的灰谱噪声纹理定位Fig.1a/b为020源行234/660、c为153源行564；论文密度3.5e20/4e20/1e21 cm^-3、共同Ti对照得到Te/Ti=210.3/83.9、1404.2/884.6、1756.2/3262.0 eV，相对论文Te均<1%、Ti最大7.53%。主模型仍独立TH/TC，c的独立解还有仅差1.103% SSE的温度分支。图像配准提示153/163/020的论文时间偏移约+0.49/+0.63/+1.49 ns，两2016数据波长约+0.16 nm，020波长与原轴接近；这些不是原始校准，源坐标未改，Fig.1c文字2.2 ns与全图配准仍有约0.063 ns差异。原15行仍保留充气密度假设，不能套用论文三个样本的温度或密度。
+- 2026-09-15：改进审查入口`outputs/ots_experimental_fits/pilot_improved_20260915/IMPROVEMENT_REPORT.md`，含8条原review原因、15行主结果、论文/窗口/密度对照、8张汇总图和源图定位证据。指定Python3.11.9核验：三组合成新旧模型最大relative L2=3.66e-13、闭环3.18e-12；71例用原`_fit_model`独立重建最大8.85e-13；scale回乘最大绝对误差1.82e-12；输入/原拟合及物理源码哈希、原pilot22个产物哈希未变。新JSON/NPZ源索引、尺度、残差、边界、候选选择、逐案manifest及38个报告链接通过检查；原提取器、既有拟合器、物理代码及数据未改。SPEC改进任务完成；1759行full未运行，未同步远端。
+- 2026-09-14：按用户“执行，在完成 pilot 的时候停一下”实施 `fit_ots_experiments.py` 七函数独立脚本及 `docs/ots_experimental_pilot_config.json`。逐行以拟合范围内 `max(abs(I))` 归一化，JSON/NPZ 保存每行 `scale` 与源行号，不将 scale 作为拟合参数；沿用独立 TH/TC 八参数及用户当前 A∈[0,10]、B1/B2∈[-2,2] 边界。密度显式采用充气基准假设：2016 为 6e20、2017 为 3.5e20 cm^-3；时间保持 FIG 坐标。产物 `outputs/ots_experimental_fits/pilot_20260914/` 含审查报告 `PILOT_REVIEW.md`、15 行/45 候选、逐行谱/残差/scale 和局部敏感性图；三 shot ok/review 分别 3/2、1/4、3/2，无计算失败，总耗时约 301 秒。指定 Python 3.11.9 下三组合成谱闭环最大 relative L2=2.71e-11；异常合同、15 行回读/索引/scale 回乘、22 个输出哈希和记录的输入/源码哈希检查通过。存在触边、弱信号、温度非唯一与部分 ok 行结构性残差；ok 不表示已确认物理可信。SPEC T1–T3 完成、T4 待用户审查，1759 行 full 未运行；未改既有提取器、拟合器、正向物理模块和实验数据，未同步远端。
+- 2026-09-14：新增 `docs/SPEC_OTS_EXPERIMENTAL_PARAMETER_FITTING.md`，参考 `OTS_data/exp_ref_para.pdf`（用户称 exp_params；本地未发现该文件名）。用户明确选择 TH/TC 独立八参数，计划复用现有拟合器，采用 Gaussian 仪器展宽和线性背景，逐 FIG 时间行分析。实际数据现位于 `OTS_data/ots_data_extracted/`，三个 ordered NPZ 已与原 manifest 哈希核对一致；原 manifest 绝对输出路径为历史位置，读取用当前根及相对文件名。初版显示范围含 555/555/649 行，总 1759 行；密度需显式配置且区分充气基准与体元条件，论文时间偏移不应用。仅新增设计与知识库摘要，未实施拟合脚本或运行拟合，未改现有提取器、拟合器、物理源码和实验数据。
+- 2026-09-14：执行简化后的 `SPEC_OTS_DATA_EXTRACTION_PLAN.md`，新增独立六函数脚本 `extract_ots_data.py`。命令参数仅 `--input-dir/--output-dir`，输出目录必须新建。正式产物位于 `outputs/ots_data_extracted/20260914/`：三个 shot 各含 `raw_arrays.npz`、`ordered_arrays.npz`、`metadata.json`、`quicklook.png`，总 manifest 状态 complete。三份 `(1024,1344)` 矩阵合计 4,128,768 值保留原 dtype/负值/基底，升序版本仅反转波长及强度列，时间仍为 FIG 坐标。指定 Python 3.11.9 下 10 项临时边界测试通过，独立 SciPy 回读逐元素/类型/轴映射比较通过，六个源哈希不变、12 个产物哈希全部通过，三张预览逐一视觉核查。未实现任何切片逻辑，未扣背景、归一化、拟合、训练或同步远端。
+- 2026-09-14：只读分析根目录 `OTS_data/` 的六文件，形成 `OTS_code_share/NN_hotE_large_lmRange/docs/SPEC_OTS_DATA_EXTRACTION_PLAN.md`。三 FIG 均为 MATLAB v5，主 axes 的 image 保存 1024×1344 时间—波长强度矩阵，波长递减、时间递增；2016 两份为含负值 float64，2017 为带正基底 uint16。Notes.txt 给出仪器 FWHM 0.065/0.057 nm；5.4 ps 仅为时间采样步长。与参考 PDF Fig.5/10 的 shot 对应及 +0.5/+1.5 ns 时间偏移仅为图形对照候选，未确认为校准。参考充气密度不是逐时刻拟合密度。同日按用户要求简化 SPEC，范围收敛为完整二维矩阵读取、坐标整理、NPZ/JSON 导出和预览核查，删除所有切片与窗口聚合逻辑；保留原始数据与索引，不接入 canonical 训练格式。仅使用指定 Python 3.11.9 做结构、统计及临时图形复核，未实现正式提取器、未拟合、未修改数据或同步远端。
+- 2026-09-09：对桌面 `挑战计划中期考核报告模板-20260906.docx` 图5/图6完成只读峰宽核查，报告位于 `outputs/OTS图6核查报告_20260909/图6氢离子峰宽与双离子OTS计算核查报告.html`，附同纵轴数值重绘PNG。当前 `spectral_fitting.main()` 的H-C条件实际为Te=4800、TH=480、TC=720 eV，模板图6与H-C反演图注却写TH=720、TC=480，二者不可混用；历史原图参数日志未取得。图5条件纯H红峰FWHM约0.7064 nm，图6代码条件约0.06376 nm，图注条件约0.14863 nm，主要差异来自Te/TH而非纵轴。独立SciPy wofz参考在所有输入显式float64时与当前解析函数relative L2低于1e-11；默认 `_as_real_tensor` 先构造默认dtype再转目标dtype会对Python浮点参数产生中间float32舍入，本轮谱差异约0.012%–0.126%。当前241点、0.025 nm波长网格无法可靠解析约0.01265 nm的纯C窄峰；`_gaussian_convolve` 的等点权重不适合非均匀波长。上述问题仅形成报告，未改任何已有代码；指定Python 3.11.9下相关物理测试38项全部通过。当前组分绘图实际利用 `switch_scale_output=True` 取回scale，再把四谱统一除以混合谱峰值，并非各谱独立峰值为1；这些是不同假想等离子体的理论谱，不是混合谱各项的可加贡献。原模板未改，未执行数据生成、训练、远程同步或Slurm；临时SPEC归入报告附录后按用户要求清理。
+- 2026-09-05：按已批准 `SPEC_ZHAO2019_IAW_SPECTRAL_FITTING_REPRODUCTION.md` 新增单文件 `spectral_fitting.py`，复用解析双离子 Maxwellian 正向函数，实现 Zhao et al. 式 (10) 的 `Te/Ti/uik/uek/A/B1/B2` 有界无权最小二乘拟合和 Gaussian FWHM 展宽；未新增 CLI、绘图、文件 I/O 或测试模块。指定 Python 3.11.9 下依赖为 NumPy 2.2.3、SciPy 1.15.2、PyTorch 2.6.0+cu124；`py_compile` 和现有正向模型 38 项 unittest 通过，Figure 1(b) 参数无噪声闭环将残差平方和从 `0.8076011503` 降至 `3.5375481e-30` 并恢复全部七参数。
+- 2026-09-06：按已批准 `SPEC_SEPARATE_TWO_ION_TEMPERATURE_FITTING.md` 将 `spectral_fitting.fit_spectrum(...)` 从共同 `T_i` 的七参数接口替换为独立 `T_i1/T_i2` 的八参数接口；同步修改初值/边界、返回键、正向参数传递和 `main()` 闭环。指定 Python 3.11.9 下九种双离子状态全部恢复不相等的两种离子温度，最大重建光谱 relative L2 为 `2.846e-7`；未修改解析正向物理模块或 canonical CLI。
+- 2026-09-06：按用户明确要求跳过新 SPEC，参考 Zhao et al. (2019) Figure 1，在 `spectral_fitting.py` 增加 `plot_fit_result(...)`；每个拟合结果生成真实/拟合光谱、`Te-Ti1` 和 `Te-Ti2` 的 `Delta R` 三联图。九种状态 PNG 已由 `main()` 生成并完成 H-He、H-C、Au-B 代表图视觉检查；实现不含梯度、`k` 展宽或 ±100 ps 样本点。
+- 2026-09-08：按已批准 `SPEC_FITTED_ION_COMPOSITION_SPECTRA_PLOT.md` 在 `spectral_fitting.py` 新增 `plot_ion_composition_spectra(...)`，并只适配 `main()` 的物种标签、调用与输出目录。函数直接复用解析双离子公开 API，生成纯 ion-1、纯 ion-2、平均离子和真实双离子 2×2 四联理论谱；不含 Gaussian 仪器展宽、`A/B1/B2`，也未复制光谱物理公式。九种状态全部生成 PNG，H-He `x_H=0.5` 的平均离子为 `Zbar=1.5`，H-He/H-C/Au-B 代表图完成视觉检查。
+- 2026-09-05：按已批准 `SPEC_TEMPERATURE_DRIVEN_TWO_ION_OTS.md` 在 `ots_full_fourier.py` 新增独立双离子 Maxwellian 解析 OTS 路径，逐式实现 Zhao et al. (2019) 式 (7)–(9) 与式 (2)，两种离子使用独立温度；稳定 Dawson 使用 64 点 Gauss-Legendre 与大 `|x|` 十项渐近，不调用 full-Fourier 或 legacy `w_fast`。保留实施前用户已有的 `k_s-k_i` 三行修改并同步几何测试。目标 38 项含 CPU/CUDA 全部通过；完整 119 项中 109 通过，剩余 1 失败和 9 错误均为本机 `WinError 1314` 临时符号链接权限问题，未执行数据生成、训练、远端同步或 Slurm。
 - 2026-08-30：按用户明确确认从 BSCC 活动根删除 `docs/` 与实际存在的 `paper_reproduction/`，本地副本继续保留；同步 manifest 从 33 项调整为 16 项，SHA-256 为 `b8e99c97d1d89dc69b6951af8e2de2e069e6667616fd555061f6047bd4018aa5`。删除前 19 个条目归档 SHA-256 为 `bd96fafaf887ab8c5872bbf6d0475ddd8a728250b2138257b01dc2150ceb8a4f`；staging Job `1464076` 的 101 项 unittest 通过（2 项跳过），删除后 manifest、14 个 registry 链接、三组正式历史 SHA、备份归档和空队列均复核通过。大空间批次、ion1 与 π 未动。
 - 2026-08-30：按用户明确确认删除 BSCC 低风险批次的 7 个活动路径：根/`phyEqns` cache、失败 diagnostic run `1347306`、两个根 Parquet 兼容链接、旧 `datasets/` 和旧 `models/`。删除前生成 35 条全量清单和 36985-byte 可恢复压缩包，删除后 source manifest、全部 registry 目标及 BSCC v2/paper/ion1 正式 SHA 复核通过；大空间批次、ion1 和 π 未动。
 - 2026-08-30：完成 BSCC GPU 账号 `/home/bingxing2/home/scx6090/yhh/ots` 原地 canonical 更新。发布 `bscc_canonical_20260830_093427_20b0b35143a2`，引入三类 registry、四命令显式 run-dir、跨 run dataset/checkpoint 输入和 `canonical_all_bscc.slurm`；更新前 5705 个条目全部分类并将散落 legacy 文件归入既有 run。staging Job `1463936` 共运行 101 项 unittest，结果 `OK`（2 项按设计跳过）；canonical all 与跨 Dataset A/B GPU smoke Jobs `1463960/1463968/1463971/1463976/1463979/1463985` 全部完成。正式历史 SHA 通过，旧 `models/datasets` 兼容树和全部用户既有数据保留，π 未修改；删除候选只列清单，等待用户确认。
@@ -721,3 +760,11 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 - 2026-07-15：将 `$bscc-ssh-operations` 进一步缩减为 CPU/GPU SSH 登录和密码注入；移除 SCP/SFTP、上传下载和其他可由 agent 在登录后命令行直接执行的入口与说明。
 - 2026-07-15：精简北京超算协议。`$bscc-ssh-operations` 只封装密码注入，原生 SSH/SCP/SFTP 行为由 agent 直接控制；与任务有关的 Slurm 提交/取消和普通远端文件修改/传输无需另问，删除用户已有远端数据需确认。
 - 2026-07-15：首次全量合并仓库知识。审阅了当前 tracked/untracked 结构、论文 PDF、全部 13 个 Python 文件、legacy/v2 Slurm、训练恢复报告、演示稿检查文本和本地依赖状态；创建强制会话协议。
+
+
+## 2026-10-17 新增OTS_spectrum_PV（仅函数增量复制）
+
+用户批准在隔离工作树实施SPEC_OTS_SPECTRUM_PV.md并由主agent验收；随后明确要求复制到本桌面副本。仅在phyEqns/ots_full_fourier.py的__main__前原样插入私有_pv_fd_landau_response（781行）和公开OTS_spectrum_PV（860行），不覆盖原文件内容，不改变原函数/调用者，不复制测试/SPEC/历史产物。签名与full_fourier相同，fourier_modes仅兼容验证，只返回归一化intensity；同网格中心/单边差分、线性g插值，非节点两夹点直接斜率、精确节点合并，保留硬截断边界项与原物理组装。非零端点/非有限响应整次报错；不把非光滑离散有限值当真实奇点恢复。
+
+源设计和验收产物在 `C:/Users/win/.codex/worktrees/0d4a/ots/OTS_code_share/NN_hotE_large_lmRange/docs/SPEC_OTS_SPECTRUM_PV.md` 及 `C:/Users/win/.codex/worktrees/0d4a/ots/outputs/ots_spectrum_pv_validation_20261017/`。工作树50物理测试、27谱独立解析对照通过，4097点最坏relative L2=1.15954e-4，主agent独立复算一致。复制前物理模块SHA=ffb56c7f9208eff69a8f90c10d40a1c7a0b933087e4d9a3343d4b2012ca3d6d9；原字节与模块AST保留；两函数文本逐字符与源相同。实际导入本桌面模块，CPU32/64与CUDA64同输入输出逐元素一致，使用工作树测试源码指向本桌面生产模块50/50通过、0skip。未训练、未改数据格式、未自动切换data/拟合/CLI、未同步远端。
+

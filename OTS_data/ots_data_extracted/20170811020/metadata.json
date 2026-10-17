@@ -1,0 +1,64 @@
+{
+  "shot_id": "20170811020",
+  "source": {
+    "path": "20170811020.fig",
+    "size_bytes": 5049297,
+    "suffix": ".fig",
+    "sha256": "b0dcfc540aa3bf20f20841321af2adda5a655c99cb62c884adbbaf72443edb7a",
+    "instrument_fwhm_nm": 0.057,
+    "instrument_fwhm_source": {
+      "path": "Notes.txt",
+      "sha256": "9593675f2580f5241b0698971dbcdc076269de538e3cf6f8b650af4982ab0a37",
+      "basis": "shot mapping verified in SPEC_OTS_DATA_EXTRACTION_PLAN.md (2026-09-14)"
+    }
+  },
+  "object_path": "hgS_070000.children[0].children[0]",
+  "title": [
+    "Experimental Raw Data",
+    "Shot - 20170811020"
+  ],
+  "axis_labels": {
+    "wavelength": "Wavelength [nm]",
+    "time": "Time [ns]"
+  },
+  "units": {
+    "wavelength": "nm",
+    "time": "ns",
+    "intensity": "fig_native"
+  },
+  "shape": [
+    1024,
+    1344
+  ],
+  "intensity_dtype": "uint16",
+  "display": {
+    "XLim": [
+      261.3,
+      265.3
+    ],
+    "YLim": [
+      0.0,
+      3.5
+    ],
+    "CLim": [
+      1623,
+      4891
+    ],
+    "YDir": "reverse"
+  },
+  "intensity_processing_history": "unknown",
+  "time_reference": "fig",
+  "paper_time_offset_ns": null,
+  "coordinate_reordering": {
+    "rows_reversed": false,
+    "columns_reversed": true,
+    "index_base": 0
+  },
+  "instrument_fwhm_nm": 0.057,
+  "statistics": {
+    "finite": true,
+    "minimum": 1623.0,
+    "maximum": 4891.0,
+    "negative_count": 0
+  }
+}

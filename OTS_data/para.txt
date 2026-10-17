@@ -1,0 +1,56 @@
+针对您的问题，关于**Fig.5（简化圆柱腔实验）** 和**Fig.10（八面体球形腔实验）** 的汤姆逊散射测量，所涉及的等离子体参数和探针光性质总结如下。所有参数均源自文中对应实验设置的描述部分。
+
+---
+
+### 1. Fig.5 对应的实验（简化圆柱腔，Section III）
+- **等离子体密度**：  
+  **值**：\(6 \times 10^{20}\ \text{cm}^{-3}\)（完全电离时）  
+  **位置**：第6页，Fig.4上方文字段落：“The hohlraum is filled with pentane (C₅H₁₂) gas at a pressure of 0.6 atm, corresponding to an electron density of \(6 \times 10^{20}\ \mathrm{cm}^{-3}\) when fully ionized.”
+
+- **电离度**：  
+  文中未直接给出具体电离度数值，但明确假设**完全电离**（fully ionized）。气体为戊烷（C₅H₁₂），该密度对应完全电离状态下的电子密度。
+
+- **探针光波长**：  
+  **值**：\(4\omega\)，即 **263.3 nm**  
+  **位置**：第6页，实验设置描述中：“The \(4\omega\) (263.3 nm) probe beam is aligned horizontally...”
+
+- **探针光强度（能量/功率）**：  
+  **值**：能量 **90 J**，脉宽 **3 ns**（平均功率约 30 GW）  
+  **位置**：紧接上句：“with 90 J energy in a 3 ns pulse”。
+
+- **散射角度**：  
+  **值**：**90°**  
+  **位置**：第6页，Fig.4图注中：“The scattered light is collected downward, with a scattering angle of \(90^\circ\)”。
+
+---
+
+### 2. Fig.10 对应的实验（八面体球形腔，Section IV）
+- **等离子体密度**：  
+  **值**：\(\sim 3.5 \times 10^{20}\ \text{cm}^{-3}\)（完全电离时）  
+  **位置**：第9页，Fig.8上方段落：“The hohlraum is filled with pentane (C₅H₁₂) gas at a pressure of 0.35 atm, corresponding to an electron density of \(\sim 3.5\times 10^{20}\ \mathrm{cm}^{-3}\) when fully ionized.”
+
+- **电离度**：  
+  同样假设**完全电离**，未给出具体电离度数值。
+
+- **探针光波长**：  
+  **值**：\(4\omega\)，即 **263.3 nm**  
+  **位置**：第9页，实验设置描述中：“The \(4\omega\) probe beam is aligned vertically...”
+
+- **探针光强度（能量/功率）**：  
+  **值**：能量 **90 J**，脉宽 **3 ns**（平均功率约 30 GW）  
+  **位置**：紧接上句：“with \(90\ \mathrm{J}\) energy in a 3 ns pulse”。
+
+- **散射角度**：  
+  **值**：**90°**  
+  **位置**：第9页，Fig.8图注中：“with a scattering angle of \(90^\circ\)”。
+
+---
+
+### 补充说明
+- 两实验的探针光均为 **4ω（263.3 nm）**，散射角均为 **90°**，探针能量和脉宽也相同。
+- 等离子体密度因充气压力不同而异（圆柱腔 0.6 atm，球形腔 0.35 atm），但均以完全电离为基准给出电子密度。
+- 文中未直接给出电离度（如平均电荷态 \(\bar{Z}\)），但通过“完全电离”假设可理解为气体全部电离。
+
+
+
+

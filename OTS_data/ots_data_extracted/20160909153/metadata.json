@@ -1,0 +1,64 @@
+{
+  "shot_id": "20160909153",
+  "source": {
+    "path": "20160909153.fig",
+    "size_bytes": 7344758,
+    "suffix": ".fig",
+    "sha256": "bd904a0d4ccf5554a403bde1853c6965c27932b09129d75ca42cf7b41039f9b3",
+    "instrument_fwhm_nm": 0.065,
+    "instrument_fwhm_source": {
+      "path": "Notes.txt",
+      "sha256": "9593675f2580f5241b0698971dbcdc076269de538e3cf6f8b650af4982ab0a37",
+      "basis": "shot mapping verified in SPEC_OTS_DATA_EXTRACTION_PLAN.md (2026-09-14)"
+    }
+  },
+  "object_path": "hgS_070000.children[0].children[0]",
+  "title": [
+    "原始记录数据-TS离子谱",
+    "shot - 20160909153"
+  ],
+  "axis_labels": {
+    "wavelength": "\\lambda_s (nm)",
+    "time": "Time (ns)"
+  },
+  "units": {
+    "wavelength": "nm",
+    "time": "ns",
+    "intensity": "fig_native"
+  },
+  "shape": [
+    1024,
+    1344
+  ],
+  "intensity_dtype": "float64",
+  "display": {
+    "XLim": [
+      261.3,
+      265.3
+    ],
+    "YLim": [
+      -0.5,
+      2.5
+    ],
+    "CLim": [
+      0,
+      4000
+    ],
+    "YDir": "reverse"
+  },
+  "intensity_processing_history": "unknown",
+  "time_reference": "fig",
+  "paper_time_offset_ns": null,
+  "coordinate_reordering": {
+    "rows_reversed": false,
+    "columns_reversed": true,
+    "index_base": 0
+  },
+  "instrument_fwhm_nm": 0.065,
+  "statistics": {
+    "finite": true,
+    "minimum": -167.1300000000001,
+    "maximum": 27646.68,
+    "negative_count": 356097
+  }
+}
