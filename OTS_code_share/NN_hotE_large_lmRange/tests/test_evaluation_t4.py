@@ -211,7 +211,7 @@ class SpyNormalizedModel(nn.Module):
 class TestPrediction(unittest.TestCase):
     def _checkpoint(self, dtype="float64"):
         tensor_dtype = torch.float64 if dtype == "float64" else torch.float32
-        return {
+        return {"input_dim":1224, "output_dim":160, "fourier_modes":80,
             "dtype": dtype,
             "x_mean": torch.full((1224,), 2.0, dtype=tensor_dtype),
             "x_scale": torch.full((1224,), 4.0, dtype=tensor_dtype),

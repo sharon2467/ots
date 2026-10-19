@@ -105,26 +105,30 @@ _NATIVE_ARROW_WRITE_TABLE = data.pq.write_table
 
 def _fixed_sampler(seed=1234, ion_temperature=171.3, electron_temperature=1370.0):
     config = data._physical_config()
-    return data.Fixed_ion_sampler(
-        np.random.default_rng(seed), data.ION_SPECIES,
-        config["ion1_velocity_grid"], config["ion2_velocity_grid"],
-        config["electron_velocity_grid"], ion_temperature, electron_temperature,
-    )
+    config["ion1_dis"]["expected_temperature_ev"] = ion_temperature
+    config["ion2_dis"]["expected_temperature_ev"] = ion_temperature
+    config["electron_dis"]["expected_temperature_ev"] = electron_temperature
+    return data.Fixed_ion_sampler(np.random.default_rng(seed), config)
+
 
 
 def _fake_sample(rng, physical_config, sampler):
     token = float(rng.random())
     spectrum = torch.full((data.INPUT_DIM,), token, dtype=torch.float64)
     label = torch.arange(data.OUTPUT_DIM, dtype=torch.float64) + token
-    k_grid = torch.linspace(-2.0, 2.0, data.FOURIER_MODES, dtype=torch.float64)
+    velocity = torch.as_tensor(physical_config["electron_dis"]["velocity_grid_m_s"], dtype=torch.float64)
+    k_grid, _ = data.ots_full_fourier.ft_x_n(velocity, torch.zeros_like(velocity), data.FOURIER_MODES)
     return {
         "spectrum": spectrum,
         "label": label,
         "k_grid": k_grid,
-        "moments": {
-            "mean_velocity_m_s": token * 100.0,
-            "effective_temperature_ev": token * 1000.0,
-            "ratio_to_configured": token,
+        "sample_record": {
+            "electron_density_m3": physical_config["n_e"],
+            "species": {sp: {"expected_temperature_ev": physical_config[key]["expected_temperature_ev"],
+                              "expected_mean_velocity_m_s": 0.0,
+                              "actual_temperature_ev": token * 1000,
+                              "actual_mean_velocity_m_s": token * 100}
+                        for sp,key in data.SPECIES_BLOCKS},
         },
     }
 
@@ -234,6 +238,11 @@ class TestImportAndSourceContract(unittest.TestCase):
             try:
                 before = list(Path(temporary).iterdir())
                 importlib.reload(data)
+                # Discovery imports model/evaluation before this import-safety check.
+                for name in ("model", "evaluation"):
+                    module = sys.modules.get(name)
+                    if module is not None:
+                        module.OTSDataset = data.OTSDataset
                 after = list(Path(temporary).iterdir())
             finally:
                 os.chdir(original_cwd)
@@ -401,20 +410,17 @@ class TestMomentsAndStatistics(unittest.TestCase):
                 data.electron_moments(velocity, distribution, invalid)
 
     def test_temperature_statistics_are_population_statistics(self):
-        records = [
-            {"mean_velocity_m_s": 1.0, "effective_temperature_ev": 10.0, "ratio_to_configured": 0.5},
-            {"mean_velocity_m_s": 3.0, "effective_temperature_ev": 30.0, "ratio_to_configured": 1.5},
-            {"mean_velocity_m_s": 8.0, "effective_temperature_ev": 80.0, "ratio_to_configured": 4.0},
-        ]
+        fields = ("expected_temperature_ev", "expected_mean_velocity_m_s", "actual_temperature_ev", "actual_mean_velocity_m_s")
+        records = [{"species": {sp: {key: value for key in fields} for sp,_ in data.SPECIES_BLOCKS}} for value in (1.,3.,8.)]
         statistics = data.temperature_statistics(records)
-        self.assertEqual(
-            set(statistics),
-            {"mean_velocity_m_s", "effective_temperature_ev", "ratio_to_configured"},
-        )
-        self.assertEqual(set(statistics["mean_velocity_m_s"]), {"min", "max", "mean", "median", "std"})
-        self.assertAlmostEqual(statistics["mean_velocity_m_s"]["std"], float(np.std([1.0, 3.0, 8.0], ddof=0)))
-        for invalid in ([], [{}], [{"mean_velocity_m_s": math.nan, "effective_temperature_ev": 1.0, "ratio_to_configured": 1.0}]):
-            with self.subTest(records=invalid), self.assertRaises(ValueError):
+        self.assertEqual(set(statistics), {"e","i1","i2"})
+        for species in statistics:
+            self.assertEqual(set(statistics[species]), set(fields))
+            for field in fields:
+                self.assertEqual(set(statistics[species][field]), {"min","max","mean","median","std"})
+                self.assertAlmostEqual(statistics[species][field]["std"], float(np.std([1.,3.,8.])))
+        for invalid in ([], [{}], [{"species": {"e": {"actual_temperature_ev": math.nan}}}]):
+            with self.assertRaises(ValueError):
                 data.temperature_statistics(invalid)
 
 
@@ -478,8 +484,9 @@ class TestRealPVSample(unittest.TestCase):
             )
             recorded = manifest["splits"][split_name]["samples"][0]
             self.assertEqual(recorded["row"], 1)
-            for key, value in expected.items():
-                self.assertAlmostEqual(recorded[key], value, delta=max(abs(value) * 1.0e-12, 1.0e-12))
+            for oldkey, newkey in (("mean_velocity_m_s", "actual_mean_velocity_m_s"), ("effective_temperature_ev", "actual_temperature_ev")):
+                value = expected[oldkey]
+                self.assertAlmostEqual(recorded["species"]["e"][newkey], value, delta=max(abs(value) * 1e-12, 1e-12))
 
 
 class TestDatasetPairAndManifest(unittest.TestCase):
@@ -504,28 +511,11 @@ class TestDatasetPairAndManifest(unittest.TestCase):
             self.assertEqual(manifest["run_id"], "RUN")
             self.assertEqual(manifest["dataset_id"], "DATA")
             physical = manifest["physical_configuration"]
-            self.assertEqual(
-                set(physical),
-                {
-                    "fourier_modes",
-                    "probe_wavelength_nm",
-                    "scattering_angle_deg",
-                    "electron_density_m3",
-                    "electron_dis",
-                    "wavelength_bands_nm",
-                    "ion1_charge", "ion1_fraction", "ion1_mass_kg", "ion1_dis",
-                    "ion2_charge", "ion2_fraction", "ion2_mass_kg", "ion2_dis",
-                    "dataset",
-                },
-            )
             self.assertEqual(physical["dataset"], "fixed_ion")
             self.assertEqual(first["train_samples"], 2)
             self.assertEqual(first["test_samples"], 2)
-            self.assertEqual(
-                set(physical["electron_dis"]),
-                {"configured_reference_temperature_ev", "velocity_points", "velocity_range_c"},
-            )
-            self.assertEqual(tuple(item["points"] for item in physical["wavelength_bands_nm"]), (579, 304, 341))
+            self.assertEqual(set(physical["electron_dis"]), {"name", "mass_kg", "charge", "velocity_grid_m_s", "used_in_model", "expected_temperature_ev", "expected_mean_velocity_m_s"})
+            self.assertEqual(tuple(map(len, physical["wavelength_bands_nm"])), (579,304,341))
             for split_name, expected_seed in (("train", 1234), ("test", 1235)):
                 split = manifest["splits"][split_name]
                 self.assertEqual(
@@ -537,7 +527,7 @@ class TestDatasetPairAndManifest(unittest.TestCase):
                 self.assertEqual([sample["row"] for sample in split["samples"]], [1, 2])
                 self.assertEqual(
                     set(split["samples"][0]),
-                    {"row", "mean_velocity_m_s", "effective_temperature_ev", "ratio_to_configured"},
+                    {"row", "electron_density_m3", "species"},
                 )
                 self.assertEqual(split["file"], "dataset_{}.parquet".format(split_name))
                 self.assertEqual(
@@ -666,7 +656,7 @@ class TestMetadataFirstLoading(unittest.TestCase):
                     # correctly fixes its schema at 1384 names.  Bypass it to
                     # create a genuine 1383-column input for the reader test.
                     _write_raw_width_parquet(rows, path)
-                    with self.assertRaisesRegex(ValueError, "at least 1384"):
+                    with self.assertRaisesRegex(ValueError, "exactly 1384"):
                         data.load_dataset(path)
                 else:
                     data._write_parquet(rows, path)

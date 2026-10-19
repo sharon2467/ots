@@ -1,7 +1,10 @@
 # OTS 仓库知识库与工作协议
 
-> 本文件是本仓库唯一的长期知识入口。知识库更新日期：2026-10-19（新增SPEC_SECOND_DATASET_SAMPLER.md，计划沿现有sampler/Parquet链接入Fig1/Fig11，可配置光谱/速度网格和used_in_model、动态模型维数及三物种平等目标/实际T/u记录；所有anchor逻辑在子类中，期望值明确为设定目标，不能用实际矩回填。两数据集只用目标波长轴直接PV计算的干净理论谱，无仪器响应。本轮只改SPEC，未实施第二数据集。此前fixed_ion修复已独立验收，用户随后新增used_in_model字段；历史61项测试为55通过/2跳过/4项CLI因WinError1314受限，不代表本轮又运行测试。旧新模块/NPZ方案不再执行）；canonical全量主线同步日期仍为2026-09-09，本轮未同步远端。
-> 当前实现事实来自同步时的 Git 工作树，不代表已提交版本。BSCC GPU 账号已发布本轮 canonical 候选并完成实机验收；π 集群仍保留旧版本，本轮未刷新。
+> 本文件是本仓库唯一的长期知识入口。知识库更新日期：2026-10-20（SPEC_SECOND_DATASET_SAMPLER已由独立子agent实施并由主agent审查/独立验收：现有sampler/Parquet链接入Fig1/Fig11，光谱/速度轴及输出物种可配，模型维数随数据形状变化，三物种平等记录期望和实际T/u。默认fixed1224→160、Fig319→480，均为目标轴直接PV干净谱。主agent三套小训练闭环通过，fixed与实施前HEAD70f28dfa双精度谱/标签/K及RNG完全一致；70项相关测试64通过/2跳过/4项因Windows符号链接WinError1314受限。详见1.1及SPEC第6节。旧新增模块/NPZ方案不再执行）；canonical全量主线同步日期仍为2026-09-09，本轮未同步远端。
+> 当前实现事实来自本地 Git 工作树，不代表已提交版本。BSCC GPU 账号2026-08-30的canonical发布及π旧版本均属历史状态，本轮未刷新远端。
+> 2026-10-20文档补充：源码目录README.md提供两数据集的`main.py all`小规模一键命令、参数和输出位置，已对照当前CLI核查；本次未运行训练。
+> 2026-10-20完整测试复核：按VS Code发现配置运行128个测试方法，115通过、2跳过、2失败、9错误；其中10项未通过来自符号链接WinError1314，另一项是T6过时的“源码根目录只能有五个Python文件”断言，与已有四个实验工具脚本冲突。164个不同ID的子测试均通过；排除2个跳过方法后，计数正好对应VS Code的279/290。完整日志tmp/full_test_review_20261020.log；未修改测试或生产代码。
+> 2026-10-20 BSCC只读核查（覆盖上文未经现场验证的同步日期判断）：GPU活动根仍为2026-08-30范围调整后的16项发布，SOURCE_MANIFEST.sha256的SHA为b8e99c97d1d89dc69b6951af8e2de2e069e6667616fd555061f6047bd4018aa5，16项现场校验全部通过。主线与本地有六个源码文件差异，远端缺少OTS_spectrum_PV；Fig1/Fig11还依赖本地Windows路径的CSV。按用户“超出五文件预期先汇报”要求未同步、未提交作业；远端同步日期未推进。
 
 ## 0. 每次会话必须执行的协议
 
@@ -18,20 +21,31 @@
 
 本项目利用光学 Thomson 散射（Optical Thomson Scattering, OTS）光谱反演非 Maxwellian 电子速度分布函数（EVDF）。核心做法不是直接预测速度网格上的 `f_e(v)`，而是预测其低通 Fourier 表示，再通过逆 Fourier 变换恢复 EVDF。
 
-canonical 主数据流：
+canonical 主数据流（2026-10-20）：
 
 ```text
-电子 f_e(v) + 固定 H/C 离子 f_i1(v)/f_i2(v)
-  -> full-Fourier 三物种正向模型
-  -> 三段独立归一化光谱拼成 1224 维输入
-  -> train/test Parquet + 电子 80 个复 Fourier 系数标签（160 实数）
+sampler一次生成三物种VDF、事先目标T/u和本条ne
+  -> 现有三物种PV正向，直接在各目标波长轴计算干净归一化谱
+  -> 各段拼接L维输入，选中物种各M个复Fourier系数拼成2MS实数标签
+  -> metadata-first train/test Parquet + 三物种目标/实际矩manifest
   -> train Parquet 内固定划分 train/validation 并选模
   -> 严格 model.pt checkpoint
   -> 冻结 checkpoint 的独立 test 评估
-  -> coefficient/EVDF 指标、预测和图
+  -> 按选中物种分别计算coefficient/VDF指标、保存预测和图
 ```
 
 代码主目录：`OTS_code_share/NN_hotE_large_lmRange/`。
+
+### 1.1 2026-10-20增量实现事实（优先于下文旧固定维数描述）
+
+- `DistributionSampler(rng, physical_config).sample()`先调用子类`sample_parameters()`，再调用原三个分布方法，返回三套v/f、三物种期望T/u和本条ne。`Fixed_ion_sampler`保持原Gaussian算法和RNG消耗，记录目标1370/171.3/171.3 eV与零均速，但不缩放电子分布强行符合目标。`Fig1_Fig11_sampler`的子类方法独立读取74c1已有CSV的27Te/27Ti和组织Fig.1锚点，完成邻域参数与形状采样。
+- `_physical_config`和`_physical_config_fig1_fig11`提供两套配置；`wavelength_bands_nm`保存各段完整轴，三个`*_dis`保存质量、电荷、速度轴、`used_in_model`及默认目标。默认fixed三段1224点、Nv1000、仅电子输出160；Fig一段319点、各Nv4097、e/H/C输出480。每份数据坐标固定，长度及M可配置；当前PV正向仍是电子加两离子，不支持任意数量的物理离子。
+- `dataset_layout`只提取坐标/身份/选择/M，不复制anchor和逐样本参数。Parquet仍为首行metadata，L列波长后按选中e/i1/i2顺序逐块保存K/K，各物理行对应谱和`[Re,Im]`系数。模型首末维取x/y实际形状，Hermitian按每个物种的M独立处理，复用原训练循环。
+- 新manifest每行`species.e/i1/i2`都含`expected_temperature_ev/expected_mean_velocity_m_s/actual_temperature_ev/actual_mean_velocity_m_s`，包括未选为输出的物种；期望值来自生成前目标，实际值由最终v/f与本物种质量积分计算。新统计按三物种四字段平等组织，不再写电子专属ratio副本。旧manifest和原固定Parquet仍可读取。
+- 新checkpoint为原严格字段集合加`layout`，旧无layout格式仍支持；验证各K块与速度轴关系以及完整布局。评估旧checkpoint保持原M点重建轴，新格式用对应原速度轴。电子单输出沿用原路径；多物种或仅离子在e/i1/i2子目录保存原产物，三个`*_path`返回值为物种路径dict，`all`汇总同步记录实际路径。
+- 原`generate/all`新增`--dataset-kind fixed_ion|fig1_fig11`（默认fixed_ion）及可选`--generation-config` JSON路径；省略JSON时按所选数据集默认生成。所有anchor业务只在Fig子类；无FWHM、扩窗、卷积、中间轴重采样、噪声、背景或mask。真实实验/抠图输入尚未接入，未正式训练或同步远端。
+- 本阶段改动五个现有生产模块及测试，物理模块/registry不改。主agentseed20261020完成fixed、Fig和自定义双波段/不同Nv/M24/仅H+C三闭环，独立确认fixed float64谱/标签/K最大差0、RNG相同及float32行逐元素一致。Gaussian PV/解析relative L2由1.4225e-4随网格细化降至3.6891e-5；M80往返e/H/C误差约1.09e-5/1.49e-3/2.01e-3，仅代表本次Gaussian检查。
+- 新增`tests/test_second_dataset_t8.py`九项。主agent现场70项相关测试64通过、2个PyArrow条件测试跳过、4个main注册测试因WinError1314报错；不宣称CLI注册全通过。验收入口`docs/SPEC_SECOND_DATASET_SAMPLER.md`第6节，独立报告`tmp/second_dataset_acceptance_g2izky0c/acceptance.json`。下文固定1224/160/80、电子专属矩记录及full-Fourier调用链的旧说明应依本节和当前源码区分默认值、历史行为与已保留物理函数，不再作为当前通用接口合同。
 
 ## 2. 事实来源与可信度顺序
 
@@ -726,6 +740,14 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 演示稿还引用 Sheffield et al., *Plasma Scattering of Electromagnetic Radiation* (2011), Chapters 1–3，用于单电子散射、密度涨落、Vlasov/Fourier-Laplace 响应和动态结构因子推导。该书不在当前仓库中；需要逐字核对时必须取得原始资料，不能仅引用 PPT。
 
 ## 20. 维护记录
+
+- 2026-10-20（用户279/290截图完整复核）：沿.vscode/settings.json执行完整discovery，现场128方法=115通过/2跳过/2失败/9错误；176次subTest调用合并为164个不同ID，全部通过，因此115+164=279、128-2+164=290。main四项及registry六项均因创建符号链接WinError1314受阻，其中rollback测试在第一个链接即失败，未到预期第二次注入异常，表现为断言失败。T6一项仍以五个canonical根文件为精确全集，误排斥HEAD已存在的extract_ots_data.py/fit_ots_experiments.py/improve_ots_pilot.py/spectral_fitting.py；旧删除名单实际仍不存在。此前70项是局部回归，未覆盖T6/T7，不能视为全套通过。未修改生产代码、测试或系统权限；日志tmp/full_test_review_20261020.log。
+
+- 2026-10-20（BSCC迁移前只读比较）：经bscc-ssh-operations登录GPU账号，确认活动根为`/home/bingxing2/home/scx6090/yhh/ots`，无Git目录；原16项source manifest全部匹配，未发现清单内独立修改。五个根主线模块和`phyEqns/ots_full_fourier.py`与本地存在实质差异；远端六模块哈希匹配本地历史f432e97的LF内容。远端缺少PV及双离子Maxwellian解析入口，不能只覆盖五个根模块。测试另有data/model_train/evaluation/ots_full_fourier四文件实质更新，新增test_second_dataset_t8.py和compare_maxwellian_paths.py；main/registry/legacy_cleanup三个测试仅换行差异，两份保留物理模块和canonical Slurm逐字节相同。本地四个独立实验/拟合脚本远端不存在，不属本次canonical必需依赖。Fig默认points_csv仍为74c1 Windows绝对路径，迁移还需锚点CSV及generation-config的远端路径覆盖；现有Slurm没有透传dataset-kind/generation-config。14个registry链接无断链。squeue现场仅1579225 fast_cxy为PENDING，scontrol确认其工作目录属于tanliwei项目，不是OTS；未改作业、数据或任何远端文件。按用户要求不写SPEC，因超出五文件预期停止同步并汇报。
+
+- 2026-10-20（简短README）：按用户要求在源码目录新增README.md，提供指定Windows Python、fixed_ion/Fig1_Fig11两条all命令、规模/设备/JSON配置调整、产物位置及已有符号链接权限限制；示例使用16+4样本、32×16网络和3个epoch。先在第二数据集SPEC第7节补充文档任务，按当前CLI核查参数及默认值，diff检查通过；未改代码或运行训练。
+
+- 2026-10-20（第二数据集实施及主agent验收）：用户授权独立子agent实施SPEC，主agent审查并用不同seed复验。完成可配波段/三速度轴/M/输出子集、Fig专属anchor方法与干净PV样本、三物种平等目标/实际记录、动态模型/checkpoint/训练/评估及原CLI透传。修正Fig配置被旧1000点默认轴提前限制M和损坏新layout静默回退风险，保留旧数据/checkpoint。fixed float64谱/标签/K与HEAD70f28dfa完全一致，RNG及float32行一致；fixed1224→160、Fig319→480、自定义9→96三套5+2样本、8×4网络两epoch闭环通过。主agent最终70测试64通过/2跳过/4个既有WinError1314；新增9项全部通过。SPEC第6节记录数值误差、复验入口、临时报告和CLI限制。未改物理公式/registry/提取文件，未正式训练、git提交或远端同步。
 
 - 2026-10-19（删除第二数据集仪器响应设计）：按用户明确要求，从SPEC_SECOND_DATASET_SAMPLER.md删除FWHM配置及外层展宽、扩窗、卷积、中间波长重采样步骤；两个数据集均在目标波长轴直接调用PV并使用其逐段归一化理论谱。同步配置/生成伪代码及验收条款；仅改文档，生产代码未动。
 

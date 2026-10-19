@@ -8,6 +8,8 @@ from pathlib import Path
 import torch
 from torch import nn
 
+from data import OTSDataset, dataset_layout, validate_dataset, SPECIES_BLOCKS
+
 
 INPUT_DIM = 1224
 OUTPUT_DIM = 160
@@ -57,9 +59,9 @@ TRAINING_CONFIG_FIELDS = {
 
 
 class OTSRegressor(nn.Module):
-    """Map a 1224-point OTS spectrum to 80 complex Fourier coefficients."""
+    """Map configured OTS inputs to real/imaginary Fourier coefficient blocks."""
 
-    def __init__(self, hidden_sizes, dropout):
+    def __init__(self, hidden_sizes, dropout, *, input_dim=INPUT_DIM, output_dim=OUTPUT_DIM):
         super().__init__()
         if (
             not isinstance(hidden_sizes, (tuple, list))
@@ -76,11 +78,14 @@ class OTSRegressor(nn.Module):
         if not math.isfinite(dropout) or not 0.0 <= dropout < 1.0:
             raise ValueError("dropout must satisfy 0 <= dropout < 1.")
 
+        for dimension in (input_dim, output_dim):
+            if not isinstance(dimension, Integral) or isinstance(dimension, bool) or dimension <= 0:
+                raise ValueError("Model dimensions must be positive integers.")
         first, second = (int(hidden_sizes[0]), int(hidden_sizes[1]))
         self.hidden_sizes = (first, second)
         self.dropout = dropout
         self.network = nn.Sequential(
-            nn.Linear(INPUT_DIM, first),
+            nn.Linear(input_dim, first),
             nn.LayerNorm(first),
             nn.LeakyReLU(negative_slope=LEAKY_RELU_SLOPE),
             nn.Dropout(dropout),
@@ -88,7 +93,7 @@ class OTSRegressor(nn.Module):
             nn.LayerNorm(second),
             nn.LeakyReLU(negative_slope=LEAKY_RELU_SLOPE),
             nn.Dropout(dropout),
-            nn.Linear(second, OUTPUT_DIM),
+            nn.Linear(second, output_dim),
         )
         self.reset_parameters()
 
@@ -102,18 +107,19 @@ class OTSRegressor(nn.Module):
         return self.network(spectra)
 
 
-def hermitian_project(coefficients):
-    """Project the final 160 values so ``F(-K) = conjugate(F(K))``."""
-
+def hermitian_project(coefficients, *, fourier_modes=FOURIER_MODES):
+    """Project each [Re, Im] species block independently."""
     if not isinstance(coefficients, torch.Tensor) or coefficients.ndim < 1:
         raise ValueError("coefficients must be a tensor with a final dimension.")
-    if coefficients.shape[-1] != OUTPUT_DIM:
-        raise ValueError("coefficients must have final dimension 160.")
-    real = coefficients[..., :FOURIER_MODES]
-    imaginary = coefficients[..., FOURIER_MODES:]
+    if not isinstance(fourier_modes, Integral) or isinstance(fourier_modes, bool) or fourier_modes < 3:
+        raise ValueError("fourier_modes must be an integer of at least 3.")
+    if coefficients.shape[-1] == 0 or coefficients.shape[-1] % (2 * fourier_modes):
+        raise ValueError("Coefficient dimension must be a positive multiple of 2M.")
+    blocks = coefficients.reshape(*coefficients.shape[:-1], -1, 2, fourier_modes)
+    real, imaginary = blocks[..., 0, :], blocks[..., 1, :]
     projected_real = 0.5 * (real + torch.flip(real, dims=(-1,)))
     projected_imaginary = 0.5 * (imaginary - torch.flip(imaginary, dims=(-1,)))
-    return torch.cat((projected_real, projected_imaginary), dim=-1)
+    return torch.stack((projected_real, projected_imaginary), dim=-2).reshape_as(coefficients)
 
 
 def _require_exact_fields(payload, expected, name):
@@ -295,14 +301,17 @@ def validate_checkpoint(payload):
         raise ValueError("Checkpoint payload must be a dictionary.")
     if "pet1" in payload:
         raise ValueError("Legacy pet1 checkpoints are not supported.")
-    _require_exact_fields(payload, CHECKPOINT_FIELDS, "checkpoint")
+    _require_exact_fields(payload, CHECKPOINT_FIELDS | ({"layout"} if "layout" in payload else set()), "checkpoint")
 
     for name in ("run_id", "dataset_id", "checkpoint_id"):
         _require_nonempty_id(payload[name], name)
-    if payload["input_dim"] != INPUT_DIM or payload["output_dim"] != OUTPUT_DIM:
-        raise ValueError("Checkpoint input/output dimensions are invalid.")
-    if payload["fourier_modes"] != FOURIER_MODES:
-        raise ValueError("Checkpoint Fourier mode count must be 80.")
+    layout = dataset_layout(payload["layout"]) if "layout" in payload else None
+    input_dim = sum(map(len, layout["wavelength_bands_nm"])) if layout else INPUT_DIM
+    modes = layout["fourier_modes"] if layout else FOURIER_MODES
+    species_count = sum(layout[k]["used_in_model"] for _, k in SPECIES_BLOCKS) if layout else 1
+    output_dim = 2 * modes * species_count
+    if payload["input_dim"] != input_dim or payload["output_dim"] != output_dim or payload["fourier_modes"] != modes:
+        raise ValueError("Checkpoint dimensions disagree with its layout.")
     _validate_hidden_sizes(payload["hidden_sizes"], "hidden_sizes")
     dropout = float(payload["dropout"])
     if not math.isfinite(dropout) or not 0.0 <= dropout < 1.0:
@@ -319,12 +328,15 @@ def validate_checkpoint(payload):
     if not isinstance(payload["model_state"], dict) or not payload["model_state"]:
         raise ValueError("model_state must be a non-empty dictionary.")
 
-    _validate_checkpoint_tensor(payload, "x_mean", (INPUT_DIM,))
-    _validate_checkpoint_tensor(payload, "x_scale", (INPUT_DIM,), positive=True)
-    _validate_checkpoint_tensor(payload, "y_mean", (OUTPUT_DIM,))
-    _validate_checkpoint_tensor(payload, "y_scale", (OUTPUT_DIM,), positive=True)
-    _validate_checkpoint_tensor(payload, "k_grid", (FOURIER_MODES,))
-    _validate_checkpoint_tensor(payload, "wavelengths_nm", (INPUT_DIM,))
+    _validate_checkpoint_tensor(payload, "x_mean", (input_dim,))
+    _validate_checkpoint_tensor(payload, "x_scale", (input_dim,), positive=True)
+    _validate_checkpoint_tensor(payload, "y_mean", (output_dim,))
+    _validate_checkpoint_tensor(payload, "y_scale", (output_dim,), positive=True)
+    _validate_checkpoint_tensor(payload, "k_grid", (modes * species_count,))
+    _validate_checkpoint_tensor(payload, "wavelengths_nm", (input_dim,))
+    validate_dataset(OTSDataset(
+        torch.zeros((1, input_dim)), torch.zeros((1, output_dim)),
+        payload["wavelengths_nm"].detach().cpu(), payload["k_grid"].detach().cpu(), layout))
     _validate_training_config(payload["training_config"])
 
     selected = payload["selected_candidate"]
@@ -374,7 +386,8 @@ def load_model_checkpoint(path, device, checkpoint_id):
 
     dtype = torch.float64 if payload["dtype"] == "float64" else torch.float32
     regressor = OTSRegressor(
-        tuple(payload["hidden_sizes"]), float(payload["dropout"])
+        tuple(payload["hidden_sizes"]), float(payload["dropout"]),
+        input_dim=payload["input_dim"], output_dim=payload["output_dim"]
     ).to(device=device, dtype=dtype)
     regressor.load_state_dict(payload["model_state"], strict=True)
     regressor.eval()

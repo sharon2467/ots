@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from data import FOURIER_MODES, INPUT_DIM, OUTPUT_DIM, load_dataset
+from data import FOURIER_MODES, INPUT_DIM, OUTPUT_DIM, load_dataset, OTSDataset, SPECIES_BLOCKS, dataset_layout, _physical_config
 from model import hermitian_project, load_model_checkpoint
 
 
@@ -39,8 +39,8 @@ def _real_tensor(value, name):
 
 def _validate_k_grid(k_grid):
     k_grid = _real_tensor(k_grid, "k_grid")
-    if k_grid.shape != (FOURIER_MODES,):
-        raise ValueError("k_grid must have shape [80].")
+    if k_grid.ndim != 1 or len(k_grid) < 3:
+        raise ValueError("k_grid must be a vector with at least 3 points.")
     spacing = k_grid[1:] - k_grid[:-1]
     if not torch.all(spacing > 0):
         raise ValueError("k_grid must be strictly increasing.")
@@ -50,12 +50,12 @@ def _validate_k_grid(k_grid):
     return k_grid
 
 
-def reconstruct_real_evdf(coefficients, k_grid):
+def reconstruct_real_evdf(coefficients, k_grid, *, velocity=None):
     """Reconstruct real EVDFs with an explicit trapezoidal inverse integral."""
 
     coefficients = _real_tensor(coefficients, "coefficients")
-    if coefficients.ndim != 2 or coefficients.shape[1] != OUTPUT_DIM:
-        raise ValueError("coefficients must have shape [N, 160].")
+    if coefficients.ndim != 2 or coefficients.shape[1] != 2 * len(k_grid):
+        raise ValueError("coefficients must have shape [N, 2M] for the supplied K grid.")
     if coefficients.shape[0] <= 0:
         raise ValueError("coefficients must contain at least one sample.")
     k_grid = _validate_k_grid(k_grid).to(
@@ -65,18 +65,23 @@ def reconstruct_real_evdf(coefficients, k_grid):
     mode_count = len(k_grid)
     dk = k_grid[2] - k_grid[1]
     dx = 2.0 * math.pi / (mode_count * dk)
-    velocity = (
-        torch.linspace(
-            -1.0,
-            1.0,
-            mode_count,
-            device=coefficients.device,
-            dtype=coefficients.dtype,
+    if velocity is None:
+        velocity = (
+            torch.linspace(
+                -1.0,
+                1.0,
+                mode_count,
+                device=coefficients.device,
+                dtype=coefficients.dtype,
+            )
+            * mode_count
+            * dx
+            / 2.0
         )
-        * mode_count
-        * dx
-        / 2.0
-    )
+    else:
+        velocity = torch.as_tensor(velocity, dtype=coefficients.dtype, device=coefficients.device)
+        if velocity.ndim != 1 or len(velocity) < 2 or not torch.isfinite(velocity).all() or not torch.all(velocity[1:] > velocity[:-1]):
+            raise ValueError("velocity must be finite and strictly increasing.")
 
     trapezoid_weights = torch.ones_like(k_grid)
     trapezoid_weights[0] = 0.5
@@ -84,8 +89,8 @@ def reconstruct_real_evdf(coefficients, k_grid):
     phase = k_grid.reshape(-1, 1) * velocity.reshape(1, -1)
     cosine_basis = trapezoid_weights.reshape(-1, 1) * torch.cos(phase)
     sine_basis = trapezoid_weights.reshape(-1, 1) * torch.sin(phase)
-    real = coefficients[:, :FOURIER_MODES]
-    imaginary = coefficients[:, FOURIER_MODES:]
+    real = coefficients[:, :mode_count]
+    imaginary = coefficients[:, mode_count:]
     evdf = real @ cosine_basis - imaginary @ sine_basis
     evdf = evdf * dk / (2.0 * math.pi)
     if not torch.isfinite(evdf).all() or not torch.isfinite(velocity).all():
@@ -97,8 +102,8 @@ def predict_coefficients(model, spectra, checkpoint, batch_size, device):
     """Predict raw projected coefficients in batches without gradients."""
 
     spectra = _real_tensor(spectra, "spectra")
-    if spectra.ndim != 2 or spectra.shape[1] != INPUT_DIM:
-        raise ValueError("spectra must have shape [N, 1224].")
+    if spectra.ndim != 2 or spectra.shape[1] != checkpoint["input_dim"]:
+        raise ValueError("Spectral width must match checkpoint input_dim.")
     if spectra.shape[0] <= 0:
         raise ValueError("spectra must contain at least one sample.")
     if (
@@ -123,16 +128,16 @@ def predict_coefficients(model, spectra, checkpoint, batch_size, device):
             normalized_batch = (batch - x_mean) / x_scale
             predicted_normalized = model(normalized_batch)
             predicted_raw = predicted_normalized * y_scale + y_mean
-            predictions.append(hermitian_project(predicted_raw).cpu())
+            predictions.append(hermitian_project(predicted_raw, fourier_modes=checkpoint["fourier_modes"]).cpu())
     predicted = torch.cat(predictions, dim=0)
-    if predicted.shape != (len(spectra), OUTPUT_DIM):
+    if predicted.shape != (len(spectra), checkpoint["output_dim"]):
         raise ValueError("Model predictions have an invalid shape.")
     if not torch.isfinite(predicted).all():
         raise ValueError("Model predictions contain non-finite values.")
     return predicted
 
 
-def prediction_metrics(target, predicted, k_grid):
+def prediction_metrics(target, predicted, k_grid, *, velocity=None):
     """Compute the fixed coefficient, Hermitian, and EVDF metric set."""
 
     target = _real_tensor(target, "target").cpu()
@@ -142,9 +147,9 @@ def prediction_metrics(target, predicted, k_grid):
         or predicted.ndim != 2
         or target.shape != predicted.shape
         or target.shape[0] <= 0
-        or target.shape[1] != OUTPUT_DIM
+        or target.shape[1] != 2 * len(k_grid)
     ):
-        raise ValueError("target and predicted must have equal shape [N, 160].")
+        raise ValueError("target and predicted must have equal shape [N, 2M].")
     dtype = torch.float64 if target.dtype == torch.float64 else torch.float32
     predicted = predicted.to(dtype=dtype)
     k_grid = _validate_k_grid(k_grid).cpu().to(dtype=dtype)
@@ -156,8 +161,8 @@ def prediction_metrics(target, predicted, k_grid):
         coefficient_centered.square().sum(), min=denominator_floor
     )
 
-    velocity, true_evdf = reconstruct_real_evdf(target, k_grid)
-    _, predicted_evdf = reconstruct_real_evdf(predicted, k_grid)
+    velocity, true_evdf = reconstruct_real_evdf(target, k_grid, velocity=velocity)
+    _, predicted_evdf = reconstruct_real_evdf(predicted, k_grid, velocity=velocity)
     evdf_error = predicted_evdf - true_evdf
     evdf_centered = true_evdf - true_evdf.mean()
     evdf_r2 = 1.0 - evdf_error.square().sum() / torch.clamp(
@@ -172,8 +177,8 @@ def prediction_metrics(target, predicted, k_grid):
     absolute_area = torch.clamp(
         torch.trapz(predicted_evdf.abs(), velocity, dim=1), min=denominator_floor
     )
-    real = predicted[:, :FOURIER_MODES]
-    imaginary = predicted[:, FOURIER_MODES:]
+    real = predicted[:, :len(k_grid)]
+    imaginary = predicted[:, len(k_grid):]
     symmetry_error = (real - torch.flip(real, dims=(1,))).abs().mean() + (
         imaginary + torch.flip(imaginary, dims=(1,))
     ).abs().mean()
@@ -271,9 +276,9 @@ def _write_json(path, payload):
     os.replace(str(temporary), str(path))
 
 
-def _write_predictions(path, target, predicted, k_grid):
-    velocity, true_evdf = reconstruct_real_evdf(target, k_grid)
-    _, predicted_evdf = reconstruct_real_evdf(predicted, k_grid)
+def _write_predictions(path, target, predicted, k_grid, *, velocity=None):
+    velocity, true_evdf = reconstruct_real_evdf(target, k_grid, velocity=velocity)
+    _, predicted_evdf = reconstruct_real_evdf(predicted, k_grid, velocity=velocity)
     temporary = path.with_name(path.stem + ".tmp" + path.suffix)
     np.savez_compressed(
         str(temporary),
@@ -287,10 +292,10 @@ def _write_predictions(path, target, predicted, k_grid):
     os.replace(str(temporary), str(path))
 
 
-def _save_comparison(path, target, predicted, k_grid, sample_count):
+def _save_comparison(path, target, predicted, k_grid, sample_count, *, velocity=None, species_name="e"):
     sample_count = min(sample_count, len(target))
-    velocity, true_evdf = reconstruct_real_evdf(target[:sample_count], k_grid)
-    _, predicted_evdf = reconstruct_real_evdf(predicted[:sample_count], k_grid)
+    velocity, true_evdf = reconstruct_real_evdf(target[:sample_count], k_grid, velocity=velocity)
+    _, predicted_evdf = reconstruct_real_evdf(predicted[:sample_count], k_grid, velocity=velocity)
     columns = 2
     rows = int(math.ceil(sample_count / columns))
     figure, axes = plt.subplots(rows, columns, figsize=(11, 3.2 * rows), squeeze=False)
@@ -312,7 +317,7 @@ def _save_comparison(path, target, predicted, k_grid, sample_count):
         )
         axis.set_title("sample {}".format(index + 1))
         axis.set_xlabel("velocity (m/s)")
-        axis.set_ylabel("EVDF")
+        axis.set_ylabel(species_name + " VDF")
         axis.grid(alpha=0.2)
         axis.legend(fontsize=8)
     for index in range(sample_count, rows * columns):
@@ -330,12 +335,13 @@ def _save_sample_detail(
     predicted,
     k_grid,
     sample_index,
+    *, velocity=None, species_name="e",
 ):
     velocity, true_evdf = reconstruct_real_evdf(
-        dataset.coefficients[sample_index : sample_index + 1], k_grid
+        dataset.coefficients[sample_index : sample_index + 1], k_grid, velocity=velocity
     )
     _, predicted_evdf = reconstruct_real_evdf(
-        predicted[sample_index : sample_index + 1], k_grid
+        predicted[sample_index : sample_index + 1], k_grid, velocity=velocity
     )
     wavelengths = dataset.wavelengths_nm.detach().cpu().numpy()
     spectrum = dataset.spectra[sample_index].detach().cpu().numpy()
@@ -345,22 +351,23 @@ def _save_sample_detail(
 
     figure, axes = plt.subplots(2, 2, figsize=(12, 8))
     spectral_axis = axes[0, 0]
-    for start, stop, label in (
-        (0, 579, "ion"),
-        (579, 883, "red electron"),
-        (883, 1224, "blue electron"),
-    ):
-        spectral_axis.plot(wavelengths[start:stop], spectrum[start:stop], label=label)
+    lengths = ([len(band) for band in dataset.layout["wavelength_bands_nm"]]
+               if dataset.layout else [579, 304, 341])
+    start = 0
+    for index, length in enumerate(lengths):
+        stop = start + length
+        spectral_axis.plot(wavelengths[start:stop], spectrum[start:stop], label="band {}".format(index + 1))
+        start = stop
     spectral_axis.set_xlabel("wavelength (nm)")
     spectral_axis.set_ylabel("normalized intensity")
     spectral_axis.set_title("input spectrum")
     spectral_axis.grid(alpha=0.2)
     spectral_axis.legend(fontsize=8)
 
-    axes[0, 1].plot(k_values, target[:FOURIER_MODES].numpy(), "k-", label="truth")
+    axes[0, 1].plot(k_values, target[:len(k_grid)].numpy(), "k-", label="truth")
     axes[0, 1].plot(
         k_values,
-        candidate[:FOURIER_MODES].numpy(),
+        candidate[:len(k_grid)].numpy(),
         color="#2563eb",
         linestyle="--",
         label="prediction",
@@ -370,10 +377,10 @@ def _save_sample_detail(
     axes[0, 1].grid(alpha=0.2)
     axes[0, 1].legend(fontsize=8)
 
-    axes[1, 0].plot(k_values, target[FOURIER_MODES:].numpy(), "k-", label="truth")
+    axes[1, 0].plot(k_values, target[len(k_grid):].numpy(), "k-", label="truth")
     axes[1, 0].plot(
         k_values,
-        candidate[FOURIER_MODES:].numpy(),
+        candidate[len(k_grid):].numpy(),
         color="#2563eb",
         linestyle="--",
         label="prediction",
@@ -397,9 +404,9 @@ def _save_sample_detail(
         linestyle="--",
         label="prediction",
     )
-    axes[1, 1].set_title("reconstructed EVDF")
+    axes[1, 1].set_title("reconstructed " + species_name + " VDF")
     axes[1, 1].set_xlabel("velocity (m/s)")
-    axes[1, 1].set_ylabel("EVDF")
+    axes[1, 1].set_ylabel(species_name + " VDF")
     axes[1, 1].grid(alpha=0.2)
     axes[1, 1].legend(fontsize=8)
 
@@ -466,7 +473,13 @@ def evaluate_checkpoint(
         raise ValueError("test_data_path does not match manifest splits.test.file.")
 
     model, checkpoint = load_model_checkpoint(checkpoint_path, device, checkpoint_id)
-    dataset = load_dataset(test_data_path)
+    dataset = load_dataset(test_data_path, manifest.get("physical_configuration"))
+    checkpoint_layout = checkpoint.get("layout")
+    if checkpoint_layout is not None:
+        if dataset.layout != checkpoint_layout:
+            raise ValueError("Checkpoint and test dataset layouts do not match.")
+    elif dataset.layout is not None and dataset.layout != dataset_layout(_physical_config()):
+        raise ValueError("Old checkpoint requires the original fixed_ion layout.")
     manifest_sample_count = manifest["splits"]["test"].get("physical_samples")
     if manifest_sample_count != len(dataset.spectra):
         raise ValueError("Manifest and dataset physical sample counts do not match.")
@@ -474,9 +487,9 @@ def evaluate_checkpoint(
     checkpoint_wavelengths = (
         checkpoint["wavelengths_nm"].detach().cpu().to(dataset.wavelengths_nm.dtype)
     )
-    if not torch.allclose(dataset.k_grid, checkpoint_k, rtol=1.0e-5, atol=1.0e-12):
+    if dataset.k_grid.shape != checkpoint_k.shape or not torch.allclose(dataset.k_grid, checkpoint_k, rtol=1.0e-5, atol=1.0e-12):
         raise ValueError("Checkpoint and dataset K grids do not match.")
-    if not torch.allclose(
+    if dataset.wavelengths_nm.shape != checkpoint_wavelengths.shape or not torch.allclose(
         dataset.wavelengths_nm,
         checkpoint_wavelengths,
         rtol=1.0e-5,
@@ -493,7 +506,33 @@ def evaluate_checkpoint(
         config["batch_size"],
         device,
     )
-    metrics = prediction_metrics(dataset.coefficients, predicted, dataset.k_grid)
+    modes = checkpoint["fourier_modes"]
+    selected = [(species, key) for species, key in SPECIES_BLOCKS if checkpoint_layout[key]["used_in_model"]] if checkpoint_layout else [("e", "electron_dis")]
+    per_species = selected != [("e", "electron_dis")]
+    metrics, prediction_paths, comparison_paths, detail_paths = {}, {}, {}, {}
+    for index, (species, key) in enumerate(selected):
+        folder = output_dir / species if per_species else output_dir
+        species_predictions = folder / "predictions.npz"
+        species_comparison = folder / "comparison.png"
+        species_detail = folder / "sample_detail.png"
+        if not overwrite and any(path.exists() for path in (species_predictions, species_comparison, species_detail)):
+            raise FileExistsError("Refusing to overwrite existing species evaluation artifacts.")
+        prediction_paths[species], comparison_paths[species], detail_paths[species] = species_predictions, species_comparison, species_detail
+    output_dir.mkdir(parents=True, exist_ok=True)
+    for index, (species, key) in enumerate(selected):
+        coefficients = dataset.coefficients[:, index * 2 * modes:(index + 1) * 2 * modes]
+        candidate = predicted[:, index * 2 * modes:(index + 1) * 2 * modes]
+        k_grid = dataset.k_grid[index * modes:(index + 1) * modes]
+        velocity = checkpoint_layout[key]["velocity_grid_m_s"] if checkpoint_layout else None
+        metrics[species] = prediction_metrics(coefficients, candidate, k_grid, velocity=velocity)
+        prediction_paths[species].parent.mkdir(parents=True, exist_ok=True)
+        _write_predictions(prediction_paths[species], coefficients, candidate, k_grid, velocity=velocity)
+        _save_comparison(comparison_paths[species], coefficients, candidate, k_grid, config["plot_samples"], velocity=velocity, species_name=species)
+        # This plotting view keeps the full input band layout; it is not revalidated as a full output dataset.
+        view = OTSDataset(dataset.spectra, coefficients, dataset.wavelengths_nm, k_grid, dataset.layout)
+        _save_sample_detail(detail_paths[species], view, candidate, k_grid, config["detail_index"], velocity=velocity, species_name=species)
+    if not per_species:
+        metrics = metrics["e"]
     metrics_payload = {
         "run_id": run_id,
         "dataset_id": dataset_id,
@@ -506,32 +545,11 @@ def evaluate_checkpoint(
         "metrics": metrics,
     }
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-    _write_predictions(
-        predictions_path,
-        dataset.coefficients,
-        predicted,
-        dataset.k_grid,
-    )
-    _save_comparison(
-        comparison_path,
-        dataset.coefficients,
-        predicted,
-        dataset.k_grid,
-        config["plot_samples"],
-    )
-    _save_sample_detail(
-        detail_path,
-        dataset,
-        predicted,
-        dataset.k_grid,
-        config["detail_index"],
-    )
     _write_json(metrics_path, metrics_payload)
     return {
         "metrics": metrics,
         "metrics_path": metrics_path,
-        "predictions_path": predictions_path,
-        "comparison_path": comparison_path,
-        "sample_detail_path": detail_path,
+        "predictions_path": prediction_paths if per_species else prediction_paths["e"],
+        "comparison_path": comparison_paths if per_species else comparison_paths["e"],
+        "sample_detail_path": detail_paths if per_species else detail_paths["e"],
     }

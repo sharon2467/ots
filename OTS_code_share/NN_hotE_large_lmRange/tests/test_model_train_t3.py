@@ -470,7 +470,7 @@ class TestCandidateTraining(unittest.TestCase):
         validation_loader = DataLoader(TensorDataset(torch.ones(2, 1224), torch.ones(2, 160)), batch_size=1)
         validation_values = iter([3.0, 1.0, 2.0, 2.5])
 
-        def fake_epoch(regressor, loader, optimizer, device, statistics, epoch_config, training):
+        def fake_epoch(regressor, loader, optimizer, device, statistics, epoch_config, training, *, fourier_modes=80):
             if training:
                 with torch.no_grad():
                     next(regressor.parameters()).fill_(len(fake_epoch.training_calls) + 1.0)
@@ -562,7 +562,7 @@ class TestTrainModelFullPath(unittest.TestCase):
             }
             observed_loaders = []
 
-            def fake_candidate(hidden_sizes, train_loader, validation_loader, device, statistics, candidate_config):
+            def fake_candidate(hidden_sizes, train_loader, validation_loader, device, statistics, candidate_config, *, input_dim=1224, output_dim=160, fourier_modes=80):
                 observed_loaders.append((train_loader, validation_loader, statistics))
                 regressor = model.OTSRegressor(hidden_sizes, 0.0)
                 validation_loss = 5.0 if tuple(hidden_sizes) == (8, 4) else 1.0

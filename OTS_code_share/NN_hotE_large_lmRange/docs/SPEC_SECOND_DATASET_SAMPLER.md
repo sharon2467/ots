@@ -1,6 +1,6 @@
 # SPEC：接入 Fig.1/Fig.11 数据集及可配置输入输出
 
-日期：2026-10-19。状态：设计，尚未实施。本轮不修改代码。
+设计日期：2026-10-19。验收日期：2026-10-20。状态：已由独立子agent实施，主agent完成代码审查和独立验收；Windows registry发布测试受本机符号链接权限限制，详见第6节。
 
 ## 1. Requirements（需求）
 
@@ -192,7 +192,8 @@ Fixed三个采样方法保持当前数值逻辑；不因目标记录而改变旧
 
 **S6** `Fig1_Fig11_sampler.__init__(self, rng, physical_config)`
 ```text
-调用基类，self.anchors=self.load_anchors(config中的points_csv)
+调用基类，检查采样范围有限且有序、温度/密度为正、形状概率非负且和为1
+self.anchors=self.load_anchors(config中的points_csv)
 不修改共享config；不在这里抽取首条样本
 ```
 **S7** `Fig1_Fig11_sampler.load_anchors(self, points_csv: Path) -> dict`
@@ -360,6 +361,8 @@ Fourier切片由M推导；调用E2，沿用原四联图并标识物种
 E3预测一次；按选中物种切2M系数/K块，调用E4-E7和相应速度轴
 旧checkpoint继续原速度轴和路径；新电子单输出保留路径，多目标/仅离子按物种子目录
 metrics多物种分组，保留原ID/来源字段；不计算新增科学诊断
+返回metrics/metrics_path；电子单输出的三个产物路径字段仍为Path
+多物种或仅离子时，predictions_path/comparison_path/sample_detail_path为{species: Path}
 ```
 
 ### 3.5 main.py：只透传生成选择
@@ -376,18 +379,19 @@ metrics多物种分组，保留原ID/来源字段；不计算新增科学诊断
 **C3** `run_all(args)`
 ```text
 同C2读取并透传，pipeline_config记录实际生成选项；原generate/train/evaluate顺序不变
+pipeline_summary将评估返回的Path或{species: Path}转换为对应的相对路径或物种路径映射
 ```
 
 ## 4. Tasks（任务拆解）
 
 | 编号 | 任务 | 依赖 | 验证结果 |
 |---|---|---|---|
-| 1 | 统一静态配置和布局，参数化原Parquet/loader | 无 | 多波段、不同Nv和输出子集能读写 |
-| 2 | 建立统一sampler.sample与目标/实际记录，适配Fixed子类 | 1 | fixed_ion数值和rng不变，三个物种四字段齐全 |
-| 3 | 实现第二套物理配置及Fig1/Fig11子类方法 | 2 | 外层不读anchor，能生成干净理论样本 |
-| 4 | 参数化模型、loss、训练及checkpoint | 1 | 按数据形状训练、保存及重载 |
-| 5 | 接通既有评估和生成参数透传 | 3、4 | 两数据集在原流程完成小规模闭环 |
-| 6 | 完成以下验收并更新知识库 | 5 | 数值/维数/记录/兼容性有实测证据 |
+| 1 | 统一静态配置和布局，参数化原Parquet/loader | 无 | 已通过多波段、不同Nv和输出子集读写 |
+| 2 | 建立统一sampler.sample与目标/实际记录，适配Fixed子类 | 1 | 已验证fixed_ion数值/RNG不变及三物种四字段 |
+| 3 | 实现第二套物理配置及Fig1/Fig11子类方法 | 2 | 已复用已有CSV，外层不读anchor，生成干净理论样本 |
+| 4 | 参数化模型、loss、训练及checkpoint | 1 | 已通过动态维数训练、保存及重载 |
+| 5 | 接通既有评估和生成参数透传 | 3、4 | 已通过三套小规模闭环；CLI注册权限限制见第6节 |
+| 6 | 完成以下验收并更新知识库 | 5 | 已完成审查、独立复验及知识库同步 |
 
 ## 5. Acceptance Criteria / Tests（验收标准）
 
@@ -398,4 +402,24 @@ metrics多物种分组，保留原ID/来源字段；不计算新增科学诊断
 5. **训练闭环**：两数据集分别以小数据小网络完成参数更新、validation、保存/重载和独立test预测。模型首末维来自张量；同维数但波长/物种/速度轴不匹配时拒绝混用。旧checkpoint、旧Parquet仍可读。
 6. **范围**：所有新逻辑增量加入现有六模块，不新建vdf_data/hohlraum_data或第二套训练器；输入谱直接来自目标波长轴上的PV计算，无仪器响应、卷积或中间波长轴重采样。不改PV公式，不修改已提取文件，不实施实验反演或正式规模训练。沿用当前Windows符号链接限制，如CLI发布测试受WinError1314影响需如实单列，不能声称全套通过。
 
-本轮仅编写SPEC并核对当前接口及已有anchor数量/范围，以上任务和新验收尚未执行。
+## 6. 实施与验收记录（2026-10-20）
+
+独立子agent修改现有`data.py/model.py/train.py/evaluation.py/main.py`，迁移原测试夹具并新增`tests/test_second_dataset_t8.py`。正向物理模块、registry实现及已有提取数据未改；未新增数据模块或训练器。主agent审查发现并修复了Fig配置错误继承旧1000点网格对M的限制，并核对样本形状、逐物种投影、坐标验证和评估产物路径。
+
+- 基准为实施前HEAD `70f28dfa3748c0bd1d104ca1c453194ab58e025f`。主agent以seed `20261020`独立对比：fixed_ion的float64谱、标签、K最大绝对差均为0，RNG状态相同；float32 metadata和样本行逐元素一致。
+- 子agent使用seed `20261019`、主agent使用`20261020`分别完成三套真实PV小规模闭环：fixed `1224→160`、Fig `319→480`、双非均匀波段且Nv分别1001/1201/1401、M24、仅H/C的`9→96`。每套5条train、2条独立test，8×4小网络训练2个epoch，包含validation选模、checkpoint重载及逐物种评估。该规模只验收流程，不代表正式模型精度。
+- e、i1、i1+i2、e+i1+i2输出子集读写通过；同seed光谱和完整三物种记录不变。另独立验证M7时各单物种标签逐元素等于完整标签的对应块。实际矩由NumPy独立积分复核，目标值保留在生成之前；此次Fig样本目标/实际温度相对差最大约`4.6e-15`。
+- 已实际加载、预测和评估无layout旧checkpoint，原Parquet读取回归通过；错误物种语义、K/速度轴关系及不完整新layout被拒绝，不静默按旧格式解释。
+- Gaussian对照：4097速度点的PV/现有解析谱relative L2为`1.4225e-4`；细化至8193速度点及637波长点后为`3.6891e-5`。4097点、M80 Fourier往返relative L2为e `1.0888e-5`、H `1.4913e-3`、C `2.0052e-3`；这些数字只对应本次Gaussian检查，不保证任意温度/形状/网格均达到同等精度。
+- 主agent最终运行70项相关测试：64通过、2个独立PyArrow条件测试跳过、4个main注册测试因Windows `WinError 1314`无法创建符号链接而报错。新增t8的9项全部通过；生成参数透传和多物种summary映射已测试。未将受权限限制的CLI注册流程宣称为通过，未改registry来绕过限制。`git diff --check`通过。
+
+可复验脚本为仓库根目录`tmp/verify_second_dataset.py --seed 20261020`；必须使用AGENTS指定Python绝对路径。主agent报告为`tmp/second_dataset_acceptance_g2izky0c/acceptance.json`，子agent报告为`tmp/second_dataset_acceptance_o4zj86ak/acceptance.json`，均为本机临时验收产物。回归命令在源码目录运行：`-B -m unittest tests.test_data_t2 tests.test_model_train_t3 tests.test_evaluation_t4 tests.test_main_t5 tests.test_second_dataset_t8`。
+
+使用第二套数据只需在原`generate/all`命令增加`--dataset-kind fig1_fig11`；不提供`--generation-config`时使用本SPEC默认配置，不提供数据集选择时仍为fixed_ion。可选JSON中的`wavelength_bands_nm`为波长数组列表，`velocity_grids_m_s`及`used_in_model`按e/i1/i2键覆盖，`fourier_modes`指定M；Fig专属`points_csv`和`sampling`也可覆盖。没有接入真实实验谱或抠图谱反演，没有正式规模训练或远端同步。
+
+## 7. 简短运行说明补充（2026-10-20）
+
+- 需求：在源码目录新增简短README，说明如何一次运行生成、训练和评估。
+- 设计：直接展示既有`main.py all`的PowerShell命令，使用指定Python；列出两数据集选择、输出位置及当前符号链接权限要求。不新增或修改函数，无新增函数接口或伪代码。
+- 任务：核对现有CLI参数 → 编写可复制的小规模示例 → 核查参数和输出路径。
+- 验收：命令覆盖全部必需ID和run-dir，说明小规模示例用途、默认规模及重复运行需更换ID；只修改文档，不启动训练。

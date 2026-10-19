@@ -260,6 +260,8 @@ def _add_ids(parser, include_checkpoint):
 
 
 def _add_generation_options(parser):
+    parser.add_argument("--dataset-kind", choices=("fixed_ion", "fig1_fig11"), default="fixed_ion")
+    parser.add_argument("--generation-config", type=Path, default=None)
     parser.add_argument("--train-samples", type=int, default=5000)
     parser.add_argument("--test-samples", type=int, default=100)
     parser.add_argument("--seed", type=int, default=DEFAULT_CONFIG["seed"])
@@ -396,6 +398,12 @@ def _relative_path(path, base):
 
 
 def run_generate(args):
+    generation_config = None
+    if args.generation_config is not None:
+        with args.generation_config.open(encoding="utf-8") as stream:
+            generation_config = json.load(stream)
+        if not isinstance(generation_config, dict):
+            raise ValueError("generation-config must contain a JSON object.")
     run_dir = _preflight_output(
         "generate",
         args.run_id,
@@ -412,6 +420,7 @@ def run_generate(args):
         args.test_samples,
         args.seed,
         overwrite=args.overwrite,
+        dataset=args.dataset_kind, generation_config=generation_config,
     )
     _publish_registry_entries(
         [("runs", args.run_id, run_dir), ("datasets", args.dataset_id, data_dir)]
@@ -489,6 +498,12 @@ def _all_artifact_paths(run_dir):
 
 
 def run_all(args):
+    generation_config = None
+    if args.generation_config is not None:
+        with args.generation_config.open(encoding="utf-8") as stream:
+            generation_config = json.load(stream)
+        if not isinstance(generation_config, dict):
+            raise ValueError("generation-config must contain a JSON object.")
     run_dir = _preflight_output(
         "all",
         args.run_id,
@@ -511,6 +526,8 @@ def run_all(args):
         },
         "registry": _registry_summary(args.run_id, args.dataset_id, args.checkpoint_id),
         "generation": {
+            "dataset": args.dataset_kind,
+            "generation_config": generation_config,
             "train_samples": args.train_samples,
             "test_samples": args.test_samples,
             "seed": args.seed,
@@ -529,6 +546,7 @@ def run_all(args):
         args.test_samples,
         args.seed,
         overwrite=args.overwrite,
+        dataset=args.dataset_kind, generation_config=generation_config,
     )
     trained = train_model(
         args.run_id,
@@ -565,9 +583,12 @@ def run_all(args):
         "checkpoint": _relative_path(trained["checkpoint_path"], run_dir),
         "learning_curves": _relative_path(trained["learning_curves_path"], run_dir),
         "metrics": _relative_path(evaluated["metrics_path"], run_dir),
-        "predictions": _relative_path(evaluated["predictions_path"], run_dir),
-        "comparison": _relative_path(evaluated["comparison_path"], run_dir),
-        "sample_detail": _relative_path(evaluated["sample_detail_path"], run_dir),
+        "predictions": ({species: _relative_path(path, run_dir) for species, path in evaluated["predictions_path"].items()}
+                        if isinstance(evaluated["predictions_path"], dict) else _relative_path(evaluated["predictions_path"], run_dir)),
+        "comparison": ({species: _relative_path(path, run_dir) for species, path in evaluated["comparison_path"].items()}
+                        if isinstance(evaluated["comparison_path"], dict) else _relative_path(evaluated["comparison_path"], run_dir)),
+        "sample_detail": ({species: _relative_path(path, run_dir) for species, path in evaluated["sample_detail_path"].items()}
+                        if isinstance(evaluated["sample_detail_path"], dict) else _relative_path(evaluated["sample_detail_path"], run_dir)),
         "selected_candidate": trained["selected_candidate"],
         "best_validation_loss": trained["selected_candidate"]["best_validation_loss"],
     }

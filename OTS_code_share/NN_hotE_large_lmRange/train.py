@@ -370,10 +370,10 @@ def normalization_statistics(x_train, y_train):
         or y_train.ndim != 2
         or x_train.shape[0] <= 0
         or x_train.shape[0] != y_train.shape[0]
-        or x_train.shape[1] != INPUT_DIM
-        or y_train.shape[1] != OUTPUT_DIM
+        or x_train.shape[1] <= 0
+        or y_train.shape[1] <= 0
     ):
-        raise ValueError("Training tensors must have shapes [N,1224] and [N,160].")
+        raise ValueError("Training tensors must be nonempty matrices with equal sample counts.")
     if not torch.isfinite(x_train).all() or not torch.isfinite(y_train).all():
         raise ValueError("Training tensors contain non-finite values.")
     x_mean = x_train.mean(dim=0)
@@ -389,15 +389,15 @@ def coefficient_loss(
     y_mean,
     y_scale,
     raw_loss_weight,
+    *, fourier_modes=FOURIER_MODES,
 ):
     """Combine standardized and normalized raw coefficient MSE."""
 
     if predicted_normalized.shape != target_raw.shape:
         raise ValueError("Prediction and target shapes must match.")
-    if predicted_normalized.shape[-1] != OUTPUT_DIM:
-        raise ValueError("Coefficient tensors must have final dimension 160.")
-    if y_mean.shape != (OUTPUT_DIM,) or y_scale.shape != (OUTPUT_DIM,):
-        raise ValueError("y_mean and y_scale must have shape [160].")
+    output_dim = predicted_normalized.shape[-1]
+    if y_mean.shape != (output_dim,) or y_scale.shape != (output_dim,):
+        raise ValueError("Output statistics and coefficient dimensions must match.")
     if not torch.all(y_scale > 0):
         raise ValueError("y_scale must be strictly positive.")
     raw_loss_weight = float(raw_loss_weight)
@@ -405,7 +405,7 @@ def coefficient_loss(
         raise ValueError("raw_loss_weight must be between 0 and 1.")
 
     predicted_raw = predicted_normalized * y_scale + y_mean
-    predicted_raw = hermitian_project(predicted_raw)
+    predicted_raw = hermitian_project(predicted_raw, fourier_modes=fourier_modes)
     predicted_standardized = (predicted_raw - y_mean) / y_scale
     target_standardized = (target_raw - y_mean) / y_scale
     standardized_mse = functional.mse_loss(predicted_standardized, target_standardized)
@@ -416,7 +416,7 @@ def coefficient_loss(
     ) * standardized_mse + raw_loss_weight * normalized_raw_mse
 
 
-def run_epoch(model, loader, optimizer, device, statistics, config, training):
+def run_epoch(model, loader, optimizer, device, statistics, config, training, *, fourier_modes=FOURIER_MODES):
     """Run one sample-weighted finite training or validation epoch."""
 
     if not isinstance(training, bool):
@@ -442,6 +442,7 @@ def run_epoch(model, loader, optimizer, device, statistics, config, training):
                 y_mean,
                 y_scale,
                 config["raw_loss_weight"],
+                fourier_modes=fourier_modes,
             )
             if not torch.isfinite(loss):
                 raise RuntimeError("A non-finite coefficient loss was produced.")
@@ -475,6 +476,7 @@ def train_candidate(
     device,
     statistics,
     config,
+    *, input_dim=INPUT_DIM, output_dim=OUTPUT_DIM, fourier_modes=FOURIER_MODES,
 ):
     """Train one fresh candidate and retain its best validation state."""
 
@@ -486,7 +488,7 @@ def train_candidate(
     if len(matching_candidates) != 1:
         raise ValueError("hidden_sizes must identify exactly one configured candidate.")
     dropout = float(matching_candidates[0]["dropout"])
-    model = OTSRegressor(tuple(hidden_sizes), dropout).to(device)
+    model = OTSRegressor(tuple(hidden_sizes), dropout, input_dim=input_dim, output_dim=output_dim).to(device)
     optimizer_parameters = config["optimizer"]["parameters"]
     optimizer = torch.optim.AdamW(
         model.parameters(),
@@ -526,6 +528,7 @@ def train_candidate(
             statistics,
             config,
             training=True,
+            fourier_modes=fourier_modes,
         )
         validation_loss = run_epoch(
             model,
@@ -535,6 +538,7 @@ def train_candidate(
             statistics,
             config,
             training=False,
+            fourier_modes=fourier_modes,
         )
         scheduler.step(validation_loss)
         learning_rate = float(optimizer.param_groups[0]["lr"])
@@ -689,7 +693,9 @@ def train_model(
     if not _same_path(train_data_path, manifest_train_path):
         raise ValueError("train_data_path does not match manifest splits.train.file.")
 
-    dataset = load_dataset(train_data_path)
+    dataset = load_dataset(train_data_path, manifest.get("physical_configuration"))
+    input_dim, output_dim = dataset.spectra.shape[1], dataset.coefficients.shape[1]
+    fourier_modes = dataset.layout["fourier_modes"] if dataset.layout else FOURIER_MODES
     x_train, y_train, x_validation, y_validation = split_train_validation(
         dataset,
         resolved_config["validation_fraction"],
@@ -735,6 +741,7 @@ def train_model(
                 device,
                 statistics,
                 resolved_config,
+                input_dim=input_dim, output_dim=output_dim, fourier_modes=fourier_modes,
             )
         )
     selected = min(candidate_results, key=lambda result: result["best_validation_loss"])
@@ -749,9 +756,9 @@ def train_model(
         "dropout": selected["dropout"],
         "layer_norm": True,
         "leaky_relu_slope": LEAKY_RELU_SLOPE,
-        "input_dim": INPUT_DIM,
-        "output_dim": OUTPUT_DIM,
-        "fourier_modes": FOURIER_MODES,
+        "input_dim": input_dim,
+        "output_dim": output_dim,
+        "fourier_modes": fourier_modes,
         "x_mean": x_mean.detach().cpu(),
         "x_scale": x_scale.detach().cpu(),
         "y_mean": y_mean.detach().cpu(),
@@ -768,6 +775,8 @@ def train_model(
         "dtype": dtype_name,
         "training_config": resolved_config,
     }
+    if dataset.layout is not None:
+        checkpoint["layout"] = dataset.layout
     validate_checkpoint(checkpoint)
 
     output_dir.mkdir(parents=True, exist_ok=True)
