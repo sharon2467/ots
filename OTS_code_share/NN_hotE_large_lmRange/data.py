@@ -20,7 +20,8 @@ ELEMENTARY_CHARGE = 1.602176634e-19
 SPEED_OF_LIGHT = 2.99792458e8
 ELECTRON_MASS = 9.1093837015e-31
 PROTON_MASS = 1.67262192369e-27
-
+ION1_VELOCITY_POINTS = 1000
+ION2_VELOCITY_POINTS = 1000
 FOURIER_MODES = 80
 INPUT_DIM = 1224
 OUTPUT_DIM = 160
@@ -69,58 +70,7 @@ def normalize_distribution(v, f, name):
     return f / integral
 
 
-def sample_electron_evdf(num_points, rng):
-    """Sample the current three-background-plus-one-hot electron EVDF."""
 
-    if (
-        not isinstance(num_points, Integral)
-        or isinstance(num_points, bool)
-        or int(num_points) < 3
-    ):
-        raise ValueError("num_points must be an integer of at least three.")
-    num_points = int(num_points)
-    velocity_c = np.linspace(-0.8, 0.8, num_points, dtype=np.float64)
-    values = np.zeros(num_points, dtype=np.float64)
-
-    for _ in range(3):
-        center = rng.uniform(-0.06, 0.06)
-        sigma = rng.uniform(0.01, 0.05)
-        amplitude = rng.uniform(0.2, 2.5)
-        values += amplitude * np.exp(-((velocity_c - center) ** 2) / (2.0 * sigma**2))
-
-    center = rng.uniform(-0.4, 0.4)
-    sigma = rng.uniform(0.01, 0.05)
-    amplitude = rng.uniform(0.001, 0.045)
-    values += amplitude * np.exp(-((velocity_c - center) ** 2) / (2.0 * sigma**2))
-
-    velocity = torch.from_numpy(velocity_c * SPEED_OF_LIGHT)
-    distribution = torch.from_numpy(values)
-    distribution = normalize_distribution(velocity, distribution, "electron")
-    return velocity, distribution
-
-
-def build_fixed_ion_distributions(ion_species,reference_temperature_ev):
-    """Build normalized H and C Maxwellian VDFs on species-specific grids."""
-
-    reference_temperature_ev = float(reference_temperature_ev)
-    if not math.isfinite(reference_temperature_ev) or reference_temperature_ev <= 0:
-        raise ValueError("reference_temperature_ev must be finite and positive.")
-
-    distributions = {}
-    for suffix, mass in ion_species:
-        thermal_speed = math.sqrt(reference_temperature_ev * ELEMENTARY_CHARGE / mass)
-        velocity = torch.linspace(
-            -12.0 * thermal_speed,
-            12.0 * thermal_speed,
-            1000,
-            dtype=torch.float64,
-        )
-        values = torch.exp(-velocity.square() / (2.0 * thermal_speed**2))
-        distributions["v_{}".format(suffix)] = velocity
-        distributions["f_{}".format(suffix)] = normalize_distribution(
-            velocity, values, "ion-{}".format(suffix[-1])
-        )
-    return distributions
 
 
 def electron_moments(v_e, f_e, configured_ev):
@@ -160,16 +110,93 @@ def build_wavelength_bands(dtype):
     blue = torch.linspace(100.1144, 339.6504, 341, dtype=dtype) * 1.0e-9
     return ion, red, blue
 
+class DistributionSampler:
+    """Sampler for electron and ion velocity distribution functions."""
 
-def generate_sample(rng, physical_config, ion_distributions):
+    def __init__(self, rng, ion_species,ion1_velocity_grid,ion2_velocity_grid,electron_velocity_grid):
+        if not isinstance(rng, np.random.Generator):
+            raise TypeError("rng must be a numpy.random.Generator.")
+        self.rng = rng
+        self.ion_species = list(ion_species)
+        self.ion1_velocity_grid=ion1_velocity_grid
+        self.ion2_velocity_grid=ion2_velocity_grid
+        self.electron_velocity_grid=electron_velocity_grid
+    def sample_electron_vdf(self):
+        pass
+    def sample_ion1_vdf(self):
+        pass
+    def sample_ion2_vdf(self):
+        pass
+class Fixed_ion_sampler(DistributionSampler):
+    def __init__(self, rng, ion_species, ion1_velocity_grid,ion2_velocity_grid,electron_velocity_grid,reference_temperature_ion_ev,reference_temperature_electron_ev):
+        super().__init__(rng, ion_species,ion1_velocity_grid,ion2_velocity_grid,electron_velocity_grid) 
+        reference_temperature_ion_ev = float(reference_temperature_ion_ev)     
+        if not math.isfinite(reference_temperature_ion_ev) or reference_temperature_ion_ev <= 0:
+            raise ValueError("reference_temperature_ion_ev must be finite and positive.")
+        self.reference_temperature_ion_ev = reference_temperature_ion_ev
+        reference_temperature_electron_ev = float(reference_temperature_electron_ev)
+        if not math.isfinite(reference_temperature_electron_ev) or reference_temperature_electron_ev <= 0:
+            raise ValueError("reference_temperature_electron_ev must be finite and positive.")
+        self.reference_temperature_electron_ev = reference_temperature_electron_ev
+    def sample_ion_vdf(self,idx):
+        mass = self.ion_species[idx-1][1]
+        thermal_speed = math.sqrt(self.reference_temperature_ion_ev * ELEMENTARY_CHARGE / mass)
+        if idx==1:
+            velocity = self.ion1_velocity_grid
+        elif idx==2:
+            velocity = self.ion2_velocity_grid
+        values = torch.exp(-velocity.square() / (2.0 * thermal_speed**2))
+        values = normalize_distribution(velocity, values, "ion{}".format(idx))
+        return velocity, values
+    def sample_ion1_vdf(self):
+        return self.sample_ion_vdf(1)
+    def sample_ion2_vdf(self):
+        return self.sample_ion_vdf(2)
+    def sample_electron_vdf(self):
+        """Sample the current three-background-plus-one-hot electron EVDF."""
+        num_points = len(self.electron_velocity_grid)
+        velocity_c = self.electron_velocity_grid / SPEED_OF_LIGHT
+        values = np.zeros(num_points, dtype=np.float64)
+        
+        for _ in range(3):
+            center = self.rng.uniform(-0.06, 0.06)
+            sigma = self.rng.uniform(0.01, 0.05)
+            amplitude = self.rng.uniform(0.2, 2.5)
+            values += amplitude * np.exp(-((velocity_c - center) ** 2) / (2.0 * sigma**2))
+        
+        center = self.rng.uniform(-0.4, 0.4)
+        sigma = self.rng.uniform(0.01, 0.05)
+        amplitude = self.rng.uniform(0.001, 0.045)
+        values += amplitude * np.exp(-((velocity_c - center) ** 2) / (2.0 * sigma**2))
+        
+        velocity = torch.from_numpy(velocity_c * SPEED_OF_LIGHT)
+        distribution = torch.from_numpy(values)
+        distribution = normalize_distribution(velocity, distribution, "electron")
+        return velocity, distribution
+
+class Fig1_Fig11_sampler(DistributionSampler):
+    def __init__(self, rng, ion_species, ion1_velocity_grid,ion2_velocity_grid,electron_velocity_grid):
+        super().__init__(rng, ion_species,ion1_velocity_grid,ion2_velocity_grid,electron_velocity_grid)
+    def sample_ion1_vdf(self):
+        pass
+    def sample_ion2_vdf(self):
+        pass
+    def sample_electron_vdf(self):
+        pass
+def generate_sample(rng, physical_config,sampler):
     """Generate one spectrum, electron Fourier label, and moment record."""
 
-    v_e, f_e = sample_electron_evdf(physical_config["electron_velocity_points"], rng)
-    moments = electron_moments(
-        v_e, f_e, physical_config["electron_reference_temperature_ev"]
-    )
+    v_e, f_e = sampler.sample_electron_vdf()
+    v_i1, f_i1 = sampler.sample_ion1_vdf()
+    v_i2, f_i2 = sampler.sample_ion2_vdf()
     k_grid, coefficients = ots_full_fourier.ft_x_n(
         v_e, f_e, physical_config["fourier_modes"]
+    )
+    k_grid1, coefficients1 = ots_full_fourier.ft_x_n(
+        v_i1, f_i1, physical_config["fourier_modes"]
+    )
+    k_grid2, coefficients2 = ots_full_fourier.ft_x_n(
+        v_i2, f_i2, physical_config["fourier_modes"]
     )
 
     spectra = []
@@ -191,10 +218,10 @@ def generate_sample(rng, physical_config, ion_distributions):
                 physical_config["V"],
                 v_e=v_e,
                 f_e=f_e,
-                v_i1=ion_distributions["v_i1"],
-                f_i1=ion_distributions["f_i1"],
-                v_i2=ion_distributions["v_i2"],
-                f_i2=ion_distributions["f_i2"],
+                v_i1=v_i1,
+                f_i1=f_i1,
+                v_i2=v_i2,
+                f_i2=f_i2,
                 u_e=physical_config["u_e"],
                 u_i1=physical_config["u_i1"],
                 u_i2=physical_config["u_i2"],
@@ -204,6 +231,10 @@ def generate_sample(rng, physical_config, ion_distributions):
 
     spectrum = torch.cat(spectra)
     label = torch.cat((coefficients.real, coefficients.imag))
+    label1 = torch.cat((coefficients1.real, coefficients1.imag))
+    label2 = torch.cat((coefficients2.real, coefficients2.imag))
+    k_grid1 = k_grid1
+    k_grid2 = k_grid2
     if spectrum.shape != (INPUT_DIM,):
         raise ValueError("Generated spectrum must have shape [1224].")
     if label.shape != (OUTPUT_DIM,):
@@ -220,7 +251,11 @@ def generate_sample(rng, physical_config, ion_distributions):
         "spectrum": spectrum,
         "label": label,
         "k_grid": k_grid,
-        "moments": moments,
+        "label1": label1,
+        "k_grid1": k_grid1,
+        "label2": label2,
+        "k_grid2": k_grid2,
+
     }
 
 
@@ -257,11 +292,11 @@ def _physical_config():
     dtype = torch.float64
     scattering_angle = math.radians(123.0)
     bands = build_wavelength_bands(dtype)
-    zero_drift = torch.zeros(3, dtype=dtype)
     return {
         "fourier_modes": FOURIER_MODES,
-        "electron_velocity_points": ELECTRON_VELOCITY_POINTS,
-        "electron_reference_temperature_ev": ELECTRON_REFERENCE_TEMPERATURE_EV,
+        "electron_velocity_grid": ELECTRON_VELOCITY_POINTS,
+        "ion1_velocity_grid": ION1_VELOCITY_POINTS,
+        "ion2_velocity_grid": ION2_VELOCITY_POINTS,
         "wavelength_bands": bands,
         "ss": torch.tensor(
             [math.cos(scattering_angle), math.sin(scattering_angle), 0.0],
@@ -278,13 +313,10 @@ def _physical_config():
         "N_i2": 0.45,
         "m_i2": 12.0 * PROTON_MASS,
         "V": (1.0e-3) ** 3,
-        "u_e": zero_drift.clone(),
-        "u_i1": zero_drift.clone(),
-        "u_i2": zero_drift.clone(),
     }
 
 
-def _generate_split(count, seed, physical_config, ion_distributions):
+def _generate_split(count, seed, physical_config):
     if not isinstance(count, Integral) or isinstance(count, bool) or int(count) <= 0:
         raise ValueError("Physical sample count must be a positive integer.")
     if not isinstance(seed, Integral) or isinstance(seed, bool):
@@ -296,11 +328,10 @@ def _generate_split(count, seed, physical_config, ion_distributions):
     rows = np.empty((count + 1, INPUT_DIM + OUTPUT_DIM), dtype=np.float32)
     rows[0, :INPUT_DIM] = wavelengths.cpu().numpy().astype(np.float32)
     rng = np.random.default_rng(seed)
-    moment_records = []
     reference_k = None
-
+    sampler = Fixed_ion_sampler(rng, ION_SPECIES, physical_config["ion1_velocity_grid"],physical_config["ion2_velocity_grid"],physical_config["electron_velocity_grid"], ION_REFERENCE_TEMPERATURE_EV, ELECTRON_REFERENCE_TEMPERATURE_EV)
     for index in range(count):
-        sample = generate_sample(rng, physical_config, ion_distributions)
+        sample = generate_sample(rng, physical_config,sampler)
         k_grid = sample["k_grid"].detach().cpu()
         if reference_k is None:
             reference_k = k_grid
@@ -316,8 +347,7 @@ def _generate_split(count, seed, physical_config, ion_distributions):
         rows[index + 1, INPUT_DIM:] = (
             sample["label"].detach().cpu().numpy().astype(np.float32)
         )
-        moment_records.append({"row": index + 1, **sample["moments"]})
-    return rows, moment_records
+    return rows
 
 
 def _write_parquet(rows, path):
@@ -377,12 +407,11 @@ def generate_dataset_pair(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     physical_config = _physical_config()
-    ion_distributions = build_fixed_ion_distributions(ION_SPECIES, ION_REFERENCE_TEMPERATURE_EV)
-    train_rows, train_records = _generate_split(
-        train_samples, seed, physical_config, ion_distributions
+    train_rows = _generate_split(
+        train_samples, seed, physical_config
     )
-    test_rows, test_records = _generate_split(
-        test_samples, seed + 1, physical_config, ion_distributions
+    test_rows = _generate_split(
+        test_samples, seed + 1, physical_config
     )
     _write_parquet(train_rows, train_path)
     _write_parquet(test_rows, test_path)
@@ -391,9 +420,7 @@ def generate_dataset_pair(
     k_sh = physical_config["k_sh"] / torch.linalg.vector_norm(physical_config["k_sh"])
     cosine = torch.clamp(torch.dot(ss, k_sh), min=-1.0, max=1.0)
     scattering_angle_deg = math.degrees(math.acos(float(cosine.item())))
-    velocity_grid, _ = sample_electron_evdf(
-        physical_config["electron_velocity_points"], np.random.default_rng(seed)
-    )
+    velocity_grid=physical_config["electron_velocity_grid"]
     manifest = {
         "run_id": run_id,
         "dataset_id": dataset_id,
@@ -402,14 +429,31 @@ def generate_dataset_pair(
             "probe_wavelength_nm": physical_config["lm_0"] / 1.0e-9,
             "scattering_angle_deg": scattering_angle_deg,
             "electron_density_m3": physical_config["n_e"],
+            "ion1_charge": physical_config["Z_i1"],
+            "ion1_fraction": physical_config["N_i1"],
+            "ion1_mass_kg": physical_config["m_i1"],
+            "ion2_charge": physical_config["Z_i2"],
+            "ion2_fraction": physical_config["N_i2"],
+            "ion2_mass_kg": physical_config["m_i2"],
             "electron_dis": {
-                "configured_reference_temperature_ev": physical_config[
-                    "electron_reference_temperature_ev"
-                ],
                 "velocity_points": len(velocity_grid),
                 "velocity_range_c": [
                     float((velocity_grid[0] / SPEED_OF_LIGHT).item()),
                     float((velocity_grid[-1] / SPEED_OF_LIGHT).item()),
+                ],
+            },
+            "ion1_dis": {
+                "velocity_points": len(physical_config["ion1_velocity_grid"]),
+                "velocity_range_c": [
+                    float((physical_config["ion1_velocity_grid"][0] / SPEED_OF_LIGHT).item()),
+                    float((physical_config["ion1_velocity_grid"][-1] / SPEED_OF_LIGHT).item()),
+                ],
+            },
+            "ion2_dis": {
+                "velocity_points": len(physical_config["ion2_velocity_grid"]),
+                "velocity_range_c": [
+                    float((physical_config["ion2_velocity_grid"][0] / SPEED_OF_LIGHT).item()),
+                    float((physical_config["ion2_velocity_grid"][-1] / SPEED_OF_LIGHT).item()),
                 ],
             },
             "wavelength_bands_nm": [
@@ -420,16 +464,10 @@ def generate_dataset_pair(
             "train": {
                 "file": _relative_path(train_path, manifest_path.parent),
                 "seed": seed,
-                "physical_samples": len(train_records),
-                "samples": train_records,
-                "statistics": temperature_statistics(train_records),
             },
             "test": {
                 "file": _relative_path(test_path, manifest_path.parent),
                 "seed": seed + 1,
-                "physical_samples": len(test_records),
-                "samples": test_records,
-                "statistics": temperature_statistics(test_records),
             },
         },
     }
