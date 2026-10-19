@@ -155,7 +155,8 @@ class Fixed_ion_sampler(DistributionSampler):
     def sample_electron_vdf(self):
         """Sample the current three-background-plus-one-hot electron EVDF."""
         num_points = len(self.electron_velocity_grid)
-        velocity_c = self.electron_velocity_grid / SPEED_OF_LIGHT
+        velocity = self.electron_velocity_grid
+        velocity_c = velocity.detach().cpu().numpy() / SPEED_OF_LIGHT
         values = np.zeros(num_points, dtype=np.float64)
         
         for _ in range(3):
@@ -169,7 +170,6 @@ class Fixed_ion_sampler(DistributionSampler):
         amplitude = self.rng.uniform(0.001, 0.045)
         values += amplitude * np.exp(-((velocity_c - center) ** 2) / (2.0 * sigma**2))
         
-        velocity = torch.from_numpy(velocity_c * SPEED_OF_LIGHT)
         distribution = torch.from_numpy(values)
         distribution = normalize_distribution(velocity, distribution, "electron")
         return velocity, distribution
@@ -233,8 +233,6 @@ def generate_sample(rng, physical_config,sampler):
     label = torch.cat((coefficients.real, coefficients.imag))
     label1 = torch.cat((coefficients1.real, coefficients1.imag))
     label2 = torch.cat((coefficients2.real, coefficients2.imag))
-    k_grid1 = k_grid1
-    k_grid2 = k_grid2
     if spectrum.shape != (INPUT_DIM,):
         raise ValueError("Generated spectrum must have shape [1224].")
     if label.shape != (OUTPUT_DIM,):
@@ -255,7 +253,9 @@ def generate_sample(rng, physical_config,sampler):
         "k_grid1": k_grid1,
         "label2": label2,
         "k_grid2": k_grid2,
-
+        "moments": electron_moments(
+            v_e, f_e, physical_config["electron_reference_temperature_ev"]
+        ),
     }
 
 
@@ -292,11 +292,13 @@ def _physical_config():
     dtype = torch.float64
     scattering_angle = math.radians(123.0)
     bands = build_wavelength_bands(dtype)
-    return {
+    config = {
         "fourier_modes": FOURIER_MODES,
-        "electron_velocity_grid": ELECTRON_VELOCITY_POINTS,
-        "ion1_velocity_grid": ION1_VELOCITY_POINTS,
-        "ion2_velocity_grid": ION2_VELOCITY_POINTS,
+        "electron_velocity_grid": torch.from_numpy(
+            np.linspace(-0.8, 0.8, ELECTRON_VELOCITY_POINTS, dtype=np.float64)
+            * SPEED_OF_LIGHT
+        ),
+        "electron_reference_temperature_ev": ELECTRON_REFERENCE_TEMPERATURE_EV,
         "wavelength_bands": bands,
         "ss": torch.tensor(
             [math.cos(scattering_angle), math.sin(scattering_angle), 0.0],
@@ -313,7 +315,18 @@ def _physical_config():
         "N_i2": 0.45,
         "m_i2": 12.0 * PROTON_MASS,
         "V": (1.0e-3) ** 3,
+        "u_e": torch.tensor([0.0, 0.0, 0.0], dtype=dtype),
+        "u_i1": torch.tensor([0.0, 0.0, 0.0], dtype=dtype),
+        "u_i2": torch.tensor([0.0, 0.0, 0.0], dtype=dtype),
     }
+    for index, points in ((1, ION1_VELOCITY_POINTS), (2, ION2_VELOCITY_POINTS)):
+        thermal_speed = math.sqrt(
+            ION_REFERENCE_TEMPERATURE_EV * ELEMENTARY_CHARGE / config[f"m_i{index}"]
+        )
+        config[f"ion{index}_velocity_grid"] = torch.linspace(
+            -12.0 * thermal_speed, 12.0 * thermal_speed, points, dtype=dtype
+        )
+    return config
 
 
 def _generate_split(count, seed, physical_config):
@@ -328,8 +341,14 @@ def _generate_split(count, seed, physical_config):
     rows = np.empty((count + 1, INPUT_DIM + OUTPUT_DIM), dtype=np.float32)
     rows[0, :INPUT_DIM] = wavelengths.cpu().numpy().astype(np.float32)
     rng = np.random.default_rng(seed)
+    moment_records = []
     reference_k = None
-    sampler = Fixed_ion_sampler(rng, ION_SPECIES, physical_config["ion1_velocity_grid"],physical_config["ion2_velocity_grid"],physical_config["electron_velocity_grid"], ION_REFERENCE_TEMPERATURE_EV, ELECTRON_REFERENCE_TEMPERATURE_EV)
+    sampler = Fixed_ion_sampler(
+        rng, ION_SPECIES,
+        physical_config["ion1_velocity_grid"], physical_config["ion2_velocity_grid"],
+        physical_config["electron_velocity_grid"], ION_REFERENCE_TEMPERATURE_EV,
+        physical_config["electron_reference_temperature_ev"],
+    )
     for index in range(count):
         sample = generate_sample(rng, physical_config,sampler)
         k_grid = sample["k_grid"].detach().cpu()
@@ -347,7 +366,8 @@ def _generate_split(count, seed, physical_config):
         rows[index + 1, INPUT_DIM:] = (
             sample["label"].detach().cpu().numpy().astype(np.float32)
         )
-    return rows
+        moment_records.append({"row": index + 1, **sample["moments"]})
+    return rows, moment_records
 
 
 def _write_parquet(rows, path):
@@ -407,10 +427,10 @@ def generate_dataset_pair(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     physical_config = _physical_config()
-    train_rows = _generate_split(
+    train_rows, train_records = _generate_split(
         train_samples, seed, physical_config
     )
-    test_rows = _generate_split(
+    test_rows, test_records = _generate_split(
         test_samples, seed + 1, physical_config
     )
     _write_parquet(train_rows, train_path)
@@ -436,11 +456,15 @@ def generate_dataset_pair(
             "ion2_fraction": physical_config["N_i2"],
             "ion2_mass_kg": physical_config["m_i2"],
             "electron_dis": {
+                "configured_reference_temperature_ev": physical_config[
+                    "electron_reference_temperature_ev"
+                ],
                 "velocity_points": len(velocity_grid),
                 "velocity_range_c": [
                     float((velocity_grid[0] / SPEED_OF_LIGHT).item()),
                     float((velocity_grid[-1] / SPEED_OF_LIGHT).item()),
                 ],
+                "used_in_model": True,
             },
             "ion1_dis": {
                 "velocity_points": len(physical_config["ion1_velocity_grid"]),
@@ -448,6 +472,7 @@ def generate_dataset_pair(
                     float((physical_config["ion1_velocity_grid"][0] / SPEED_OF_LIGHT).item()),
                     float((physical_config["ion1_velocity_grid"][-1] / SPEED_OF_LIGHT).item()),
                 ],
+                "used_in_model": False,
             },
             "ion2_dis": {
                 "velocity_points": len(physical_config["ion2_velocity_grid"]),
@@ -455,19 +480,27 @@ def generate_dataset_pair(
                     float((physical_config["ion2_velocity_grid"][0] / SPEED_OF_LIGHT).item()),
                     float((physical_config["ion2_velocity_grid"][-1] / SPEED_OF_LIGHT).item()),
                 ],
+                "used_in_model": False,
             },
             "wavelength_bands_nm": [
                 _band_record(band) for band in physical_config["wavelength_bands"]
             ],
+            "dataset": "fixed_ion"
         },
         "splits": {
             "train": {
                 "file": _relative_path(train_path, manifest_path.parent),
                 "seed": seed,
+                "physical_samples": len(train_records),
+                "samples": train_records,
+                "statistics": temperature_statistics(train_records),
             },
             "test": {
                 "file": _relative_path(test_path, manifest_path.parent),
                 "seed": seed + 1,
+                "physical_samples": len(test_records),
+                "samples": test_records,
+                "statistics": temperature_statistics(test_records),
             },
         },
     }

@@ -1,6 +1,6 @@
 # OTS 仓库知识库与工作协议
 
-> 本文件是本仓库唯一的长期知识入口。知识库更新日期：2026-10-18（三VDF SPEC经独立子agent两轮审查后重写，仅保留任意物种/波段的模型和NPZ数据接口、Fig.1/Fig.11锚点生成e/H/C干净训练数据；默认319→480，无mask/密度输入/背景处理/实验反演或新增CLI，复用现有train_candidate及归一化、矩、划分、预测/逆变换核心；23个新增或参数化接口，尚未实施，未修改代码或训练。增量核对HEAD fac9f98的data.generate_sample已调用OTS_spectrum_PV，优先于下文“未切换”的历史摘要）；canonical全量主线同步日期仍为2026-09-09，本轮未同步远端。
+> 本文件是本仓库唯一的长期知识入口。知识库更新日期：2026-10-19（新增SPEC_SECOND_DATASET_SAMPLER.md，计划沿现有sampler/Parquet链接入Fig1/Fig11，可配置光谱/速度网格和used_in_model、动态模型维数及三物种平等目标/实际T/u记录；所有anchor逻辑在子类中，期望值明确为设定目标，不能用实际矩回填。两数据集只用目标波长轴直接PV计算的干净理论谱，无仪器响应。本轮只改SPEC，未实施第二数据集。此前fixed_ion修复已独立验收，用户随后新增used_in_model字段；历史61项测试为55通过/2跳过/4项CLI因WinError1314受限，不代表本轮又运行测试。旧新模块/NPZ方案不再执行）；canonical全量主线同步日期仍为2026-09-09，本轮未同步远端。
 > 当前实现事实来自同步时的 Git 工作树，不代表已提交版本。BSCC GPU 账号已发布本轮 canonical 候选并完成实机验收；π 集群仍保留旧版本，本轮未刷新。
 
 ## 0. 每次会话必须执行的协议
@@ -726,6 +726,14 @@ sbatch paper_reproduction/paper_fig3_diagnostic_bscc.slurm
 演示稿还引用 Sheffield et al., *Plasma Scattering of Electromagnetic Radiation* (2011), Chapters 1–3，用于单电子散射、密度涨落、Vlasov/Fourier-Laplace 响应和动态结构因子推导。该书不在当前仓库中；需要逐字核对时必须取得原始资料，不能仅引用 PPT。
 
 ## 20. 维护记录
+
+- 2026-10-19（删除第二数据集仪器响应设计）：按用户明确要求，从SPEC_SECOND_DATASET_SAMPLER.md删除FWHM配置及外层展宽、扩窗、卷积、中间波长重采样步骤；两个数据集均在目标波长轴直接调用PV并使用其逐段归一化理论谱。同步配置/生成伪代码及验收条款；仅改文档，生产代码未动。
+
+- 2026-10-19（第二数据集设计）：按用户要求新增`docs/SPEC_SECOND_DATASET_SAMPLER.md`，复用原生成/Parquet/训练链，保留用户新增的三个*_dis.used_in_model，波段和三物种速度轴按数据集固定且长度可配，输出选e/i1/i2非空子集，L→2MS；正向始终含三物种。新物理配置独立，基类sample统一返回分布/事先目标/本条ne，Fig子类方法负责全部anchor读取和邻域采样，外层没有anchor业务。用户明确纠正：期望T/u是希望生成的目标；解析/积分得到的分布矩都是实际值，不能相互回填。Fixed记录1370/171.3/171.3及零均速目标但不改变旧采样来强行达到目标；新manifest三物种每行均记录四字段，旧文件/checkpoint继续兼容。已核对74c1中Fig11为27Te/27Ti，范围148.81–1617.97及67.10–897.55 eV。新SPEC含配置、sampler、数据读写、模型/训练/评估和CLI透传的接口与伪代码；仅改文档，未运行新训练或测试，当前data.py SHA256=f381e2e0cef9561dd63b98da7ff57b79c12285a481a7fb17b8c49368c677e912未改。此设计取代此前三VDF新增模块/NPZ方案，fixed_ion兼容性SPEC保留为已完成阶段记录。
+
+- 2026-10-19（fixed_ion修复实施与主agent验收）：用户授权独立子agent实施SPEC，由主agent验收。仅改data.py五个函数及tests/test_data_t2.py，保留用户sampler结构、dataset/离子说明字段、自赋值删除和原PV/1224→160/Parquet。实际float64网格、NumPy/Tensor边界、电子矩与manifest记录、物理样本数均已修复。子agent seed20260710及主agent seed20261019分别完成连续10电子样本、两条真实谱、真实4+2 Parquet和8×4小网络单epoch训练/重载/独立test评估；主agent三物种轴/离子分布/K轴完全相同，电子VDF最大差9.926e-24，PV谱最大绝对差8.327e-15、relative L2 2.147e-15，Parquet读回逐元素相同，RNG及旧manifest字段一致。主agent重跑61项相关测试：55通过、2个独立PyArrow条件测试跳过、4个main发布/输入注册测试因本机symlink权限WinError1314报错，不能称全套通过；未改registry。SPEC第6节记录限制和复验步骤，主agent结果tmp/fixed_ion_acceptance_kj_fu4gf/acceptance.json；实现data.py SHA256=13a8efdd554cb327db352eb4fd160ca22b3e432500ce4eba3283341317c92c10。未修改其他生产模块、未实施Fig1/Fig11、未正式训练或同步远端。旧全局sample_electron_evdf/build_fixed_ion_distributions已由sampler方法替代，下文相关旧名称只说明重构前行为。
+
+- 2026-10-19（fixed_ion兼容性修复设计）：按用户要求审查8113141及当前data.py增量，新增`docs/SPEC_FIXED_ION_SAMPLER_COMPATIBILITY.md`，以fac9f98为旧行为基准，保留用户sampler类及完整原生成/Parquet调用链。方法名和漂移字段已由用户修正；待修复整数代替网格、NumPy/Tensor混用、metadata行多计及旧manifest/矩记录缺失。设计仅修改五个现有生产函数，恢复1224/160/80及物理样本计数，保留新增dataset/离子说明字段，不实施Fig1/Fig11或任意维数扩展。指定Python3.11.9只读复现当前生成和Tensor电子网格错误；内存加载fac9f98并复用当前物理模块生成一条真实PV样本成功。尚未实施修复、运行回归套件或训练，用户data.py哈希保持453f7241b963ffc7518835fafc7e7aa6ea84b1856dab8a56e0d181b6afc9d76e。下文旧canonical数据行为为兼容目标，不能当作当前sampler重构已跑通的证明。
 
 - 2026-10-18（代码复用专项审查）：独立子agent对照现有源码检查SPEC，改为直接复用normalize_distribution、增加质量参数的electron_moments、checkpoint张量校验、参数化predict_coefficients/reconstruct_real_evdf；从旧划分函数抽出split_indices供新旧入口共用，训练继续调用train_candidate。仅保留必要NPZ读写和锚点采样适配；旧热电子采样与拟合物理假设不适用，不强行复用。SPEC现列23个新增或修改函数签名及伪代码，同名PDF同步为7页并完成全页视觉检查；仅修改文档，未实施代码或训练。
 

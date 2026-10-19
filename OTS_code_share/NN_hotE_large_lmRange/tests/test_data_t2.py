@@ -103,7 +103,16 @@ import data  # noqa: E402
 _NATIVE_ARROW_WRITE_TABLE = data.pq.write_table
 
 
-def _fake_sample(rng, physical_config, ion_distributions):
+def _fixed_sampler(seed=1234, ion_temperature=171.3, electron_temperature=1370.0):
+    config = data._physical_config()
+    return data.Fixed_ion_sampler(
+        np.random.default_rng(seed), data.ION_SPECIES,
+        config["ion1_velocity_grid"], config["ion2_velocity_grid"],
+        config["electron_velocity_grid"], ion_temperature, electron_temperature,
+    )
+
+
+def _fake_sample(rng, physical_config, sampler):
     token = float(rng.random())
     spectrum = torch.full((data.INPUT_DIM,), token, dtype=torch.float64)
     label = torch.arange(data.OUTPUT_DIM, dtype=torch.float64) + token
@@ -275,9 +284,9 @@ class TestDistributionConstruction(unittest.TestCase):
                 data.normalize_distribution(v_grid, distribution, "test")
 
     def test_electron_sampler_reproducibility_ranges_and_component_calls(self):
-        first_v, first_f = data.sample_electron_evdf(1000, np.random.default_rng(1234))
-        second_v, second_f = data.sample_electron_evdf(1000, np.random.default_rng(1234))
-        different_v, different_f = data.sample_electron_evdf(1000, np.random.default_rng(1235))
+        first_v, first_f = _fixed_sampler(1234).sample_electron_vdf()
+        second_v, second_f = _fixed_sampler(1234).sample_electron_vdf()
+        different_v, different_f = _fixed_sampler(1235).sample_electron_vdf()
         torch.testing.assert_close(first_v, second_v)
         torch.testing.assert_close(first_f, second_f)
         torch.testing.assert_close(first_v, different_v)
@@ -303,17 +312,22 @@ class TestDistributionConstruction(unittest.TestCase):
                 return (low + high) / 2.0
 
         recorder = RecordingRng()
-        data.sample_electron_evdf(101, recorder)
+        sampler = _fixed_sampler()
+        sampler.rng = recorder
+        sampler.sample_electron_vdf()
         expected_background = [(-0.06, 0.06), (0.01, 0.05), (0.2, 2.5)] * 3
         expected_hot = [(-0.4, 0.4), (0.01, 0.05), (0.001, 0.045)]
         self.assertEqual(recorder.calls, expected_background + expected_hot)
 
-        for invalid_points in (0, 2, 3.0, True):
-            with self.subTest(num_points=invalid_points), self.assertRaises(ValueError):
-                data.sample_electron_evdf(invalid_points, np.random.default_rng(1))
+        for invalid_temperature in (0.0, -1.0, math.nan, math.inf):
+            with self.subTest(value=invalid_temperature), self.assertRaises(ValueError):
+                _fixed_sampler(electron_temperature=invalid_temperature)
 
     def test_fixed_ion_vdfs_have_species_grids_and_unit_mass(self):
-        ions = data.build_fixed_ion_distributions(data.ION_SPECIES, 171.3)
+        sampler = _fixed_sampler()
+        v_i1, f_i1 = sampler.sample_ion1_vdf()
+        v_i2, f_i2 = sampler.sample_ion2_vdf()
+        ions = {"v_i1": v_i1, "f_i1": f_i1, "v_i2": v_i2, "f_i2": f_i2}
         self.assertEqual(set(ions), {"v_i1", "f_i1", "v_i2", "f_i2"})
         self.assertEqual(ions["v_i1"].shape, (1000,))
         self.assertEqual(ions["v_i2"].shape, (1000,))
@@ -333,9 +347,7 @@ class TestDistributionConstruction(unittest.TestCase):
             )
         for invalid_temperature in (0.0, -1.0, math.nan, math.inf):
             with self.subTest(value=invalid_temperature), self.assertRaises(ValueError):
-                data.build_fixed_ion_distributions(
-                    data.ION_SPECIES, invalid_temperature
-                )
+                _fixed_sampler(ion_temperature=invalid_temperature)
 
     def test_wavelength_contract(self):
         bands = data.build_wavelength_bands(torch.float64)
@@ -406,19 +418,17 @@ class TestMomentsAndStatistics(unittest.TestCase):
                 data.temperature_statistics(invalid)
 
 
-class TestRealFullFourierSample(unittest.TestCase):
-    def test_one_real_sample_uses_three_full_fourier_calls_and_contract_shapes(self):
+class TestRealPVSample(unittest.TestCase):
+    def test_one_real_sample_uses_three_pv_calls_and_contract_shapes(self):
         config = data._physical_config()
-        ions = data.build_fixed_ion_distributions(
-            data.ION_SPECIES, data.ION_REFERENCE_TEMPERATURE_EV
-        )
-        original_forward = data.ots_full_fourier.OTS_spectrum_full_fourier
+        sampler = _fixed_sampler(20260710)
+        original_forward = data.ots_full_fourier.OTS_spectrum_PV
         with mock.patch.object(
             data.ots_full_fourier,
-            "OTS_spectrum_full_fourier",
+            "OTS_spectrum_PV",
             wraps=original_forward,
         ) as forward_spy:
-            sample = data.generate_sample(np.random.default_rng(20260710), config, ions)
+            sample = data.generate_sample(sampler.rng, config, sampler)
         self.assertEqual(forward_spy.call_count, 3)
         self.assertEqual(sample["spectrum"].shape, (1224,))
         self.assertEqual(sample["label"].shape, (160,))
@@ -431,10 +441,10 @@ class TestRealFullFourierSample(unittest.TestCase):
             )
         for call in forward_spy.call_args_list:
             self.assertEqual(call.kwargs["fourier_modes"], 80)
-            self.assertIs(call.kwargs["v_i1"], ions["v_i1"])
-            self.assertIs(call.kwargs["f_i1"], ions["f_i1"])
-            self.assertIs(call.kwargs["v_i2"], ions["v_i2"])
-            self.assertIs(call.kwargs["f_i2"], ions["f_i2"])
+            self.assertIs(call.kwargs["v_i1"], sampler.ion1_velocity_grid)
+            self.assertIs(call.kwargs["v_i2"], sampler.ion2_velocity_grid)
+            for name in ("v_e", "f_e", "v_i1", "f_i1", "v_i2", "f_i2"):
+                self.assertIs(call.kwargs[name], forward_spy.call_args_list[0].kwargs[name])
 
     @unittest.skipUnless(
         USING_ARROW_FIXTURE and REAL_ARROW_PYTHON.exists(),
@@ -462,9 +472,7 @@ class TestRealFullFourierSample(unittest.TestCase):
         self.assertTrue(torch.isfinite(test.spectra).all())
         self.assertFalse(torch.equal(train.coefficients, test.coefficients))
         for split_name, split_seed in (("train", seed), ("test", seed + 1)):
-            velocity, distribution = data.sample_electron_evdf(
-                data.ELECTRON_VELOCITY_POINTS, np.random.default_rng(split_seed)
-            )
+            velocity, distribution = _fixed_sampler(split_seed).sample_electron_vdf()
             expected = data.electron_moments(
                 velocity, distribution, data.ELECTRON_REFERENCE_TEMPERATURE_EV
             )
@@ -505,8 +513,14 @@ class TestDatasetPairAndManifest(unittest.TestCase):
                     "electron_density_m3",
                     "electron_dis",
                     "wavelength_bands_nm",
+                    "ion1_charge", "ion1_fraction", "ion1_mass_kg", "ion1_dis",
+                    "ion2_charge", "ion2_fraction", "ion2_mass_kg", "ion2_dis",
+                    "dataset",
                 },
             )
+            self.assertEqual(physical["dataset"], "fixed_ion")
+            self.assertEqual(first["train_samples"], 2)
+            self.assertEqual(first["test_samples"], 2)
             self.assertEqual(
                 set(physical["electron_dis"]),
                 {"configured_reference_temperature_ev", "velocity_points", "velocity_range_c"},
