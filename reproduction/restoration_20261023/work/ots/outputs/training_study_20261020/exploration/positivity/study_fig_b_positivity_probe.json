@@ -1,0 +1,1311 @@
+{
+  "run_id": "study_fig_b",
+  "dataset_id": "study_fig_b_data",
+  "checkpoint_id": "study_fig_b_model",
+  "scope": "Validation-only exploration; no training, PV, test read, or canonical edits",
+  "test_data_read": false,
+  "pv_called": false,
+  "cpu_threads": 1,
+  "validation_count": 750,
+  "checkpoint_sha256": "5d5a131e5de9a61ed13dd50fc8c9334984c41e013f9cbbab349151a589c81265",
+  "train_parquet_sha256": "b68a510abbcebd08b72cc4d82b4d21d6b42e35549561d9f9aff205cf40b12493",
+  "replay": {
+    "train_parquet_sha256": "b68a510abbcebd08b72cc4d82b4d21d6b42e35549561d9f9aff205cf40b12493",
+    "validation_indices_sha256": "37cc1bd7238225f33447ef4554e03774dc2d5145ae09a41d2d4698dfb08bb5bb",
+    "sampler_source_sha256": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+    "generation_seed": 20261020,
+    "validation_count": 750,
+    "replayed_physical_samples": 5000,
+    "fourier_checks": [
+      {
+        "species": "e",
+        "validation_index": 680,
+        "physical_index": 915,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 680,
+        "physical_index": 915,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 680,
+        "physical_index": 915,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 0,
+        "physical_index": 1028,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 0,
+        "physical_index": 1028,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 0,
+        "physical_index": 1028,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 204,
+        "physical_index": 1111,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 204,
+        "physical_index": 1111,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 204,
+        "physical_index": 1111,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 272,
+        "physical_index": 1212,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 272,
+        "physical_index": 1212,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 272,
+        "physical_index": 1212,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 544,
+        "physical_index": 1466,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 544,
+        "physical_index": 1466,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 544,
+        "physical_index": 1466,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 749,
+        "physical_index": 1704,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 749,
+        "physical_index": 1704,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 749,
+        "physical_index": 1704,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 476,
+        "physical_index": 1802,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 476,
+        "physical_index": 1802,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 476,
+        "physical_index": 1802,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 136,
+        "physical_index": 3071,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 136,
+        "physical_index": 3071,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 136,
+        "physical_index": 3071,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 68,
+        "physical_index": 3093,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 68,
+        "physical_index": 3093,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 68,
+        "physical_index": 3093,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 340,
+        "physical_index": 3971,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 340,
+        "physical_index": 3971,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 340,
+        "physical_index": 3971,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 408,
+        "physical_index": 4060,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 408,
+        "physical_index": 4060,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 408,
+        "physical_index": 4060,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "e",
+        "validation_index": 612,
+        "physical_index": 4782,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i1",
+        "validation_index": 612,
+        "physical_index": 4782,
+        "max_abs_float32_coefficient_error": 0.0
+      },
+      {
+        "species": "i2",
+        "validation_index": 612,
+        "physical_index": 4782,
+        "max_abs_float32_coefficient_error": 0.0
+      }
+    ],
+    "pv_called": false,
+    "test_data_read": false
+  },
+  "truth_cache": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/exploration/positivity/truth_cache/validation_original_e6cee495b81e6f885bd0.npz",
+  "projection_definition": "minimize trapezoid-weighted sum w_i*(g_i-f_i)^2 subject to g_i>=0 and sum w_i*g_i=1; exact sorted active-set threshold",
+  "numerics": "Original sampler VDF float64. Network coefficients and training labels loaded as canonical float32; both inverse transformed in float64 on original float64 velocity axis for this diagnostic. Relative L2 uses canonical unweighted sample sums.",
+  "temperature_caution": "Signed moments without clipping unless method explicitly clips/projects. Temperature comparisons require finite nonnegative values on both sides and report exclusions. Fourier target may itself contain negative lobes. Projection improves weighted L2 to any feasible original VDF; canonical unweighted relative L2 is also reported.",
+  "species": {
+    "e": {
+      "methods": {
+        "raw_prediction": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07226533583583855,
+                "p95": 0.20189331312023953,
+                "min": 0.009676389701763297,
+                "max": 0.2867915194596927
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.012584305650362273,
+                "p95": 0.02746384800399971,
+                "min": 0.001564921216455153,
+                "max": 0.06747502850327568
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 56.57397696284805,
+                "mae_ev": 307.9202980508881
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 56.57397696284805,
+                "mae_ev": 307.9202980508881
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07229310747483941,
+                "p95": 0.20189395491104037,
+                "min": 0.009676843093657983,
+                "max": 0.28679201030340684
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.012584305650362273,
+                "p95": 0.02746384800399971,
+                "min": 0.001564921216455153,
+                "max": 0.06747502850327568
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 56.56560278270061,
+                "mae_ev": 307.91792526379555
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 56.56560278270061,
+                "mae_ev": 307.91792526379555
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 0.9997048722769977,
+            "p95": 1.0043143183183858,
+            "min": 0.9769557001529559,
+            "max": 1.0203722440608494
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 0.002169255574445736,
+            "p95": 0.005702563113301217,
+            "min": 6.01548953649278e-06,
+            "max": 0.023044299847044147
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 102,
+          "valid_nonnegative_temperature_count": 648,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 713.1904961638048,
+            "p95": 1803.5358891653,
+            "min": -3025.66464407057,
+            "max": 4594.13278346685
+          }
+        },
+        "clip_normalize": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07222802022604057,
+                "p95": 0.2058882667934933,
+                "min": 0.00896061837727659,
+                "max": 0.29077149458370205
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 791.3215940117308,
+                "mae_ev": 795.9058219815747
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -3.7315609797995625e-05,
+                "p95": 0.010472682529455164,
+                "min": -0.027946321685214603,
+                "max": 0.023188158821850907
+              },
+              "improved_sample_count": 400,
+              "worsened_sample_count": 350,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 793.3023940762114,
+                "mae_ev": 798.6082134857533
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07225215658047623,
+                "p95": 0.2059243872516403,
+                "min": 0.008960378630319536,
+                "max": 0.29077126024885913
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 791.314619405834,
+                "mae_ev": 795.8987892184985
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -4.095089436318197e-05,
+                "p95": 0.010468788720276448,
+                "min": -0.027946438513066163,
+                "max": 0.023189019463086102
+              },
+              "improved_sample_count": 400,
+              "worsened_sample_count": 350,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 793.294019896064,
+                "mae_ev": 798.5997719940552
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0,
+            "p95": 1.0000000000000002,
+            "min": 0.9999999999999997,
+            "max": 1.0000000000000004
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 7.37188088351104e-17,
+            "p95": 2.220446049250313e-16,
+            "min": 0.0,
+            "max": 4.440892098500626e-16
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1544.057587340814,
+            "p95": 2774.5338491094453,
+            "min": 411.2353215665587,
+            "max": 6106.865929383812
+          }
+        },
+        "positive_unit_mass_l2_projection": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07105564421564307,
+                "p95": 0.20168010385758198,
+                "min": 0.006492392048904417,
+                "max": 0.28428580717034624
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 310.53831494243025,
+                "mae_ev": 329.74840402408614
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.0012096916201954765,
+                "p95": -0.0001056587168276342,
+                "min": -0.012701531949947338,
+                "max": -1.2248720321378359e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 319.0315764897004,
+                "mae_ev": 340.7103073981027
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.07108185636957502,
+                "p95": 0.2016807641479512,
+                "min": 0.0064931322832193035,
+                "max": 0.28428626901289344
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 310.5313403365335,
+                "mae_ev": 329.7410870673496
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.0012112511052643864,
+                "p95": -0.00010515908472552298,
+                "min": -0.01270090919569171,
+                "max": -1.2185414789298021e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 648,
+                "excluded_pair_count": 102,
+                "bias_ev": 319.02320230955297,
+                "mae_ev": 340.70154578696156
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0000000000000002,
+            "p95": 1.0000000000000036,
+            "min": 0.9999999999999938,
+            "max": 1.0000000000000084
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.5837701520619399e-15,
+            "p95": 3.9968028886505635e-15,
+            "min": 0.0,
+            "max": 8.43769498715119e-15
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1063.2743082715135,
+            "p95": 2045.5144248976437,
+            "min": 146.86173992307312,
+            "max": 4230.365627522669
+          }
+        }
+      },
+      "representation": {
+        "relative_l2": {
+          "valid_count": 750,
+          "invalid_count": 0,
+          "mean": 0.0006765491297083993,
+          "p95": 0.0035771296066059105,
+          "min": 6.958401535576284e-07,
+          "max": 0.025141188906522078
+        },
+        "temperature_fourier_minus_original_ev": {
+          "valid_pair_count": 750,
+          "excluded_pair_count": 0,
+          "bias_ev": -0.006974605896753056,
+          "mae_ev": 0.028518262052924948
+        }
+      },
+      "clip_zero_mass_count": 0,
+      "mass_kg": 9.1093837015e-31
+    },
+    "i1": {
+      "methods": {
+        "raw_prediction": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.08559539103160693,
+                "p95": 0.26289228560635775,
+                "min": 0.01404474556580731,
+                "max": 0.704177866674745
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.018830492565522307,
+                "p95": 0.04247929921710097,
+                "min": 0.003412023230824824,
+                "max": 0.1021985757557372
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 104.72854871417667,
+                "mae_ev": 194.51883761789796
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 104.72854871417667,
+                "mae_ev": 194.51883761789796
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.08581330980184369,
+                "p95": 0.2630512176010959,
+                "min": 0.014044941151763732,
+                "max": 0.7041916345020361
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.018830492565522307,
+                "p95": 0.04247929921710097,
+                "min": 0.003412023230824824,
+                "max": 0.1021985757557372
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 104.72798524801608,
+                "mae_ev": 194.52853611064322
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 104.72798524801608,
+                "mae_ev": 194.52853611064322
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0000160295698284,
+            "p95": 1.0043360484173,
+            "min": 0.9799037271972753,
+            "max": 1.017231248140229
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 0.00224696550415834,
+            "p95": 0.006111038388148553,
+            "min": 8.876464008267249e-10,
+            "max": 0.020096272802724746
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 133,
+          "valid_nonnegative_temperature_count": 617,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 392.03418803473113,
+            "p95": 1212.2063730068194,
+            "min": -1938.278443306009,
+            "max": 2364.626199242742
+          }
+        },
+        "clip_normalize": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0866539467144758,
+                "p95": 0.2564528667036641,
+                "min": 0.013326573962272034,
+                "max": 0.7089813331047223
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 796.1993363927094,
+                "mae_ev": 796.1993363927094
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0010585556828688514,
+                "p95": 0.013549712074702173,
+                "min": -0.07760328793356464,
+                "max": 0.04804372110327154
+              },
+              "improved_sample_count": 286,
+              "worsened_sample_count": 464,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 771.7309865592472,
+                "mae_ev": 771.7309865592472
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.08686399258445096,
+                "p95": 0.25690252054894486,
+                "min": 0.013326886077734142,
+                "max": 0.7089930034853731
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 796.2066091020231,
+                "mae_ev": 796.2066091020231
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.001050682782607268,
+                "p95": 0.012999858138082188,
+                "min": -0.07758727635431201,
+                "max": 0.048037195304189956
+              },
+              "improved_sample_count": 286,
+              "worsened_sample_count": 464,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 771.7304230930866,
+                "mae_ev": 771.7304230930866
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0,
+            "p95": 1.0000000000000002,
+            "min": 0.9999999999999996,
+            "max": 1.0000000000000004
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 7.934393882654452e-17,
+            "p95": 2.220446049250313e-16,
+            "min": 0.0,
+            "max": 4.440892098500626e-16
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1180.1140788790312,
+            "p95": 2037.526334829953,
+            "min": 475.80699618898683,
+            "max": 4299.707368935848
+          }
+        },
+        "positive_unit_mass_l2_projection": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.08381507578797431,
+                "p95": 0.2580051364569357,
+                "min": 0.01006877031745475,
+                "max": 0.7037579869355103
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 265.1173466519352,
+                "mae_ev": 266.37731221018385
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.0017803152436326186,
+                "p95": -0.0002966723965015922,
+                "min": -0.02303959790719641,
+                "max": -4.3147961189760053e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 265.76477083805264,
+                "mae_ev": 266.80832625509964
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.08402305759484226,
+                "p95": 0.25820607364818116,
+                "min": 0.010069164511932707,
+                "max": 0.7037695200833931
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 265.12461936124873,
+                "mae_ev": 266.4008718784373
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.0017902522070014346,
+                "p95": -0.0003042226175046341,
+                "min": -0.022814612719070843,
+                "max": -4.3830155090685e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 617,
+                "excluded_pair_count": 133,
+                "bias_ev": 265.7642073718921,
+                "mae_ev": 266.82185690538194
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 0.9999999999999997,
+            "p95": 1.000000000000003,
+            "min": 0.9999999999999918,
+            "max": 1.000000000000006
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.6070108207107598e-15,
+            "p95": 3.9968028886505635e-15,
+            "min": 0.0,
+            "max": 8.215650382226158e-15
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 649.0320891382569,
+            "p95": 1377.2432734807364,
+            "min": 46.35759173351456,
+            "max": 2426.1319816697624
+          }
+        }
+      },
+      "representation": {
+        "relative_l2": {
+          "valid_count": 750,
+          "invalid_count": 0,
+          "mean": 0.002433993351808525,
+          "p95": 0.015942676331322164,
+          "min": 1.1827787968786894e-06,
+          "max": 0.06367487903148637
+        },
+        "temperature_fourier_minus_original_ev": {
+          "valid_pair_count": 750,
+          "excluded_pair_count": 0,
+          "bias_ev": 0.007272709313613944,
+          "mae_ev": 0.0606495098542791
+        }
+      },
+      "clip_zero_mass_count": 0,
+      "mass_kg": 1.67262192369e-27
+    },
+    "i2": {
+      "methods": {
+        "raw_prediction": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10482259102372968,
+                "p95": 0.31963544407397193,
+                "min": 0.01527034687439096,
+                "max": 0.9729225271974545
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.02350090052507578,
+                "p95": 0.05166147346441462,
+                "min": 0.004176564777565164,
+                "max": 0.09736053135178348
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 105.37007178908848,
+                "mae_ev": 197.8444872675149
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 105.37007178908848,
+                "mae_ev": 197.8444872675149
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10501218968549682,
+                "p95": 0.3196362342082488,
+                "min": 0.015272825630834406,
+                "max": 0.9729233109974874
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.02350090052507578,
+                "p95": 0.05166147346441462,
+                "min": 0.004176564777565164,
+                "max": 0.09736053135178348
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 105.36934998736042,
+                "mae_ev": 197.8465566184959
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "improved_sample_count": 0,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 105.36934998736042,
+                "mae_ev": 197.8465566184959
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0000071501244807,
+            "p95": 1.0039570388770287,
+            "min": 0.9815552911041587,
+            "max": 1.0152239025846856
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 0.0020749794068965523,
+            "p95": 0.005735690206092351,
+            "min": 4.3722917730804056e-07,
+            "max": 0.018444708895841266
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 131,
+          "valid_nonnegative_temperature_count": 619,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 384.2293149346284,
+            "p95": 1161.6490064086163,
+            "min": -1875.4474841621302,
+            "max": 1828.7858761647035
+          }
+        },
+        "clip_normalize": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10552599920903291,
+                "p95": 0.3065457170913502,
+                "min": 0.017167418601684924,
+                "max": 0.9092874043598075
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 1022.1234217123355,
+                "mae_ev": 1022.1234217123355
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0007034081853032605,
+                "p95": 0.015209057980631956,
+                "min": -0.07578730914999815,
+                "max": 0.04749262717211672
+              },
+              "improved_sample_count": 304,
+              "worsened_sample_count": 446,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 977.9556547373505,
+                "mae_ev": 977.9556547373505
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10571789689488609,
+                "p95": 0.3074130129037762,
+                "min": 0.01716704087242437,
+                "max": 0.9092878229121841
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 1022.1214120682273,
+                "mae_ev": 1022.1214120682273
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0007057072093892876,
+                "p95": 0.01520897233816037,
+                "min": -0.07578899847189907,
+                "max": 0.047409461247222284
+              },
+              "improved_sample_count": 304,
+              "worsened_sample_count": 446,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 977.9549329356227,
+                "mae_ev": 977.9549329356227
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0,
+            "p95": 1.0000000000000002,
+            "min": 0.9999999999999996,
+            "max": 1.0000000000000004
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 8.659739592076221e-17,
+            "p95": 2.220446049250313e-16,
+            "min": 0.0,
+            "max": 4.440892098500626e-16
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1402.4219557461552,
+            "p95": 2309.6245042766036,
+            "min": 510.8187939773521,
+            "max": 4978.648861598528
+          }
+        },
+        "positive_unit_mass_l2_projection": {
+          "comparisons": {
+            "fourier_target": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10237844319858387,
+                "p95": 0.31594224771149343,
+                "min": 0.01235868697551663,
+                "max": 0.9713940834882694
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 311.01640482907004,
+                "mae_ev": 312.7890852906382
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.0024441478251457922,
+                "p95": -0.0004137393419781579,
+                "min": -0.032633816419059325,
+                "max": -5.758377003400872e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 318.15294269134307,
+                "mae_ev": 319.35008266094076
+              }
+            },
+            "original_sampled_vdf": {
+              "relative_l2": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.10258479241548514,
+                "p95": 0.3159433760160976,
+                "min": 0.012358799124500745,
+                "max": 0.9713945108886669
+              },
+              "negative_mass_fraction": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": 0.0,
+                "p95": 0.0,
+                "min": 0.0,
+                "max": 0.0
+              },
+              "temperature_error_ev": {
+                "valid_pair_count": 750,
+                "excluded_pair_count": 0,
+                "bias_ev": 311.014395184962,
+                "mae_ev": 312.77948248362947
+              },
+              "paired_relative_l2_change_from_raw": {
+                "valid_count": 750,
+                "invalid_count": 0,
+                "mean": -0.002427397270011684,
+                "p95": -0.00041102617662637844,
+                "min": -0.03487624122028546,
+                "max": -5.75878869909785e-05
+              },
+              "improved_sample_count": 750,
+              "worsened_sample_count": 0,
+              "common_all_methods_valid_temperature_error_ev": {
+                "valid_pair_count": 619,
+                "excluded_pair_count": 131,
+                "bias_ev": 318.152220889615,
+                "mae_ev": 319.3429444803362
+              }
+            }
+          },
+          "integral_mass": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.0000000000000002,
+            "p95": 1.0000000000000033,
+            "min": 0.999999999999994,
+            "max": 1.0000000000000069
+          },
+          "absolute_integral_mass_error": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 1.5461705989613013e-15,
+            "p95": 3.9968028886505635e-15,
+            "min": 0.0,
+            "max": 6.8833827526759706e-15
+          },
+          "nonpositive_mass_count": 0,
+          "negative_temperature_count": 0,
+          "valid_nonnegative_temperature_count": 750,
+          "temperature_ev": {
+            "valid_count": 750,
+            "invalid_count": 0,
+            "mean": 691.3149388628899,
+            "p95": 1439.0547992710467,
+            "min": 38.268888867518925,
+            "max": 1834.7282374662936
+          }
+        }
+      },
+      "representation": {
+        "relative_l2": {
+          "valid_count": 750,
+          "invalid_count": 0,
+          "mean": 0.002251029321444575,
+          "p95": 0.014343020816635008,
+          "min": 6.636874848450832e-07,
+          "max": 0.0747757316133099
+        },
+        "temperature_fourier_minus_original_ev": {
+          "valid_pair_count": 750,
+          "excluded_pair_count": 0,
+          "bias_ev": -0.0020096441080431284,
+          "mae_ev": 0.05752915406672384
+        }
+      },
+      "clip_zero_mass_count": 0,
+      "mass_kg": 2.0071463084280003e-26
+    }
+  }
+}

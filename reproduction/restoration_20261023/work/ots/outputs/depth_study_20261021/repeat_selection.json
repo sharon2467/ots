@@ -1,0 +1,29 @@
+{
+  "frozen_at_utc": "2026-10-24T04:40:44.567052+00:00",
+  "selected_depth": "D4",
+  "selected_labels": [
+    "d2",
+    "d4",
+    "w4"
+  ],
+  "run_ids": [
+    "depth_fig_d2_s1",
+    "depth_fig_d4_s1",
+    "depth_fig_w4_s1",
+    "depth_fig_d2_s2",
+    "depth_fig_d4_s2",
+    "depth_fig_w4_s2"
+  ],
+  "new_test_results_read": false,
+  "rule": "Preserve historical repeat scope, not a new validation selection; budget-interrupted primary runs remain partial.",
+  "provenance": "historical_original_scope_for_file_restoration",
+  "historical_selection_sha256": "9b4a3178b64459afa87f59fd3c9afece4d20010939a8bb30f8e0b063ce5ce2be",
+  "primary_pipeline_states": {
+    "depth_fig_d2_s0": "completed_test_sealed",
+    "depth_fig_d3_s0": "interrupted_train",
+    "depth_fig_w3_s0": "completed_test_sealed",
+    "depth_fig_d4_s0": "interrupted_train",
+    "depth_fig_w4_s0": "interrupted_train"
+  },
+  "recomputed_validation_selection_complete": false
+}

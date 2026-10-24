@@ -1,0 +1,106 @@
+{
+  "best_epoch": 118,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1/training/model.pt",
+  "checkpoint_sha256": "3f22d50aab05bb2f70452af75a0f7cbf43ed6842d64d4d6fb15b66419163b5cf",
+  "hidden_sizes": [
+    2048,
+    1024,
+    1024,
+    1024
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.7539007067680359,
+    "mean": 0.053791411221027374,
+    "median": 0.039721835404634476,
+    "p95": 0.14101563394069672
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.007686886470764875,
+      "coefficient_r2": 0.99326491355896,
+      "coefficient_rmse": 0.0193539597094059,
+      "evdf_mae": 2.1885146472833128e-10,
+      "evdf_r2": 0.9934510588645935,
+      "evdf_relative_l2_mean": 0.0582624226808548,
+      "evdf_relative_l2_median": 0.04084853082895279,
+      "evdf_rmse": 7.329045148551927e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.038942210376262665,
+        "mean": 0.0018301656236872077,
+        "median": 0.0013304997701197863,
+        "p95": 0.004815730731934309
+      },
+      "negative_mass_fraction_mean": 0.0018301657401025295,
+      "relative_l2_distribution": {
+        "maximum": 0.29463160037994385,
+        "mean": 0.0582624226808548,
+        "median": 0.04084853082895279,
+        "p95": 0.17003336548805237
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.009110108949244022,
+      "coefficient_r2": 0.9916655421257019,
+      "coefficient_rmse": 0.023539364337921143,
+      "evdf_mae": 8.31442470428101e-09,
+      "evdf_r2": 0.9923070669174194,
+      "evdf_relative_l2_mean": 0.045381948351860046,
+      "evdf_relative_l2_median": 0.0280768945813179,
+      "evdf_rmse": 4.585130142231719e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.048075783997774124,
+        "mean": 0.003496514866128564,
+        "median": 0.00226716510951519,
+        "p95": 0.011031857691705227
+      },
+      "negative_mass_fraction_mean": 0.0034965150989592075,
+      "relative_l2_distribution": {
+        "maximum": 1.1755703687667847,
+        "mean": 0.045381948351860046,
+        "median": 0.0280768945813179,
+        "p95": 0.13777419924736023
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.012327893637120724,
+      "coefficient_r2": 0.984733521938324,
+      "coefficient_rmse": 0.03269299492239952,
+      "evdf_mae": 3.7426804766482746e-08,
+      "evdf_r2": 0.9856172800064087,
+      "evdf_relative_l2_mean": 0.057729851454496384,
+      "evdf_relative_l2_median": 0.03175724297761917,
+      "evdf_rmse": 2.1498053115465154e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.08583074808120728,
+        "mean": 0.004475328139960766,
+        "median": 0.003130050376057625,
+        "p95": 0.012861670926213264
+      },
+      "negative_mass_fraction_mean": 0.004475328605622053,
+      "relative_l2_distribution": {
+        "maximum": 1.040673017501831,
+        "mean": 0.05772985517978668,
+        "median": 0.03175724297761917,
+        "p95": 0.20219288766384125
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261032,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

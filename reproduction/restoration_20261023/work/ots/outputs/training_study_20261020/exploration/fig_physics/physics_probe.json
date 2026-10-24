@@ -1,0 +1,398 @@
+{
+  "scope": "Deterministic, clean single-cell PV spectra. Sensitivity is numerical local evidence, not global uniqueness proof.",
+  "torch_threads": 1,
+  "same_temperature_shape": [
+    {
+      "anchor": "fig1a",
+      "changed_species": "e",
+      "spectrum_relative_l2": 1.0154079204447408,
+      "spectrum_max_abs_change": 0.8717599531368658,
+      "raw_vdf_relative_l2": 0.17749433449837476,
+      "coefficient_relative_l2": 0.1772537408342639
+    },
+    {
+      "anchor": "fig1a",
+      "changed_species": "i1",
+      "spectrum_relative_l2": 0.5626774539113628,
+      "spectrum_max_abs_change": 0.569782137669857,
+      "raw_vdf_relative_l2": 0.1774943344983748,
+      "coefficient_relative_l2": 0.17551985330766842
+    },
+    {
+      "anchor": "fig1a",
+      "changed_species": "i2",
+      "spectrum_relative_l2": 0.24519510353233986,
+      "spectrum_max_abs_change": 0.2657367656873125,
+      "raw_vdf_relative_l2": 0.17749433449837482,
+      "coefficient_relative_l2": 0.17456137684178974
+    },
+    {
+      "anchor": "fig1b",
+      "changed_species": "e",
+      "spectrum_relative_l2": 0.665612585656624,
+      "spectrum_max_abs_change": 0.5765152604330761,
+      "raw_vdf_relative_l2": 0.17749433449837484,
+      "coefficient_relative_l2": 0.17749433449798974
+    },
+    {
+      "anchor": "fig1b",
+      "changed_species": "i1",
+      "spectrum_relative_l2": 0.29835771891471385,
+      "spectrum_max_abs_change": 0.29215739804343194,
+      "raw_vdf_relative_l2": 0.17749433449837476,
+      "coefficient_relative_l2": 0.17749433449666607
+    },
+    {
+      "anchor": "fig1b",
+      "changed_species": "i2",
+      "spectrum_relative_l2": 0.5166440867303569,
+      "spectrum_max_abs_change": 0.5231105298395542,
+      "raw_vdf_relative_l2": 0.17749433449837487,
+      "coefficient_relative_l2": 0.17749433449560198
+    }
+  ],
+  "equal_static_screening": [
+    {
+      "anchor": "fig1a",
+      "gaussian_Te_ev": 209.0,
+      "supergaussian_p4_Te_ev": 95.52070645944059,
+      "spectrum_relative_l2": 0.018048605664848796,
+      "spectrum_max_abs_change": 0.01661719496429137,
+      "raw_e_vdf_relative_l2": 0.31759122063891826,
+      "electron_coefficient_relative_l2": 0.31315260752620283,
+      "static_response_relative_difference": 6.8833827526759706e-15
+    },
+    {
+      "anchor": "fig1b",
+      "gaussian_Te_ev": 1392.0,
+      "supergaussian_p4_Te_ev": 636.0883351054531,
+      "spectrum_relative_l2": 0.02885520222878642,
+      "spectrum_max_abs_change": 0.02021566752229287,
+      "raw_e_vdf_relative_l2": 0.31767009048897465,
+      "electron_coefficient_relative_l2": 0.3176700722165333,
+      "static_response_relative_difference": 1.709743457922741e-14
+    }
+  ],
+  "fourier_roundtrip": [
+    {
+      "species": "e",
+      "T_ev": 89.288,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 0.00500155947441397,
+      "reconstruction_mass": 1.000002295518667,
+      "negative_mass_fraction": 0.004765356188687299
+    },
+    {
+      "species": "e",
+      "T_ev": 89.288,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.05472399405938331,
+      "reconstruction_mass": 0.9999847586789237,
+      "negative_mass_fraction": 0.045957945344763794
+    },
+    {
+      "species": "e",
+      "T_ev": 209.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 1.0888382257856356e-05,
+      "reconstruction_mass": 1.0000000072963289,
+      "negative_mass_fraction": 8.613006201447798e-06
+    },
+    {
+      "species": "e",
+      "T_ev": 209.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.009821836285258165,
+      "reconstruction_mass": 1.0000023709891375,
+      "negative_mass_fraction": 0.005972042296839773
+    },
+    {
+      "species": "e",
+      "T_ev": 1392.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 6.871797769988177e-15,
+      "reconstruction_mass": 0.9999999999999921,
+      "negative_mass_fraction": 6.999862229386045e-16
+    },
+    {
+      "species": "e",
+      "T_ev": 1392.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 5.016926483237901e-07,
+      "reconstruction_mass": 0.9999999997477443,
+      "negative_mass_fraction": 2.2062850687611671e-07
+    },
+    {
+      "species": "e",
+      "T_ev": 2426.953,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 9.37437572015168e-15,
+      "reconstruction_mass": 0.99999999999999,
+      "negative_mass_fraction": 7.873943630576991e-16
+    },
+    {
+      "species": "e",
+      "T_ev": 2426.953,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 1.0918032621783034e-09,
+      "reconstruction_mass": 1.0000000000008353,
+      "negative_mass_fraction": 4.751947926684956e-10
+    },
+    {
+      "species": "i1",
+      "T_ev": 33.55,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 0.043621588143357246,
+      "reconstruction_mass": 1.0000161023860006,
+      "negative_mass_fraction": 0.037903086048940986
+    },
+    {
+      "species": "i1",
+      "T_ev": 33.55,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.10464571909638591,
+      "reconstruction_mass": 0.9999934561142197,
+      "negative_mass_fraction": 0.041881204814214236
+    },
+    {
+      "species": "i1",
+      "T_ev": 78.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 0.0014913371010276926,
+      "reconstruction_mass": 1.0000007528255561,
+      "negative_mass_fraction": 0.0012892558345195652
+    },
+    {
+      "species": "i1",
+      "T_ev": 78.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.027244771286909518,
+      "reconstruction_mass": 0.9999901797364535,
+      "negative_mass_fraction": 0.0260255010857317
+    },
+    {
+      "species": "i1",
+      "T_ev": 912.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 1.1856013017283143e-15,
+      "reconstruction_mass": 0.9999999999999996,
+      "negative_mass_fraction": 2.080515417458722e-16
+    },
+    {
+      "species": "i1",
+      "T_ev": 912.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 8.561896906411277e-07,
+      "reconstruction_mass": 0.9999999998409517,
+      "negative_mass_fraction": 2.9969770394225406e-07
+    },
+    {
+      "species": "i1",
+      "T_ev": 1641.6,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 3.0548711284403897e-15,
+      "reconstruction_mass": 0.9999999999999988,
+      "negative_mass_fraction": 3.5623429605030887e-16
+    },
+    {
+      "species": "i1",
+      "T_ev": 1641.6,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 1.6983437272925616e-09,
+      "reconstruction_mass": 1.0000000000011506,
+      "negative_mass_fraction": 6.003869984334073e-10
+    },
+    {
+      "species": "i2",
+      "T_ev": 33.55,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 0.04985490040386935,
+      "reconstruction_mass": 1.0000181025512154,
+      "negative_mass_fraction": 0.0428371817177638
+    },
+    {
+      "species": "i2",
+      "T_ev": 33.55,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.10535138414458026,
+      "reconstruction_mass": 0.999995907286749,
+      "negative_mass_fraction": 0.037576151028241474
+    },
+    {
+      "species": "i2",
+      "T_ev": 78.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 0.002005185198134971,
+      "reconstruction_mass": 1.0000009901627211,
+      "negative_mass_fraction": 0.001715796700390416
+    },
+    {
+      "species": "i2",
+      "T_ev": 78.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 0.03274100176447326,
+      "reconstruction_mass": 0.999988730809815,
+      "negative_mass_fraction": 0.030831814639363114
+    },
+    {
+      "species": "i2",
+      "T_ev": 912.0,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 4.891790135288892e-15,
+      "reconstruction_mass": 1.0000000000000036,
+      "negative_mass_fraction": 3.3200748100994963e-16
+    },
+    {
+      "species": "i2",
+      "T_ev": 912.0,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 1.0187384655744276e-06,
+      "reconstruction_mass": 1.0000000002326495,
+      "negative_mass_fraction": 4.2947062627226274e-07
+    },
+    {
+      "species": "i2",
+      "T_ev": 1641.6,
+      "p": 2.0,
+      "raw_vdf_relative_l2": 4.819117404172634e-15,
+      "reconstruction_mass": 1.0000000000000036,
+      "negative_mass_fraction": 6.523302976549696e-17
+    },
+    {
+      "species": "i2",
+      "T_ev": 1641.6,
+      "p": 4.0,
+      "raw_vdf_relative_l2": 3.2693136741953502e-09,
+      "reconstruction_mass": 1.0000000000005413,
+      "negative_mass_fraction": 9.160609237331806e-10
+    }
+  ],
+  "local_svd": {
+    "parameter_order": [
+      "Te",
+      "TH",
+      "TC",
+      "ue",
+      "uH",
+      "uC",
+      "ne"
+    ],
+    "parameter_scales": [
+      1392.0,
+      912.0,
+      912.0,
+      300000.0,
+      50000.0,
+      50000.0,
+      2.2e+26
+    ],
+    "singular_values": [
+      6.46884793226591,
+      5.629389999289049,
+      3.8227594752753986,
+      1.0782083481848082,
+      0.5188626509524498,
+      0.14144744610301516,
+      0.011488983788084828
+    ],
+    "condition_number": 563.0478771303275,
+    "weakest_scaled_direction": [
+      0.10675068182799849,
+      -0.023201281202886417,
+      -0.017770409461180345,
+      0.00033853459980082764,
+      0.0031966441653579676,
+      0.0006424340377911395,
+      -0.9938508233966987
+    ],
+    "one_percent_step_spectral_relative_norm": [
+      0.009294141472244569,
+      0.005143856064144199,
+      0.008915370088609084,
+      0.000836989129846633,
+      0.0008316998769849686,
+      0.006154020505623791,
+      0.0009459670583748909
+    ]
+  },
+  "phase_velocity_window_m_s": [
+    -803714.8098962723,
+    806657.830891938
+  ],
+  "electron_thermal_speed_range_m_s": [
+    3962846.4658856634,
+    20660526.376652494
+  ],
+  "extra_electron_bands": [
+    {
+      "anchor": "fig1a",
+      "band": "blue",
+      "wavelength_range_nm": [
+        200.0,
+        250.0
+      ],
+      "points": 181,
+      "independent_peak_normalization": true,
+      "matched_static_response_spectrum_relative_l2": 1.6256701540607132,
+      "same_temperature_spectrum_relative_l2": 2.7498586494696657,
+      "gaussian_peak_wavelength_nm": 227.5,
+      "matched_peak_wavelength_nm": 250.0
+    },
+    {
+      "anchor": "fig1a",
+      "band": "red",
+      "wavelength_range_nm": [
+        280.0,
+        350.0
+      ],
+      "points": 181,
+      "independent_peak_normalization": true,
+      "matched_static_response_spectrum_relative_l2": 1.3459209575511917,
+      "same_temperature_spectrum_relative_l2": 1.969678769884433,
+      "gaussian_peak_wavelength_nm": 311.5,
+      "matched_peak_wavelength_nm": 280.0
+    },
+    {
+      "anchor": "fig1b",
+      "band": "blue",
+      "wavelength_range_nm": [
+        200.0,
+        250.0
+      ],
+      "points": 181,
+      "independent_peak_normalization": true,
+      "matched_static_response_spectrum_relative_l2": 1.0979345140823427,
+      "same_temperature_spectrum_relative_l2": 0.7814533312033815,
+      "gaussian_peak_wavelength_nm": 216.11111111111111,
+      "matched_peak_wavelength_nm": 250.0
+    },
+    {
+      "anchor": "fig1b",
+      "band": "red",
+      "wavelength_range_nm": [
+        280.0,
+        350.0
+      ],
+      "points": 181,
+      "independent_peak_normalization": true,
+      "matched_static_response_spectrum_relative_l2": 1.0913275422553754,
+      "same_temperature_spectrum_relative_l2": 0.9554496482905568,
+      "gaussian_peak_wavelength_nm": 330.55555555555554,
+      "matched_peak_wavelength_nm": 280.0
+    }
+  ],
+  "timing_seconds": {
+    "forward_n": 37,
+    "forward_median": 0.23766650300240144,
+    "forward_min": 0.10769787900062511,
+    "full_generate_sample_times": [
+      0.2730526680024923,
+      0.25814211599936243,
+      0.26267861499945866,
+      0.2501422429995728,
+      0.3126425169975846
+    ],
+    "full_generate_sample_median": 0.26267861499945866,
+    "note": "One torch/BLAS thread; measured concurrently with two parent baseline jobs, so includes resource contention. Excludes imports/Parquet writing."
+  }
+}

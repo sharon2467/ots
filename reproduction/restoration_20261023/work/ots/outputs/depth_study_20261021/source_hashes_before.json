@@ -1,0 +1,23 @@
+{
+  "OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+  "OTS_code_share/NN_hotE_large_lmRange/evaluation.py": "0b3e196ab5910242ce968c6bc7b50f268a3c6ac914c40ce7742e72b5d06d8a7f",
+  "OTS_code_share/NN_hotE_large_lmRange/extract_ots_data.py": "f655bd00609447173d385cadad6c2f546152fbe6851565d6b327fb7ac99f3668",
+  "OTS_code_share/NN_hotE_large_lmRange/fit_ots_experiments.py": "a8ed61703f8e988d1bc8ed0d29009f068aa60e62b3c496fe2d4d8cdd5a02c8e4",
+  "OTS_code_share/NN_hotE_large_lmRange/improve_ots_pilot.py": "b1e22e77eed865984a6abcb2f917d1a8a643a2a05262e686b554ea8b20099b57",
+  "OTS_code_share/NN_hotE_large_lmRange/main.py": "0b9d0c5e9c5f172fefd6369c7f42feccddf33821109f1a8d840dcb7e94807879",
+  "OTS_code_share/NN_hotE_large_lmRange/model.py": "ed6f0e84c2e57f14b264ba8750913104c131f286a5c0b5466c61a31c19913954",
+  "OTS_code_share/NN_hotE_large_lmRange/spectral_fitting.py": "9f8fdf641fb17de1583e7ec35802860553aafe0fbbc7ab99164104d360833bd7",
+  "OTS_code_share/NN_hotE_large_lmRange/train.py": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+  "OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_fourier.py": "8408f63f53c2c4c26ca6fbc0f3d1d3132f1eaece684bf16556a765f3f218f905",
+  "OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py": "f48ad0b5f092a0021c1bd1d15430977617045ac72a736ab4f01470d83055b191",
+  "OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_superGaussian.py": "f0302b49650c584264488e33db2fe25615b7dca137d181181c6b3a4313fb1cac",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/compare_maxwellian_paths.py": "a5dff019e5e5269cc5fb7566afc9db4e8a90e0f56f812bf36696400ea38e6c04",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_data_t2.py": "46ea95e12db49330171a1df0dc2c8269081941ee251fd82ce38ff63914217c70",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_evaluation_t4.py": "d76bcc751a9d8b85846d89e521d66213f3909b48b41612c4cab84bcf211df973",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_legacy_cleanup_t6.py": "459c60d79c699d28b291f737f9efb14bb654891c529d549314f1437449f5ff83",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_main_t5.py": "113885d5ffcf02ba5e2ab649f05813e4606663e215ab9d3dc6461cec29e21110",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_model_train_t3.py": "d0f3a64d3f7f3c8d54a2125562312ce091abebe15fddebf3c622c33322c714c0",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_ots_full_fourier_t1.py": "1a123479604f293f4ffdb3cce449cd9e2c1e847e46899a412d02bf88ebd37d39",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_registry_t7.py": "e30ad12532fc15d0ccfffc60112a67e4e66253cf8fed53f694511a15a29ace7c",
+  "OTS_code_share/NN_hotE_large_lmRange/tests/test_second_dataset_t8.py": "1fe85c8d5b3728fb967ba71f285d1e8462b9c9a534c912b92838b333bcc6a865"
+}

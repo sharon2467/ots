@@ -1,0 +1,18 @@
+{
+  "source": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+  "original_copy": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+  "source_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+  "source_array": "intensity",
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "shape_time_wavelength": [
+    480,
+    319
+  ],
+  "operation": "No interpolation; native 319 point axis matches checkpoint float32 axis",
+  "mask_policy": "Ignore mask; keep all existing values and rows",
+  "original_scale_preserved": true,
+  "normalization": "Authorized; separate inference stage",
+  "provenance": "new_read_only_audit_of_original_uploaded_bytes",
+  "created_at_utc": "2026-10-24T06:43:58.039223+00:00"
+}

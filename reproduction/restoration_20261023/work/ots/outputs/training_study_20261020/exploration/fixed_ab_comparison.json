@@ -1,0 +1,125 @@
+{
+  "test_metrics_read": false,
+  "test_parquet_access": "binary SHA256 only; no parsing",
+  "runs": {
+    "a": {
+      "run_id": "study_fixed_a",
+      "validation_metrics": {
+        "coefficient_mae": 0.015040212236344814,
+        "coefficient_rmse": 0.030010925046932226,
+        "hermitian_symmetry_mae": 0.0,
+        "evdf_mae": 2.1628342983248673e-10,
+        "evdf_rmse": 7.945547803854256e-10,
+        "evdf_relative_l2_mean": 0.07082791814121565,
+        "negative_mass_fraction_mean": 0.014830197242399057,
+        "coefficient_r2": 0.9863943627935808,
+        "evdf_r2": 0.9863376086001716,
+        "evdf_relative_l2_p50": 0.046590131321906314,
+        "evdf_relative_l2_p90": 0.15580128114161224,
+        "evdf_relative_l2_p95": 0.19916657228129275,
+        "evdf_relative_l2_median": 0.046590131321906314
+      },
+      "validation_baseline": 0.41147795542436066,
+      "validation_index_hash": "37cc1bd7238225f33447ef4554e03774dc2d5145ae09a41d2d4698dfb08bb5bb",
+      "hashes": {
+        "train": "9888e12d73c3af9b389925060654e0b6f37c9c72937282f449ea8a6724bd1fe7",
+        "test": "5b68ffe85f8115ea89415b257f9dba0a79de00a090c3b45165ee616d2178ecf3"
+      },
+      "training": {
+        "best_epoch": 113,
+        "best_validation_loss": 0.17516107420126598,
+        "elapsed_seconds": 63.389981508255005,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 801184
+      },
+      "epochs_completed": 148,
+      "first_epoch": {
+        "epoch": 1,
+        "learning_rate": 0.001,
+        "train_loss": 0.6676566325916964,
+        "validation_loss": 0.45016962798436483
+      },
+      "best_epoch_record": {
+        "epoch": 113,
+        "learning_rate": 0.00025,
+        "train_loss": 0.008095499589162714,
+        "validation_loss": 0.17516107420126598
+      },
+      "last_epoch": {
+        "epoch": 148,
+        "learning_rate": 1.5625e-05,
+        "train_loss": 0.006033341779866639,
+        "validation_loss": 0.17622062627474466
+      },
+      "last10_validation_mean": 0.17629946179389955,
+      "wall_timing": [
+        "real 18m2.439935s"
+      ]
+    },
+    "b": {
+      "run_id": "study_fixed_b",
+      "validation_metrics": {
+        "coefficient_mae": 0.014690145663917065,
+        "coefficient_rmse": 0.028592264217673833,
+        "hermitian_symmetry_mae": 0.0,
+        "evdf_mae": 2.0381864858827945e-10,
+        "evdf_rmse": 7.567923084164107e-10,
+        "evdf_relative_l2_mean": 0.06748902300378726,
+        "negative_mass_fraction_mean": 0.013617516520122688,
+        "coefficient_r2": 0.9876502765416741,
+        "evdf_r2": 0.9876054019094231,
+        "evdf_relative_l2_p50": 0.04450056653235766,
+        "evdf_relative_l2_p90": 0.14530863625195947,
+        "evdf_relative_l2_p95": 0.1936005147486777,
+        "evdf_relative_l2_median": 0.04450056653235766
+      },
+      "validation_baseline": 0.41147795542436066,
+      "validation_index_hash": "37cc1bd7238225f33447ef4554e03774dc2d5145ae09a41d2d4698dfb08bb5bb",
+      "hashes": {
+        "train": "9888e12d73c3af9b389925060654e0b6f37c9c72937282f449ea8a6724bd1fe7",
+        "test": "5b68ffe85f8115ea89415b257f9dba0a79de00a090c3b45165ee616d2178ecf3"
+      },
+      "training": {
+        "best_epoch": 90,
+        "best_validation_loss": 0.05330959371725718,
+        "elapsed_seconds": 44.26989674568176,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 801184
+      },
+      "epochs_completed": 125,
+      "first_epoch": {
+        "epoch": 1,
+        "learning_rate": 0.001,
+        "train_loss": 0.42093582669426416,
+        "validation_loss": 0.24162997325261434
+      },
+      "best_epoch_record": {
+        "epoch": 90,
+        "learning_rate": 0.0005,
+        "train_loss": 0.00423686666523709,
+        "validation_loss": 0.05330959371725718
+      },
+      "last_epoch": {
+        "epoch": 125,
+        "learning_rate": 3.125e-05,
+        "train_loss": 0.002649616817231564,
+        "validation_loss": 0.05372953526178996
+      },
+      "last10_validation_mean": 0.05375370469093323,
+      "wall_timing": [
+        "real 15m56.391148s"
+      ]
+    }
+  },
+  "train_hash_equal": true,
+  "test_hash_equal": true,
+  "validation_paired_comparison": {
+    "a_minus_b_mean_relative_l2": 0.0033388951374283818,
+    "ci95_percentile_bootstrap_2000": [
+      0.0018541079241416385,
+      0.004854200634830486
+    ],
+    "fraction_samples_b_better": 0.5626666666666666,
+    "relative_mean_improvement": 0.04714094703124494
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "run_id": "study_fig_c",
+  "checkpoint_id": "study_fig_c_model",
+  "dataset_id": "study_fig_c_data",
+  "purpose": "Final frozen-model comparison to original sampled VDF; no model or estimator selection",
+  "selection_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/frozen_selection.json",
+  "selection_file_sha256": "dc15833b254253243b3608a8a213e727dd7a00abb3efe84bd7a92073054bd13b",
+  "test_sample_count": 512,
+  "replay_seed": 20261021,
+  "cpu_threads": 1,
+  "fourier_replay_checks": [
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 0,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 0,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 0,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 46,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 46,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 46,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 92,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 92,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 92,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 139,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 139,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 139,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 185,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 185,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 185,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 232,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 232,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 232,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 278,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 278,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 278,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 325,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 325,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 325,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 371,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 371,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 371,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 418,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 418,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 418,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 464,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 464,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 464,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 511,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i1",
+      "test_sample_index_zero_based": 511,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "i2",
+      "test_sample_index_zero_based": 511,
+      "max_abs_float32_coefficient_error": 0.0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/evaluation/e/predictions.npz",
+      "sha256": "3807ee27e7672ca59e9eeb0b0fb90fdf5910d991bc568cad7b720708faeba9fd"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/evaluation/i1/predictions.npz",
+      "sha256": "fb6abd5caf79a59bd5f8402e21a5ab6c2e32bd7afd7d965a0d6310931338b2c1"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/evaluation/i2/predictions.npz",
+      "sha256": "19003e3cb04b6fa0e5c6bf5906c8ab67b225d0cb7c4c076b1ca55ba8a50dee47"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/data/dataset_manifest.json",
+      "sha256": "c816c7963bcb99abfd86eaf675ff158ef9bcd54cc81d790014947fa6c2af41de"
+    }
+  ],
+  "numerics": "Replay original VDF on original float64 velocity axes. Reconstruct canonical float32 target/model coefficients in float64 on these axes; relative L2 uses unweighted sums, consistent with validation positivity diagnostic. This avoids counting lowpass label targets as original VDF truth.",
+  "species": {
+    "e": {
+      "model_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.06989856853923913,
+          "median": 0.05270219822966543,
+          "p95": 0.192941840580668,
+          "max": 0.34119023665660764
+        }
+      },
+      "target_fourier_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.0007111320854025821,
+          "median": 8.470039165661279e-07,
+          "p95": 0.003531903423547036,
+          "max": 0.04523054365453511
+        }
+      }
+    },
+    "i1": {
+      "model_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.07864110259905441,
+          "median": 0.04973082001816277,
+          "p95": 0.24968762231807162,
+          "max": 1.063773059949325
+        }
+      },
+      "target_fourier_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.0027276510084654204,
+          "median": 4.406701371653633e-06,
+          "p95": 0.015509370448982294,
+          "max": 0.06447405513380197
+        }
+      }
+    },
+    "i2": {
+      "model_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.09401581074666554,
+          "median": 0.06641453537537792,
+          "p95": 0.2950081723705764,
+          "max": 0.5770815906481863
+        }
+      },
+      "target_fourier_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.003124053986178945,
+          "median": 1.3930528155515139e-05,
+          "p95": 0.02040649740991168,
+          "max": 0.09720481093990216
+        }
+      }
+    }
+  },
+  "training_performed": false,
+  "pv_called": false,
+  "postprocessing": "None; original model Fourier coefficients are unchanged"
+}

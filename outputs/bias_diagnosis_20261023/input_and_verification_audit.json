@@ -1,0 +1,159 @@
+{
+  "time_utc": "2026-10-23T10:30:32.648484+00:00",
+  "scope": "Original uploaded b/c arrays, current sampler defaults, and independent arithmetic/PV verification. Latest processed inputs and D4 are unavailable.",
+  "digitization": {
+    "b": {
+      "input_path": "/workspace/attachments/39e99b16-ce5c-44f2-ad62-5e0643f5584b/digitized_spectra.npz",
+      "sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "palette_samples": 480,
+      "exact_mapping": "intensity = 1 - palette_index/(480-1)",
+      "intensity_quantum": 0.0020876826722338203,
+      "diagnostic_region_nm": "abs(wavelength - 263.3) < 0.75; read-only subset, no new processed dataset",
+      "rows": [
+        {
+          "row": 14,
+          "requested_time_ns": 1.6,
+          "actual_time_ns": 1.599481865284974,
+          "central_peak": 0.0041753653444676075,
+          "central_min": 0.0041753653444676075,
+          "quantum_over_central_peak": 0.500000000000004,
+          "constant_central_row": true
+        },
+        {
+          "row": 78,
+          "requested_time_ns": 2.0,
+          "actual_time_ns": 1.9974093264248705,
+          "central_peak": 0.8475991649269311,
+          "central_min": 0.0020876826722338038,
+          "quantum_over_central_peak": 0.002463054187192118,
+          "constant_central_row": false
+        },
+        {
+          "row": 239,
+          "requested_time_ns": 3.0,
+          "actual_time_ns": 2.998445595854922,
+          "central_peak": 0.08350730688935282,
+          "central_min": 0.0020876826722338038,
+          "quantum_over_central_peak": 0.024999999999999998,
+          "constant_central_row": false
+        },
+        {
+          "row": 400,
+          "requested_time_ns": 4.0,
+          "actual_time_ns": 3.999481865284974,
+          "central_peak": 0.17327766179540705,
+          "central_min": 0.0020876826722338038,
+          "quantum_over_central_peak": 0.01204819277108434,
+          "constant_central_row": false
+        }
+      ]
+    },
+    "c": {
+      "input_path": "/workspace/attachments/221c92bf-8637-482a-b2db-e03441434eb5/digitized_spectra.npz",
+      "sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "palette_samples": 480,
+      "exact_mapping": "intensity = 1 - palette_index/(480-1)",
+      "intensity_quantum": 0.0020876826722338203,
+      "diagnostic_region_nm": "abs(wavelength - 263.3) < 0.75; read-only subset, no new processed dataset",
+      "rows": [
+        {
+          "row": 14,
+          "requested_time_ns": 1.6,
+          "actual_time_ns": 1.599481865284974,
+          "central_peak": 0.0041753653444676075,
+          "central_min": 0.0041753653444676075,
+          "quantum_over_central_peak": 0.500000000000004,
+          "constant_central_row": true
+        },
+        {
+          "row": 78,
+          "requested_time_ns": 2.0,
+          "actual_time_ns": 1.9974093264248705,
+          "central_peak": 0.35699373695198333,
+          "central_min": 0.0020876826722338038,
+          "quantum_over_central_peak": 0.005847953216374268,
+          "constant_central_row": false
+        },
+        {
+          "row": 239,
+          "requested_time_ns": 3.0,
+          "actual_time_ns": 2.998445595854922,
+          "central_peak": 0.04384133611691021,
+          "central_min": 0.0020876826722338038,
+          "quantum_over_central_peak": 0.04761904761904763,
+          "constant_central_row": false
+        },
+        {
+          "row": 400,
+          "requested_time_ns": 4.0,
+          "actual_time_ns": 3.999481865284974,
+          "central_peak": 0.25469728601252606,
+          "central_min": 0.012526096033402934,
+          "quantum_over_central_peak": 0.00819672131147541,
+          "constant_central_row": false
+        }
+      ]
+    }
+  },
+  "current_default_sampling_support": {
+    "anchor_sha256": "140bbd76044a83b728fcbe9d8a903a73e819d18a39ef06c25256a58e958dd2fe",
+    "temperatures": {
+      "T_e_ev": {
+        "fig11_count": 27,
+        "fig11_min_ev": 148.8095238095238,
+        "fig11_max_ev": 1617.965367965368,
+        "all_anchor_min_ev": 148.8095238095238,
+        "all_anchor_max_ev": 1617.965367965368,
+        "default_global_target_range_ev": [
+          89.28571428571428,
+          2426.948051948052
+        ]
+      },
+      "T_i_ev": {
+        "fig11_count": 27,
+        "fig11_min_ev": 67.09956709956711,
+        "fig11_max_ev": 897.5468975468974,
+        "all_anchor_min_ev": 67.09956709956711,
+        "all_anchor_max_ev": 912.0,
+        "default_global_target_range_ev": [
+          33.549783549783555,
+          1641.6000000000001
+        ]
+      }
+    },
+    "electron_flow_prior_mean_m_s": -100000.0,
+    "limitation": "Default source configuration; absent D4 generation manifest prevents validating all run-specific overrides."
+  },
+  "independent_verification": {
+    "states": [
+      {
+        "state": 0,
+        "spectrum_l2": 0.14156353336009986,
+        "all_nine_moments_verified": true
+      },
+      {
+        "state": 1,
+        "spectrum_l2": 0.06944266233022374,
+        "all_nine_moments_verified": true
+      },
+      {
+        "state": 2,
+        "spectrum_l2": 3.193549530454335e-13,
+        "all_nine_moments_verified": true
+      }
+    ],
+    "new_PV_calls": 1,
+    "state1_PV_max_absolute_difference": 0.0,
+    "existing_convolution_max_absolute_difference": 0.0,
+    "protected_hashes_match_first_audit": true,
+    "sha256": {
+      "OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+      "OTS_code_share/NN_hotE_large_lmRange/evaluation.py": "0b3e196ab5910242ce968c6bc7b50f268a3c6ac914c40ce7742e72b5d06d8a7f",
+      "OTS_code_share/NN_hotE_large_lmRange/model.py": "ed6f0e84c2e57f14b264ba8750913104c131f286a5c0b5466c61a31c19913954",
+      "OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py": "f48ad0b5f092a0021c1bd1d15430977617045ac72a736ab4f01470d83055b191",
+      "OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/training/model.pt": "efd15d08e1bc297098e4c8b262e1e2816dde29bad18803f34722b77b39c08fc0",
+      "OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/data/dataset_test.parquet": "a6b78f1a3373b41d5bb1c402e2e768a7f1c57e7c8f0c90d8ea38c90824dc2481",
+      "OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/data/dataset_train.parquet": "223574da78898d855f4233b0eb3c7972066fa135dee328e93895d34fdd132651"
+    }
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "scope": "Read-only latest data and saved PV comparison arrays; plots only, no new correction or inference.",
+  "normalization": "I(t,lambda)/max_lambda(abs(I(t,lambda)))",
+  "panels": {
+    "fig10a": {
+      "latest_dataset": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10a.npz",
+      "latest_sha256": "11ab5068d6d0159a26a8626a2265058a5ec40070c2e6a1095c839ff93c1f7d2c",
+      "forward_result_sha256": "97e135f214fe016598b1b19f404972c271beece2c314ac2af9ef815a9021a11b",
+      "observed_exactly_equals_latest": true,
+      "normalized_exactly_equals_latest_divided_by_row_peak": true,
+      "shape": [
+        556,
+        527
+      ],
+      "examples": [
+        {
+          "target_ns": 1.52,
+          "actual_ns": 1.517399999999989,
+          "row": 3,
+          "source_row": 147,
+          "peak": 304.0,
+          "minimum": 28.0,
+          "median": 163.0,
+          "normalized_median": 0.5361842105263158,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 1.6,
+          "actual_ns": 1.5983999999999892,
+          "row": 18,
+          "source_row": 162,
+          "peak": 297.0,
+          "minimum": 28.0,
+          "median": 159.0,
+          "normalized_median": 0.5353535353535354,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 1.65,
+          "actual_ns": 1.652399999999989,
+          "row": 28,
+          "source_row": 172,
+          "peak": 341.0,
+          "minimum": 36.0,
+          "median": 178.0,
+          "normalized_median": 0.5219941348973607,
+          "pixels_equal_row_peak": 2,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 1.7,
+          "actual_ns": 1.700999999999989,
+          "row": 37,
+          "source_row": 181,
+          "peak": 596.0,
+          "minimum": 74.0,
+          "median": 203.0,
+          "normalized_median": 0.34060402684563756,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 2.0,
+          "actual_ns": 1.9979999999999891,
+          "row": 92,
+          "source_row": 236,
+          "peak": 2424.0,
+          "minimum": 81.0,
+          "median": 230.0,
+          "normalized_median": 0.09488448844884488,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 3.0,
+          "actual_ns": 3.002399999999989,
+          "row": 278,
+          "source_row": 422,
+          "peak": 931.0,
+          "minimum": 77.00000000000023,
+          "median": 261.0000000000002,
+          "normalized_median": 0.28034371643394224,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 4.0,
+          "actual_ns": 4.00139999999999,
+          "row": 463,
+          "source_row": 607,
+          "peak": 1746.0,
+          "minimum": 125.99999999999977,
+          "median": 513.0,
+          "normalized_median": 0.29381443298969073,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 0
+        }
+      ]
+    },
+    "fig10b": {
+      "latest_dataset": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10b.npz",
+      "latest_sha256": "34f8088fb2330ba75d8f7ba49d7ab52ad0871c148c845a31fa531cb009cc3116",
+      "forward_result_sha256": "02e57cf9fb8936a6abf7f616cd830d80fa5741394a5239b9443e41dce7782cbe",
+      "observed_exactly_equals_latest": true,
+      "normalized_exactly_equals_latest_divided_by_row_peak": true,
+      "shape": [
+        480,
+        319
+      ],
+      "examples": [
+        {
+          "target_ns": 1.52,
+          "actual_ns": 1.5186528497409326,
+          "row": 1,
+          "source_row": 16,
+          "peak": 0.0041753653444676075,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 1.0,
+          "pixels_equal_row_peak": 310,
+          "replacement_pixels": 5
+        },
+        {
+          "target_ns": 1.6,
+          "actual_ns": 1.599481865284974,
+          "row": 14,
+          "source_row": 29,
+          "peak": 0.0041753653444676075,
+          "minimum": 0.0020876826722338038,
+          "median": 0.0041753653444676075,
+          "normalized_median": 1.0,
+          "pixels_equal_row_peak": 316,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 1.65,
+          "actual_ns": 1.6492227979274612,
+          "row": 22,
+          "source_row": 37,
+          "peak": 0.012526096033402934,
+          "minimum": 0.0020876826722338038,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.3333333333333304,
+          "pixels_equal_row_peak": 4,
+          "replacement_pixels": 51
+        },
+        {
+          "target_ns": 1.7,
+          "actual_ns": 1.698963730569948,
+          "row": 30,
+          "source_row": 45,
+          "peak": 0.06889352818371608,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.060606060606060115,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 51
+        },
+        {
+          "target_ns": 2.0,
+          "actual_ns": 1.9974093264248705,
+          "row": 78,
+          "source_row": 93,
+          "peak": 0.8475991649269311,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.0049261083743841975,
+          "pixels_equal_row_peak": 2,
+          "replacement_pixels": 11
+        },
+        {
+          "target_ns": 3.0,
+          "actual_ns": 2.998445595854922,
+          "row": 239,
+          "source_row": 254,
+          "peak": 0.08350730688935282,
+          "minimum": 0.0020876826722338038,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.0499999999999996,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 11
+        },
+        {
+          "target_ns": 4.0,
+          "actual_ns": 3.999481865284974,
+          "row": 400,
+          "source_row": 415,
+          "peak": 0.17327766179540705,
+          "minimum": 0.0,
+          "median": 0.039665970772442605,
+          "normalized_median": 0.22891566265060256,
+          "pixels_equal_row_peak": 6,
+          "replacement_pixels": 11
+        }
+      ]
+    },
+    "fig10c": {
+      "latest_dataset": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10c.npz",
+      "latest_sha256": "e81ba6359ee285f742cb7b71e60eb2b79e4a3e238a57c23f592c3366bb456f75",
+      "forward_result_sha256": "ff1b6578665f5630cff1247b23b710421a36a8a9275505314e94f92fb9d6ace3",
+      "observed_exactly_equals_latest": true,
+      "normalized_exactly_equals_latest_divided_by_row_peak": true,
+      "shape": [
+        480,
+        320
+      ],
+      "examples": [
+        {
+          "target_ns": 1.52,
+          "actual_ns": 1.5186528497409326,
+          "row": 1,
+          "source_row": 16,
+          "peak": 0.0041753653444676075,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 1.0,
+          "pixels_equal_row_peak": 315,
+          "replacement_pixels": 5
+        },
+        {
+          "target_ns": 1.6,
+          "actual_ns": 1.599481865284974,
+          "row": 14,
+          "source_row": 29,
+          "peak": 0.0041753653444676075,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 1.0,
+          "pixels_equal_row_peak": 319,
+          "replacement_pixels": 0
+        },
+        {
+          "target_ns": 1.65,
+          "actual_ns": 1.6492227979274612,
+          "row": 22,
+          "source_row": 37,
+          "peak": 0.0041753653444676075,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 1.0,
+          "pixels_equal_row_peak": 311,
+          "replacement_pixels": 48
+        },
+        {
+          "target_ns": 1.7,
+          "actual_ns": 1.698963730569948,
+          "row": 30,
+          "source_row": 45,
+          "peak": 0.02713987473903967,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.15384615384615258,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 48
+        },
+        {
+          "target_ns": 2.0,
+          "actual_ns": 1.9974093264248705,
+          "row": 78,
+          "source_row": 93,
+          "peak": 0.35699373695198333,
+          "minimum": 0.0,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.011695906432748444,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 12
+        },
+        {
+          "target_ns": 3.0,
+          "actual_ns": 2.998445595854922,
+          "row": 239,
+          "source_row": 254,
+          "peak": 0.04384133611691021,
+          "minimum": 0.0020876826722338038,
+          "median": 0.0041753653444676075,
+          "normalized_median": 0.09523809523809451,
+          "pixels_equal_row_peak": 4,
+          "replacement_pixels": 12
+        },
+        {
+          "target_ns": 4.0,
+          "actual_ns": 3.999481865284974,
+          "row": 400,
+          "source_row": 415,
+          "peak": 0.25469728601252606,
+          "minimum": 0.0020876826722338038,
+          "median": 0.05427974947807934,
+          "normalized_median": 0.21311475409836073,
+          "pixels_equal_row_peak": 1,
+          "replacement_pixels": 12
+        }
+      ]
+    }
+  },
+  "outputs_sha256": {
+    "latest_values_vs_row_normalized.pdf": "dee456cf2bc380966e024a60306f9875796931b1ab8bdbf2fe4b539d38a39bf7",
+    "latest_values_vs_row_normalized.png": "42e65f006f6f39b90fde4ecbed8cf74ad7e5d0af756ccc52bd21944d2ada0930"
+  }
+}

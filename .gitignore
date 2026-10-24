@@ -1,0 +1,17 @@
+**/__pycache__/
+**/.venv/
+**/.cache/
+**/runs/
+**/registry/
+*.pt
+*.pth
+*.ckpt
+*.parquet
+*.npz
+*.npy
+*.fig
+*.zip
+.env
+.env.*
+*bscc_key*
+**/sessions/

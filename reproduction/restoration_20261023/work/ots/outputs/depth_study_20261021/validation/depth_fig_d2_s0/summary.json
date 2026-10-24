@@ -1,0 +1,104 @@
+{
+  "best_epoch": 157,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0/training/model.pt",
+  "checkpoint_sha256": "65839d7acef427f149138d033c9c453998bab4e8bf4d061837650fa2c45429e3",
+  "hidden_sizes": [
+    2048,
+    1024
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.6437907218933105,
+    "mean": 0.05812356621026993,
+    "median": 0.04322826862335205,
+    "p95": 0.1474958062171936
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.007925468496978283,
+      "coefficient_r2": 0.993248462677002,
+      "coefficient_rmse": 0.019377578049898148,
+      "evdf_mae": 2.2024658485886306e-10,
+      "evdf_r2": 0.9934350848197937,
+      "evdf_relative_l2_mean": 0.05994534119963646,
+      "evdf_relative_l2_median": 0.04409024119377136,
+      "evdf_rmse": 7.337953578101519e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.029328789561986923,
+        "mean": 0.0013227738672867417,
+        "median": 0.0006725286366418004,
+        "p95": 0.004565163981169462
+      },
+      "negative_mass_fraction_mean": 0.0013227738672867417,
+      "relative_l2_distribution": {
+        "maximum": 0.3071380853652954,
+        "mean": 0.05995088070631027,
+        "median": 0.044103797525167465,
+        "p95": 0.1688285619020462
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.00994935818016529,
+      "coefficient_r2": 0.9910711050033569,
+      "coefficient_rmse": 0.024364376440644264,
+      "evdf_mae": 8.517786476147649e-09,
+      "evdf_r2": 0.9917587637901306,
+      "evdf_relative_l2_mean": 0.04826412722468376,
+      "evdf_relative_l2_median": 0.029734428972005844,
+      "evdf_rmse": 4.745721682297699e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.05196094140410423,
+        "mean": 0.002890347270295024,
+        "median": 0.0014463539700955153,
+        "p95": 0.01108943484723568
+      },
+      "negative_mass_fraction_mean": 0.0028903470374643803,
+      "relative_l2_distribution": {
+        "maximum": 0.9401759505271912,
+        "mean": 0.04826412722468376,
+        "median": 0.029734428972005844,
+        "p95": 0.14526113867759705
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.01421834621578455,
+      "coefficient_r2": 0.9827960729598999,
+      "coefficient_rmse": 0.03470553457736969,
+      "evdf_mae": 4.155023347607312e-08,
+      "evdf_r2": 0.9837916493415833,
+      "evdf_relative_l2_mean": 0.06615569442510605,
+      "evdf_relative_l2_median": 0.03902701288461685,
+      "evdf_rmse": 2.2821704703801515e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.07206832617521286,
+        "mean": 0.004357820376753807,
+        "median": 0.0023392685689032078,
+        "p95": 0.014524429105222225
+      },
+      "negative_mass_fraction_mean": 0.00435781991109252,
+      "relative_l2_distribution": {
+        "maximum": 0.8824388980865479,
+        "mean": 0.06615569442510605,
+        "median": 0.03902701288461685,
+        "p95": 0.22543418407440186
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261030,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

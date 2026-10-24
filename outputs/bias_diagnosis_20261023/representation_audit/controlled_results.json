@@ -1,0 +1,287 @@
+{
+  "scope": "Three standalone Gaussian known-truth diagnostic states, not existing-row replay or new training datasets; no NN.",
+  "anchor_path": "/workspace/ots-cloud-setup/data/paper_experimental_points.csv",
+  "anchor_sha256": "140bbd76044a83b728fcbe9d8a903a73e819d18a39ef06c25256a58e958dd2fe",
+  "density_m3": 3.5e+26,
+  "states": [
+    {
+      "state_index": 0,
+      "Te_ev": 100.0,
+      "Ti_ev": 60.0,
+      "species": {
+        "e": {
+          "original": {
+            "actual_temperature_ev": 100.0,
+            "actual_mean_velocity_m_s": 6.730077737512195e-11
+          },
+          "raw_signed": {
+            "norm": 1.0000013755300874,
+            "mean_m_s": -4.1082458657387406e-10,
+            "temperature_ev": 100.19823572550284,
+            "raw_second_integral_m2_s2": 17623090444865.863,
+            "negative_mass": 0.0025655088911136987,
+            "negative_mass_fraction": 0.0025524089246186927,
+            "min_f": -8.567587434235388e-11,
+            "max_f": 9.496227756192917e-08,
+            "tail_abs_mass_gt_0.5V": 0.0010630807325974865,
+            "tail_signed_T_contribution_gt_0.5V_ev": 2.4697852347351645,
+            "tail_abs_mass_gt_0.8V": 0.00018463799842416076,
+            "tail_signed_T_contribution_gt_0.8V_ev": 2.0296405094238414
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 164.14368715063665,
+            "actual_mean_velocity_m_s": -8.07176547823474e-11
+          },
+          "raw_VDF_relative_l2_vs_original": 0.0028633817642205886,
+          "clipnorm_VDF_relative_l2_vs_original": 0.0036311852433636004,
+          "raw_temperature_bias_ev": 0.1982357255028404,
+          "clipnorm_temperature_bias_ev": 64.14368715063665
+        },
+        "i1": {
+          "original": {
+            "actual_temperature_ev": 60.0,
+            "actual_mean_velocity_m_s": 7.332569880090476e-15
+          },
+          "raw_signed": {
+            "norm": 1.0000026087918554,
+            "mean_m_s": 1.1865588643132811e-11,
+            "temperature_ev": 60.26323757525658,
+            "raw_second_integral_m2_s2": 5772530040.993831,
+            "negative_mass": 0.005598071350099694,
+            "negative_mass_fraction": 0.005536074230550192,
+            "min_f": -1.038721134124878e-08,
+            "max_f": 5.243752116631092e-06,
+            "tail_abs_mass_gt_0.5V": 0.0020270206385668015,
+            "tail_signed_T_contribution_gt_0.5V_ev": 3.322563997053492,
+            "tail_abs_mass_gt_0.8V": 0.0003371915713611461,
+            "tail_signed_T_contribution_gt_0.8V_ev": 2.7249207446258676
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 145.21898260536358,
+            "actual_mean_velocity_m_s": 1.998845533535132e-11
+          },
+          "raw_VDF_relative_l2_vs_original": 0.005752590494217554,
+          "clipnorm_VDF_relative_l2_vs_original": 0.007539038801916988,
+          "raw_temperature_bias_ev": 0.2632375752565821,
+          "clipnorm_temperature_bias_ev": 85.21898260536358
+        },
+        "i2": {
+          "original": {
+            "actual_temperature_ev": 59.99999999999999,
+            "actual_mean_velocity_m_s": 3.235558118737656e-14
+          },
+          "raw_signed": {
+            "norm": 1.0000032192524928,
+            "mean_m_s": 2.709490569063426e-13,
+            "temperature_ev": 60.34345088134094,
+            "raw_second_integral_m2_s2": 481684757.36506796,
+            "negative_mass": 0.0071426911565089565,
+            "negative_mass_fraction": 0.007042069826560724,
+            "min_f": -4.749016476845096e-08,
+            "max_f": 1.8147594095890526e-05,
+            "tail_abs_mass_gt_0.5V": 0.0025068527976447844,
+            "tail_signed_T_contribution_gt_0.5V_ev": 4.353210511845337,
+            "tail_abs_mass_gt_0.8V": 0.0004111296129832582,
+            "tail_signed_T_contribution_gt_0.8V_ev": 3.5681220712398654
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 171.10159682352142,
+            "actual_mean_velocity_m_s": 2.1445067943659528e-12
+          },
+          "raw_VDF_relative_l2_vs_original": 0.007243763022951422,
+          "clipnorm_VDF_relative_l2_vs_original": 0.009560745554682712,
+          "raw_temperature_bias_ev": 0.34345088134094937,
+          "clipnorm_temperature_bias_ev": 111.10159682352142
+        }
+      },
+      "PV_clipnorm_all_species_relative_l2_vs_original_PV": 0.14156353336009989,
+      "PV_raw_signed_not_called_reason": "Existing public PV API requires nonnegative, normalized distributions; raw inverse has negative lobes."
+    },
+    {
+      "state_index": 1,
+      "Te_ev": 209.0,
+      "Ti_ev": 78.0,
+      "species": {
+        "e": {
+          "original": {
+            "actual_temperature_ev": 209.00000000000006,
+            "actual_mean_velocity_m_s": 4.394101155143742e-11
+          },
+          "raw_signed": {
+            "norm": 1.0000000072963289,
+            "mean_m_s": 3.8008312886152266e-10,
+            "temperature_ev": 209.0009722710589,
+            "raw_second_integral_m2_s2": 36759509498327.11,
+            "negative_mass": 8.613154634584096e-06,
+            "negative_mass_fraction": 8.613006201432206e-06,
+            "min_f": -2.2162798491778897e-13,
+            "max_f": 6.579966001947207e-08,
+            "tail_abs_mass_gt_0.5V": 5.667085861687611e-06,
+            "tail_signed_T_contribution_gt_0.5V_ev": 0.010743925447213738,
+            "tail_abs_mass_gt_0.8V": 1.3186075273427532e-06,
+            "tail_signed_T_contribution_gt_0.8V_ev": 0.00909633216424045
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 209.32526843613527,
+            "actual_mean_velocity_m_s": -5.030249550230792e-10
+          },
+          "raw_VDF_relative_l2_vs_original": 1.0888382257859521e-05,
+          "clipnorm_VDF_relative_l2_vs_original": 1.3080572309138767e-05,
+          "raw_temperature_bias_ev": 0.0009722710588562222,
+          "clipnorm_temperature_bias_ev": 0.32526843613521805
+        },
+        "i1": {
+          "original": {
+            "actual_temperature_ev": 78.00000000000001,
+            "actual_mean_velocity_m_s": 6.070484197553582e-13
+          },
+          "raw_signed": {
+            "norm": 1.0000007528255566,
+            "mean_m_s": -1.1618364183798317e-11,
+            "temperature_ev": 78.07443050529746,
+            "raw_second_integral_m2_s2": 7478625065.6514435,
+            "negative_mass": 0.0012925897628911763,
+            "negative_mass_fraction": 0.00128925583451954,
+            "min_f": -2.2947411667206043e-09,
+            "max_f": 4.611300359582722e-06,
+            "tail_abs_mass_gt_0.5V": 0.000579771571961912,
+            "tail_signed_T_contribution_gt_0.5V_ev": 0.9157129061580976,
+            "tail_abs_mass_gt_0.8V": 0.00010477330347848938,
+            "tail_signed_T_contribution_gt_0.8V_ev": 0.7542303825574318
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 102.12355277496819,
+            "actual_mean_velocity_m_s": -1.8940404800105167e-12
+          },
+          "raw_VDF_relative_l2_vs_original": 0.0014913371010277015,
+          "clipnorm_VDF_relative_l2_vs_original": 0.0018735073500568105,
+          "raw_temperature_bias_ev": 0.07443050529744255,
+          "clipnorm_temperature_bias_ev": 24.123552774968175
+        },
+        "i2": {
+          "original": {
+            "actual_temperature_ev": 78.00000000000001,
+            "actual_mean_velocity_m_s": -4.295952711351268e-14
+          },
+          "raw_signed": {
+            "norm": 1.0000009901627211,
+            "mean_m_s": 8.623787582701002e-13,
+            "temperature_ev": 78.10359392105867,
+            "raw_second_integral_m2_s2": 623451696.525846,
+            "negative_mass": 0.0017217065963023466,
+            "negative_mass_fraction": 0.0017157967003904651,
+            "min_f": -1.0424511436323505e-08,
+            "max_f": 1.5969016253752876e-05,
+            "tail_abs_mass_gt_0.5V": 0.0007636561611772,
+            "tail_signed_T_contribution_gt_0.5V_ev": 1.2818786194206993,
+            "tail_abs_mass_gt_0.8V": 0.0001355574778573967,
+            "tail_signed_T_contribution_gt_0.8V_ev": 1.054691450999085
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 111.50550114525608,
+            "actual_mean_velocity_m_s": 8.936185125207885e-13
+          },
+          "raw_VDF_relative_l2_vs_original": 0.0020051851981349603,
+          "clipnorm_VDF_relative_l2_vs_original": 0.002512524744558724,
+          "raw_temperature_bias_ev": 0.1035939210586605,
+          "clipnorm_temperature_bias_ev": 33.50550114525606
+        }
+      },
+      "PV_clipnorm_all_species_relative_l2_vs_original_PV": 0.06944266233022374,
+      "PV_raw_signed_not_called_reason": "Existing public PV API requires nonnegative, normalized distributions; raw inverse has negative lobes."
+    },
+    {
+      "state_index": 2,
+      "Te_ev": 1392.0,
+      "Ti_ev": 912.0,
+      "species": {
+        "e": {
+          "original": {
+            "actual_temperature_ev": 1391.9999999999995,
+            "actual_mean_velocity_m_s": 1.0285909633148574e-10
+          },
+          "raw_signed": {
+            "norm": 0.9999999999999918,
+            "mean_m_s": -9.813965141489933e-10,
+            "temperature_ev": 1391.9999999998795,
+            "raw_second_integral_m2_s2": 244827745499461.94,
+            "negative_mass": 7.27687164945386e-16,
+            "negative_mass_fraction": 7.276871649453908e-16,
+            "min_f": -2.4996791788539965e-23,
+            "max_f": 2.549645196714155e-08,
+            "tail_abs_mass_gt_0.5V": 7.822353360226987e-08,
+            "tail_signed_T_contribution_gt_0.5V_ev": 0.003352632950172024,
+            "tail_abs_mass_gt_0.8V": 7.282673063462327e-16,
+            "tail_signed_T_contribution_gt_0.8V_ev": -1.0108137554703589e-10
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 1391.9999999999802,
+            "actual_mean_velocity_m_s": -1.0627602330695378e-10
+          },
+          "raw_VDF_relative_l2_vs_original": 6.886383391995352e-15,
+          "clipnorm_VDF_relative_l2_vs_original": 6.620358749461774e-16,
+          "raw_temperature_bias_ev": -1.2005330063402653e-10,
+          "clipnorm_temperature_bias_ev": -1.9326762412674725e-11
+        },
+        "i1": {
+          "original": {
+            "actual_temperature_ev": 912.0000000000001,
+            "actual_mean_velocity_m_s": 3.245056476320643e-12
+          },
+          "raw_signed": {
+            "norm": 0.9999999999999998,
+            "mean_m_s": 1.777521605071595e-12,
+            "temperature_ev": 911.9999999999513,
+            "raw_second_integral_m2_s2": 87358958382.2013,
+            "negative_mass": 1.9694402028085173e-16,
+            "negative_mass_fraction": 1.9694402028085173e-16,
+            "min_f": -5.188382894595391e-22,
+            "max_f": 1.3497593427962498e-06,
+            "tail_abs_mass_gt_0.5V": 3.330746939072853e-08,
+            "tail_signed_T_contribution_gt_0.5V_ev": 0.0009856494394169285,
+            "tail_abs_mass_gt_0.8V": 1.8435776334986508e-16,
+            "tail_signed_T_contribution_gt_0.8V_ev": -1.0239270217041008e-11
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 911.9999999999682,
+            "actual_mean_velocity_m_s": 3.214527060197854e-11
+          },
+          "raw_VDF_relative_l2_vs_original": 1.1525841237688898e-15,
+          "clipnorm_VDF_relative_l2_vs_original": 1.2786375021750967e-15,
+          "raw_temperature_bias_ev": -4.8771653382573277e-11,
+          "clipnorm_temperature_bias_ev": -3.1946001399774104e-11
+        },
+        "i2": {
+          "original": {
+            "actual_temperature_ev": 912.0,
+            "actual_mean_velocity_m_s": -3.4072169155005075e-12
+          },
+          "raw_signed": {
+            "norm": 1.0000000000000036,
+            "mean_m_s": -7.723349261074332e-13,
+            "temperature_ev": 911.999999999966,
+            "raw_second_integral_m2_s2": 7279913198.516917,
+            "negative_mass": 2.912790010978539e-16,
+            "negative_mass_fraction": 2.9127900109785265e-16,
+            "min_f": -2.3500875698823985e-21,
+            "max_f": 4.6757035194277785e-06,
+            "tail_abs_mass_gt_0.5V": 1.4357874683448037e-08,
+            "tail_signed_T_contribution_gt_0.5V_ev": 0.000446310159587938,
+            "tail_abs_mass_gt_0.8V": 2.833125146544052e-16,
+            "tail_signed_T_contribution_gt_0.8V_ev": -4.416937150543317e-12
+          },
+          "clipped_normalized": {
+            "actual_temperature_ev": 911.999999999989,
+            "actual_mean_velocity_m_s": 1.1634632950181411e-11
+          },
+          "raw_VDF_relative_l2_vs_original": 4.91712535292004e-15,
+          "clipnorm_VDF_relative_l2_vs_original": 1.0855745669983726e-15,
+          "raw_temperature_bias_ev": -3.399236447876319e-11,
+          "clipnorm_temperature_bias_ev": -1.1027623258996755e-11
+        }
+      },
+      "PV_clipnorm_all_species_relative_l2_vs_original_PV": 3.193549530454335e-13,
+      "PV_raw_signed_not_called_reason": "Existing public PV API requires nonnegative, normalized distributions; raw inverse has negative lobes."
+    }
+  ]
+}

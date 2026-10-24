@@ -1,0 +1,104 @@
+{
+  "best_epoch": 127,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s2/training/model.pt",
+  "checkpoint_sha256": "8cff5137602bc5af1bea0c3cce85b8b8f397558e1981439451039e3746039331",
+  "hidden_sizes": [
+    2048,
+    1855
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.6248810887336731,
+    "mean": 0.05748007819056511,
+    "median": 0.041677478700876236,
+    "p95": 0.15161800384521484
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.007966285571455956,
+      "coefficient_r2": 0.9930810332298279,
+      "coefficient_rmse": 0.019616365432739258,
+      "evdf_mae": 2.2133481158981283e-10,
+      "evdf_r2": 0.9932721853256226,
+      "evdf_relative_l2_mean": 0.06051741912961006,
+      "evdf_relative_l2_median": 0.04430466145277023,
+      "evdf_rmse": 7.428447301727203e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.0398634672164917,
+        "mean": 0.0011095911031588912,
+        "median": 0.00038899388164281845,
+        "p95": 0.004465586505830288
+      },
+      "negative_mass_fraction_mean": 0.0011095909867435694,
+      "relative_l2_distribution": {
+        "maximum": 0.3383389413356781,
+        "mean": 0.06051742285490036,
+        "median": 0.04430466145277023,
+        "p95": 0.17016898095607758
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.009836297482252121,
+      "coefficient_r2": 0.9908071756362915,
+      "coefficient_rmse": 0.02472183294594288,
+      "evdf_mae": 8.202777124211025e-09,
+      "evdf_r2": 0.9915143847465515,
+      "evdf_relative_l2_mean": 0.04737432673573494,
+      "evdf_relative_l2_median": 0.027964450418949127,
+      "evdf_rmse": 4.815573362293435e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.05206158757209778,
+        "mean": 0.0022152105811983347,
+        "median": 0.000840570020955056,
+        "p95": 0.009035883471369743
+      },
+      "negative_mass_fraction_mean": 0.0022152105811983347,
+      "relative_l2_distribution": {
+        "maximum": 0.938947856426239,
+        "mean": 0.04737432673573494,
+        "median": 0.027964450418949127,
+        "p95": 0.14675261080265045
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.013966798782348633,
+      "coefficient_r2": 0.9824884533882141,
+      "coefficient_rmse": 0.03501446917653084,
+      "evdf_mae": 3.9745000179891576e-08,
+      "evdf_r2": 0.9834997057914734,
+      "evdf_relative_l2_mean": 0.06454847753047943,
+      "evdf_relative_l2_median": 0.03578469157218933,
+      "evdf_rmse": 2.302632822193118e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.07019110769033432,
+        "mean": 0.0035290224477648735,
+        "median": 0.0016200995305553079,
+        "p95": 0.013299106620252132
+      },
+      "negative_mass_fraction_mean": 0.0035290224477648735,
+      "relative_l2_distribution": {
+        "maximum": 0.8854274749755859,
+        "mean": 0.06454847753047943,
+        "median": 0.03578469157218933,
+        "p95": 0.2227323055267334
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261033,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

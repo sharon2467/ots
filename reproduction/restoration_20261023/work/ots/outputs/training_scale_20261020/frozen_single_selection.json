@@ -1,0 +1,53 @@
+{
+  "frozen": true,
+  "frozen_utc": "2026-10-24T02:54:49.177175+00:00",
+  "auxiliary_temperature": {
+    "method": "taylor_even4_odd3_n3"
+  },
+  "trials_sha256": "a82a468203ee9b34eeac3919ce0bd286113951c6505b093d9cc7df51b6553c0d",
+  "comparisons": {
+    "fixed_ion": {
+      "selected_training_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k_wide",
+      "baseline_training_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c",
+      "test_dataset_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k",
+      "selected_checkpoint_sha256": "f94b62a60a7ee107ca86e215306c7d3ad042d8ec7df364184200a3ae12169240",
+      "baseline_checkpoint_sha256": "09d61d9ecd72ac81a056867b6f47bfbfb152d169b5a4780b22bfafa69dfcf6a7",
+      "test_manifest_sha256": "0970df4cb759934f14f2a907af4cec7550ac37755f3565883308fe1f7e60cb2c",
+      "test_parquet_sha256": "320998f975c8db67b53a1a9f243a1dae1ff463904695837cbbdba92d382dc3a3",
+      "test_seed": 20261031,
+      "recovery_training_pipeline_completed": false,
+      "recovery_complete_pipeline_under_two_hours": null
+    },
+    "fig1_fig11": {
+      "selected_training_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide",
+      "baseline_training_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c",
+      "test_dataset_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k",
+      "selected_checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+      "baseline_checkpoint_sha256": "f16c7f9fec74264cf185ac4a1fa63bbb50a3ced7bafc7e743dda469c2e7d20c1",
+      "test_manifest_sha256": "1fa053179cbe974c9610b57c077ccf61cab7f4e2b0187402f40f5dbaed5f02a2",
+      "test_parquet_sha256": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+      "test_seed": 20261031,
+      "recovery_training_pipeline_completed": true,
+      "recovery_complete_pipeline_under_two_hours": true
+    }
+  },
+  "recomputed_validation_ranking": {
+    "fixed_ion": [
+      "scale_fixed_30k_wide",
+      "scale_fixed_30k",
+      "scale_fixed_12k"
+    ],
+    "fig1_fig11": [
+      "scale_fig_26k_wide",
+      "scale_fig_26k",
+      "scale_fig_26k_low_lr",
+      "scale_fig_12k"
+    ]
+  },
+  "provenance": "historical_model_choices_replayed_with_new_weights",
+  "historical_selection_path": "/workspace/ots_rebuild_20261024T025750_CST/recovered_text/outputs/training_scale_20261020/frozen_single_selection.json",
+  "historical_selection_sha256": "bb888a61341339f283e1f484197f7c923b8c53d108f64860ef7052963fa1c733",
+  "new_weights_are_not_originals": true,
+  "new_test_results_used_to_select": false,
+  "choice_rule": "Preserve historical run IDs and mixture weights for restoration; report new validation ranks separately"
+}

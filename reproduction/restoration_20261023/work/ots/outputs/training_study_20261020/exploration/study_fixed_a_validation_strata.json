@@ -1,0 +1,39 @@
+{
+  "run_id": "study_fixed_a",
+  "test_read": false,
+  "scope": "Descriptive associations on the fixed validation set, not causal effects. Quartile counts can differ due to ties.",
+  "species": {
+    "e": [
+      {
+        "feature": "IAW_equivalent_width_nm",
+        "spearman_r": 0.23224923066529893,
+        "low_quartile_max": 0.13310845729158055,
+        "high_quartile_min": 0.5919376259468945,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.06144433662092943,
+        "high_mean_relative_l2": 0.09924247977446612
+      },
+      {
+        "feature": "IAW_points_above_half_peak",
+        "spearman_r": 0.22479674058432186,
+        "low_quartile_max": 10.0,
+        "high_quartile_min": 53.0,
+        "low_count": 195,
+        "high_count": 189,
+        "low_mean_relative_l2": 0.06494911275105754,
+        "high_mean_relative_l2": 0.1037460676861101
+      },
+      {
+        "feature": "e_temperature_ev",
+        "spearman_r": -0.10917772298261863,
+        "low_quartile_max": 808.4810334088121,
+        "high_quartile_min": 1361.355274683381,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.09692545284781873,
+        "high_mean_relative_l2": 0.0649830329842428
+      }
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "scope": "Two isolated, constructed positive physical-VDF perturbations; no clipping, NN, inverse, fitting, sampler calls or training. Not existing-sampler draws or D4 predictions.",
+  "limitations": "Direct VDF-space sensitivity construction; not a claim that these arrays are exactly representable by the M80 inverse or that any D4 output contains them. The normalized IAW-window spectrum is compared, not absolute/broadband power.",
+  "baseline_arrays_sha256_before": "94a094b3e9bac683d79846c0e58751017b7f108e61628439f86adfa13031b23b",
+  "source_git_head": "a092bd7d4de26acb695415155f9c608594b9a0dc",
+  "baseline_source_sha256": {
+    "OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+    "OTS_code_share/NN_hotE_large_lmRange/evaluation.py": "0b3e196ab5910242ce968c6bc7b50f268a3c6ac914c40ce7742e72b5d06d8a7f",
+    "OTS_code_share/NN_hotE_large_lmRange/model.py": "ed6f0e84c2e57f14b264ba8750913104c131f286a5c0b5466c61a31c19913954",
+    "OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py": "f48ad0b5f092a0021c1bd1d15430977617045ac72a736ab4f01470d83055b191"
+  },
+  "density_m3": 3.5e+26,
+  "tail_mixture_mass": 0.018,
+  "tail_centers_vmax": [
+    -0.95,
+    0.95
+  ],
+  "tail_sigma_vmax": 0.02,
+  "construction": "g=normalize(exp(-0.5*((v-0.95V)/(0.02V))^2)+exp(-0.5*((v+0.95V)/(0.02V))^2)); f=normalize((1-p)*f0+p*g), p=0.018. Normalize uses existing normalize_distribution.",
+  "PV_calls": 2,
+  "states": [
+    {
+      "baseline_state_index": 1,
+      "Te_ev": 209.0,
+      "Ti_ev": 78.0,
+      "H_vmax_m_s": 3263276.703392489,
+      "tail_sigma_m_s": 65265.53406784978,
+      "H_original": {
+        "actual_temperature_ev": 78.00000000000001,
+        "actual_mean_velocity_m_s": 6.070484197553582e-13
+      },
+      "H_perturbed": {
+        "actual_temperature_ev": 1882.0077741578134,
+        "actual_mean_velocity_m_s": -2.2737367544323206e-13
+      },
+      "H_tail_alone": {
+        "actual_temperature_ev": 100300.65411987854,
+        "actual_mean_velocity_m_s": 4.365574568510057e-11
+      },
+      "H_temperature_change_ev": 1804.0077741578134,
+      "H_temperature_ratio": 24.12830479689504,
+      "H_VDF_relative_l2": 0.02326375452939959,
+      "spectrum_relative_l2": 0.014685249572347481,
+      "H_norm": 1.0,
+      "H_min_f": 2.8162760752236696e-97,
+      "H_negative_mass": 0.0,
+      "H_endpoint_f": [
+        2.432229802642158e-09,
+        2.432229802642158e-09
+      ],
+      "electrons_unchanged": true,
+      "carbon_unchanged": true
+    },
+    {
+      "baseline_state_index": 2,
+      "Te_ev": 1392.0,
+      "Ti_ev": 912.0,
+      "H_vmax_m_s": 3263276.703392489,
+      "tail_sigma_m_s": 65265.53406784978,
+      "H_original": {
+        "actual_temperature_ev": 912.0000000000001,
+        "actual_mean_velocity_m_s": 3.245056476320643e-12
+      },
+      "H_perturbed": {
+        "actual_temperature_ev": 2700.9957741578132,
+        "actual_mean_velocity_m_s": -2.7284841053187847e-12
+      },
+      "H_tail_alone": {
+        "actual_temperature_ev": 100300.65411987854,
+        "actual_mean_velocity_m_s": 4.365574568510057e-11
+      },
+      "H_temperature_change_ev": 1788.9957741578132,
+      "H_temperature_ratio": 2.9616181734186546,
+      "H_VDF_relative_l2": 0.032660401381224044,
+      "spectrum_relative_l2": 0.008022463350411218,
+      "H_norm": 1.0,
+      "H_min_f": 1.1177903603879224e-22,
+      "H_negative_mass": 0.0,
+      "H_endpoint_f": [
+        2.4322298026421575e-09,
+        2.4322298026421575e-09
+      ],
+      "electrons_unchanged": true,
+      "carbon_unchanged": true
+    }
+  ],
+  "baseline_arrays_sha256_after": "94a094b3e9bac683d79846c0e58751017b7f108e61628439f86adfa13031b23b",
+  "original_source_data_model_and_baseline_arrays_unchanged": true
+}

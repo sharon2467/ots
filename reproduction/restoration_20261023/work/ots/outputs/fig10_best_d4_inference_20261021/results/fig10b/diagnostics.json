@@ -1,0 +1,116 @@
+{
+  "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+  "input_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+  "input_array": "intensity",
+  "original_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+  "original_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+  "row_count": 480,
+  "time_range_ns": [
+    1.5124352331606217,
+    4.4906735751295335
+  ],
+  "peak_scale_range": [
+    0.0041753653444676075,
+    0.9979123173277662
+  ],
+  "normalized_peak_min_max": [
+    1.0,
+    1.0
+  ],
+  "normalization_precision": "Divide in float64, cast to model float32",
+  "wave_max_abs_difference_from_layout_nm": 5.684341886080802e-14,
+  "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10b/predictions.npz",
+  "output_sha256": "2f4d081693be0dae06591c7db5c767c8e8d95c4c45c6a174a04c3ab19d74e5d6",
+  "species": {
+    "e": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -168003152.0,
+        168003152.0
+      ],
+      "vdf_range_s_per_m": [
+        -2.164499274259768e-10,
+        9.202479134273744e-08
+      ],
+      "signed_integral_range": [
+        0.999706945723623,
+        1.0007825510334973
+      ],
+      "signed_integral_mean": 1.000269004116261,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.001391051651793298,
+      "negative_mass_fraction_p95": 0.0030283026010305084,
+      "negative_mass_fraction_max": 0.004681188426865282,
+      "negative_mass_fraction_max_array_row": 158,
+      "negative_mass_fraction_max_source_row_index": 173,
+      "negative_mass_fraction_max_time_ns": 2.494818652849741,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "H": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -3263276.75,
+        3263276.75
+      ],
+      "vdf_range_s_per_m": [
+        -2.1405928407602914e-07,
+        4.838530003326014e-06
+      ],
+      "signed_integral_range": [
+        0.9989832315867035,
+        1.0007100527636845
+      ],
+      "signed_integral_mean": 1.0000903965385666,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0016464026652991332,
+      "negative_mass_fraction_p95": 0.002801296772954124,
+      "negative_mass_fraction_max": 0.035099435513537273,
+      "negative_mass_fraction_max_array_row": 79,
+      "negative_mass_fraction_max_source_row_index": 94,
+      "negative_mass_fraction_max_time_ns": 2.003626943005181,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "C": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -966923.1875,
+        966923.1875
+      ],
+      "vdf_range_s_per_m": [
+        -1.733740617737567e-07,
+        1.7505144569440745e-05
+      ],
+      "signed_integral_range": [
+        0.9991455490219503,
+        1.0006954936458956
+      ],
+      "signed_integral_mean": 1.000116729869925,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0021655678336571604,
+      "negative_mass_fraction_p95": 0.0031609647301316488,
+      "negative_mass_fraction_max": 0.016311073615112574,
+      "negative_mass_fraction_max_array_row": 159,
+      "negative_mass_fraction_max_source_row_index": 174,
+      "negative_mass_fraction_max_time_ns": 2.5010362694300516,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    }
+  }
+}

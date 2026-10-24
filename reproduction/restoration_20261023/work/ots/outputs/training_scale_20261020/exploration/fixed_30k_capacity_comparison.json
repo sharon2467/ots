@@ -1,0 +1,29 @@
+{
+  "test_metrics_read": false,
+  "interpretation": "Repeated common-development comparison; not an unbiased test confidence statement",
+  "wide_metrics": {
+    "coefficient_mae": 0.007887090301762024,
+    "coefficient_rmse": 0.017883955369267308,
+    "hermitian_symmetry_mae": 0.0,
+    "evdf_mae": 8.633857360533052e-11,
+    "evdf_rmse": 4.729673421659966e-10,
+    "evdf_relative_l2_mean": 0.03537801988781951,
+    "negative_mass_fraction_mean": 0.0032204920363922912,
+    "coefficient_r2": 0.9951684409997438,
+    "evdf_r2": 0.9951589304370303,
+    "evdf_relative_l2_p50": 0.01966194770194515,
+    "evdf_relative_l2_p90": 0.07996468390356752,
+    "evdf_relative_l2_p95": 0.11100183306848575,
+    "evdf_relative_l2_median": 0.01966194770194515
+  },
+  "base_relative_l2_mean": 0.037619295200069194,
+  "wide_relative_l2_mean": 0.03537801988781951,
+  "relative_mean_improvement": 0.05957781240530957,
+  "base_minus_wide_difference_mean": 0.0022412753122496827,
+  "paired_percentile_bootstrap_2000_difference_ci95": [
+    0.001376993425250065,
+    0.0030934354097578868
+  ],
+  "fraction_samples_wide_better": 0.616,
+  "common_index_hash_equal": true
+}

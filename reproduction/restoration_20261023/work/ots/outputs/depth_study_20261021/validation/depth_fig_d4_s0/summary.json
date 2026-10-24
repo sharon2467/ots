@@ -1,0 +1,106 @@
+{
+  "best_epoch": 160,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
+  "checkpoint_sha256": "b822cac9b18878dd45ee324c2bbf2e480f4ece56742e10e1126a571bcc737019",
+  "hidden_sizes": [
+    2048,
+    1024,
+    1024,
+    1024
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.7159950733184814,
+    "mean": 0.0529763363301754,
+    "median": 0.03877134621143341,
+    "p95": 0.13783615827560425
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.0076783932745456696,
+      "coefficient_r2": 0.9931727051734924,
+      "coefficient_rmse": 0.019485972821712494,
+      "evdf_mae": 2.1618669354683817e-10,
+      "evdf_r2": 0.9933613538742065,
+      "evdf_relative_l2_mean": 0.05851171538233757,
+      "evdf_relative_l2_median": 0.04046320915222168,
+      "evdf_rmse": 7.379067357149438e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.03786662966012955,
+        "mean": 0.001377164851874113,
+        "median": 0.0008014566847123206,
+        "p95": 0.0043787844479084015
+      },
+      "negative_mass_fraction_mean": 0.001377164851874113,
+      "relative_l2_distribution": {
+        "maximum": 0.33270499110221863,
+        "mean": 0.05851171910762787,
+        "median": 0.04046320915222168,
+        "p95": 0.17267195880413055
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.008892982266843319,
+      "coefficient_r2": 0.991676926612854,
+      "coefficient_rmse": 0.023523228242993355,
+      "evdf_mae": 7.867640761105577e-09,
+      "evdf_r2": 0.9923175573348999,
+      "evdf_relative_l2_mean": 0.044022250920534134,
+      "evdf_relative_l2_median": 0.026424381881952286,
+      "evdf_rmse": 4.581998069852489e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.04675981029868126,
+        "mean": 0.0027081798762083054,
+        "median": 0.001426145900040865,
+        "p95": 0.009418755769729614
+      },
+      "negative_mass_fraction_mean": 0.002708179410547018,
+      "relative_l2_distribution": {
+        "maximum": 1.0830413103103638,
+        "mean": 0.044022250920534134,
+        "median": 0.026424381881952286,
+        "p95": 0.1342179775238037
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.012154671363532543,
+      "coefficient_r2": 0.98450767993927,
+      "coefficient_rmse": 0.03293393552303314,
+      "evdf_mae": 3.549164873106747e-08,
+      "evdf_r2": 0.9854039549827576,
+      "evdf_relative_l2_mean": 0.0563950352370739,
+      "evdf_relative_l2_median": 0.029531531035900116,
+      "evdf_rmse": 2.1656892101873382e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.06060522794723511,
+        "mean": 0.0034069682005792856,
+        "median": 0.001999208703637123,
+        "p95": 0.011536420322954655
+      },
+      "negative_mass_fraction_mean": 0.0034069682005792856,
+      "relative_l2_distribution": {
+        "maximum": 1.0031211376190186,
+        "mean": 0.0563950352370739,
+        "median": 0.029531531035900116,
+        "p95": 0.20248943567276
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261030,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

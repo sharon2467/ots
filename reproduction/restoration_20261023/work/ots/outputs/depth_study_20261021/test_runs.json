@@ -1,0 +1,74 @@
+[
+  {
+    "run_id": "depth_fig_d2_s0",
+    "label": "D2",
+    "training_seed": 20261030,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "depth_fig_w3_s0",
+    "label": "W3",
+    "training_seed": 20261030,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "depth_fig_d4_s0",
+    "label": "D4",
+    "training_seed": 20261030,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_w4_s0",
+    "label": "W4",
+    "training_seed": 20261030,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_d2_s1",
+    "label": "D2",
+    "training_seed": 20261032,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "depth_fig_d4_s1",
+    "label": "D4",
+    "training_seed": 20261032,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_w4_s1",
+    "label": "W4",
+    "training_seed": 20261032,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_d2_s2",
+    "label": "D2",
+    "training_seed": 20261033,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2_eval/evaluation",
+    "historical_checkpoint_bytes_match": true,
+    "training_pipeline_completed": true
+  }
+]

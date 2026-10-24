@@ -1,0 +1,844 @@
+[
+  {
+    "run_id": "scale_fixed_12k",
+    "dataset_kind": "fixed_ion",
+    "train_pool": 12000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": "1024,1024",
+      "device": "cpu",
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 250,
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "full_wall_seconds": 2751.17286,
+    "completion_message": true,
+    "generation_plus_initialization_io_seconds_approx": 2222.263636827469,
+    "phase_timing_note": "Approximate from artifact modification times; authoritative total is Bash real.",
+    "sample_counts": {
+      "train": 10200,
+      "validation": 1800
+    },
+    "selected_candidate": {
+      "best_epoch": 180,
+      "best_validation_loss": 0.03964225032470293,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        1024,
+        1024
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          1024,
+          1024
+        ],
+        "dropout": 0.02,
+        "best_epoch": 180,
+        "best_validation_loss": 0.03964225032470293,
+        "elapsed_seconds": 519.3180437088013,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 2472096,
+        "epochs_run": 215,
+        "training_loss_at_best_epoch": 0.0025475899794814632,
+        "learning_rate_at_best_epoch": 3.90625e-06
+      }
+    ],
+    "sum_candidate_training_seconds": 519.3180437088013,
+    "checkpoint_sha256": "144473e7ccfe196031a80df486c263be072d66d072339c3f7216735364969eef",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.04586122859879404,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.010188987487306197,
+            "coefficient_rmse": 0.022318405903026275,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 1.121731683280854e-10,
+            "evdf_rmse": 5.903282437343994e-10,
+            "evdf_relative_l2_mean": 0.04586122859879404,
+            "negative_mass_fraction_mean": 0.0036746961971124014,
+            "coefficient_r2": 0.9924753472418241,
+            "evdf_r2": 0.9924583539630016,
+            "evdf_relative_l2_p50": 0.025755001774481028,
+            "evdf_relative_l2_p90": 0.10658138807861096,
+            "evdf_relative_l2_p95": 0.14144788412602372,
+            "evdf_relative_l2_median": 0.025755001774481028
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "scale_fixed_30k",
+    "dataset_kind": "fixed_ion",
+    "train_pool": 30000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": "1024,1024",
+      "device": "cpu",
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 250,
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "full_wall_seconds": 5994.978329,
+    "completion_message": true,
+    "generation_plus_initialization_io_seconds_approx": 5429.828896999359,
+    "phase_timing_note": "Approximate from artifact modification times; authoritative total is Bash real.",
+    "sample_counts": {
+      "train": 25500,
+      "validation": 4500
+    },
+    "selected_candidate": {
+      "best_epoch": 119,
+      "best_validation_loss": 0.039375112425535916,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        1024,
+        1024
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          1024,
+          1024
+        ],
+        "dropout": 0.02,
+        "best_epoch": 119,
+        "best_validation_loss": 0.039375112425535916,
+        "elapsed_seconds": 553.7406702041626,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 2472096,
+        "epochs_run": 154,
+        "training_loss_at_best_epoch": 0.00451246493485044,
+        "learning_rate_at_best_epoch": 7.8125e-06
+      }
+    ],
+    "sum_candidate_training_seconds": 553.7406702041626,
+    "checkpoint_sha256": "3c5acfc4c38575be7a7edc83ca24c0de9bbafdcd081f464d8be96a5cb88de328",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.037619295200069194,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.00838018319134911,
+            "coefficient_rmse": 0.018282800363268247,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 9.367970227325273e-11,
+            "evdf_rmse": 4.835016940476883e-10,
+            "evdf_relative_l2_mean": 0.037619295200069194,
+            "negative_mass_fraction_mean": 0.0035261582769453527,
+            "coefficient_r2": 0.9949505328279802,
+            "evdf_r2": 0.9949408794308664,
+            "evdf_relative_l2_p50": 0.02232502745895917,
+            "evdf_relative_l2_p90": 0.08226647715021766,
+            "evdf_relative_l2_p95": 0.11698100700759972,
+            "evdf_relative_l2_median": 0.02232502745895917
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "dataset_kind": "fixed_ion",
+    "train_pool": 30000,
+    "test_count": 1024,
+    "run_id": "scale_fixed_30k_wide",
+    "training_options": {
+      "batch_size": 128,
+      "candidates": [
+        {
+          "dropout": 0.02,
+          "hidden_sizes": [
+            2048,
+            1024
+          ]
+        }
+      ],
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 200,
+      "optimizer": {
+        "name": "AdamW",
+        "parameters": {
+          "amsgrad": false,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "lr": 0.001,
+          "weight_decay": 1e-05
+        }
+      },
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "scheduler": {
+        "name": "ReduceLROnPlateau",
+        "parameters": {
+          "cooldown": 0,
+          "eps": 1e-08,
+          "factor": 0.5,
+          "min_lr": 1e-06,
+          "mode": "min",
+          "patience": 7,
+          "threshold": 0.0001,
+          "threshold_mode": "rel"
+        }
+      },
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "checkpoint_only_recovered",
+    "training_pipeline_completed": false,
+    "test_metrics_read": false,
+    "completion_message": false,
+    "history_is_partial": true,
+    "full_wall_seconds": null,
+    "under_two_hours": null,
+    "tail_train_evaluate_wall_seconds": null,
+    "observed_recovery_charged_seconds": 7085.363449895005,
+    "charged_parent_all_wall_seconds": 5994.978329365003,
+    "timing_definition": "No inference about complete-pipeline eligibility from this partial replay.",
+    "parent_all_run": "scale_fixed_30k",
+    "canonical_evaluation_run": "scale_fixed_30k_wide_eval",
+    "canonical_evaluation_artifact_exists": true,
+    "sample_counts": {
+      "train": 25500,
+      "validation": 4500
+    },
+    "selected_candidate": {
+      "best_epoch": 114,
+      "best_validation_loss": 0.037101680692285297,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        2048,
+        1024
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          2048,
+          1024
+        ],
+        "dropout": 0.02,
+        "best_epoch": 114,
+        "best_validation_loss": 0.037101680692285297,
+        "elapsed_seconds": null,
+        "stop_reason": "full_pipeline_budget_interrupted; not patience_exhausted",
+        "parameter_count": 4777120,
+        "epochs_run": 120,
+        "training_loss_at_best_epoch": 0.002836634798450213,
+        "learning_rate_at_best_epoch": 3.125e-05
+      }
+    ],
+    "sum_candidate_training_seconds": null,
+    "checkpoint_sha256": "f94b62a60a7ee107ca86e215306c7d3ad042d8ec7df364184200a3ae12169240",
+    "checkpoint_matches_historical_bytes": true,
+    "missing_historical_epochs": [
+      121,
+      149
+    ],
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.03537801988781951,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.007887090301762024,
+            "coefficient_rmse": 0.017883955369267308,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 8.633857360533052e-11,
+            "evdf_rmse": 4.729673421659966e-10,
+            "evdf_relative_l2_mean": 0.03537801988781951,
+            "negative_mass_fraction_mean": 0.0032204920363922912,
+            "coefficient_r2": 0.9951684409997438,
+            "evdf_r2": 0.9951589304370303,
+            "evdf_relative_l2_p50": 0.01966194770194515,
+            "evdf_relative_l2_p90": 0.07996468390356752,
+            "evdf_relative_l2_p95": 0.11100183306848575,
+            "evdf_relative_l2_median": 0.01966194770194515
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    }
+  },
+  {
+    "run_id": "scale_fig_12k",
+    "dataset_kind": "fig1_fig11",
+    "train_pool": 12000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": "1024,512",
+      "device": "cpu",
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 250,
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "full_wall_seconds": 2477.362737,
+    "completion_message": true,
+    "generation_plus_initialization_io_seconds_approx": 2314.4767923355103,
+    "phase_timing_note": "Approximate from artifact modification times; authoritative total is Bash real.",
+    "sample_counts": {
+      "train": 10200,
+      "validation": 1800
+    },
+    "selected_candidate": {
+      "best_epoch": 85,
+      "best_validation_loss": 0.09793174511856503,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        1024,
+        512
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          1024,
+          512
+        ],
+        "dropout": 0.02,
+        "best_epoch": 85,
+        "best_validation_loss": 0.09793174511856503,
+        "elapsed_seconds": 146.91899013519287,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 1101792,
+        "epochs_run": 120,
+        "training_loss_at_best_epoch": 0.046642081559288735,
+        "learning_rate_at_best_epoch": 0.00025
+      }
+    ],
+    "sum_candidate_training_seconds": 146.91899013519287,
+    "checkpoint_sha256": "0ae00af6cc15e29804ff12d0ad95c8fffed10415cae62271d76a943f58e4f289",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.07067877843451818,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.008925587072968482,
+            "coefficient_rmse": 0.021883403183223873,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 2.46779337409464e-10,
+            "evdf_rmse": 8.286827573116211e-10,
+            "evdf_relative_l2_mean": 0.06601076934450437,
+            "negative_mass_fraction_mean": 0.0022201199444631735,
+            "coefficient_r2": 0.9915750280442962,
+            "evdf_r2": 0.9918526543352472,
+            "evdf_relative_l2_p50": 0.04863929185280609,
+            "evdf_relative_l2_p90": 0.141771821344898,
+            "evdf_relative_l2_p95": 0.18770951881097056,
+            "evdf_relative_l2_median": 0.04863929185280609
+          }
+        },
+        "i1": {
+          "metrics": {
+            "coefficient_mae": 0.01335394494732221,
+            "coefficient_rmse": 0.03366841813497057,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 1.1850401747892647e-08,
+            "evdf_rmse": 6.560310763773048e-08,
+            "evdf_relative_l2_mean": 0.06347562644367269,
+            "negative_mass_fraction_mean": 0.004448589630424976,
+            "coefficient_r2": 0.9829305642017926,
+            "evdf_r2": 0.9842242376280825,
+            "evdf_relative_l2_p50": 0.03768862006066717,
+            "evdf_relative_l2_p90": 0.13579867841382245,
+            "evdf_relative_l2_p95": 0.1996822347784994,
+            "evdf_relative_l2_median": 0.03768862006066717
+          }
+        },
+        "i2": {
+          "metrics": {
+            "coefficient_mae": 0.017687069286902744,
+            "coefficient_rmse": 0.04280198636920095,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 5.297853550700893e-08,
+            "evdf_rmse": 2.8155750651887554e-07,
+            "evdf_relative_l2_mean": 0.08254993951537748,
+            "negative_mass_fraction_mean": 0.0060326838841040925,
+            "coefficient_r2": 0.9735183384579763,
+            "evdf_r2": 0.9748967719908481,
+            "evdf_relative_l2_p50": 0.05174215745727951,
+            "evdf_relative_l2_p90": 0.1700148047895423,
+            "evdf_relative_l2_p95": 0.2725981394961661,
+            "evdf_relative_l2_median": 0.05174215745727951
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "scale_fig_26k",
+    "dataset_kind": "fig1_fig11",
+    "train_pool": 26000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": "1024,512",
+      "device": "cpu",
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 250,
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "full_wall_seconds": 5871.605902,
+    "completion_message": true,
+    "generation_plus_initialization_io_seconds_approx": 5356.9889323711395,
+    "phase_timing_note": "Approximate from artifact modification times; authoritative total is Bash real.",
+    "sample_counts": {
+      "train": 22100,
+      "validation": 3900
+    },
+    "selected_candidate": {
+      "best_epoch": 147,
+      "best_validation_loss": 0.07099493504334718,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        1024,
+        512
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          1024,
+          512
+        ],
+        "dropout": 0.02,
+        "best_epoch": 147,
+        "best_validation_loss": 0.07099493504334718,
+        "elapsed_seconds": 496.411256313324,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 1101792,
+        "epochs_run": 182,
+        "training_loss_at_best_epoch": 0.035595902012012126,
+        "learning_rate_at_best_epoch": 7.8125e-06
+      }
+    ],
+    "sum_candidate_training_seconds": 496.411256313324,
+    "checkpoint_sha256": "1a1dca4f7c6a0e5394a7b6224096ebe92c3ce6be5f5b37323b72bb35c2d51f39",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.060365983736130856,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.008446617871522904,
+            "coefficient_rmse": 0.020586242196477117,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 2.290790415138133e-10,
+            "evdf_rmse": 7.795499140978974e-10,
+            "evdf_relative_l2_mean": 0.06251737436808644,
+            "negative_mass_fraction_mean": 0.0010789475534111262,
+            "coefficient_r2": 0.99254422320874,
+            "evdf_r2": 0.9927901306298943,
+            "evdf_relative_l2_p50": 0.04602801950108332,
+            "evdf_relative_l2_p90": 0.13305442282818175,
+            "evdf_relative_l2_p95": 0.17181430634377773,
+            "evdf_relative_l2_median": 0.04602801950108332
+          }
+        },
+        "i1": {
+          "metrics": {
+            "coefficient_mae": 0.011224671786030134,
+            "coefficient_rmse": 0.030961207272540852,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 9.516937780063017e-09,
+            "evdf_rmse": 6.032376921382714e-08,
+            "evdf_relative_l2_mean": 0.05266781231965198,
+            "negative_mass_fraction_mean": 0.0024193565702686705,
+            "coefficient_r2": 0.9855652419058702,
+            "evdf_r2": 0.9866611481529237,
+            "evdf_relative_l2_p50": 0.03200306716115715,
+            "evdf_relative_l2_p90": 0.10927381747427815,
+            "evdf_relative_l2_p95": 0.1518152383910401,
+            "evdf_relative_l2_median": 0.03200306716115715
+          }
+        },
+        "i2": {
+          "metrics": {
+            "coefficient_mae": 0.01401993547876676,
+            "coefficient_rmse": 0.03504733620329094,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 4.097422955358828e-08,
+            "evdf_rmse": 2.3053887074165263e-07,
+            "evdf_relative_l2_mean": 0.06591276452065414,
+            "negative_mass_fraction_mean": 0.003949655572573344,
+            "coefficient_r2": 0.9822447239922765,
+            "evdf_r2": 0.9831700170307877,
+            "evdf_relative_l2_p50": 0.03925084662951704,
+            "evdf_relative_l2_p90": 0.14240783497129034,
+            "evdf_relative_l2_p95": 0.21511665680346703,
+            "evdf_relative_l2_median": 0.03925084662951704
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "scale_fig_26k_low_lr",
+    "dataset_kind": "fig1_fig11",
+    "train_pool": 26000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": [
+        {
+          "dropout": 0.02,
+          "hidden_sizes": [
+            1024,
+            512
+          ]
+        }
+      ],
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.0003,
+      "max_epochs": 250,
+      "optimizer": {
+        "name": "AdamW",
+        "parameters": {
+          "amsgrad": false,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "lr": 0.0003,
+          "weight_decay": 1e-05
+        }
+      },
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "scheduler": {
+        "name": "ReduceLROnPlateau",
+        "parameters": {
+          "cooldown": 0,
+          "eps": 1e-08,
+          "factor": 0.5,
+          "min_lr": 1e-06,
+          "mode": "min",
+          "patience": 7,
+          "threshold": 0.0001,
+          "threshold_mode": "rel"
+        }
+      },
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "tail_train_evaluate_wall_seconds": 361.489592,
+    "charged_parent_all_wall_seconds": 5871.605902,
+    "full_wall_seconds": 6233.095494,
+    "timing_definition": "Conservative charge: measured parent generation/train/evaluation wall plus this measured fresh train/evaluation wall; includes the parent's original model training.",
+    "completion_message": true,
+    "parent_all_run": "scale_fig_26k",
+    "canonical_evaluation_run": "scale_fig_26k_low_lr_eval",
+    "canonical_evaluation_artifact_exists": true,
+    "sample_counts": {
+      "train": 22100,
+      "validation": 3900
+    },
+    "selected_candidate": {
+      "best_epoch": 131,
+      "best_validation_loss": 0.08181688808477842,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        1024,
+        512
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          1024,
+          512
+        ],
+        "dropout": 0.02,
+        "best_epoch": 131,
+        "best_validation_loss": 0.08181688808477842,
+        "elapsed_seconds": 341.70844316482544,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 1101792,
+        "epochs_run": 166,
+        "training_loss_at_best_epoch": 0.04772713988210281,
+        "learning_rate_at_best_epoch": 4.6875e-06
+      }
+    ],
+    "sum_candidate_training_seconds": 341.70844316482544,
+    "checkpoint_sha256": "ea7f91a7c8112fa10401b1172485e8b83faa4ecb4699509776b74177eb222692",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.06602600743662632,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.008724056253830591,
+            "coefficient_rmse": 0.021284454184214048,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 2.4003056801428594e-10,
+            "evdf_rmse": 8.059950778314845e-10,
+            "evdf_relative_l2_mean": 0.06440886735507638,
+            "negative_mass_fraction_mean": 0.0019493320466329653,
+            "coefficient_r2": 0.9920299000552678,
+            "evdf_r2": 0.9922926636136515,
+            "evdf_relative_l2_p50": 0.047851577949011515,
+            "evdf_relative_l2_p90": 0.13861366850284967,
+            "evdf_relative_l2_p95": 0.18260588942145492,
+            "evdf_relative_l2_median": 0.047851577949011515
+          }
+        },
+        "i1": {
+          "metrics": {
+            "coefficient_mae": 0.01267560912668705,
+            "coefficient_rmse": 0.03307956957070132,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 1.1427340927146663e-08,
+            "evdf_rmse": 6.445244503274793e-08,
+            "evdf_relative_l2_mean": 0.06000045810585438,
+            "negative_mass_fraction_mean": 0.004712070630242427,
+            "coefficient_r2": 0.9835224197857221,
+            "evdf_r2": 0.9847727906762761,
+            "evdf_relative_l2_p50": 0.037129849163493864,
+            "evdf_relative_l2_p90": 0.12542918199666642,
+            "evdf_relative_l2_p95": 0.17982254947953671,
+            "evdf_relative_l2_median": 0.037129849163493864
+          }
+        },
+        "i2": {
+          "metrics": {
+            "coefficient_mae": 0.015548733711242676,
+            "coefficient_rmse": 0.036809860792319085,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 4.8455161334004514e-08,
+            "evdf_rmse": 2.421269015273507e-07,
+            "evdf_relative_l2_mean": 0.0736686968489482,
+            "negative_mass_fraction_mean": 0.006688995932539304,
+            "coefficient_r2": 0.9804140005040081,
+            "evdf_r2": 0.9814355772104426,
+            "evdf_relative_l2_p50": 0.04553675848431633,
+            "evdf_relative_l2_p90": 0.15335992125328687,
+            "evdf_relative_l2_p95": 0.24078043133658383,
+            "evdf_relative_l2_median": 0.04553675848431633
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  },
+  {
+    "run_id": "scale_fig_26k_wide",
+    "dataset_kind": "fig1_fig11",
+    "train_pool": 26000,
+    "test_count": 1024,
+    "training_options": {
+      "batch_size": 128,
+      "candidates": [
+        {
+          "dropout": 0.02,
+          "hidden_sizes": [
+            2048,
+            1024
+          ]
+        }
+      ],
+      "gradient_clip_norm": 5.0,
+      "learning_rate": 0.001,
+      "max_epochs": 250,
+      "optimizer": {
+        "name": "AdamW",
+        "parameters": {
+          "amsgrad": false,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "lr": 0.001,
+          "weight_decay": 1e-05
+        }
+      },
+      "patience": 35,
+      "raw_loss_weight": 1.0,
+      "scheduler": {
+        "name": "ReduceLROnPlateau",
+        "parameters": {
+          "cooldown": 0,
+          "eps": 1e-08,
+          "factor": 0.5,
+          "min_lr": 1e-06,
+          "mode": "min",
+          "patience": 7,
+          "threshold": 0.0001,
+          "threshold_mode": "rel"
+        }
+      },
+      "seed": 20261030,
+      "validation_fraction": 0.15,
+      "weight_decay": 1e-05
+    },
+    "status": "completed",
+    "test_metrics_read": false,
+    "tail_train_evaluate_wall_seconds": 1032.217826,
+    "charged_parent_all_wall_seconds": 5871.605902,
+    "full_wall_seconds": 6903.823728,
+    "timing_definition": "Conservative charge: measured parent generation/train/evaluation wall plus this measured fresh train/evaluation wall; includes the parent's original model training.",
+    "completion_message": true,
+    "parent_all_run": "scale_fig_26k",
+    "canonical_evaluation_run": "scale_fig_26k_wide_eval",
+    "canonical_evaluation_artifact_exists": true,
+    "sample_counts": {
+      "train": 22100,
+      "validation": 3900
+    },
+    "selected_candidate": {
+      "best_epoch": 157,
+      "best_validation_loss": 0.06870892562545262,
+      "dropout": 0.02,
+      "hidden_sizes": [
+        2048,
+        1024
+      ]
+    },
+    "candidates": [
+      {
+        "hidden_sizes": [
+          2048,
+          1024
+        ],
+        "dropout": 0.02,
+        "best_epoch": 157,
+        "best_validation_loss": 0.06870892562545262,
+        "elapsed_seconds": 1008.8396611213684,
+        "stop_reason": "patience_exhausted",
+        "parameter_count": 3251680,
+        "epochs_run": 192,
+        "training_loss_at_best_epoch": 0.029059392321703122,
+        "learning_rate_at_best_epoch": 7.8125e-06
+      }
+    ],
+    "sum_candidate_training_seconds": 1008.8396611213684,
+    "checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+    "common_development": {
+      "count": 750,
+      "selection_score": 0.058569396687915415,
+      "zero_overlap_with_optimizer": true,
+      "species": {
+        "e": {
+          "metrics": {
+            "coefficient_mae": 0.00833749355127414,
+            "coefficient_rmse": 0.020728344147159898,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 2.309399323626356e-10,
+            "evdf_rmse": 7.849348601439005e-10,
+            "evdf_relative_l2_mean": 0.06243096191104424,
+            "negative_mass_fraction_mean": 0.0014071506056934596,
+            "coefficient_r2": 0.992440936851733,
+            "evdf_r2": 0.9926901785706326,
+            "evdf_relative_l2_p50": 0.04473918050847939,
+            "evdf_relative_l2_p90": 0.1301236630365615,
+            "evdf_relative_l2_p95": 0.18005938144614447,
+            "evdf_relative_l2_median": 0.04473918050847939
+          }
+        },
+        "i1": {
+          "metrics": {
+            "coefficient_mae": 0.010855289796988169,
+            "coefficient_rmse": 0.030551620766795497,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 9.264855224936733e-09,
+            "evdf_rmse": 5.9525747380376234e-08,
+            "evdf_relative_l2_mean": 0.050824493964838305,
+            "negative_mass_fraction_mean": 0.0029033809918910265,
+            "coefficient_r2": 0.9859446307050668,
+            "evdf_r2": 0.9870117317478923,
+            "evdf_relative_l2_p50": 0.03044934911882522,
+            "evdf_relative_l2_p90": 0.10067099799210698,
+            "evdf_relative_l2_p95": 0.14690309010592217,
+            "evdf_relative_l2_median": 0.03044934911882522
+          }
+        },
+        "i2": {
+          "metrics": {
+            "coefficient_mae": 0.01349986702700456,
+            "coefficient_rmse": 0.03454504990948093,
+            "hermitian_symmetry_mae": 0.0,
+            "evdf_mae": 3.941795118104589e-08,
+            "evdf_rmse": 2.2723212772192863e-07,
+            "evdf_relative_l2_mean": 0.0624527341878637,
+            "negative_mass_fraction_mean": 0.004426875042418639,
+            "coefficient_r2": 0.9827500024524686,
+            "evdf_r2": 0.9836493573513887,
+            "evdf_relative_l2_p50": 0.03668630228418951,
+            "evdf_relative_l2_p90": 0.13078900469122054,
+            "evdf_relative_l2_p95": 0.21469028259026918,
+            "evdf_relative_l2_median": 0.03668630228418951
+          }
+        }
+      },
+      "caution": "These 750 states were already used for previous tuning and are reused adaptively; their estimates/intervals are development diagnostics. Final generalization requires the untouched new test set."
+    },
+    "under_two_hours": true,
+    "training_pipeline_completed": true
+  }
+]

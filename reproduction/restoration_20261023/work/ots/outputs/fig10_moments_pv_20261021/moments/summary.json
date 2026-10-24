@@ -1,0 +1,1708 @@
+{
+  "meaning": "Signed algebraic 1D full-grid moments; not validated physical VDF temperatures.",
+  "formula": "A=trapz(f,v); u=trapz(v*f,v)/A; T=m/e*trapz((v-u)^2*f,v)/A; no factor 1/3",
+  "policy": "Saved float32 arrays converted exactly to float64; all 4097 points; no clipping, smoothing, grid change, Maxwellian fit or renormalization.",
+  "diagnostics": {
+    "negative_mass_fraction": "integral(max(-f,0))/integral(abs(f))",
+    "negative_raw_second_fraction_abs": "abs(integral(v^2*min(f,0)))/integral(v^2*abs(f))",
+    "negative_region_integration": "Trapezoids over full original grid with zero outside f<0; no removal of grid points."
+  },
+  "constants": {
+    "ELEMENTARY_CHARGE": 1.602176634e-19,
+    "ELECTRON_MASS": 9.1093837015e-31,
+    "PROTON_MASS": 1.67262192369e-27
+  },
+  "data_py_sha256": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+  "script_sha256": "bced584d77d9ae5d7ba3aa93d7af3183194487123b9bcbe0e7ff020afeb977fa",
+  "panels": {
+    "fig10a": {
+      "input": "outputs/fig10_nearest_d4_inference_20261021/results/fig10a/predictions.npz",
+      "input_sha256": "3abdd8a7d3831d4ba0261ae347547bc1baebdffde6c06ae763f6f4db163280fe",
+      "rows": 556,
+      "species": {
+        "e": {
+          "mass_kg": 9.1093837015e-31,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -168003152.0,
+          "velocity_max_m_s": 168003152.0,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 6.821210263296962e-13,
+          "centered_raw_max_relative_difference": 5.246204085349727e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 92,
+              "source_row_index": 236,
+              "time_paper_ns": 1.9979999999999891,
+              "mass_integral": 1.0001010450912076,
+              "u_m_s": -99011.34557459994,
+              "u_km_s": -99.01134557459994,
+              "T_eV": 1074.3440774406054,
+              "T_raw_formula_eV": 1074.3440774406054,
+              "negative_mass_integral": 0.0009433199635137253,
+              "positive_mass_integral": 1.0010443650547212,
+              "negative_mass_fraction": 0.0009414486601165741,
+              "raw_first_moment_m_s": -99021.35018504411,
+              "raw_second_moment_m2_s2": 188986683679571.47,
+              "negative_raw_second_moment_m2_s2": -11838735288726.516,
+              "negative_raw_second_T_contribution_eV": -67.30386902014556,
+              "negative_raw_second_fraction_abs": 0.05566869193394152,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 278,
+              "source_row_index": 422,
+              "time_paper_ns": 3.002399999999989,
+              "mass_integral": 1.0002218708446908,
+              "u_m_s": -98625.13506500948,
+              "u_km_s": -98.62513506500949,
+              "T_eV": 1270.9195813543315,
+              "T_raw_formula_eV": 1270.919581354332,
+              "negative_mass_integral": 0.001028761308124793,
+              "positive_mass_integral": 1.0012506321528156,
+              "negative_mass_fraction": 0.001026421689238176,
+              "raw_first_moment_m_s": -98647.0171070341,
+              "raw_second_moment_m2_s2": 223591203459052.12,
+              "negative_raw_second_moment_m2_s2": -12421238358937.01,
+              "negative_raw_second_T_contribution_eV": -70.6069011243441,
+              "negative_raw_second_fraction_abs": 0.049998206161463374,
+              "centered_raw_abs_difference_eV": 4.547473508864641e-13
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 463,
+              "source_row_index": 607,
+              "time_paper_ns": 4.00139999999999,
+              "mass_integral": 1.000163213807098,
+              "u_m_s": -97712.59112693093,
+              "u_km_s": -97.71259112693093,
+              "T_eV": 1463.7803745821905,
+              "T_raw_formula_eV": 1463.78037458219,
+              "negative_mass_integral": 0.0010754701415288173,
+              "positive_mass_integral": 1.001238683948627,
+              "negative_mass_fraction": 0.0010729870840795106,
+              "raw_first_moment_m_s": -97728.53917093016,
+              "raw_second_moment_m2_s2": 257504190550351.44,
+              "negative_raw_second_moment_m2_s2": -13253847128599.488,
+              "negative_raw_second_T_contribution_eV": -75.34417501277689,
+              "negative_raw_second_fraction_abs": 0.04666652290829463,
+              "centered_raw_abs_difference_eV": 4.547473508864641e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 1.0000239400363178,
+            "max": 1.0003348339598097,
+            "min_row_index": 419,
+            "max_row_index": 392,
+            "min_time_ns": 3.763799999999989,
+            "max_time_ns": 3.6179999999999892
+          },
+          "u_m_s": {
+            "min": -101614.11665895494,
+            "max": -95936.20118149272,
+            "min_row_index": 68,
+            "max_row_index": 533,
+            "min_time_ns": 1.8683999999999892,
+            "max_time_ns": 4.37939999999999
+          },
+          "u_km_s": {
+            "min": -101.61411665895494,
+            "max": -95.93620118149272,
+            "min_row_index": 68,
+            "max_row_index": 533,
+            "min_time_ns": 1.8683999999999892,
+            "max_time_ns": 4.37939999999999
+          },
+          "T_eV": {
+            "min": 1026.8717514498117,
+            "max": 1567.6133678400479,
+            "min_row_index": 183,
+            "max_row_index": 533,
+            "min_time_ns": 2.489399999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "T_raw_formula_eV": {
+            "min": 1026.8717514498114,
+            "max": 1567.6133678400477,
+            "min_row_index": 183,
+            "max_row_index": 533,
+            "min_time_ns": 2.489399999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "negative_mass_integral": {
+            "min": 0.0007844156731031369,
+            "max": 0.0013111106843265686,
+            "min_row_index": 186,
+            "max_row_index": 360,
+            "min_time_ns": 2.505599999999989,
+            "max_time_ns": 3.445199999999989
+          },
+          "positive_mass_integral": {
+            "min": 1.0008515664674775,
+            "max": 1.0015024328418383,
+            "min_row_index": 169,
+            "max_row_index": 51,
+            "min_time_ns": 2.413799999999989,
+            "max_time_ns": 1.776599999999989
+          },
+          "negative_mass_fraction": {
+            "min": 0.0007830445558517869,
+            "max": 0.0013074611321359634,
+            "min_row_index": 186,
+            "max_row_index": 360,
+            "min_time_ns": 2.505599999999989,
+            "max_time_ns": 3.445199999999989
+          },
+          "raw_first_moment_m_s": {
+            "min": -101645.17620661948,
+            "max": -95947.380146591,
+            "min_row_index": 68,
+            "max_row_index": 533,
+            "min_time_ns": 1.8683999999999892,
+            "max_time_ns": 4.37939999999999
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 180637696104149.56,
+            "max": 275756308563711.5,
+            "min_row_index": 183,
+            "max_row_index": 533,
+            "min_time_ns": 2.489399999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -16531868535358.836,
+            "max": -9645005311437.559,
+            "min_row_index": 484,
+            "max_row_index": 186,
+            "min_time_ns": 4.114799999999989,
+            "max_time_ns": 2.505599999999989
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -93.97857786575454,
+            "max": -54.82794417847762,
+            "min_row_index": 484,
+            "max_row_index": 186,
+            "min_time_ns": 4.114799999999989,
+            "max_time_ns": 2.505599999999989
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.04329385517933069,
+            "max": 0.06064605339940472,
+            "min_row_index": 264,
+            "max_row_index": 51,
+            "min_time_ns": 2.9267999999999894,
+            "max_time_ns": 1.776599999999989
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 6.821210263296962e-13,
+            "min_row_index": 0,
+            "max_row_index": 277,
+            "min_time_ns": 1.501199999999989,
+            "max_time_ns": 2.9969999999999892
+          }
+        },
+        "H": {
+          "mass_kg": 1.67262192369e-27,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -3263276.75,
+          "velocity_max_m_s": 3263276.75,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 9.094947017729282e-13,
+          "centered_raw_max_relative_difference": 4.314844759179771e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 92,
+              "source_row_index": 236,
+              "time_paper_ns": 1.9979999999999891,
+              "mass_integral": 1.000499443468235,
+              "u_m_s": 7969.006516742822,
+              "u_km_s": 7.969006516742822,
+              "T_eV": 2396.8961124114835,
+              "T_raw_formula_eV": 2396.8961124114835,
+              "negative_mass_integral": 0.0015494752161773406,
+              "positive_mass_integral": 1.0020489186844124,
+              "negative_mass_fraction": 0.001543919585358386,
+              "raw_first_moment_m_s": 7972.9865849959315,
+              "raw_second_moment_m2_s2": 229772885874.28137,
+              "negative_raw_second_moment_m2_s2": -8481424318.582886,
+              "negative_raw_second_T_contribution_eV": -88.49919716920822,
+              "negative_raw_second_fraction_abs": 0.034374527610995055,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 278,
+              "source_row_index": 422,
+              "time_paper_ns": 3.002399999999989,
+              "mass_integral": 1.0005528223150821,
+              "u_m_s": 9476.429360462515,
+              "u_km_s": 9.476429360462514,
+              "T_eV": 2230.2623543608006,
+              "T_raw_formula_eV": 2230.2623543608006,
+              "negative_mass_integral": 0.001282814272579646,
+              "positive_mass_integral": 1.0018356365876617,
+              "negative_mass_fraction": 0.0012788263155558018,
+              "raw_first_moment_m_s": 9481.668142080278,
+              "raw_second_moment_m2_s2": 213841063372.78253,
+              "negative_raw_second_moment_m2_s2": -6838947937.411994,
+              "negative_raw_second_T_contribution_eV": -71.3570138660633,
+              "negative_raw_second_fraction_abs": 0.03005880459381514,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 463,
+              "source_row_index": 607,
+              "time_paper_ns": 4.00139999999999,
+              "mass_integral": 1.0006819033213563,
+              "u_m_s": 9943.444824293314,
+              "u_km_s": 9.943444824293314,
+              "T_eV": 2176.890555948913,
+              "T_raw_formula_eV": 2176.8905559489135,
+              "negative_mass_integral": 0.0014131398854694628,
+              "positive_mass_integral": 1.0020950432068256,
+              "negative_mass_fraction": 0.0014081996632203774,
+              "raw_first_moment_m_s": 9950.225292344723,
+              "raw_second_moment_m2_s2": 208761844825.7053,
+              "negative_raw_second_moment_m2_s2": -7258878609.1787,
+              "negative_raw_second_T_contribution_eV": -75.72876581805957,
+              "negative_raw_second_fraction_abs": 0.03251026310834346,
+              "centered_raw_abs_difference_eV": 4.547473508864641e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 1.0003796603357449,
+            "max": 1.0007065536207764,
+            "min_row_index": 175,
+            "max_row_index": 464,
+            "min_time_ns": 2.446199999999989,
+            "max_time_ns": 4.0067999999999895
+          },
+          "u_m_s": {
+            "min": 6092.524030545834,
+            "max": 12106.53393252758,
+            "min_row_index": 420,
+            "max_row_index": 533,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "u_km_s": {
+            "min": 6.0925240305458335,
+            "max": 12.10653393252758,
+            "min_row_index": 420,
+            "max_row_index": 533,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "T_eV": {
+            "min": 2066.711778627323,
+            "max": 2396.8961124114835,
+            "min_row_index": 515,
+            "max_row_index": 92,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.9979999999999891
+          },
+          "T_raw_formula_eV": {
+            "min": 2066.7117786273234,
+            "max": 2396.8961124114835,
+            "min_row_index": 515,
+            "max_row_index": 92,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.9979999999999891
+          },
+          "negative_mass_integral": {
+            "min": 0.0011783844662032563,
+            "max": 0.0016641734951373687,
+            "min_row_index": 325,
+            "max_row_index": 200,
+            "min_time_ns": 3.256199999999989,
+            "max_time_ns": 2.5811999999999893
+          },
+          "positive_mass_integral": {
+            "min": 1.0016367606101408,
+            "max": 1.002174722964402,
+            "min_row_index": 242,
+            "max_row_index": 157,
+            "min_time_ns": 2.807999999999989,
+            "max_time_ns": 2.348999999999989
+          },
+          "negative_mass_fraction": {
+            "min": 0.0011750178751369813,
+            "max": 0.00165782356707027,
+            "min_row_index": 325,
+            "max_row_index": 200,
+            "min_time_ns": 3.256199999999989,
+            "max_time_ns": 2.5811999999999893
+          },
+          "raw_first_moment_m_s": {
+            "min": 6096.517950181733,
+            "max": 12113.641762599727,
+            "min_row_index": 420,
+            "max_row_index": 533,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 4.37939999999999
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 198174994372.88916,
+            "max": 229772885874.28137,
+            "min_row_index": 515,
+            "max_row_index": 92,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.9979999999999891
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -9112850456.212631,
+            "max": -5996005357.326861,
+            "min_row_index": 200,
+            "max_row_index": 325,
+            "min_time_ns": 2.5811999999999893,
+            "max_time_ns": 3.256199999999989
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -95.08755987602383,
+            "max": -62.564600626733636,
+            "min_row_index": 200,
+            "max_row_index": 325,
+            "min_time_ns": 2.5811999999999893,
+            "max_time_ns": 3.256199999999989
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.027938433372759624,
+            "max": 0.03678706562112255,
+            "min_row_index": 325,
+            "max_row_index": 200,
+            "min_time_ns": 3.256199999999989,
+            "max_time_ns": 2.5811999999999893
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 9.094947017729282e-13,
+            "min_row_index": 3,
+            "max_row_index": 0,
+            "min_time_ns": 1.517399999999989,
+            "max_time_ns": 1.501199999999989
+          }
+        },
+        "C": {
+          "mass_kg": 2.0071463084280003e-26,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -966923.1875,
+          "velocity_max_m_s": 966923.1875,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 3.410605131648481e-13,
+          "centered_raw_max_relative_difference": 4.195344095942378e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 92,
+              "source_row_index": 236,
+              "time_paper_ns": 1.9979999999999891,
+              "mass_integral": 0.9999904618405195,
+              "u_m_s": 10588.696390996669,
+              "u_km_s": 10.588696390996668,
+              "T_eV": 795.287641932759,
+              "T_raw_formula_eV": 795.287641932759,
+              "negative_mass_integral": 0.0022309279858651427,
+              "positive_mass_integral": 1.0022213898263845,
+              "negative_mass_fraction": 0.0022210392134135565,
+              "raw_first_moment_m_s": 10588.595394321801,
+              "raw_second_moment_m2_s2": 6460331898.545135,
+              "negative_raw_second_moment_m2_s2": -800325592.6462728,
+              "negative_raw_second_T_contribution_eV": -100.26272052006072,
+              "negative_raw_second_fraction_abs": 0.09928386951350023,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 278,
+              "source_row_index": 422,
+              "time_paper_ns": 3.002399999999989,
+              "mass_integral": 1.0000648183811989,
+              "u_m_s": 12321.991278548603,
+              "u_km_s": 12.321991278548603,
+              "T_eV": 823.8620847990895,
+              "T_raw_formula_eV": 823.8620847990896,
+              "negative_mass_integral": 0.0017280593301504713,
+              "positive_mass_integral": 1.0017928777113492,
+              "negative_mass_fraction": 0.0017219962896289915,
+              "raw_first_moment_m_s": 12322.789970076425,
+              "raw_second_moment_m2_s2": 6728632124.67461,
+              "negative_raw_second_moment_m2_s2": -662438234.6073303,
+              "negative_raw_second_T_contribution_eV": -82.98237855477927,
+              "negative_raw_second_fraction_abs": 0.0822546132390007,
+              "centered_raw_abs_difference_eV": 1.1368683772161603e-13
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 463,
+              "source_row_index": 607,
+              "time_paper_ns": 4.00139999999999,
+              "mass_integral": 1.0001154538540402,
+              "u_m_s": 12575.206237589093,
+              "u_km_s": 12.575206237589093,
+              "T_eV": 874.1712635687107,
+              "T_raw_formula_eV": 874.1712635687107,
+              "negative_mass_integral": 0.0015973348012234562,
+              "positive_mass_integral": 1.0017127886552637,
+              "negative_mass_fraction": 0.001592064869953175,
+              "raw_first_moment_m_s": 12576.658093614573,
+              "raw_second_moment_m2_s2": 7136910270.130993,
+              "negative_raw_second_moment_m2_s2": -648833868.0030277,
+              "negative_raw_second_T_contribution_eV": -81.27407032379196,
+              "negative_raw_second_fraction_abs": 0.07692546888901049,
+              "centered_raw_abs_difference_eV": 0.0
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9999222131953088,
+            "max": 1.0002808611114513,
+            "min_row_index": 68,
+            "max_row_index": 476,
+            "min_time_ns": 1.8683999999999892,
+            "max_time_ns": 4.0715999999999894
+          },
+          "u_m_s": {
+            "min": 8826.356473010248,
+            "max": 15364.160651426544,
+            "min_row_index": 420,
+            "max_row_index": 6,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 1.533599999999989
+          },
+          "u_km_s": {
+            "min": 8.826356473010248,
+            "max": 15.364160651426545,
+            "min_row_index": 420,
+            "max_row_index": 6,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 1.533599999999989
+          },
+          "T_eV": {
+            "min": 752.0874328006379,
+            "max": 915.3656109776612,
+            "min_row_index": 169,
+            "max_row_index": 521,
+            "min_time_ns": 2.413799999999989,
+            "max_time_ns": 4.31459999999999
+          },
+          "T_raw_formula_eV": {
+            "min": 752.0874328006381,
+            "max": 915.3656109776613,
+            "min_row_index": 169,
+            "max_row_index": 521,
+            "min_time_ns": 2.413799999999989,
+            "max_time_ns": 4.31459999999999
+          },
+          "negative_mass_integral": {
+            "min": 0.0012811133877705626,
+            "max": 0.002418588027978383,
+            "min_row_index": 515,
+            "max_row_index": 85,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.960199999999989
+          },
+          "positive_mass_integral": {
+            "min": 1.0012391001215835,
+            "max": 1.0025449315184833,
+            "min_row_index": 515,
+            "max_row_index": 85,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.960199999999989
+          },
+          "negative_mass_fraction": {
+            "min": 0.001277892825009467,
+            "max": 0.0024066426103406097,
+            "min_row_index": 515,
+            "max_row_index": 85,
+            "min_time_ns": 4.282199999999989,
+            "max_time_ns": 1.960199999999989
+          },
+          "raw_first_moment_m_s": {
+            "min": 8827.601472007322,
+            "max": 15366.639103615536,
+            "min_row_index": 420,
+            "max_row_index": 6,
+            "min_time_ns": 3.769199999999989,
+            "max_time_ns": 1.533599999999989
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 6109219426.246351,
+            "max": 7431852205.306784,
+            "min_row_index": 169,
+            "max_row_index": 521,
+            "min_time_ns": 2.413799999999989,
+            "max_time_ns": 4.31459999999999
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -891365253.4257321,
+            "max": -536153695.77813923,
+            "min_row_index": 199,
+            "max_row_index": 506,
+            "min_time_ns": 2.5757999999999894,
+            "max_time_ns": 4.233599999999989
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -111.66278158451405,
+            "max": -67.16903882577951,
+            "min_row_index": 199,
+            "max_row_index": 506,
+            "min_time_ns": 2.5757999999999894,
+            "max_time_ns": 4.233599999999989
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.0648979889609222,
+            "max": 0.10715126960040582,
+            "min_row_index": 514,
+            "max_row_index": 85,
+            "min_time_ns": 4.276799999999989,
+            "max_time_ns": 1.960199999999989
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 3.410605131648481e-13,
+            "min_row_index": 0,
+            "max_row_index": 8,
+            "min_time_ns": 1.501199999999989,
+            "max_time_ns": 1.5443999999999891
+          }
+        }
+      }
+    },
+    "fig10b": {
+      "input": "outputs/fig10_nearest_d4_inference_20261021/results/fig10b/predictions.npz",
+      "input_sha256": "6b340419d91dfd2c07f9458fdb184d0e15ec1651e5b840ee5be3da5948503e5a",
+      "rows": 480,
+      "species": {
+        "e": {
+          "mass_kg": 9.1093837015e-31,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -168003152.0,
+          "velocity_max_m_s": 168003152.0,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 4.547473508864641e-13,
+          "centered_raw_max_relative_difference": 4.970805254330484e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 1.0002524381275755,
+              "u_m_s": -80798.00003412884,
+              "u_km_s": -80.79800003412883,
+              "T_eV": 166.5527714625655,
+              "T_raw_formula_eV": 166.55277146256543,
+              "negative_mass_integral": 0.0034804141175488763,
+              "positive_mass_integral": 1.0037328522451243,
+              "negative_mass_fraction": 0.003455488756733336,
+              "raw_first_moment_m_s": -80818.3965299693,
+              "raw_second_moment_m2_s2": 29307559524898.953,
+              "negative_raw_second_moment_m2_s2": -15265202028371.258,
+              "negative_raw_second_T_contribution_eV": -86.77038803523556,
+              "negative_raw_second_fraction_abs": 0.25510898290420236,
+              "centered_raw_abs_difference_eV": 5.684341886080802e-14
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 1.0005316172021121,
+              "u_m_s": -102256.36223521561,
+              "u_km_s": -102.2563622352156,
+              "T_eV": 988.5568350982427,
+              "T_raw_formula_eV": 988.5568350982428,
+              "negative_mass_integral": 0.0009157452623159276,
+              "positive_mass_integral": 1.001447362464428,
+              "negative_mass_fraction": 0.0009135863593311444,
+              "raw_first_moment_m_s": -102310.72347640526,
+              "raw_second_moment_m2_s2": 173972248197724.0,
+              "negative_raw_second_moment_m2_s2": -9845465894268.207,
+              "negative_raw_second_T_contribution_eV": -55.947934387737774,
+              "negative_raw_second_fraction_abs": 0.050838088556465405,
+              "centered_raw_abs_difference_eV": 1.1368683772161603e-13
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 1.0001832219376134,
+              "u_m_s": -106852.69271466622,
+              "u_km_s": -106.85269271466622,
+              "T_eV": 1472.7102074562067,
+              "T_raw_formula_eV": 1472.7102074562067,
+              "negative_mass_integral": 0.000932673681298829,
+              "positive_mass_integral": 1.0011158956189123,
+              "negative_mass_fraction": 0.0009307669407184216,
+              "raw_first_moment_m_s": -106872.27047206461,
+              "raw_second_moment_m2_s2": 259082096620059.22,
+              "negative_raw_second_moment_m2_s2": -11408864878981.35,
+              "negative_raw_second_T_contribution_eV": -64.85470279913987,
+              "negative_raw_second_fraction_abs": 0.040471344113856576,
+              "centered_raw_abs_difference_eV": 0.0
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9998497363889289,
+            "max": 1.0006457472444938,
+            "min_row_index": 464,
+            "max_row_index": 320,
+            "min_time_ns": 4.397409326424871,
+            "max_time_ns": 3.5020725388601037
+          },
+          "u_m_s": {
+            "min": -109691.35396898667,
+            "max": -77806.9910852965,
+            "min_row_index": 324,
+            "max_row_index": 169,
+            "min_time_ns": 3.526943005181347,
+            "max_time_ns": 2.5632124352331607
+          },
+          "u_km_s": {
+            "min": -109.69135396898668,
+            "max": -77.8069910852965,
+            "min_row_index": 324,
+            "max_row_index": 169,
+            "min_time_ns": 3.526943005181347,
+            "max_time_ns": 2.5632124352331607
+          },
+          "T_eV": {
+            "min": 162.688753860476,
+            "max": 1554.3963278814992,
+            "min_row_index": 156,
+            "max_row_index": 425,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.154922279792746
+          },
+          "T_raw_formula_eV": {
+            "min": 162.68875386047603,
+            "max": 1554.396327881499,
+            "min_row_index": 156,
+            "max_row_index": 425,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.154922279792746
+          },
+          "negative_mass_integral": {
+            "min": 0.00024150269049386233,
+            "max": 0.004255205902882229,
+            "min_row_index": 452,
+            "max_row_index": 73,
+            "min_time_ns": 4.32279792746114,
+            "max_time_ns": 1.966321243523316
+          },
+          "positive_mass_integral": {
+            "min": 1.0001056738427558,
+            "max": 1.004529251390577,
+            "min_row_index": 452,
+            "max_row_index": 73,
+            "min_time_ns": 4.32279792746114,
+            "max_time_ns": 1.966321243523316
+          },
+          "negative_mass_fraction": {
+            "min": 0.00024141887552559633,
+            "max": 0.004218151729160091,
+            "min_row_index": 452,
+            "max_row_index": 73,
+            "min_time_ns": 4.32279792746114,
+            "max_time_ns": 1.966321243523316
+          },
+          "raw_first_moment_m_s": {
+            "min": -109733.16504537966,
+            "max": -77829.95303229801,
+            "min_row_index": 324,
+            "max_row_index": 169,
+            "min_time_ns": 3.526943005181347,
+            "max_time_ns": 2.5632124352331607
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 28621923722795.56,
+            "max": 273390556160083.6,
+            "min_row_index": 156,
+            "max_row_index": 425,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.154922279792746
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -20956159539156.582,
+            "max": -3311880666219.367,
+            "min_row_index": 47,
+            "max_row_index": 452,
+            "min_time_ns": 1.804663212435233,
+            "max_time_ns": 4.32279792746114
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -119.12853979561872,
+            "max": -18.832686437372733,
+            "min_row_index": 47,
+            "max_row_index": 452,
+            "min_time_ns": 1.804663212435233,
+            "max_time_ns": 4.32279792746114
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.012902125756030775,
+            "max": 0.26992867513508956,
+            "min_row_index": 452,
+            "max_row_index": 156,
+            "min_time_ns": 4.32279792746114,
+            "max_time_ns": 2.482383419689119
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 4.547473508864641e-13,
+            "min_row_index": 3,
+            "max_row_index": 2,
+            "min_time_ns": 1.5310880829015545,
+            "max_time_ns": 1.5248704663212436
+          }
+        },
+        "H": {
+          "mass_kg": 1.67262192369e-27,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -3263276.75,
+          "velocity_max_m_s": 3263276.75,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 9.094947017729282e-13,
+          "centered_raw_max_relative_difference": 4.921216887476017e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 0.9994995252167886,
+              "u_m_s": 6802.1209789466975,
+              "u_km_s": 6.802120978946697,
+              "T_eV": 1438.811905934571,
+              "T_raw_formula_eV": 1438.8119059345706,
+              "negative_mass_integral": 0.0019160504228670997,
+              "positive_mass_integral": 1.0014155756396557,
+              "negative_mass_fraction": 0.0019096880563672185,
+              "raw_first_moment_m_s": 6798.716688924382,
+              "raw_second_moment_m2_s2": 137798661459.51318,
+              "negative_raw_second_moment_m2_s2": -12111138017.684608,
+              "negative_raw_second_T_contribution_eV": -126.499774812302,
+              "negative_raw_second_fraction_abs": 0.07475045018837241,
+              "centered_raw_abs_difference_eV": 4.547473508864641e-13
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 1.0005508841445117,
+              "u_m_s": 6433.784130108247,
+              "u_km_s": 6.433784130108247,
+              "T_eV": 2399.0050571647694,
+              "T_raw_formula_eV": 2399.00505716477,
+              "negative_mass_integral": 0.0016321846202822132,
+              "positive_mass_integral": 1.002183068764794,
+              "negative_mass_fraction": 0.0016259810904229075,
+              "raw_first_moment_m_s": 6437.328399774735,
+              "raw_second_moment_m2_s2": 229964699563.75183,
+              "negative_raw_second_moment_m2_s2": -9326207143.141155,
+              "negative_raw_second_T_contribution_eV": -97.30905800787254,
+              "negative_raw_second_fraction_abs": 0.03751232969733019,
+              "centered_raw_abs_difference_eV": 4.547473508864641e-13
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 1.00033116420047,
+              "u_m_s": 6541.446676899027,
+              "u_km_s": 6.541446676899027,
+              "T_eV": 926.8010561360364,
+              "T_raw_formula_eV": 926.8010561360362,
+              "negative_mass_integral": 0.0010701588848902497,
+              "positive_mass_integral": 1.0014013230853602,
+              "negative_mass_fraction": 0.001067520527154515,
+              "raw_first_moment_m_s": 6543.612969857699,
+              "raw_second_moment_m2_s2": 88848931223.88023,
+              "negative_raw_second_moment_m2_s2": -5660719436.072266,
+              "negative_raw_second_T_contribution_eV": -59.07656326114079,
+              "negative_raw_second_fraction_abs": 0.056510916657748364,
+              "centered_raw_abs_difference_eV": 2.2737367544323206e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9993649183359767,
+            "max": 1.0007100527636845,
+            "min_row_index": 74,
+            "max_row_index": 303,
+            "min_time_ns": 1.972538860103627,
+            "max_time_ns": 3.3963730569948187
+          },
+          "u_m_s": {
+            "min": 2852.7952455642835,
+            "max": 11934.450654367742,
+            "min_row_index": 410,
+            "max_row_index": 321,
+            "min_time_ns": 4.061658031088083,
+            "max_time_ns": 3.5082901554404144
+          },
+          "u_km_s": {
+            "min": 2.8527952455642835,
+            "max": 11.934450654367742,
+            "min_row_index": 410,
+            "max_row_index": 321,
+            "min_time_ns": 4.061658031088083,
+            "max_time_ns": 3.5082901554404144
+          },
+          "T_eV": {
+            "min": 648.4932023774861,
+            "max": 2525.0558976806915,
+            "min_row_index": 415,
+            "max_row_index": 232,
+            "min_time_ns": 4.092746113989637,
+            "max_time_ns": 2.954922279792746
+          },
+          "T_raw_formula_eV": {
+            "min": 648.4932023774861,
+            "max": 2525.0558976806915,
+            "min_row_index": 415,
+            "max_row_index": 232,
+            "min_time_ns": 4.092746113989637,
+            "max_time_ns": 2.954922279792746
+          },
+          "negative_mass_integral": {
+            "min": 0.00044043455928508994,
+            "max": 0.002242415329197016,
+            "min_row_index": 428,
+            "max_row_index": 229,
+            "min_time_ns": 4.173575129533679,
+            "max_time_ns": 2.9362694300518135
+          },
+          "positive_mass_integral": {
+            "min": 1.0004631875820889,
+            "max": 1.0026111121926016,
+            "min_row_index": 418,
+            "max_row_index": 232,
+            "min_time_ns": 4.11139896373057,
+            "max_time_ns": 2.954922279792746
+          },
+          "negative_mass_fraction": {
+            "min": 0.0004400184198041038,
+            "max": 0.00223165922191943,
+            "min_row_index": 428,
+            "max_row_index": 229,
+            "min_time_ns": 4.173575129533679,
+            "max_time_ns": 2.9362694300518135
+          },
+          "raw_first_moment_m_s": {
+            "min": 2853.057921317377,
+            "max": 11939.088753398828,
+            "min_row_index": 410,
+            "max_row_index": 321,
+            "min_time_ns": 4.061658031088083,
+            "max_time_ns": 3.5082901554404144
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 62154256500.51874,
+            "max": 242031132786.69916,
+            "min_row_index": 415,
+            "max_row_index": 232,
+            "min_time_ns": 4.092746113989637,
+            "max_time_ns": 2.954922279792746
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -13374277862.49258,
+            "max": -2258149599.6892443,
+            "min_row_index": 74,
+            "max_row_index": 428,
+            "min_time_ns": 1.972538860103627,
+            "max_time_ns": 4.173575129533679
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -139.71197536191508,
+            "max": -23.57284130997587,
+            "min_row_index": 74,
+            "max_row_index": 428,
+            "min_time_ns": 1.972538860103627,
+            "max_time_ns": 4.173575129533679
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.021276580678210893,
+            "max": 0.08212298010485436,
+            "min_row_index": 476,
+            "max_row_index": 74,
+            "min_time_ns": 4.472020725388601,
+            "max_time_ns": 1.972538860103627
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 9.094947017729282e-13,
+            "min_row_index": 0,
+            "max_row_index": 37,
+            "min_time_ns": 1.5124352331606217,
+            "max_time_ns": 1.7424870466321243
+          }
+        },
+        "C": {
+          "mass_kg": 2.0071463084280003e-26,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -966923.1875,
+          "velocity_max_m_s": 966923.1875,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 6.821210263296962e-13,
+          "centered_raw_max_relative_difference": 5.68117253108133e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 0.9999816983968793,
+              "u_m_s": 4644.240452859373,
+              "u_km_s": 4.644240452859373,
+              "T_eV": 464.3197994297287,
+              "T_raw_formula_eV": 464.31979942972873,
+              "negative_mass_integral": 0.003314617182538564,
+              "positive_mass_integral": 1.003296315579418,
+              "negative_mass_fraction": 0.0032928483832813733,
+              "raw_first_moment_m_s": 4644.155455813809,
+              "raw_second_moment_m2_s2": 3727868983.6055036,
+              "negative_raw_second_moment_m2_s2": -1572648279.7412777,
+              "negative_raw_second_T_contribution_eV": -197.01903603282204,
+              "negative_raw_second_fraction_abs": 0.2288098940557016,
+              "centered_raw_abs_difference_eV": 5.684341886080802e-14
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 1.00012621603863,
+              "u_m_s": 8675.486309451946,
+              "u_km_s": 8.675486309451946,
+              "T_eV": 1128.9646660294513,
+              "T_raw_formula_eV": 1128.9646660294513,
+              "negative_mass_integral": 0.002247205000481192,
+              "positive_mass_integral": 1.002373421039111,
+              "negative_mass_fraction": 0.0022368692641122714,
+              "raw_first_moment_m_s": 8676.581294967113,
+              "raw_second_moment_m2_s2": 9088214475.416489,
+              "negative_raw_second_moment_m2_s2": -892577867.9643781,
+              "negative_raw_second_T_contribution_eV": -111.80466889982524,
+              "negative_raw_second_fraction_abs": 0.08208842802326961,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 1.0004795541174243,
+              "u_m_s": 7717.976396235423,
+              "u_km_s": 7.717976396235422,
+              "T_eV": 670.168302321984,
+              "T_raw_formula_eV": 670.1683023219839,
+              "negative_mass_integral": 0.0012929287139104165,
+              "positive_mass_integral": 1.0017724828313348,
+              "negative_mass_fraction": 0.001288977467499981,
+              "raw_first_moment_m_s": 7721.677583594421,
+              "raw_second_moment_m2_s2": 5411686407.49804,
+              "negative_raw_second_moment_m2_s2": -697265102.6657745,
+              "negative_raw_second_T_contribution_eV": -87.30886636108995,
+              "negative_raw_second_fraction_abs": 0.10244532937012951,
+              "centered_raw_abs_difference_eV": 1.1368683772161603e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 0.999242865895194,
+            "max": 1.0007634680258017,
+            "min_row_index": 223,
+            "max_row_index": 322,
+            "min_time_ns": 2.8989637305699483,
+            "max_time_ns": 3.514507772020725
+          },
+          "u_m_s": {
+            "min": 1675.730017286515,
+            "max": 14061.561397587833,
+            "min_row_index": 41,
+            "max_row_index": 321,
+            "min_time_ns": 1.7673575129533678,
+            "max_time_ns": 3.5082901554404144
+          },
+          "u_km_s": {
+            "min": 1.675730017286515,
+            "max": 14.061561397587834,
+            "min_row_index": 41,
+            "max_row_index": 321,
+            "min_time_ns": 1.7673575129533678,
+            "max_time_ns": 3.5082901554404144
+          },
+          "T_eV": {
+            "min": 417.02153318889793,
+            "max": 1522.8708677246618,
+            "min_row_index": 156,
+            "max_row_index": 474,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.45958549222798
+          },
+          "T_raw_formula_eV": {
+            "min": 417.02153318889793,
+            "max": 1522.870867724662,
+            "min_row_index": 156,
+            "max_row_index": 474,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.45958549222798
+          },
+          "negative_mass_integral": {
+            "min": 0.000523964243263987,
+            "max": 0.0036474030970633526,
+            "min_row_index": 432,
+            "max_row_index": 38,
+            "min_time_ns": 4.198445595854922,
+            "max_time_ns": 1.7487046632124352
+          },
+          "positive_mass_integral": {
+            "min": 1.000535802466668,
+            "max": 1.003296315579418,
+            "min_row_index": 424,
+            "max_row_index": 78,
+            "min_time_ns": 4.148704663212435,
+            "max_time_ns": 1.9974093264248705
+          },
+          "negative_mass_fraction": {
+            "min": 0.0005233909977768007,
+            "max": 0.0036225636645106614,
+            "min_row_index": 432,
+            "max_row_index": 38,
+            "min_time_ns": 4.198445595854922,
+            "max_time_ns": 1.7487046632124352
+          },
+          "raw_first_moment_m_s": {
+            "min": 1675.0618948515003,
+            "max": 14067.711186334855,
+            "min_row_index": 41,
+            "max_row_index": 321,
+            "min_time_ns": 1.7673575129533678,
+            "max_time_ns": 3.5082901554404144
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 3365285715.218204,
+            "max": 12207639392.912128,
+            "min_row_index": 156,
+            "max_row_index": 474,
+            "min_time_ns": 2.482383419689119,
+            "max_time_ns": 4.45958549222798
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -1647406174.3902667,
+            "max": -252478878.15327665,
+            "min_row_index": 225,
+            "max_row_index": 432,
+            "min_time_ns": 2.91139896373057,
+            "max_time_ns": 4.198445595854922
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -206.52923235240925,
+            "max": -31.62810244677895,
+            "min_row_index": 225,
+            "max_row_index": 432,
+            "min_time_ns": 2.91139896373057,
+            "max_time_ns": 4.198445595854922
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.022764718168640327,
+            "max": 0.23105621693591233,
+            "min_row_index": 451,
+            "max_row_index": 77,
+            "min_time_ns": 4.316580310880829,
+            "max_time_ns": 1.9911917098445595
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 6.821210263296962e-13,
+            "min_row_index": 1,
+            "max_row_index": 434,
+            "min_time_ns": 1.5186528497409326,
+            "max_time_ns": 4.210880829015544
+          }
+        }
+      }
+    },
+    "fig10c": {
+      "input": "outputs/fig10_nearest_d4_inference_20261021/results/fig10c/predictions.npz",
+      "input_sha256": "2e144fdf8fdff214f609b37e3c70f39ef0cad723cab4e6feaa26af0bd3d78bad",
+      "rows": 480,
+      "species": {
+        "e": {
+          "mass_kg": 9.1093837015e-31,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -168003152.0,
+          "velocity_max_m_s": 168003152.0,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 6.821210263296962e-13,
+          "centered_raw_max_relative_difference": 5.662578892728222e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 0.999997426113038,
+              "u_m_s": -97050.81772025193,
+              "u_km_s": -97.05081772025193,
+              "T_eV": 285.8302035558934,
+              "T_raw_formula_eV": 285.8302035558934,
+              "negative_mass_integral": 0.0013097238533130847,
+              "positive_mass_integral": 1.001307149966351,
+              "negative_mass_fraction": 0.0013063054168671996,
+              "raw_first_moment_m_s": -97050.56792241754,
+              "raw_second_moment_m2_s2": 50281677611251.22,
+              "negative_raw_second_moment_m2_s2": -11322989065580.422,
+              "negative_raw_second_T_contribution_eV": -64.37849319657383,
+              "negative_raw_second_fraction_abs": 0.15526330786737993,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 1.0002107857448994,
+              "u_m_s": -100201.6086501655,
+              "u_km_s": -100.2016086501655,
+              "T_eV": 1142.0752568611067,
+              "T_raw_formula_eV": 1142.0752568611067,
+              "negative_mass_integral": 0.000991205956192597,
+              "positive_mass_integral": 1.0012019917010921,
+              "negative_mass_fraction": 0.0009890368029933038,
+              "raw_first_moment_m_s": -100222.72972088493,
+              "raw_second_moment_m2_s2": 200922864670332.03,
+              "negative_raw_second_moment_m2_s2": -11088365845500.05,
+              "negative_raw_second_T_contribution_eV": -63.0310606014644,
+              "negative_raw_second_fraction_abs": 0.04970141598795783,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 0.999997073665705,
+              "u_m_s": -102656.05845244296,
+              "u_km_s": -102.65605845244296,
+              "T_eV": 1460.4110322742813,
+              "T_raw_formula_eV": 1460.411032274281,
+              "negative_mass_integral": 0.0002517403016403483,
+              "positive_mass_integral": 1.0002488139673453,
+              "negative_mass_fraction": 0.00025161435500081455,
+              "raw_first_moment_m_s": -102655.75804649852,
+              "raw_second_moment_m2_s2": 256869801328872.03,
+              "negative_raw_second_moment_m2_s2": -2924086588864.45,
+              "negative_raw_second_T_contribution_eV": -16.625323386334518,
+              "negative_raw_second_fraction_abs": 0.011130135249999732,
+              "centered_raw_abs_difference_eV": 2.2737367544323206e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9997584061750849,
+            "max": 1.0005568337976811,
+            "min_row_index": 157,
+            "max_row_index": 281,
+            "min_time_ns": 2.48860103626943,
+            "max_time_ns": 3.259585492227979
+          },
+          "u_m_s": {
+            "min": -108359.30658946361,
+            "max": -92573.53224183149,
+            "min_row_index": 474,
+            "max_row_index": 80,
+            "min_time_ns": 4.45958549222798,
+            "max_time_ns": 2.0098445595854924
+          },
+          "u_km_s": {
+            "min": -108.35930658946361,
+            "max": -92.57353224183149,
+            "min_row_index": 474,
+            "max_row_index": 80,
+            "min_time_ns": 4.45958549222798,
+            "max_time_ns": 2.0098445595854924
+          },
+          "T_eV": {
+            "min": 265.0533786063032,
+            "max": 1590.9982817926498,
+            "min_row_index": 80,
+            "max_row_index": 478,
+            "min_time_ns": 2.0098445595854924,
+            "max_time_ns": 4.484455958549223
+          },
+          "T_raw_formula_eV": {
+            "min": 265.05337860630317,
+            "max": 1590.9982817926495,
+            "min_row_index": 80,
+            "max_row_index": 478,
+            "min_time_ns": 2.0098445595854924,
+            "max_time_ns": 4.484455958549223
+          },
+          "negative_mass_integral": {
+            "min": 0.0001499156678523235,
+            "max": 0.004322205513215298,
+            "min_row_index": 319,
+            "max_row_index": 80,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 2.0098445595854924
+          },
+          "positive_mass_integral": {
+            "min": 1.000115814991369,
+            "max": 1.0041700978585846,
+            "min_row_index": 431,
+            "max_row_index": 80,
+            "min_time_ns": 4.1922279792746115,
+            "max_time_ns": 2.0098445595854924
+          },
+          "negative_mass_fraction": {
+            "min": 0.00014986747402427877,
+            "max": 0.004285809121958004,
+            "min_row_index": 319,
+            "max_row_index": 80,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 2.0098445595854924
+          },
+          "raw_first_moment_m_s": {
+            "min": -108345.01673242636,
+            "max": -92559.45109896129,
+            "min_row_index": 474,
+            "max_row_index": 80,
+            "min_time_ns": 4.45958549222798,
+            "max_time_ns": 2.0098445595854924
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 46619596204197.41,
+            "max": 279826708667787.16,
+            "min_row_index": 80,
+            "max_row_index": 478,
+            "min_time_ns": 2.0098445595854924,
+            "max_time_ns": 4.484455958549223
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -17938199463925.805,
+            "max": -1915188018902.1465,
+            "min_row_index": 157,
+            "max_row_index": 319,
+            "min_time_ns": 2.48860103626943,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -102.01461297640928,
+            "max": -10.888813877370742,
+            "min_row_index": 157,
+            "max_row_index": 319,
+            "min_time_ns": 2.48860103626943,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.007919981477014792,
+            "max": 0.20302395530449224,
+            "min_row_index": 319,
+            "max_row_index": 80,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 2.0098445595854924
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 6.821210263296962e-13,
+            "min_row_index": 1,
+            "max_row_index": 32,
+            "min_time_ns": 1.5186528497409326,
+            "max_time_ns": 1.71139896373057
+          }
+        },
+        "H": {
+          "mass_kg": 1.67262192369e-27,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -3263276.75,
+          "velocity_max_m_s": 3263276.75,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 9.094947017729282e-13,
+          "centered_raw_max_relative_difference": 5.065653115946809e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 1.0000405247068231,
+              "u_m_s": 4339.651432886417,
+              "u_km_s": 4.339651432886416,
+              "T_eV": 1926.1764002669306,
+              "T_raw_formula_eV": 1926.1764002669308,
+              "negative_mass_integral": 0.001465380800542697,
+              "positive_mass_integral": 1.0015059055073658,
+              "negative_mass_fraction": 0.001461039633484413,
+              "raw_first_moment_m_s": 4339.827295988449,
+              "raw_second_moment_m2_s2": 184531534028.5705,
+              "negative_raw_second_moment_m2_s2": -8370372922.166947,
+              "negative_raw_second_T_contribution_eV": -87.38051485749493,
+              "negative_raw_second_fraction_abs": 0.04158731111632715,
+              "centered_raw_abs_difference_eV": 2.2737367544323206e-13
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 1.0002623901658638,
+              "u_m_s": 7504.705821668036,
+              "u_km_s": 7.504705821668036,
+              "T_eV": 2091.9335167077375,
+              "T_raw_formula_eV": 2091.9335167077375,
+              "negative_mass_integral": 0.0008876815455844595,
+              "positive_mass_integral": 1.0011500717114483,
+              "negative_mass_fraction": 0.0008858763481706465,
+              "raw_first_moment_m_s": 7506.674982673343,
+              "raw_second_moment_m2_s2": 200491735167.85913,
+              "negative_raw_second_moment_m2_s2": -4542558227.420827,
+              "negative_raw_second_T_contribution_eV": -47.41043656933218,
+              "negative_raw_second_fraction_abs": 0.021674904419304624,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 1.0000274766974655,
+              "u_m_s": 3290.905342904997,
+              "u_km_s": 3.290905342904997,
+              "T_eV": 790.6752171720158,
+              "T_raw_formula_eV": 790.6752171720154,
+              "negative_mass_integral": 0.0004130661255246161,
+              "positive_mass_integral": 1.0004405428229903,
+              "negative_mass_fraction": 0.000412713829306744,
+              "raw_first_moment_m_s": 3290.9957661154913,
+              "raw_second_moment_m2_s2": 75750371229.1239,
+              "negative_raw_second_moment_m2_s2": -2371524366.1835194,
+              "negative_raw_second_T_contribution_eV": -24.75728690237049,
+              "negative_raw_second_fraction_abs": 0.029462338254705615,
+              "centered_raw_abs_difference_eV": 3.410605131648481e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9999379242002584,
+            "max": 1.0006575733615382,
+            "min_row_index": 395,
+            "max_row_index": 291,
+            "min_time_ns": 3.9683937823834197,
+            "max_time_ns": 3.321761658031088
+          },
+          "u_m_s": {
+            "min": 447.0246164497909,
+            "max": 10211.427702442086,
+            "min_row_index": 25,
+            "max_row_index": 5,
+            "min_time_ns": 1.6678756476683938,
+            "max_time_ns": 1.5435233160621762
+          },
+          "u_km_s": {
+            "min": 0.4470246164497909,
+            "max": 10.211427702442085,
+            "min_row_index": 25,
+            "max_row_index": 5,
+            "min_time_ns": 1.6678756476683938,
+            "max_time_ns": 1.5435233160621762
+          },
+          "T_eV": {
+            "min": 690.6238372777109,
+            "max": 2416.2547457372807,
+            "min_row_index": 328,
+            "max_row_index": 38,
+            "min_time_ns": 3.551813471502591,
+            "max_time_ns": 1.7487046632124352
+          },
+          "T_raw_formula_eV": {
+            "min": 690.6238372777109,
+            "max": 2416.2547457372807,
+            "min_row_index": 328,
+            "max_row_index": 38,
+            "min_time_ns": 3.551813471502591,
+            "max_time_ns": 1.7487046632124352
+          },
+          "negative_mass_integral": {
+            "min": 0.00032720379211790206,
+            "max": 0.001958701783150507,
+            "min_row_index": 318,
+            "max_row_index": 44,
+            "min_time_ns": 3.489637305699482,
+            "max_time_ns": 1.7860103626943005
+          },
+          "positive_mass_integral": {
+            "min": 1.0003981968434457,
+            "max": 1.0022000194144665,
+            "min_row_index": 394,
+            "max_row_index": 38,
+            "min_time_ns": 3.962176165803109,
+            "max_time_ns": 1.7487046632124352
+          },
+          "negative_mass_fraction": {
+            "min": 0.000326955399219005,
+            "max": 0.0019506165638866408,
+            "min_row_index": 318,
+            "max_row_index": 44,
+            "min_time_ns": 3.489637305699482,
+            "max_time_ns": 1.7860103626943005
+          },
+          "raw_first_moment_m_s": {
+            "min": 447.2619280497602,
+            "max": 10217.931285193888,
+            "min_row_index": 25,
+            "max_row_index": 5,
+            "min_time_ns": 1.6678756476683938,
+            "max_time_ns": 1.5435233160621762
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 66177397139.229385,
+            "max": 231613311530.4455,
+            "min_row_index": 328,
+            "max_row_index": 38,
+            "min_time_ns": 3.551813471502591,
+            "max_time_ns": 1.7487046632124352
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -11008246627.399033,
+            "max": -1575771708.8977737,
+            "min_row_index": 44,
+            "max_row_index": 319,
+            "min_time_ns": 1.7860103626943005,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -114.89648131445169,
+            "max": -16.449238827009776,
+            "min_row_index": 44,
+            "max_row_index": 319,
+            "min_time_ns": 1.7860103626943005,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.018778649154453722,
+            "max": 0.0515588818316823,
+            "min_row_index": 474,
+            "max_row_index": 320,
+            "min_time_ns": 4.45958549222798,
+            "max_time_ns": 3.5020725388601037
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 9.094947017729282e-13,
+            "min_row_index": 0,
+            "max_row_index": 27,
+            "min_time_ns": 1.5124352331606217,
+            "max_time_ns": 1.6803108808290155
+          }
+        },
+        "C": {
+          "mass_kg": 2.0071463084280003e-26,
+          "velocity_points": 4097,
+          "velocity_min_m_s": -966923.1875,
+          "velocity_max_m_s": 966923.1875,
+          "negative_T_count": 0,
+          "nonfinite_T_count": 0,
+          "centered_raw_max_absolute_difference_eV": 4.547473508864641e-13,
+          "centered_raw_max_relative_difference": 5.436957858535257e-16,
+          "audit_pass": true,
+          "representative_nearest": [
+            {
+              "requested_time_ns": 2,
+              "row_index": 78,
+              "source_row_index": 93,
+              "time_paper_ns": 1.9974093264248705,
+              "mass_integral": 0.9994551828312359,
+              "u_m_s": 2883.8556654644613,
+              "u_km_s": 2.8838556654644614,
+              "T_eV": 553.6190305470001,
+              "T_raw_formula_eV": 553.6190305470001,
+              "negative_mass_integral": 0.00262604172834475,
+              "positive_mass_integral": 1.0020812245595807,
+              "negative_mass_fraction": 0.00261373816678677,
+              "raw_first_moment_m_s": 2882.284491385679,
+              "raw_second_moment_m2_s2": 4425091381.514992,
+              "negative_raw_second_moment_m2_s2": -1253989243.2438624,
+              "negative_raw_second_T_contribution_eV": -157.18066575827575,
+              "negative_raw_second_fraction_abs": 0.18087070621215484,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 3,
+              "row_index": 239,
+              "source_row_index": 254,
+              "time_paper_ns": 2.998445595854922,
+              "mass_integral": 0.9999719179671667,
+              "u_m_s": 8662.672663936255,
+              "u_km_s": 8.662672663936256,
+              "T_eV": 924.9076461122191,
+              "T_raw_formula_eV": 924.9076461122191,
+              "negative_mass_integral": 0.0012457807275932037,
+              "positive_mass_integral": 1.0012176986947599,
+              "negative_mass_fraction": 0.0012427193141350712,
+              "raw_first_moment_m_s": 8662.429398478082,
+              "raw_second_moment_m2_s2": 7457779151.173403,
+              "negative_raw_second_moment_m2_s2": -500647574.88258463,
+              "negative_raw_second_T_contribution_eV": -62.720996554999005,
+              "negative_raw_second_fraction_abs": 0.05918467636902487,
+              "centered_raw_abs_difference_eV": 0.0
+            },
+            {
+              "requested_time_ns": 4,
+              "row_index": 400,
+              "source_row_index": 415,
+              "time_paper_ns": 3.999481865284974,
+              "mass_integral": 1.000028314426203,
+              "u_m_s": 3292.085049229497,
+              "u_km_s": 3.292085049229497,
+              "T_eV": 826.3740620281444,
+              "T_raw_formula_eV": 826.3740620281446,
+              "negative_mass_integral": 0.0005686755486458434,
+              "positive_mass_integral": 1.0005969899748488,
+              "negative_mass_fraction": 0.0005680134349678197,
+              "raw_first_moment_m_s": 3292.1782627286775,
+              "raw_second_moment_m2_s2": 6607440958.379531,
+              "negative_raw_second_moment_m2_s2": -304562018.20763266,
+              "negative_raw_second_T_contribution_eV": -38.15329779669859,
+              "negative_raw_second_fraction_abs": 0.04220318370683404,
+              "centered_raw_abs_difference_eV": 2.2737367544323206e-13
+            }
+          ],
+          "mass_integral": {
+            "min": 0.9992967552179464,
+            "max": 1.0006423773966868,
+            "min_row_index": 161,
+            "max_row_index": 304,
+            "min_time_ns": 2.5134715025906735,
+            "max_time_ns": 3.4025906735751295
+          },
+          "u_m_s": {
+            "min": -414.60161031326913,
+            "max": 12713.89028921941,
+            "min_row_index": 321,
+            "max_row_index": 27,
+            "min_time_ns": 3.5082901554404144,
+            "max_time_ns": 1.6803108808290155
+          },
+          "u_km_s": {
+            "min": -0.41460161031326914,
+            "max": 12.713890289219409,
+            "min_row_index": 321,
+            "max_row_index": 27,
+            "min_time_ns": 3.5082901554404144,
+            "max_time_ns": 1.6803108808290155
+          },
+          "T_eV": {
+            "min": 553.6190305470001,
+            "max": 1579.3319094905885,
+            "min_row_index": 78,
+            "max_row_index": 448,
+            "min_time_ns": 1.9974093264248705,
+            "max_time_ns": 4.2979274611398965
+          },
+          "T_raw_formula_eV": {
+            "min": 553.6190305470001,
+            "max": 1579.331909490589,
+            "min_row_index": 78,
+            "max_row_index": 448,
+            "min_time_ns": 1.9974093264248705,
+            "max_time_ns": 4.2979274611398965
+          },
+          "negative_mass_integral": {
+            "min": 0.00043052099320497827,
+            "max": 0.003306527488968662,
+            "min_row_index": 319,
+            "max_row_index": 132,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 2.333160621761658
+          },
+          "positive_mass_integral": {
+            "min": 1.000335252622646,
+            "max": 1.002746909331156,
+            "min_row_index": 319,
+            "max_row_index": 48,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 1.810880829015544
+          },
+          "negative_mass_fraction": {
+            "min": 0.0004301915638556159,
+            "max": 0.0032869839296718654,
+            "min_row_index": 319,
+            "max_row_index": 132,
+            "min_time_ns": 3.4958549222797926,
+            "max_time_ns": 2.333160621761658
+          },
+          "raw_first_moment_m_s": {
+            "min": -414.5904361776811,
+            "max": 12714.852997040281,
+            "min_row_index": 321,
+            "max_row_index": 27,
+            "min_time_ns": 3.5082901554404144,
+            "max_time_ns": 1.6803108808290155
+          },
+          "raw_second_moment_m2_s2": {
+            "min": 4425091381.514992,
+            "max": 12640153849.3404,
+            "min_row_index": 78,
+            "max_row_index": 448,
+            "min_time_ns": 1.9974093264248705,
+            "max_time_ns": 4.2979274611398965
+          },
+          "negative_raw_second_moment_m2_s2": {
+            "min": -1560326114.7147987,
+            "max": -211893522.25040832,
+            "min_row_index": 161,
+            "max_row_index": 319,
+            "min_time_ns": 2.5134715025906735,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_T_contribution_eV": {
+            "min": -195.6093172561557,
+            "max": -26.54774845424951,
+            "min_row_index": 161,
+            "max_row_index": 319,
+            "min_time_ns": 2.5134715025906735,
+            "max_time_ns": 3.4958549222797926
+          },
+          "negative_raw_second_fraction_abs": {
+            "min": 0.021781457107711247,
+            "max": 0.19266639005854885,
+            "min_row_index": 432,
+            "max_row_index": 76,
+            "min_time_ns": 4.198445595854922,
+            "max_time_ns": 1.9849740932642488
+          },
+          "centered_raw_abs_difference_eV": {
+            "min": 0.0,
+            "max": 4.547473508864641e-13,
+            "min_row_index": 5,
+            "max_row_index": 418,
+            "min_time_ns": 1.5435233160621762,
+            "max_time_ns": 4.11139896373057
+          }
+        }
+      }
+    }
+  },
+  "total_species_rows": 4548,
+  "negative_T_count": 0,
+  "centered_raw_max_absolute_difference_eV": 9.094947017729282e-13
+}

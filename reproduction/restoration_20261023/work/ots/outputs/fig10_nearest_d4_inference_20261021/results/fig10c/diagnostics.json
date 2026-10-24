@@ -1,0 +1,138 @@
+{
+  "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10c.npz",
+  "input_sha256": "e81ba6359ee285f742cb7b71e60eb2b79e4a3e238a57c23f592c3366bb456f75",
+  "input_array": "intensity",
+  "native_intensity_shape": [
+    480,
+    320
+  ],
+  "alignment": "float64 np.interp on wavelength only; no extrapolation",
+  "native_input_fields_preserved": [
+    "intensity",
+    "time_paper_ns",
+    "wavelength_nm",
+    "source_row_index",
+    "replacement_mask",
+    "donor_column_index",
+    "background_subtracted_counts",
+    "intensity_units",
+    "source_file_sha256",
+    "source_intensity_key",
+    "processing_version",
+    "source_col_index"
+  ],
+  "native_provenance_prefix": "native_ (mask and donor indices stay on the native grid)",
+  "upstream_original_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+  "background_already_subtracted_counts": 0.0,
+  "native_replacement_pixel_count": 2388,
+  "repeated_subtraction_or_filling": false,
+  "row_count": 480,
+  "time_range_ns": [
+    1.5124352331606217,
+    4.4906735751295335
+  ],
+  "peak_scale_range": [
+    0.0031315240083602588,
+    0.9979123173277662
+  ],
+  "normalized_peak_min_max": [
+    1.0,
+    1.0
+  ],
+  "normalization_precision": "Divide in float64, cast to model float32",
+  "wave_max_abs_difference_from_layout_nm": 0.0,
+  "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10c/predictions.npz",
+  "output_sha256": "2e144fdf8fdff214f609b37e3c70f39ef0cad723cab4e6feaa26af0bd3d78bad",
+  "species": {
+    "e": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -168003152.0,
+        168003152.0
+      ],
+      "vdf_range_s_per_m": [
+        -1.821755385433832e-10,
+        5.79324037630613e-08
+      ],
+      "signed_integral_range": [
+        0.9997584061750849,
+        1.0005568337976811
+      ],
+      "signed_integral_mean": 1.0001241927169313,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0008857546363772752,
+      "negative_mass_fraction_p95": 0.0012395322631336338,
+      "negative_mass_fraction_max": 0.004285809121958005,
+      "negative_mass_fraction_max_array_row": 80,
+      "negative_mass_fraction_max_source_row_index": 95,
+      "negative_mass_fraction_max_time_ns": 2.0098445595854924,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "H": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -3263276.75,
+        3263276.75
+      ],
+      "vdf_range_s_per_m": [
+        -4.07494527010499e-09,
+        1.8232757383884746e-06
+      ],
+      "signed_integral_range": [
+        0.9999379242002584,
+        1.0006575733615382
+      ],
+      "signed_integral_mean": 1.000244080358266,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0011760303045816125,
+      "negative_mass_fraction_p95": 0.0017049378690851844,
+      "negative_mass_fraction_max": 0.0019506165638866408,
+      "negative_mass_fraction_max_array_row": 44,
+      "negative_mass_fraction_max_source_row_index": 59,
+      "negative_mass_fraction_max_time_ns": 1.7860103626943005,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "C": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -966923.1875,
+        966923.1875
+      ],
+      "vdf_range_s_per_m": [
+        -1.5349041149193e-08,
+        6.837819000793388e-06
+      ],
+      "signed_integral_range": [
+        0.9992967552179464,
+        1.0006423773966868
+      ],
+      "signed_integral_mean": 0.9998647668685636,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0019209412337043699,
+      "negative_mass_fraction_p95": 0.0032729470907627446,
+      "negative_mass_fraction_max": 0.0032869839296718654,
+      "negative_mass_fraction_max_array_row": 132,
+      "negative_mass_fraction_max_source_row_index": 147,
+      "negative_mass_fraction_max_time_ns": 2.333160621761658,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    }
+  }
+}

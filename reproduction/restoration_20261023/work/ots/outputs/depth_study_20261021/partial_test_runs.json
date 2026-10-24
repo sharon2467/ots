@@ -1,0 +1,29 @@
+[
+  {
+    "run_id": "depth_fig_d3_s0",
+    "label": "D3",
+    "training_seed": 20261030,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d3_s0/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d3_s0_eval/evaluation",
+    "historical_checkpoint_bytes_match": false,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_d4_s2",
+    "label": "D4",
+    "training_seed": 20261033,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s2/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s2_eval/evaluation",
+    "historical_checkpoint_bytes_match": false,
+    "training_pipeline_completed": false
+  },
+  {
+    "run_id": "depth_fig_w4_s2",
+    "label": "W4",
+    "training_seed": 20261033,
+    "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s2/training/model.pt",
+    "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s2_eval/evaluation",
+    "historical_checkpoint_bytes_match": false,
+    "training_pipeline_completed": false
+  }
+]

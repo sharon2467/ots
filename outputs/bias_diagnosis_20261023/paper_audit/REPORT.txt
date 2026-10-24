@@ -1,0 +1,127 @@
+Zhao2019 Fig10(b,c): paper/source domain audit (2026-10-23)
+
+Strongest findings
+1. Native Fig10 colorbars are LINEAR scattered power. A logarithmic or gamma
+   correction of a recovered 0..1 colorbar-position array is unsupported.
+2. Paper simulations sum local LARED spectra across a finite scattering volume;
+   spectral response/resolution, path absorption and temporal resolution enter.
+   Current canonical Fig1/Fig11 training generates single-state clean PV spectra.
+   These are substantive forward/observation model differences.
+3. The paper fitting convention has one Ti and one ion flow; current synthetic
+   sampler permits independent H/C temperatures, flows and distribution shapes.
+   This changes the inverse problem and the learned prior. It does not by itself
+   prove a particular sign of prediction bias.
+
+Primary source and provenance
+PDF: Zhao 等 - 2019 - Progress in optical Thomson scattering diagnostics for ICF gas-filled hohlraums.pdf
+DOI 10.1063/1.5090971. PDF contains publisher cover: PDF page = journal page +1.
+SHA256 8b4c8516fe99a2a77986a9020ff32adf88ca22477b60393cbd1036680a3ad068.
+Line numbers below refer to pdftotext -layout output paper_layout.txt, retained here.
+Native Fig10 is embedded JPEG xref307, 2076x600 at300ppi on PDFp10/journal055201-9.
+fig10_native.jpg retains embedded bytes; pdf10-000.png is decoded native pixels.
+Native Fig11 is pdf10-001.png. Native Fig1 is fig1_native.jpg.
+
+Colorbar evidence (native image, origin upper-left, integer pixel coordinates)
+Printed tick values .05,.10,.15,.20,.25,.30,.35,.40 are unambiguous in native crops.
+Panel b corresponding y:438.5,381,323.5,266,209,151.5,93.5,36.5.
+Panel c corresponding y:441.5,387.5,333.5,279,225,170.5,116.5,62.
+Fit y=a+b*power:
+ b: a=495.892857, b=-1148.690476; RMS residual0.190px.
+ c: a=495.928571, b=-1084.404762; RMS residual0.151px.
+Fit y=a+b*ln(power) RMS residual37.476px and35.482px, respectively.
+Bottom border y496 agrees with power0 to subpixel accuracy. Top border y13
+corresponds approximately0.42039 (b) and0.44534 (c), extrapolated from ticks;
+these are NOT printed maximum labels. The two panels use different fullbar scales.
+If s is fullbar position from bottom0 to top1, P_b≈0.4204*s and P_c≈0.4453*s.
+Per-row peak normalization cancels these positive scale constants. Actual recovered
+arrays can still suffer JPEG/palette quantization, crop masks or color inversion;
+this audit establishes the published colorbar scale, not any prior NPZ extractor.
+Reproduce measurements with audit_native_figure.py; details in evidence.json.
+
+Paper physics: explicit statements versus interpretation
+
+Maxwellian/local model:
+ PDFp4/journal3, L228-272: collisionless, unmagnetized Maxwellian distributions;
+ Eqs(5),(6) are Gaussian electron/ion VDFs; Eqs(7)-(9) their susceptibilities.
+ PDFp5/journal4, L321-323: "The spectra are calculated according to Eqs. (1)-(9),
+ using the plasma conditions given by the 2D radiation-hydrodynamic code LARED."
+ Therefore local simulated spectra use the stated Maxwellian model. A sum of
+ local Maxwellian spectra is generally not equal to one homogeneous Maxwellian
+ spectrum. No published arbitrary-VDF simulation is described here.
+
+Ion temperature and flow:
+ PDFp4, L221-228: "X involves seven variables (Te, Ti, uik, uek, A, B1, B2)".
+ Paper spectral fitting shares one Ti and one plasma ion flow. Eq(8) itself has
+ generic species Tj; Fig11 reports only one Ti. Equality of all ion temperatures
+ in every LARED cell is strongly implied by the reported hydro model but is NOT
+ explicitly stated as TH=TC. Do not claim the paper independently measured TH/TC.
+ PDFp4,L207-212: ion response uses omega_s-omega_i-k.u; electron response uses
+ omega_s-omega_i-k.(u+ud). PDFp9,L524-529: center flow "quite small", small Doppler
+ shift, not established as identically zero. No separate H/C flows are reported.
+
+Spatial/optical/time averaging:
+ PDFp5,L326-336: scattering volume is overlap of probe beam and diagnostic
+ aperture, divided into elements. "Each element is assigned ... (Te, Ti, ne, etc.)"
+ and spectra "are calculated separately and then summed."
+ PDFp6/journal5,L356-366: "The spectral response, the spectral resolution, and the
+ inverse bremsstrahlung absorption ... along the optical path are also involved
+ in the calculation." Time-resolved spectra have "temporal resolution accounted
+ for." This is finite-volume synthesis with optical-path effects; it is not an
+ unbounded line-of-sight integral. Exact weights/mesh/kernels are unpublished.
+ PDFp9,L506-510: 90deg scattering, volume~100x100x100um^3; spectral resolution
+ 0.057nm FWHM. Thus resolution is included in simulation methodology and this
+ instrument's resolution is specified. The paper DOES NOT explicitly name a
+ Gaussian kernel or disclose a numeric0.057nm convolution implementation.
+ Gaussian convolution is a reasonable implementation hypothesis, not a quote.
+ PDFp4,L289-293: collection f/10 produces k variance~+/-2.5%, called quite small.
+ Fig1 gradient/k-smearing comparison is explicit; exact Fig10 angular quadrature
+ is not disclosed.
+
+Density/mixture/charges:
+ PDFp9,L537-539: pentane C5H12 at0.35atm corresponds to ne~3.5e20cm^-3 "when
+ fully ionized". This is a fill baseline, not local ne fixed for every spectrum.
+ PDFp5,L330-334: for Fig1(b)'s4.3ns spherical spectrum, simulated ne spans
+ 3e20-5e20cm^-3 within the volume. Native Fig1b label ne=4.0e20cm^-3 (Fig1a3.5e20).
+ PDFp5 Fig1 caption,L311: fitted density "is assumed according to simulation".
+ H:C number ratio12:5 follows stoichiometry. Fully ionized pentane implies
+ ZH=1,ZC=6. However the paper does not state time-/cell-resolved charge states,
+ exact mixture evolution or gold contamination for Fig10; avoid presenting those
+ fully stripped fixed-charge assumptions as verified hydro implementation facts.
+
+Which temperature target:
+ PDFp10 Fig10 caption,L565-566: (b)simulation without probe, (c)with probe.
+ Fig11 caption,L600-602: red/blue lines from simulations with/without probe;
+ squares inferred from experiment; shaded areas measure in-volume inhomogeneity.
+ Fig11 center-line temperatures and a fitted effective temperature of a volume-
+ averaged spectrum are different targets; equality is not guaranteed.
+ PDFp10,L569-584 explicitly discusses simulation/experiment Te discrepancy after
+ 2.8ns and local Spitzer-Harm conduction. Therefore comparing Fig10 simulated
+ spectra directly to experimental square temperatures can itself create bias.
+
+Current synthetic source comparison (read-only source, no generated samples)
+data.py213-296,394-456:
+ - e/H/C VDFs sampled independently among Maxwellian40%, Gaussian-mixture40%,
+   superGaussian20%; independent H/C Ti factors and flow offsets.
+ - experimental Fig11 Te and Ti pools independently paired, and Figure1 anchors;
+   this does not preserve a hydro simulation trajectory or its correlations.
+ - local ne uniformly sampled around experimental density assumptions; density
+   affects forward spectrum but is not an appended network input.
+ - probe263.3nm,90deg,H:C12:5; physicalconfig inherited charges H1/C6.
+ - generate_sample calls normalized PV spectrum directly at target wavelength
+   samples. No spectral/temporal response, volume sum or optical-path absorption.
+These differences establish potential domain shift. Attribution of any actual
+neural temperature bias needs recovered input/checkpoint/preprocessing evidence.
+No claim that adding response or a commonTi constraint necessarily fixes bias.
+
+Native Fig11 late redTi band spans roughly1.7-1.9keV by4.5ns (visual estimate,
+not an exact digitized centerline), whereas the experiment is~.9keV. Root's later
+independent CSV check confirms Fig11 maxTi=897.5468975eV, but the additional
+Fig1 anchor is912eV: the GLOBAL default targetTi maximum is1.8x912=1641.6eV,
+not1615.6eV. Thus late with-probe simulatedTi may exceed default sampling support.
+D4's actual generation overrides are unavailable in this snapshot. Te's
+~1.85keV simulation endpoint can fall within experimentanchorx1.5 global range;
+do not claim all simulationTe lies outside sampling support.
+
+Scope: no training, package install, dataset generation, physics reimplementation,
+production/source-data edits, credential reads or external communication occurred.
+Only this paper_audit output directory was written. No AGENTS or PAUSE edits.

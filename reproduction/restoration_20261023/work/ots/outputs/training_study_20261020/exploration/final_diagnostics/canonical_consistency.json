@@ -1,0 +1,38 @@
+{
+  "study_fixed_c": {
+    "canonical_comparison_absolute_tolerance": 1e-06,
+    "differences_diagnostic_minus_canonical": {
+      "e": {
+        "evdf_relative_l2_mean": -2.5391335423119443e-09,
+        "evdf_relative_l2_median": 7.041907473803732e-10,
+        "negative_mass_fraction_mean": 1.0364644559279768e-10,
+        "evdf_global_flattened_r2": 2.1473643641023443e-08
+      }
+    },
+    "passed": true
+  },
+  "study_fig_c": {
+    "canonical_comparison_absolute_tolerance": 1e-06,
+    "differences_diagnostic_minus_canonical": {
+      "e": {
+        "evdf_relative_l2_mean": -6.620141601576535e-09,
+        "evdf_relative_l2_median": 4.5648920754537414e-09,
+        "negative_mass_fraction_mean": -5.006750005906446e-10,
+        "evdf_global_flattened_r2": -2.1621970880403296e-09
+      },
+      "i1": {
+        "evdf_relative_l2_mean": 7.1473219565021395e-09,
+        "evdf_relative_l2_median": 9.6615862532623e-10,
+        "negative_mass_fraction_mean": 1.5506052691849348e-10,
+        "evdf_global_flattened_r2": 9.50518985742832e-09
+      },
+      "i2": {
+        "evdf_relative_l2_mean": -5.814937656389851e-09,
+        "evdf_relative_l2_median": -6.016431741695527e-09,
+        "negative_mass_fraction_mean": -1.4855709717931376e-10,
+        "evdf_global_flattened_r2": 3.378979429591311e-09
+      }
+    },
+    "passed": true
+  }
+}

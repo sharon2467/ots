@@ -1,0 +1,327 @@
+{
+  "scope": "Three standalone known-truth Gaussian states; fixed original positive VDFs, no fitting, NN, training, registry, D4 reevaluation or 26k-row replay.",
+  "geometry": {
+    "probe_nm": 263.3,
+    "scattering_angle_deg": 90,
+    "composition": "fully ionized C5H12; H:C number ratio 12:5"
+  },
+  "baseline_density_m3": 3.5e+26,
+  "density_controls_m3": [
+    2.8e+26,
+    5e+26
+  ],
+  "instrument_sensitivity_assumption": {
+    "Gaussian_fwhm_nm": 0.057,
+    "implementation": "existing spectral_fitting._gaussian_convolve, then divide by max(abs(signal))",
+    "limitation": "Sensitivity assumption, not an exact replication of the paper response. Paper simulations include spectral/time response and volume averaging; exact Gaussian response is not disclosed. No time response or volume averaging is evaluated here."
+  },
+  "metric_notes": "Spectral L2 compares peak-normalized spectra on the same 319-point wavelength grid. Widths are dominant local peak half-prominence widths, not assumed isolated-line FWHM. Peak positions are grid sampled. Spectral differences cannot establish inverse-temperature error without a fit/inverse evaluation.",
+  "states": [
+    {
+      "state_index": 0,
+      "Te_ev": 100,
+      "Ti_ev": 60,
+      "baseline_shape": {
+        "blue_peak_nm": 263.2130434782609,
+        "red_peak_nm": 263.38695652173914,
+        "peak_separation_nm": 0.17391304347825098,
+        "blue_half_prominence_width_nm": 0.03653199277039221,
+        "red_half_prominence_width_nm": 0.02728102259766274,
+        "center_intensity": 0.23249520153181338,
+        "area_nm": 0.13335121825738627
+      },
+      "density_controls": [
+        {
+          "density_m3": 2.8e+26,
+          "spectral_relative_l2": 0.002199546256309804,
+          "max_absolute_change_peak_units": 0.0029471338029687377,
+          "shape": {
+            "blue_peak_nm": 263.2130434782609,
+            "red_peak_nm": 263.38695652173914,
+            "peak_separation_nm": 0.17391304347825098,
+            "blue_half_prominence_width_nm": 0.03650343586161853,
+            "red_half_prominence_width_nm": 0.027249319829422802,
+            "center_intensity": 0.23282263174293613,
+            "area_nm": 0.13329165438314963
+          },
+          "shape_delta": {
+            "blue_peak_nm": 0.0,
+            "red_peak_nm": 0.0,
+            "peak_separation_nm": 0.0,
+            "blue_half_prominence_width_nm": -2.8556908773680334e-05,
+            "red_half_prominence_width_nm": -3.170276823993845e-05,
+            "center_intensity": 0.00032743021112274784,
+            "area_nm": -5.956387423664e-05
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": -0.0007816958946960106,
+            "red": -0.0011620813745689684
+          }
+        },
+        {
+          "density_m3": 5e+26,
+          "spectral_relative_l2": 0.00865119833675391,
+          "max_absolute_change_peak_units": 0.011287832219912142,
+          "shape": {
+            "blue_peak_nm": 263.2130434782609,
+            "red_peak_nm": 263.38695652173914,
+            "peak_separation_nm": 0.17391304347825098,
+            "blue_half_prominence_width_nm": 0.03667405526607581,
+            "red_half_prominence_width_nm": 0.027383919885949126,
+            "center_intensity": 0.23268141477281193,
+            "area_nm": 0.13347676637984401
+          },
+          "shape_delta": {
+            "blue_peak_nm": 0.0,
+            "red_peak_nm": 0.0,
+            "peak_separation_nm": 0.0,
+            "blue_half_prominence_width_nm": 0.00014206249568360363,
+            "red_half_prominence_width_nm": 0.00010289728828638545,
+            "center_intensity": 0.00018621324099854508,
+            "area_nm": 0.0001255481224577415
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": 0.003888714655575498,
+            "red": 0.0037717533467824804
+          }
+        }
+      ],
+      "instrument_peak_before_renormalization": 0.5823167689866898,
+      "instrument_control": {
+        "spectral_relative_l2": 0.6446720427921512,
+        "max_absolute_change_peak_units": 0.429670220228076,
+        "shape": {
+          "blue_peak_nm": 263.2130434782609,
+          "red_peak_nm": 263.38695652173914,
+          "peak_separation_nm": 0.17391304347825098,
+          "blue_half_prominence_width_nm": 0.1033856681719385,
+          "red_half_prominence_width_nm": 0.0638148464488495,
+          "center_intensity": 0.42812032613076495,
+          "area_nm": 0.22900116338828147
+        },
+        "shape_delta": {
+          "blue_peak_nm": 0.0,
+          "red_peak_nm": 0.0,
+          "peak_separation_nm": 0.0,
+          "blue_half_prominence_width_nm": 0.0668536754015463,
+          "red_half_prominence_width_nm": 0.03653382385118675,
+          "center_intensity": 0.19562512459895157,
+          "area_nm": 0.0956499451308952
+        },
+        "half_prominence_width_relative_changes": {
+          "blue": 1.8300035210706782,
+          "red": 1.3391662178497934
+        }
+      }
+    },
+    {
+      "state_index": 1,
+      "Te_ev": 209,
+      "Ti_ev": 78,
+      "baseline_shape": {
+        "blue_peak_nm": 263.188198757764,
+        "red_peak_nm": 263.41180124223604,
+        "peak_separation_nm": 0.22360248447205322,
+        "blue_half_prominence_width_nm": 0.06816381337870325,
+        "red_half_prominence_width_nm": 0.04930892485987215,
+        "center_intensity": 0.21374520125638852,
+        "area_nm": 0.2060786679807029
+      },
+      "density_controls": [
+        {
+          "density_m3": 2.8e+26,
+          "spectral_relative_l2": 0.008219681963848563,
+          "max_absolute_change_peak_units": 0.00702347696652561,
+          "shape": {
+            "blue_peak_nm": 263.188198757764,
+            "red_peak_nm": 263.41180124223604,
+            "peak_separation_nm": 0.22360248447205322,
+            "blue_half_prominence_width_nm": 0.06703381478109804,
+            "red_half_prominence_width_nm": 0.04861301381066596,
+            "center_intensity": 0.21379085518368618,
+            "area_nm": 0.20469143401608264
+          },
+          "shape_delta": {
+            "blue_peak_nm": 0.0,
+            "red_peak_nm": 0.0,
+            "peak_separation_nm": 0.0,
+            "blue_half_prominence_width_nm": -0.0011299985976052085,
+            "red_half_prominence_width_nm": -0.0006959110492061882,
+            "center_intensity": 4.5653927297661934e-05,
+            "area_nm": -0.0013872339646202603
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": -0.016577690442980075,
+            "red": -0.01411328783143928
+          }
+        },
+        {
+          "density_m3": 5e+26,
+          "spectral_relative_l2": 0.007579954331490845,
+          "max_absolute_change_peak_units": 0.0065728621031987955,
+          "shape": {
+            "blue_peak_nm": 263.188198757764,
+            "red_peak_nm": 263.41180124223604,
+            "peak_separation_nm": 0.22360248447205322,
+            "blue_half_prominence_width_nm": 0.06938336181184468,
+            "red_half_prominence_width_nm": 0.05013126287610703,
+            "center_intensity": 0.21368536058731064,
+            "area_nm": 0.20734910260916098
+          },
+          "shape_delta": {
+            "blue_peak_nm": 0.0,
+            "red_peak_nm": 0.0,
+            "peak_separation_nm": 0.0,
+            "blue_half_prominence_width_nm": 0.0012195484331414264,
+            "red_half_prominence_width_nm": 0.0008223380162348803,
+            "center_intensity": -5.984066907788188e-05,
+            "area_nm": 0.001270434628458078
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": 0.017891434951942564,
+            "red": 0.016677265192291957
+          }
+        }
+      ],
+      "instrument_peak_before_renormalization": 0.7224911768114718,
+      "instrument_control": {
+        "spectral_relative_l2": 0.36092686842636806,
+        "max_absolute_change_peak_units": 0.29417176060968153,
+        "shape": {
+          "blue_peak_nm": 263.18198757763975,
+          "red_peak_nm": 263.4180124223603,
+          "peak_separation_nm": 0.2360248447205322,
+          "blue_half_prominence_width_nm": 0.11990817269634135,
+          "red_half_prominence_width_nm": 0.08706520173274157,
+          "center_intensity": 0.3036977517368068,
+          "area_nm": 0.2852334668965044
+        },
+        "shape_delta": {
+          "blue_peak_nm": -0.00621118012423949,
+          "red_peak_nm": 0.00621118012423949,
+          "peak_separation_nm": 0.01242236024847898,
+          "blue_half_prominence_width_nm": 0.0517443593176381,
+          "red_half_prominence_width_nm": 0.03775627687286942,
+          "center_intensity": 0.08995255048041828,
+          "area_nm": 0.07915479891580152
+        },
+        "half_prominence_width_relative_changes": {
+          "blue": 0.7591177305494594,
+          "red": 0.7657087835552396
+        }
+      }
+    },
+    {
+      "state_index": 2,
+      "Te_ev": 1392,
+      "Ti_ev": 912,
+      "baseline_shape": {
+        "blue_peak_nm": 262.9956521739131,
+        "red_peak_nm": 263.60434782608695,
+        "peak_separation_nm": 0.6086956521738784,
+        "blue_half_prominence_width_nm": 0.1340304139174009,
+        "red_half_prominence_width_nm": 0.09535253305745073,
+        "center_intensity": 0.2746297367290956,
+        "area_nm": 0.47615128905858894
+      },
+      "density_controls": [
+        {
+          "density_m3": 2.8e+26,
+          "spectral_relative_l2": 0.048923242341814416,
+          "max_absolute_change_peak_units": 0.04771975213069668,
+          "shape": {
+            "blue_peak_nm": 262.9956521739131,
+            "red_peak_nm": 263.60434782608695,
+            "peak_separation_nm": 0.6086956521738784,
+            "blue_half_prominence_width_nm": 0.136079406244221,
+            "red_half_prominence_width_nm": 0.09507858056156238,
+            "center_intensity": 0.2851674658655144,
+            "area_nm": 0.4755169936769945
+          },
+          "shape_delta": {
+            "blue_peak_nm": 0.0,
+            "red_peak_nm": 0.0,
+            "peak_separation_nm": 0.0,
+            "blue_half_prominence_width_nm": 0.0020489923268200982,
+            "red_half_prominence_width_nm": -0.00027395249588835213,
+            "center_intensity": 0.010537729136418816,
+            "area_nm": -0.0006342953815944297
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": 0.015287517712829324,
+            "red": -0.0028730489595204523
+          }
+        },
+        {
+          "density_m3": 5e+26,
+          "spectral_relative_l2": 0.05722690753982955,
+          "max_absolute_change_peak_units": 0.054314918248103194,
+          "shape": {
+            "blue_peak_nm": 262.98944099378883,
+            "red_peak_nm": 263.6105590062112,
+            "peak_separation_nm": 0.6211180124223574,
+            "blue_half_prominence_width_nm": 0.13213789454823655,
+            "red_half_prominence_width_nm": 0.09577639819030992,
+            "center_intensity": 0.2626477327472335,
+            "area_nm": 0.47796755354987003
+          },
+          "shape_delta": {
+            "blue_peak_nm": -0.00621118012423949,
+            "red_peak_nm": 0.00621118012423949,
+            "peak_separation_nm": 0.01242236024847898,
+            "blue_half_prominence_width_nm": -0.0018925193691643472,
+            "red_half_prominence_width_nm": 0.00042386513285919136,
+            "center_intensity": -0.011982003981862055,
+            "area_nm": 0.0018162644912810832
+          },
+          "half_prominence_width_relative_changes": {
+            "blue": -0.014120074047750508,
+            "red": 0.004445242504504954
+          }
+        }
+      ],
+      "instrument_peak_before_renormalization": 0.8859241795423598,
+      "instrument_control": {
+        "spectral_relative_l2": 0.1257277298705976,
+        "max_absolute_change_peak_units": 0.1080335111689642,
+        "shape": {
+          "blue_peak_nm": 262.9956521739131,
+          "red_peak_nm": 263.60434782608695,
+          "peak_separation_nm": 0.6086956521738784,
+          "blue_half_prominence_width_nm": 0.16871102213997347,
+          "red_half_prominence_width_nm": 0.11802108393936805,
+          "center_intensity": 0.3112520806284527,
+          "area_nm": 0.5374725989325563
+        },
+        "shape_delta": {
+          "blue_peak_nm": 0.0,
+          "red_peak_nm": 0.0,
+          "peak_separation_nm": 0.0,
+          "blue_half_prominence_width_nm": 0.03468060822257257,
+          "red_half_prominence_width_nm": 0.022668550881917326,
+          "center_intensity": 0.036622343899357146,
+          "area_nm": 0.06132130987396733
+        },
+        "half_prominence_width_relative_changes": {
+          "blue": 0.2587517803529671,
+          "red": 0.23773412362584367
+        }
+      }
+    }
+  ],
+  "counts": {
+    "new_PV_calls": 6,
+    "existing_gaussian_convolutions": 3,
+    "torch_threads": 1
+  },
+  "protected_input_sha256": {
+    "/workspace/ots/outputs/bias_diagnosis_20261023/representation_audit/controlled_arrays.npz": "94a094b3e9bac683d79846c0e58751017b7f108e61628439f86adfa13031b23b",
+    "/workspace/ots/outputs/bias_diagnosis_20261023/representation_audit/controlled_results.json": "86cdd754833b15b7c0361ae8a085fb8f45d659f709227ee25a6e8d86064ae8fb",
+    "/workspace/ots/OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+    "/workspace/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py": "f48ad0b5f092a0021c1bd1d15430977617045ac72a736ab4f01470d83055b191",
+    "/workspace/ots/OTS_code_share/NN_hotE_large_lmRange/spectral_fitting.py": "9f8fdf641fb17de1583e7ec35802860553aafe0fbbc7ab99164104d360833bd7"
+  },
+  "protected_inputs_unchanged": true,
+  "elapsed_seconds": 2.0477130460000126,
+  "interpretation": "For these three fixed Gaussian VDF states and tested densities, density alone changes peak-normalized forward spectra by 0.22\u20135.72% relative L2, well below 30%. The assumed Gaussian 0.057 nm response changes spectra by 12.57\u201364.47%, exceeding 30% in the two cooler states. These are spectral L2 differences, not inverse temperature errors: this control does not prove or exclude a 30% inverse-temperature error and cannot attribute any D4 bias. No D4/26k/checkpoint artifacts were evaluated."
+}

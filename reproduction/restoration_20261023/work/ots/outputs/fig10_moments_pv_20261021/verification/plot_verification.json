@@ -1,0 +1,13 @@
+{
+  "manifest_plot_hashes_match": true,
+  "nine_nearest_time_representative_rows_match": true,
+  "all_preparation_moment_change_summary_values_match": true,
+  "visually_reviewed_pngs": [
+    "temperatures_vs_fig11",
+    "projected_flow_velocities",
+    "spectral_heatmaps_comparison",
+    "representative_spectra_comparison",
+    "spectral_error_over_time",
+    "preparation_moment_changes"
+  ]
+}

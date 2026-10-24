@@ -1,0 +1,678 @@
+{
+  "schema_version": 1,
+  "purpose": "Compact frozen final metrics plus conditional ensemble versus frozen-single paired comparison; no tuning",
+  "metric_table_roles": {
+    "baseline": "Historical frozen study C checkpoint, evaluated on the same new 1024 test states",
+    "single": "Frozen selected single checkpoint",
+    "ensemble": "Frozen physical-Fourier convex combination; unchanged weights"
+  },
+  "paired_comparison_roles": {
+    "selected": "ensemble",
+    "baseline": "single"
+  },
+  "units": {
+    "relative_l2": "fraction, not percent",
+    "negative_mass": "fraction",
+    "temperature_mae": "eV"
+  },
+  "temperature_convention": "All finite estimates, including finite negative temperatures; nonfinite and negative counts are separate",
+  "uncertainty": "Conditional paired percentile bootstrap, 2000 resamples; same physical indices across roles and species; excludes training and adaptive-selection uncertainty",
+  "frozen_selections": {
+    "single": {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/frozen_single_selection.json",
+      "sha256": "aa53407497f3741a216aa1fb1ab9356b558a9c73cac08be3fed407525e0cd53f"
+    },
+    "ensemble": {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/frozen_ensemble_selection.json",
+      "sha256": "caa95205df43049f59db92f396217b735180db83a1acd9417b1781f0a2c49ff4"
+    }
+  },
+  "trials": {
+    "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/trials.json",
+    "sha256": "a82a468203ee9b34eeac3919ce0bd286113951c6505b093d9cc7df51b6553c0d",
+    "count": 7
+  },
+  "paired_function": {
+    "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/exploration/final_comparison.py",
+    "sha256": "20baf07e268eb53cc2a4ed72a75317423b2e5e5bee774141e00f6680cda7fe37",
+    "name": "paired_comparison"
+  },
+  "datasets": {
+    "fixed_ion": {
+      "test_identity": {
+        "dataset_kind": "fixed_ion",
+        "test_dataset_id": "scale_fixed_30k_data",
+        "test_seed": 20261031,
+        "test_sample_count": 1024,
+        "test_manifest_sha256": "0970df4cb759934f14f2a907af4cec7550ac37755f3565883308fe1f7e60cb2c",
+        "test_parquet_sha256": "320998f975c8db67b53a1a9f243a1dae1ff463904695837cbbdba92d382dc3a3",
+        "species_order": [
+          "e"
+        ],
+        "frozen_auxiliary_temperature_method": "taylor_even4_odd3_n3"
+      },
+      "sources": {
+        "single": {
+          "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/diagnostics/final_single/fixed_ion/final_comparison.json",
+          "sha256": "25ea401f277aef635a117c25df62e9a93fe156c5f8c604f936cb813347e70227"
+        },
+        "ensemble": {
+          "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/diagnostics/final_ensemble/fixed_ion/final_comparison.json",
+          "sha256": "161710c195e4e15982efbe3b199270276fc7bb9254d01472587fe76cbcd05ad8"
+        }
+      },
+      "provenance_checks": {
+        "same_test_hashes": true,
+        "baseline_models_exact_equal": true,
+        "same_index_order_all_species_roles": true,
+        "ordered_test_indices_sha256": "2f88e9ce00d238e7e011a7b140b413dcad818f1da41a721f914f1af604d0e217",
+        "historical_baseline_prediction_metric_payload_exact_equal": {
+          "e": true
+        }
+      },
+      "species_order": [
+        "e"
+      ],
+      "species": {
+        "e": {
+          "baseline": {
+            "fourier_target": {
+              "mean": 0.07200814055564675,
+              "p50": 0.04273263422027743,
+              "p95": 0.21843521017571588,
+              "r2_global_flattened": 0.9804961975931555,
+              "negative_mass_mean": 0.01209864707197994
+            },
+            "original_vdf": {
+              "mean": 0.07346383717168471,
+              "p95": 0.2245584359545044,
+              "max": 1.1111950239874278
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 308.7999632705704,
+              "finite_count": 1024,
+              "negative_count": 19,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 131.7368137002046,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          },
+          "single": {
+            "fourier_target": {
+              "mean": 0.03967788408662519,
+              "p50": 0.01972478154797825,
+              "p95": 0.14662762288061687,
+              "r2_global_flattened": 0.9922350808711078,
+              "negative_mass_mean": 0.003393766030058032
+            },
+            "original_vdf": {
+              "mean": 0.04216326897243969,
+              "p95": 0.15356780199076922,
+              "max": 0.7728970734016153
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 107.41146794384755,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 101.6960728130662,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          },
+          "ensemble": {
+            "fourier_target": {
+              "mean": 0.039252026346031296,
+              "p50": 0.01965973534574285,
+              "p95": 0.14987384786596544,
+              "r2_global_flattened": 0.9922393479023444,
+              "negative_mass_mean": 0.003227680135751143
+            },
+            "original_vdf": {
+              "mean": 0.04176757178474908,
+              "p95": 0.1588598758834086,
+              "max": 0.7712241508060709
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 105.60995286871997,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 100.96051372235462,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          }
+        }
+      },
+      "macro_fourier_target_relative_l2_mean": {
+        "baseline": 0.07200814055564675,
+        "single": 0.03967788408662519,
+        "ensemble": 0.039252026346031296
+      },
+      "ensemble_vs_frozen_single": {
+        "selected": "ensemble",
+        "baseline": "single",
+        "metric": "per_sample_fourier_target_relative_l2",
+        "species_order": [
+          "e"
+        ],
+        "repetitions": 2000,
+        "seed": 20261020,
+        "method": "Paired percentile bootstrap; identical sampled physical indices across both roles and every species; common finite pairs, retaining finite negative-temperature failures in absolute-error vectors",
+        "interpretation": "Conditional sampling uncertainty for the frozen estimators; excludes retraining/selection uncertainty. Macro means weight species equally. Ratios compare means, not mean per-sample ratios.",
+        "species": [
+          {
+            "common_finite_count": 1024,
+            "excluded_pair_count": 0,
+            "point": {
+              "selected_mean": 0.039252026346031296,
+              "baseline_mean": 0.03967788408662519,
+              "baseline_minus_selected_absolute": 0.0004258577405938935,
+              "selected_over_baseline_ratio": 0.9892671257453105,
+              "relative_error_reduction": 0.010732874254689495
+            },
+            "ci95": {
+              "selected_mean": [
+                0.035693433280110314,
+                0.04310186890420023
+              ],
+              "baseline_mean": [
+                0.03607958090917561,
+                0.04348439511917574
+              ],
+              "baseline_minus_selected_absolute": [
+                0.0002032550158590076,
+                0.0006340572625111172
+              ],
+              "selected_over_baseline_ratio": [
+                0.9836979355709711,
+                0.9949277005208962
+              ],
+              "relative_error_reduction": [
+                0.005072299479103834,
+                0.016302064429028918
+              ]
+            }
+          }
+        ],
+        "macro": {
+          "point": {
+            "selected_mean": 0.039252026346031296,
+            "baseline_mean": 0.03967788408662519,
+            "baseline_minus_selected_absolute": 0.0004258577405938935,
+            "selected_over_baseline_ratio": 0.9892671257453105,
+            "relative_error_reduction": 0.010732874254689495
+          },
+          "ci95": {
+            "selected_mean": [
+              0.035693433280110314,
+              0.04310186890420023
+            ],
+            "baseline_mean": [
+              0.03607958090917561,
+              0.04348439511917574
+            ],
+            "baseline_minus_selected_absolute": [
+              0.0002032550158590076,
+              0.0006340572625111172
+            ],
+            "selected_over_baseline_ratio": [
+              0.9836979355709711,
+              0.9949277005208962
+            ],
+            "relative_error_reduction": [
+              0.005072299479103834,
+              0.016302064429028918
+            ]
+          }
+        }
+      }
+    },
+    "fig1_fig11": {
+      "test_identity": {
+        "dataset_kind": "fig1_fig11",
+        "test_dataset_id": "scale_fig_26k_data",
+        "test_seed": 20261031,
+        "test_sample_count": 1024,
+        "test_manifest_sha256": "1fa053179cbe974c9610b57c077ccf61cab7f4e2b0187402f40f5dbaed5f02a2",
+        "test_parquet_sha256": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+        "species_order": [
+          "e",
+          "i1",
+          "i2"
+        ],
+        "frozen_auxiliary_temperature_method": "taylor_even4_odd3_n3"
+      },
+      "sources": {
+        "single": {
+          "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/diagnostics/final_single/fig1_fig11/final_comparison.json",
+          "sha256": "9fe4f0b2b3d2c8e95f942d434d711483a1156343d4e87f92fd032ff12971be9a"
+        },
+        "ensemble": {
+          "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/diagnostics/final_ensemble/fig1_fig11/final_comparison.json",
+          "sha256": "23b77d5c696acd8468a293fff4c2a7289dc606c1297156ab4577f8d49384202f"
+        }
+      },
+      "provenance_checks": {
+        "same_test_hashes": true,
+        "baseline_models_exact_equal": true,
+        "same_index_order_all_species_roles": true,
+        "ordered_test_indices_sha256": "2f88e9ce00d238e7e011a7b140b413dcad818f1da41a721f914f1af604d0e217",
+        "historical_baseline_prediction_metric_payload_exact_equal": {
+          "e": true,
+          "i1": true,
+          "i2": true
+        }
+      },
+      "species_order": [
+        "e",
+        "i1",
+        "i2"
+      ],
+      "species": {
+        "e": {
+          "baseline": {
+            "fourier_target": {
+              "mean": 0.07112522532623676,
+              "p50": 0.05664384893631434,
+              "p95": 0.18052294385085374,
+              "r2_global_flattened": 0.9909904933271036,
+              "negative_mass_mean": 0.007250262162415311
+            },
+            "original_vdf": {
+              "mean": 0.07114524143544451,
+              "p95": 0.18052349673342397,
+              "max": 0.45703992918748126
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 251.49697740836086,
+              "finite_count": 1024,
+              "negative_count": 54,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 146.6689886334986,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          },
+          "single": {
+            "fourier_target": {
+              "mean": 0.06134361775154786,
+              "p50": 0.04513604684695548,
+              "p95": 0.1712789316391746,
+              "r2_global_flattened": 0.9932378434583776,
+              "negative_mass_mean": 0.0013684989426110405
+            },
+            "original_vdf": {
+              "mean": 0.06137211943090013,
+              "p95": 0.17136887911589854,
+              "max": 0.36740749229392744
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 131.14973227066253,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 128.06372279467786,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          },
+          "ensemble": {
+            "fourier_target": {
+              "mean": 0.060761442441762625,
+              "p50": 0.04517059131192531,
+              "p95": 0.1721800093799443,
+              "r2_global_flattened": 0.9933669235972062,
+              "negative_mass_mean": 0.001011535325233126
+            },
+            "original_vdf": {
+              "mean": 0.060790330694110904,
+              "p95": 0.17218826812474933,
+              "max": 0.38233482816105246
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 129.0127779996102,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 128.2285152153803,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          }
+        },
+        "i1": {
+          "baseline": {
+            "fourier_target": {
+              "mean": 0.08510558561117823,
+              "p50": 0.05262499125066562,
+              "p95": 0.26746440113441805,
+              "r2_global_flattened": 0.977701058653136,
+              "negative_mass_mean": 0.012486819236073643
+            },
+            "original_vdf": {
+              "mean": 0.0853757233350459,
+              "p95": 0.26746849206911544,
+              "max": 1.3293091356496252
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 153.27923809968766,
+              "finite_count": 1024,
+              "negative_count": 156,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 42.10080813110109,
+              "finite_count": 1024,
+              "negative_count": 6,
+              "nonfinite_count": 0
+            }
+          },
+          "single": {
+            "fourier_target": {
+              "mean": 0.05053144443004539,
+              "p50": 0.030427826521528995,
+              "p95": 0.17137232317772522,
+              "r2_global_flattened": 0.989732982805845,
+              "negative_mass_mean": 0.002873332119634142
+            },
+            "original_vdf": {
+              "mean": 0.05098236999425586,
+              "p95": 0.17147753021165668,
+              "max": 0.5492828603980193
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 24.69307827608872,
+              "finite_count": 1024,
+              "negative_count": 4,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 18.84307273048128,
+              "finite_count": 1024,
+              "negative_count": 1,
+              "nonfinite_count": 0
+            }
+          },
+          "ensemble": {
+            "fourier_target": {
+              "mean": 0.04984783809019088,
+              "p50": 0.029396081257583577,
+              "p95": 0.16580045557122752,
+              "r2_global_flattened": 0.989893764643772,
+              "negative_mass_mean": 0.0022151389657665277
+            },
+            "original_vdf": {
+              "mean": 0.05031138018417061,
+              "p95": 0.16994161662224205,
+              "max": 0.542378980673151
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 20.667938891857332,
+              "finite_count": 1024,
+              "negative_count": 1,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 18.65418498409647,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          }
+        },
+        "i2": {
+          "baseline": {
+            "fourier_target": {
+              "mean": 0.10167043804972345,
+              "p50": 0.0646772516089335,
+              "p95": 0.317349049675973,
+              "r2_global_flattened": 0.9683350002298166,
+              "negative_mass_mean": 0.01588854190777056
+            },
+            "original_vdf": {
+              "mean": 0.10197873096507343,
+              "p95": 0.3201621290025206,
+              "max": 1.1547228096967517
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 163.07235214836612,
+              "finite_count": 1024,
+              "negative_count": 117,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 60.5291362514367,
+              "finite_count": 1024,
+              "negative_count": 5,
+              "nonfinite_count": 0
+            }
+          },
+          "single": {
+            "fourier_target": {
+              "mean": 0.0683303141698314,
+              "p50": 0.03970839697543759,
+              "p95": 0.23203044767406733,
+              "r2_global_flattened": 0.9826238395001732,
+              "negative_mass_mean": 0.004545133931969758
+            },
+            "original_vdf": {
+              "mean": 0.06886208730272486,
+              "p95": 0.2320310701536222,
+              "max": 0.6511199314327848
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 38.71130076539141,
+              "finite_count": 1024,
+              "negative_count": 4,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 35.302906235899556,
+              "finite_count": 1024,
+              "negative_count": 1,
+              "nonfinite_count": 0
+            }
+          },
+          "ensemble": {
+            "fourier_target": {
+              "mean": 0.06707048206432747,
+              "p50": 0.03818204037982287,
+              "p95": 0.23727070922477644,
+              "r2_global_flattened": 0.9828161738342996,
+              "negative_mass_mean": 0.0036758237838512287
+            },
+            "original_vdf": {
+              "mean": 0.06760305452301602,
+              "p95": 0.23740398416049158,
+              "max": 0.6372583127811536
+            },
+            "raw_temperature": {
+              "mae_ev_all_finite": 35.196407562161745,
+              "finite_count": 1024,
+              "negative_count": 2,
+              "nonfinite_count": 0
+            },
+            "taylor3_temperature": {
+              "mae_ev_all_finite": 33.82629277086887,
+              "finite_count": 1024,
+              "negative_count": 0,
+              "nonfinite_count": 0
+            }
+          }
+        }
+      },
+      "macro_fourier_target_relative_l2_mean": {
+        "baseline": 0.0859670829957128,
+        "single": 0.06006845878380821,
+        "ensemble": 0.059226587532093665
+      },
+      "ensemble_vs_frozen_single": {
+        "selected": "ensemble",
+        "baseline": "single",
+        "metric": "per_sample_fourier_target_relative_l2",
+        "species_order": [
+          "e",
+          "i1",
+          "i2"
+        ],
+        "repetitions": 2000,
+        "seed": 20261020,
+        "method": "Paired percentile bootstrap; identical sampled physical indices across both roles and every species; common finite pairs, retaining finite negative-temperature failures in absolute-error vectors",
+        "interpretation": "Conditional sampling uncertainty for the frozen estimators; excludes retraining/selection uncertainty. Macro means weight species equally. Ratios compare means, not mean per-sample ratios.",
+        "species": [
+          {
+            "common_finite_count": 1024,
+            "excluded_pair_count": 0,
+            "point": {
+              "selected_mean": 0.060761442441762625,
+              "baseline_mean": 0.06134361775154786,
+              "baseline_minus_selected_absolute": 0.0005821753097852364,
+              "selected_over_baseline_ratio": 0.9905096026102805,
+              "relative_error_reduction": 0.009490397389719463
+            },
+            "ci95": {
+              "selected_mean": [
+                0.05780752472266773,
+                0.06393152762457772
+              ],
+              "baseline_mean": [
+                0.05834709239409132,
+                0.06456448360487005
+              ],
+              "baseline_minus_selected_absolute": [
+                0.00012124929097141659,
+                0.001045031849501819
+              ],
+              "selected_over_baseline_ratio": [
+                0.9829988124261829,
+                0.998010235305176
+              ],
+              "relative_error_reduction": [
+                0.0019897646948240366,
+                0.017001187573817106
+              ]
+            }
+          },
+          {
+            "common_finite_count": 1024,
+            "excluded_pair_count": 0,
+            "point": {
+              "selected_mean": 0.04984783809019088,
+              "baseline_mean": 0.05053144443004539,
+              "baseline_minus_selected_absolute": 0.0006836063398545089,
+              "selected_over_baseline_ratio": 0.9864716643752213,
+              "relative_error_reduction": 0.013528335624778731
+            },
+            "ci95": {
+              "selected_mean": [
+                0.046103811689784495,
+                0.05381740732740105
+              ],
+              "baseline_mean": [
+                0.04672275251429479,
+                0.05466248549286679
+              ],
+              "baseline_minus_selected_absolute": [
+                0.00020062813233689432,
+                0.0011922546701884234
+              ],
+              "selected_over_baseline_ratio": [
+                0.9765075125166915,
+                0.995900001023097
+              ],
+              "relative_error_reduction": [
+                0.004099998976903041,
+                0.02349248748330841
+              ]
+            }
+          },
+          {
+            "common_finite_count": 1024,
+            "excluded_pair_count": 0,
+            "point": {
+              "selected_mean": 0.06707048206432747,
+              "baseline_mean": 0.0683303141698314,
+              "baseline_minus_selected_absolute": 0.0012598321055039274,
+              "selected_over_baseline_ratio": 0.981562617985735,
+              "relative_error_reduction": 0.018437382014265036
+            },
+            "ci95": {
+              "selected_mean": [
+                0.062120788125368274,
+                0.07217003892590429
+              ],
+              "baseline_mean": [
+                0.06336501505179103,
+                0.07333583963031405
+              ],
+              "baseline_minus_selected_absolute": [
+                0.0007233387062998677,
+                0.001815218516625028
+              ],
+              "selected_over_baseline_ratio": [
+                0.9732943806175548,
+                0.9894219914482612
+              ],
+              "relative_error_reduction": [
+                0.010578008551738854,
+                0.026705619382445207
+              ]
+            }
+          }
+        ],
+        "macro": {
+          "point": {
+            "selected_mean": 0.059226587532093665,
+            "baseline_mean": 0.06006845878380821,
+            "baseline_minus_selected_absolute": 0.000841871251714546,
+            "selected_over_baseline_ratio": 0.9859848035265144,
+            "relative_error_reduction": 0.014015196473485592
+          },
+          "ci95": {
+            "selected_mean": [
+              0.05606494447595689,
+              0.062303282708848044
+            ],
+            "baseline_mean": [
+              0.056921395638935786,
+              0.06319292547068321
+            ],
+            "baseline_minus_selected_absolute": [
+              0.0005356149364005098,
+              0.001144781323202537
+            ],
+            "selected_over_baseline_ratio": [
+              0.9810139088329717,
+              0.9910736572021811
+            ],
+            "relative_error_reduction": [
+              0.008926342797818874,
+              0.018986091167028322
+            ]
+          }
+        }
+      }
+    }
+  }
+}

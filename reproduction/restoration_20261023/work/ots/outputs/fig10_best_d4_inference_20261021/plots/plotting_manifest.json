@@ -1,0 +1,356 @@
+{
+  "model": "depth_fig_d4_s0",
+  "inputs": {
+    "fig10a": {
+      "file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10a/predictions.npz",
+      "sha256": "886c304cda49c77f353bb2e297acc2e2f784bb3f01e22b390795bce499d00072",
+      "source_context": "Experimental spectrum",
+      "time_rows": 556,
+      "time_range_ns": [
+        1.501199999999989,
+        4.498199999999989
+      ],
+      "representative_rows": [
+        {
+          "target_time_ns": 2.0,
+          "saved_row_index": 92,
+          "actual_time_ns": 1.9979999999999891,
+          "source_row_index": 236
+        },
+        {
+          "target_time_ns": 3.0,
+          "saved_row_index": 278,
+          "actual_time_ns": 3.002399999999989,
+          "source_row_index": 422
+        },
+        {
+          "target_time_ns": 4.0,
+          "saved_row_index": 463,
+          "actual_time_ns": 4.00139999999999,
+          "source_row_index": 607
+        }
+      ],
+      "species": {
+        "e": {
+          "shape": [
+            556,
+            4097
+          ],
+          "min_s_m": -2.8122868617197483e-11,
+          "max_s_m": 3.187837194218446e-08,
+          "velocity_range_km_s": [
+            -168003.15625,
+            168003.15625
+          ]
+        },
+        "H": {
+          "shape": [
+            556,
+            4097
+          ],
+          "min_s_m": -2.8016087227911157e-09,
+          "max_s_m": 9.607742867956404e-07,
+          "velocity_range_km_s": [
+            -3263.27685546875,
+            3263.27685546875
+          ]
+        },
+        "C": {
+          "shape": [
+            556,
+            4097
+          ],
+          "min_s_m": -1.1522555354304131e-08,
+          "max_s_m": 6.062572538212407e-06,
+          "velocity_range_km_s": [
+            -966.9232177734375,
+            966.9232177734375
+          ]
+        }
+      }
+    },
+    "fig10b": {
+      "file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10b/predictions.npz",
+      "sha256": "2f4d081693be0dae06591c7db5c767c8e8d95c4c45c6a174a04c3ab19d74e5d6",
+      "source_context": "Digitized simulation spectra",
+      "time_rows": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "representative_rows": [
+        {
+          "target_time_ns": 2.0,
+          "saved_row_index": 78,
+          "actual_time_ns": 1.9974093264248705,
+          "source_row_index": 93
+        },
+        {
+          "target_time_ns": 3.0,
+          "saved_row_index": 239,
+          "actual_time_ns": 2.998445595854922,
+          "source_row_index": 254
+        },
+        {
+          "target_time_ns": 4.0,
+          "saved_row_index": 400,
+          "actual_time_ns": 3.999481865284974,
+          "source_row_index": 415
+        }
+      ],
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -2.164499274259768e-10,
+          "max_s_m": 9.202479134273744e-08,
+          "velocity_range_km_s": [
+            -168003.15625,
+            168003.15625
+          ]
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -2.1405928407602914e-07,
+          "max_s_m": 4.838530003326014e-06,
+          "velocity_range_km_s": [
+            -3263.27685546875,
+            3263.27685546875
+          ]
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -1.733740617737567e-07,
+          "max_s_m": 1.7505144569440745e-05,
+          "velocity_range_km_s": [
+            -966.9232177734375,
+            966.9232177734375
+          ]
+        }
+      }
+    },
+    "fig10c": {
+      "file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10c/predictions.npz",
+      "sha256": "9acd81b525bceafeaf328ac3e1afbe7bd9c6468e99d0c3497b3a87d21f169420",
+      "source_context": "Digitized simulation spectra",
+      "time_rows": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "representative_rows": [
+        {
+          "target_time_ns": 2.0,
+          "saved_row_index": 78,
+          "actual_time_ns": 1.9974093264248705,
+          "source_row_index": 93
+        },
+        {
+          "target_time_ns": 3.0,
+          "saved_row_index": 239,
+          "actual_time_ns": 2.998445595854922,
+          "source_row_index": 254
+        },
+        {
+          "target_time_ns": 4.0,
+          "saved_row_index": 400,
+          "actual_time_ns": 3.999481865284974,
+          "source_row_index": 415
+        }
+      ],
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -1.4641370060797243e-10,
+          "max_s_m": 5.7680583864794244e-08,
+          "velocity_range_km_s": [
+            -168003.15625,
+            168003.15625
+          ]
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -1.9919218630093383e-07,
+          "max_s_m": 4.794432697963202e-06,
+          "velocity_range_km_s": [
+            -3263.27685546875,
+            3263.27685546875
+          ]
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "min_s_m": -1.5203957559606351e-07,
+          "max_s_m": 1.7663900507614017e-05,
+          "velocity_range_km_s": [
+            -966.9232177734375,
+            966.9232177734375
+          ]
+        }
+      }
+    }
+  },
+  "plotting_policy": {
+    "all_time_rows_retained": true,
+    "signed_values_retained": true,
+    "smoothing": false,
+    "VDF_clipping": false,
+    "VDF_renormalization": false,
+    "temporal_interpolation": false,
+    "color_scale": "linear symmetric; full absolute extrema per species across a/b/c",
+    "heatmap_rendering": "native pcolormesh flat cells; no data resampling",
+    "representative_rule": "first argmin(abs(saved time - target)), targets [2,3,4] ns",
+    "velocity_units": "km/s",
+    "VDF_units": "s/m",
+    "focus_half_widths_km_s": null,
+    "overview_only": false,
+    "focus_only_companion": false,
+    "VDF_ground_truth_available": false
+  },
+  "shared_species_color_limits_s_m": {
+    "e": [
+      -9.202479134273744e-08,
+      9.202479134273744e-08
+    ],
+    "H": [
+      -4.838530003326014e-06,
+      4.838530003326014e-06
+    ],
+    "C": [
+      -1.7663900507614017e-05,
+      1.7663900507614017e-05
+    ]
+  },
+  "shared_species_representative_y_limits_s_m": {
+    "e": [
+      -7.134543022688233e-09,
+      9.89428844379997e-08
+    ],
+    "H": [
+      -5.700942580233459e-07,
+      5.120867527352857e-06
+    ],
+    "C": [
+      -1.4918425119248014e-06,
+      1.8979991680723175e-05
+    ]
+  },
+  "outputs": {
+    "fig10abc_d4_heatmaps_full_range.png": {
+      "sha256": "ac6589926734031985fd51a69dd13ad798f2d56f65520fe1e14b516ce216f816",
+      "bytes": 539609
+    },
+    "fig10abc_d4_heatmaps_full_range.pdf": {
+      "sha256": "17dca41166516e20cee616e620ec5f53568ed315088154109e676948c8950327",
+      "bytes": 202538
+    },
+    "fig10abc_d4_heatmaps_full_range.svg": {
+      "sha256": "35ba2476abc492fd55de586219c6d0b7e06d98f6784a2bef40011a26ea4447e7",
+      "bytes": 456130
+    },
+    "fig10a_d4_heatmaps_full_range.png": {
+      "sha256": "0ed287ac13f44208ed88b8ee98d4440cf935660069ab819541fc0790f960f35a",
+      "bytes": 218109
+    },
+    "fig10a_d4_heatmaps_full_range.pdf": {
+      "sha256": "cd3582e58d3ce13661109c60c63696ed3f2a257e79cb32618027b6ad07f2f42f",
+      "bytes": 77030
+    },
+    "fig10a_d4_heatmaps_full_range.svg": {
+      "sha256": "8ac0b12ffff70af34bd1ee63af43e5131bf033014f47101ca88e663bb8ca3907",
+      "bytes": 138050
+    },
+    "fig10b_d4_heatmaps_full_range.png": {
+      "sha256": "abd9ba8fd5a5b803ca5043d46aef7dc9dee96b90afff3c986b9a47ce821606a4",
+      "bytes": 272559
+    },
+    "fig10b_d4_heatmaps_full_range.pdf": {
+      "sha256": "9087417ea9a52708c469939f8ec1c26026bb6217f7e738bba87f286285af79bd",
+      "bytes": 112287
+    },
+    "fig10b_d4_heatmaps_full_range.svg": {
+      "sha256": "b41c003c70b5a64ba2d11cf8040122d1d27c57edb60605f55815b49cbe8c8a5c",
+      "bytes": 208005
+    },
+    "fig10c_d4_heatmaps_full_range.png": {
+      "sha256": "ae4480c95247520c9213100954ec9955cd09dc6195168ddc72314983ff399a6d",
+      "bytes": 268994
+    },
+    "fig10c_d4_heatmaps_full_range.pdf": {
+      "sha256": "bb8df8166fdafac4f9fe0070e6f8fb8e5273decadd0b9abf9d5ab5b6903b359c",
+      "bytes": 106787
+    },
+    "fig10c_d4_heatmaps_full_range.svg": {
+      "sha256": "5ad34eef47ee70626268bbe49474b9429d98a9d9850410410b22229553fb6085",
+      "bytes": 202125
+    },
+    "fig10abc_d4_representative_curves_full_range.png": {
+      "sha256": "f270f50456eb29453eebdcafddf4c54bed4660614873c7baa17aab8b92cb0c11",
+      "bytes": 489148
+    },
+    "fig10abc_d4_representative_curves_full_range.pdf": {
+      "sha256": "e1c0ef078c02018106e957c4ef8213d5f8283cd333adbd4a24825eb62a60e76d",
+      "bytes": 1035429
+    },
+    "fig10abc_d4_representative_curves_full_range.svg": {
+      "sha256": "53abd2ce4dffe16df2a5877c8a3fd8420ad432646fd45c9e0fd5eb3b6931de70",
+      "bytes": 2896884
+    },
+    "fig10a_d4_representative_curves_full_range.png": {
+      "sha256": "59f9b9f87fbe6be44742af54f1d423dcdf075050b763307cc507f92393dc56e4",
+      "bytes": 203003
+    },
+    "fig10a_d4_representative_curves_full_range.pdf": {
+      "sha256": "a051d8891f48ed2d1a71984ebf373d859153e9729f3d446681e683f45736400a",
+      "bytes": 361084
+    },
+    "fig10a_d4_representative_curves_full_range.svg": {
+      "sha256": "dd5fcb0dfc9090933fbc6092759b1ce8886950bd793d5177b6fbf1e8656772ff",
+      "bytes": 966966
+    },
+    "fig10b_d4_representative_curves_full_range.png": {
+      "sha256": "6ada73997f7b8f07ed074ca2107a1b39ca7f1016b1ac3d6224ad4e97e815eb07",
+      "bytes": 245050
+    },
+    "fig10b_d4_representative_curves_full_range.pdf": {
+      "sha256": "396dfaf27051baa97377181b13e892f9642af45394952cbba5cd3d2391c121dc",
+      "bytes": 361639
+    },
+    "fig10b_d4_representative_curves_full_range.svg": {
+      "sha256": "b22c5810af67cc32410ec485a8b557fa519cebb9115fb29ffab1e761e441b8f8",
+      "bytes": 966888
+    },
+    "fig10c_d4_representative_curves_full_range.png": {
+      "sha256": "84fa418658c21060dc1b555961b3033a8a64c4fef24b943b123424a8fbd88113",
+      "bytes": 231319
+    },
+    "fig10c_d4_representative_curves_full_range.pdf": {
+      "sha256": "f46734861483e3fa76c81140d23f0081fe109b758fb8a64baea466a105dcdaf7",
+      "bytes": 362773
+    },
+    "fig10c_d4_representative_curves_full_range.svg": {
+      "sha256": "68c3c49bffbb6a3ca9a2792727ef1d36f9f8075af98926b1348b51a871690d81",
+      "bytes": 966992
+    },
+    "fig10_best_d4_all_plots.pdf": {
+      "sha256": "feea15a80243fa84e491871b3b7fc4ff8723d4de5e9e41bcbf88af7254dd6a5d",
+      "bytes": 2451103
+    }
+  }
+}

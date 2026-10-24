@@ -1,0 +1,142 @@
+{
+  "status": "complete",
+  "inputs": {
+    "fig10a": {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+      "sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+      "array": "measured_raw",
+      "shape_time_wavelength": [
+        556,
+        527
+      ],
+      "time_range_ns": [
+        1.501199999999989,
+        4.498199999999989
+      ],
+      "wavelength_range_nm": [
+        262.3006,
+        264.2994
+      ],
+      "intensity_range": [
+        1691.0,
+        4891.0
+      ],
+      "unit": "counts"
+    },
+    "fig10b": {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "array": "intensity",
+      "shape_time_wavelength": [
+        480,
+        319
+      ],
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "wavelength_range_nm": [
+        262.31242236024843,
+        264.2875776397516
+      ],
+      "intensity_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "unit": "digitized colorbar position (0–1)"
+    },
+    "fig10c": {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+      "sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "array": "intensity",
+      "shape_time_wavelength": [
+        480,
+        320
+      ],
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "wavelength_range_nm": [
+        262.30931677018634,
+        264.2906832298137
+      ],
+      "intensity_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "unit": "digitized colorbar position (0–1)"
+    }
+  },
+  "artifacts_sha256": {
+    "fig10abc_original_spectra.png": "bc5ebbebf968be258e761cc89d293f6340a244f4aa8179664ac7756a6dad2e7f",
+    "fig10abc_original_spectra.pdf": "6b340d2f7d211bde2210324d90aa6369fc1d24c74a24522f005c382f32840ccf",
+    "fig10a_original_spectrum.png": "a68ddc3552a9e43a0d20ec2f0e15c509e79c51d2d7c17968310eed6455920967",
+    "fig10a_original_spectrum.pdf": "2ad08fa2da08405f2762e606b2b3be91c5c5e6f89550cef73fa92bdfca107a76",
+    "fig10b_original_spectrum.png": "1ade5c5909befae717422aa900f36fc9f543cddcb79fba4d20adc47ff501e958",
+    "fig10b_original_spectrum.pdf": "7905dc1289be36b3f365459285a3e13632d6deca4c1a1f6798fefb48ad11ad81",
+    "fig10c_original_spectrum.png": "2ac89231b4836f5a840804b1ac3206fad33837aa3678f9da62ea1ba78684cc0f",
+    "fig10c_original_spectrum.pdf": "dfd77c41fdadda2c1ba7ba262de2447cd51c3c87836174f7ed687db9b0d5924b",
+    "fig10bc_original_rgb.png": "d5686cdfbf1e4554519c7a9539e3b8be9f4964165b8d9e53b8ca346e2747e61c",
+    "fig10bc_original_rgb.pdf": "5b53ce9d3a29c5eaddf3710caf8f136ecfb266043e3623e134dc3d840f6dd551",
+    "fig10_spectra_all.pdf": "478e180e3e9299bd6fc7b5fe527b3318d224c571b3c9a716e567291b31fa70c0"
+  },
+  "checks": [
+    {
+      "group": "fig10a",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10b",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10c",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10a",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10b",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10c",
+      "rendered_values_equal_original": true
+    },
+    {
+      "group": "fig10b",
+      "rendered_RGB_equal_original": true
+    },
+    {
+      "group": "fig10c",
+      "rendered_RGB_equal_original": true
+    }
+  ],
+  "original_protected_files_unchanged": 24,
+  "paper_reference": {
+    "file": "Zhao 等 - 2019 - Progress in optical Thomson scattering diagnostics for ICF gas-filled hohlraums.pdf",
+    "pdf_page_1based": 10,
+    "printed_page": "055201-9",
+    "fig10_time_increases_downward": true,
+    "experimental_colorbar_counts": [
+      0,
+      3000
+    ],
+    "simulation_colorbar_is_scattered_power_not_NPZ_0_to_1_position": true
+  },
+  "rendering": {
+    "wavelength_reference_nm": 263.3,
+    "time_direction": "down",
+    "mask": "ignored; all stored values displayed",
+    "native_cells": true,
+    "scalar_palette": "reversed saved b/c palette_rgb, also used to display a",
+    "bc_palette_lookup_exactly_reproduced": true,
+    "new_interpolation": false,
+    "new_normalization": false,
+    "new_inference": false
+  },
+  "script_sha256": "5a4a23cb2f3eaf04793c338e89774ff6a60a1773c58e5e11c8060ef4ddcb1607"
+}

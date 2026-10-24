@@ -1,0 +1,59 @@
+{
+  "scope": "Unchanged default Fig velocity axes; exact Fourier labels; no training or PV. M is exposed by generation-config fourier_modes.",
+  "samples": [
+    {
+      "species": "i1",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 80,
+      "raw_vdf_relative_l2": 0.10464571909638591,
+      "negative_mass_fraction": 0.041881204814214236,
+      "mass": 0.9999934561142197
+    },
+    {
+      "species": "i1",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 160,
+      "raw_vdf_relative_l2": 0.011864384149534241,
+      "negative_mass_fraction": 0.008310733506307653,
+      "mass": 1.0000004706160714
+    },
+    {
+      "species": "i1",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 320,
+      "raw_vdf_relative_l2": 4.083821069677174e-05,
+      "negative_mass_fraction": 2.4734011060486895e-05,
+      "mass": 1.0000000003748308
+    },
+    {
+      "species": "i2",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 80,
+      "raw_vdf_relative_l2": 0.10535138414458026,
+      "negative_mass_fraction": 0.037576151028241474,
+      "mass": 0.999995907286749
+    },
+    {
+      "species": "i2",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 160,
+      "raw_vdf_relative_l2": 0.012793484364125642,
+      "negative_mass_fraction": 0.00791922830596046,
+      "mass": 1.0000003316344253
+    },
+    {
+      "species": "i2",
+      "temperature_ev": 33.55,
+      "p": 4.0,
+      "M": 320,
+      "raw_vdf_relative_l2": 4.290107962317703e-05,
+      "negative_mass_fraction": 1.686719316711267e-05,
+      "mass": 1.0000000016884845
+    }
+  ]
+}

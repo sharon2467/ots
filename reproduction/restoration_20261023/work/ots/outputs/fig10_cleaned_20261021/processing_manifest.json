@@ -1,0 +1,648 @@
+{
+  "status": "saved_for_user_visual_review",
+  "user_authorized_operations": [
+    "a measured_raw minus 1691 counts everywhere",
+    "b/c edge ticks and panel labels set to zero in reviewed native-grid rectangles"
+  ],
+  "datasets": {
+    "fig10a": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+      "source_sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+      "source_field": "measured_raw",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10a.npz",
+      "output_sha256": "a5a678f7ad098e38027a114577923e6a7148b2c5bf52bef032684c47f99e3942",
+      "shape_time_wavelength": [
+        556,
+        527
+      ],
+      "intensity_units": "counts",
+      "operation": "subtract_constant_1691",
+      "background_subtracted_counts": 1691.0,
+      "before_range": [
+        1691.0,
+        4891.0
+      ],
+      "after_range": [
+        0.0,
+        3200.0
+      ],
+      "zeroed_region_pixels": 0,
+      "changed_value_pixels": 293012,
+      "zeroed_region_fraction": 0.0,
+      "rectangles": [],
+      "coordinates_and_source_indices_unchanged": true,
+      "all_pixels_outside_rectangles_unchanged": null
+    },
+    "fig10b": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "source_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "source_field": "intensity",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10b.npz",
+      "output_sha256": "cbadc26c6999a94fc613a3afab24096a53caf85a590b1d321501c1ab82e4d363",
+      "shape_time_wavelength": [
+        480,
+        319
+      ],
+      "intensity_units": "digitized_colorbar_position_0_to_1",
+      "operation": "set_reviewed_annotation_rectangles_to_zero",
+      "background_subtracted_counts": 0.0,
+      "before_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "after_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "zeroed_region_pixels": 2488,
+      "changed_value_pixels": 2036,
+      "zeroed_region_fraction": 0.01624869383490073,
+      "rectangles": [
+        {
+          "name": "panel_label",
+          "bounds_row_start_stop_col_start_stop": [
+            16,
+            58,
+            252,
+            303
+          ],
+          "time_centers_ns": [
+            1.611917098445596,
+            1.866839378238342
+          ],
+          "wavelength_centers_nm": [
+            263.8776397515528,
+            264.188198757764
+          ],
+          "pixel_count": 2142
+        },
+        {
+          "name": "top_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            0,
+            6,
+            157,
+            162
+          ],
+          "time_centers_ns": [
+            1.5124352331606217,
+            1.5435233160621762
+          ],
+          "wavelength_centers_nm": [
+            263.2875776397516,
+            263.31242236024843
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "bottom_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            474,
+            480,
+            157,
+            162
+          ],
+          "time_centers_ns": [
+            4.45958549222798,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            263.2875776397516,
+            263.31242236024843
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 20
+        },
+        {
+          "name": "right_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "left_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 10
+        },
+        {
+          "name": "right_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 12
+        }
+      ],
+      "coordinates_and_source_indices_unchanged": true,
+      "all_pixels_outside_rectangles_unchanged": true,
+      "original_invalid_pixels_total": 666,
+      "original_invalid_pixels_within_reviewed_rectangles": 666
+    },
+    "fig10c": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+      "source_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "source_field": "intensity",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10c.npz",
+      "output_sha256": "0ed16c7351abc515cfc22fc24a8d244699f1776c05556a0fa2ad91d4e4279ff7",
+      "shape_time_wavelength": [
+        480,
+        320
+      ],
+      "intensity_units": "digitized_colorbar_position_0_to_1",
+      "operation": "set_reviewed_annotation_rectangles_to_zero",
+      "background_subtracted_counts": 0.0,
+      "before_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "after_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "zeroed_region_pixels": 2388,
+      "changed_value_pixels": 1937,
+      "zeroed_region_fraction": 0.015546875,
+      "rectangles": [
+        {
+          "name": "panel_label",
+          "bounds_row_start_stop_col_start_stop": [
+            16,
+            58,
+            257,
+            305
+          ],
+          "time_centers_ns": [
+            1.611917098445596,
+            1.866839378238342
+          ],
+          "wavelength_centers_nm": [
+            263.9055900621118,
+            264.1975155279503
+          ],
+          "pixel_count": 2016
+        },
+        {
+          "name": "top_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            0,
+            6,
+            158,
+            163
+          ],
+          "time_centers_ns": [
+            1.5124352331606217,
+            1.5435233160621762
+          ],
+          "wavelength_centers_nm": [
+            263.2906832298137,
+            263.3155279503106
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "bottom_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            474,
+            480,
+            158,
+            163
+          ],
+          "time_centers_ns": [
+            4.45958549222798,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            263.2906832298137,
+            263.3155279503106
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "right_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "left_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 12
+        },
+        {
+          "name": "right_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 12
+        }
+      ],
+      "coordinates_and_source_indices_unchanged": true,
+      "all_pixels_outside_rectangles_unchanged": true,
+      "original_invalid_pixels_total": 586,
+      "original_invalid_pixels_within_reviewed_rectangles": 586
+    }
+  },
+  "rectangle_index_convention": "0-based half-open row/column intervals",
+  "region_selection": "Original RGB and spatial positions reviewed independently; includes a small antialias margin, no global valid-mask filtering.",
+  "new_interpolation": false,
+  "new_normalization": false,
+  "clipping": false,
+  "smoothing": false,
+  "new_model_inference": false,
+  "original_protected_files_unchanged": 24,
+  "script_sha256": "dbe04c4e219e10ba0c67540393ad6c741618b3d9ed736db68e1830c823d0760d"
+}

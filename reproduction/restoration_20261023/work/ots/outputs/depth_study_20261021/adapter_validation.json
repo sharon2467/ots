@@ -1,0 +1,28 @@
+{
+  "baseline_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "depth_two_initialization_forward_dropout_rng_loss_bitwise_equal": true,
+  "fixed_split_across_training_seeds": true,
+  "no_gradients_or_training_runs": true,
+  "parser_depth_two_compatibility_and_invalid_candidates": true,
+  "snapshot_progress_periodic_export_signal_no_rng_consumption": true,
+  "synthetic_split_control": {
+    "index_hash_encoding": "contiguous torch.int64 native-endian bytes",
+    "sample_counts": {
+      "train": 17,
+      "validation": 3
+    },
+    "split_seed": 20261030,
+    "statistics_dtype": "torch.float32",
+    "statistics_hash_encoding": "contiguous tensor native-endian bytes",
+    "statistics_sha256": {
+      "x_mean": "1735ffa10aaa7fa01c730e17e19fa83fa62bf103de6d5f163522167435727ecf",
+      "x_scale": "39e472d93181dbfa800602772fab29b8422d67ace4e33ea3bed655cc78e93ed5",
+      "y_mean": "ccbcb5e45ad51dd123e0063d2af48a2fcbed2a6dc652f81e5f7b01435e7a59fc",
+      "y_scale": "c3cf867d6765d16df09cda303c320311d62da7cdba676caa8ae1fe0bd9f7a103"
+    },
+    "train_index_sha256": "82ae1361e471b54a42b8cf86ce57a10112012eae6944483777d05161d945a189",
+    "training_seed": 20261030,
+    "validation_index_sha256": "11bfece5c1409406990995a183eaf27093f4d85958cb36397c2e0e3035b96c28"
+  },
+  "unchanged_canonical_functions_strict_schema_state_id_load_checks": true
+}

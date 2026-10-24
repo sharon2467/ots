@@ -1,0 +1,82 @@
+{
+  "source_pdf": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/Zhao \u7b49 - 2019 - Progress in optical Thomson scattering diagnostics for ICF gas-filled hohlraums.pdf",
+  "source_pdf_sha256": "8b4c8516fe99a2a77986a9020ff32adf88ca22477b60393cbd1036680a3ad068",
+  "pdf_page": 10,
+  "printed_page": "055201-9",
+  "source_image_object": 308,
+  "native_image_size": [
+    1278,
+    564
+  ],
+  "source_image_sha256": "1cc2fbed4baa5fb1af3889c952e3afbc285be99251f7fd65deb7c7e2537e54ae",
+  "experimental_source": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/paper_experimental_points.csv",
+  "experimental_source_sha256": "140bbd76044a83b728fcbe9d8a903a73e819d18a39ef06c25256a58e958dd2fe",
+  "experimental_points": 54,
+  "experimental_point_counts": {
+    "T_e_ev": 27,
+    "T_i_ev": 27
+  },
+  "simulation_raw_numeric_data_found": false,
+  "axis_calibration": {
+    "T_e_ev": {
+      "panel": "a",
+      "x0": 114,
+      "x1": 595,
+      "maximum": 2500
+    },
+    "T_i_ev": {
+      "panel": "b",
+      "x0": 775,
+      "x1": 1256,
+      "maximum": 2000
+    }
+  },
+  "axis_y0": 12,
+  "axis_y1": 474,
+  "axis_time_limits_ns": [
+    1.5,
+    4.5
+  ],
+  "method": "Strict saturated red/blue ink per native column; min/max selected ink; omit absent columns; no interpolation. Derived midpoint is not simulation centerline.",
+  "color_threshold": {
+    "dominant_channel_min_exclusive": 220,
+    "other_channels_max_exclusive": 90
+  },
+  "reading_uncertainty": "Conservative +/-2 native pixels: Te +/-10.82 eV, Ti +/-8.66 eV, time +/-0.01247 ns. Not calibrated confidence interval. Sharp rises amplify horizontal uncertainty.",
+  "limitations": [
+    "No distinct center curve reliably identified; colored outlines bound spatial-inhomogeneity shading.",
+    "Envelopes include stroke thickness and may miss edges obscured by experimental markers; both_physical_bounds_certified=false for every row.",
+    "Shading is plasma inhomogeneity, not measurement statistical error.",
+    "Experimental square values inferred by spectral fitting are not simulation truth.",
+    "Common Ti does not give separate H/C temperature truth.",
+    "No quantitative flow reference; text only says central flow and Doppler shift are small."
+  ],
+  "correspondence": {
+    "fig10_a": "Fig11 experimental purple squares",
+    "fig10_b": "blue without probe",
+    "fig10_c": "red with probe"
+  },
+  "geometry": {
+    "location": "hohlraum center; simulation Z=R=0",
+    "scattering_angle_deg": 90,
+    "scattering_volume_um": [
+      100,
+      100,
+      100
+    ],
+    "fill": "C5H12 0.35atm",
+    "fully_ionized_fill_baseline_ne_cm3": 3.5e+20,
+    "density_caveat": "Fill baseline only, not per-time local density",
+    "instrument_fwhm_nm": 0.057,
+    "probe_energy_J": 90,
+    "probe_duration_ns": 3,
+    "probe_delay_ns": 0.3,
+    "main_pulse_start_ns": 1.5
+  },
+  "rows_per_curve": {
+    "T_e_ev/with_probe": 426,
+    "T_e_ev/without_probe": 479,
+    "T_i_ev/with_probe": 450,
+    "T_i_ev/without_probe": 384
+  }
+}

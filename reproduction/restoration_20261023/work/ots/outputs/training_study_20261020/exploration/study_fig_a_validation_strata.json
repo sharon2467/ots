@@ -1,0 +1,193 @@
+{
+  "run_id": "study_fig_a",
+  "test_read": false,
+  "scope": "Descriptive associations on the fixed validation set, not causal effects. Quartile counts can differ due to ties.",
+  "species": {
+    "e": [
+      {
+        "feature": "i2_temperature_ev",
+        "spearman_r": -0.17537810378329557,
+        "low_quartile_max": 144.35878902141883,
+        "high_quartile_min": 507.148332819832,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.08986730613386157,
+        "high_mean_relative_l2": 0.07024036908429067
+      },
+      {
+        "feature": "i1_temperature_ev",
+        "spearman_r": -0.17127882538457842,
+        "low_quartile_max": 138.92574127068707,
+        "high_quartile_min": 531.7095931556343,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.09392697541136416,
+        "high_mean_relative_l2": 0.07136614285925064
+      },
+      {
+        "feature": "IAW_points_above_half_peak",
+        "spearman_r": -0.15040224067377808,
+        "low_quartile_max": 10.0,
+        "high_quartile_min": 56.0,
+        "low_count": 197,
+        "high_count": 192,
+        "low_mean_relative_l2": 0.09718755642041067,
+        "high_mean_relative_l2": 0.07095079570746475
+      },
+      {
+        "feature": "IAW_equivalent_width_nm",
+        "spearman_r": -0.14123043063187665,
+        "low_quartile_max": 0.14263593341165448,
+        "high_quartile_min": 0.3984505307075066,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.09725224504160188,
+        "high_mean_relative_l2": 0.07888875031618554
+      },
+      {
+        "feature": "e_temperature_ev",
+        "spearman_r": 0.14085112329088584,
+        "low_quartile_max": 252.03893891904244,
+        "high_quartile_min": 1137.0416491146975,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.07293551519856228,
+        "high_mean_relative_l2": 0.078392841706716
+      },
+      {
+        "feature": "density_m3",
+        "spearman_r": -0.03924121465104827,
+        "low_quartile_max": 3.339053522340357e+26,
+        "high_quartile_min": 4.492726209046943e+26,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.08087613929988408,
+        "high_mean_relative_l2": 0.0775545084745865
+      }
+    ],
+    "i1": [
+      {
+        "feature": "IAW_equivalent_width_nm",
+        "spearman_r": -0.5117805649432265,
+        "low_quartile_max": 0.14263593341165448,
+        "high_quartile_min": 0.3984505307075066,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.16236498710715486,
+        "high_mean_relative_l2": 0.05498962130460365
+      },
+      {
+        "feature": "IAW_points_above_half_peak",
+        "spearman_r": -0.4349320096418104,
+        "low_quartile_max": 10.0,
+        "high_quartile_min": 56.0,
+        "low_count": 197,
+        "high_count": 192,
+        "low_mean_relative_l2": 0.15914474372507806,
+        "high_mean_relative_l2": 0.0632875084771863
+      },
+      {
+        "feature": "e_temperature_ev",
+        "spearman_r": -0.27696443193676784,
+        "low_quartile_max": 252.03893891904244,
+        "high_quartile_min": 1137.0416491146975,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.11430231312824592,
+        "high_mean_relative_l2": 0.08109970729356665
+      },
+      {
+        "feature": "i1_temperature_ev",
+        "spearman_r": -0.24882978280850274,
+        "low_quartile_max": 138.92574127068707,
+        "high_quartile_min": 531.7095931556343,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.14659421835434328,
+        "high_mean_relative_l2": 0.0758530251301221
+      },
+      {
+        "feature": "i2_temperature_ev",
+        "spearman_r": -0.21303212983489744,
+        "low_quartile_max": 144.35878902141883,
+        "high_quartile_min": 507.148332819832,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.1350723084926292,
+        "high_mean_relative_l2": 0.07107785974824875
+      },
+      {
+        "feature": "density_m3",
+        "spearman_r": -0.011888334023704929,
+        "low_quartile_max": 3.339053522340357e+26,
+        "high_quartile_min": 4.492726209046943e+26,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.09058100813651347,
+        "high_mean_relative_l2": 0.08394961491732712
+      }
+    ],
+    "i2": [
+      {
+        "feature": "IAW_equivalent_width_nm",
+        "spearman_r": -0.33944125767334693,
+        "low_quartile_max": 0.14263593341165448,
+        "high_quartile_min": 0.3984505307075066,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.2101718509027147,
+        "high_mean_relative_l2": 0.08856433469590862
+      },
+      {
+        "feature": "IAW_points_above_half_peak",
+        "spearman_r": -0.33701503468314753,
+        "low_quartile_max": 10.0,
+        "high_quartile_min": 56.0,
+        "low_count": 197,
+        "high_count": 192,
+        "low_mean_relative_l2": 0.2048114693716571,
+        "high_mean_relative_l2": 0.08536660111585508
+      },
+      {
+        "feature": "i1_temperature_ev",
+        "spearman_r": -0.26516346517949363,
+        "low_quartile_max": 138.92574127068707,
+        "high_quartile_min": 531.7095931556343,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.18598094221864242,
+        "high_mean_relative_l2": 0.09241312047993804
+      },
+      {
+        "feature": "i2_temperature_ev",
+        "spearman_r": -0.2577430075431245,
+        "low_quartile_max": 144.35878902141883,
+        "high_quartile_min": 507.148332819832,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.17597093917655754,
+        "high_mean_relative_l2": 0.0894668379842378
+      },
+      {
+        "feature": "e_temperature_ev",
+        "spearman_r": 0.23888598557508545,
+        "low_quartile_max": 252.03893891904244,
+        "high_quartile_min": 1137.0416491146975,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.08942230208359393,
+        "high_mean_relative_l2": 0.1490533249411925
+      },
+      {
+        "feature": "density_m3",
+        "spearman_r": 0.01509590594827724,
+        "low_quartile_max": 3.339053522340357e+26,
+        "high_quartile_min": 4.492726209046943e+26,
+        "low_count": 188,
+        "high_count": 188,
+        "low_mean_relative_l2": 0.11892910416020114,
+        "high_mean_relative_l2": 0.11089875132680359
+      }
+    ]
+  }
+}

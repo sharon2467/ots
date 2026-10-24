@@ -1,0 +1,46 @@
+{
+  "status": "complete",
+  "processing_manifest_sha256": "c60ce4a991dd4ee3d781b32689e83170a08b3b2c60ffab292742399a15f13eb1",
+  "artifacts_sha256": {
+    "plots/fig10abc_cleaned_spectra.png": "90f4b3906a83580cc6d51da01fb26337955d75f9048fc21e0e1e8a97f11776ae",
+    "plots/fig10abc_cleaned_spectra.pdf": "b02bf2d79950b61bfb0e78113f18340b1a1f1f514df18630bf5aab252a94c86a",
+    "plots/fig10a_cleaned_spectrum.png": "482a04fae42ad651cc712709488d5ced8d1814efa9444b96670bbc1be3194015",
+    "plots/fig10a_cleaned_spectrum.pdf": "5c2f3b45ece7b1e6b314ea0b6b24657e5d11a130edd5f53750ed46cc284d867d",
+    "plots/fig10b_cleaned_spectrum.png": "80815d9e316c50fb8a1646998fb5da0916c9cee3060dde9a4ff1a0f89b39bc5f",
+    "plots/fig10b_cleaned_spectrum.pdf": "58e447504ecfb7b018bb3cd814b6bc54b5ac4387e4c1360f51b0e426d8237b0c",
+    "plots/fig10c_cleaned_spectrum.png": "24b7b468d4c8d62323e9b225c2cf2bc35be8bab39925bbaf41f69b09c479fbf6",
+    "plots/fig10c_cleaned_spectrum.pdf": "484fb67271d1353701fac0189947dde438ba6df244e9a44a81a468ee964b1cd4",
+    "plots/fig10bc_zeroed_regions.png": "579cf8014a2ba9c173aaa85140e4216fbde81328d928658bed45f5c9474aedb6",
+    "plots/fig10bc_zeroed_regions.pdf": "c78b8e7d07e7420fd749e1ab5edd9d96b6f890c3d0617afbf05db283c2171a86",
+    "fig10_cleaned_review.pdf": "53d78fce532af953c27deec6e84e93fc6d347a760faaa28265365abacac7cf7c"
+  },
+  "checks": [
+    {
+      "group": "fig10a",
+      "plotted_values_equal_saved_dataset": true
+    },
+    {
+      "group": "fig10b",
+      "plotted_values_equal_saved_dataset": true
+    },
+    {
+      "group": "fig10c",
+      "plotted_values_equal_saved_dataset": true
+    },
+    {
+      "group": "fig10a",
+      "plotted_values_equal_saved_dataset": true
+    },
+    {
+      "group": "fig10b",
+      "plotted_values_equal_saved_dataset": true
+    },
+    {
+      "group": "fig10c",
+      "plotted_values_equal_saved_dataset": true
+    }
+  ],
+  "saved_data_and_sources_unchanged_by_plotting": true,
+  "combined_pdf_pages": 5,
+  "script_sha256": "e81b3d4f6b04d4a6c7a1da1d7df8c136f59c19913d37b1d7b588f6849de54f33"
+}

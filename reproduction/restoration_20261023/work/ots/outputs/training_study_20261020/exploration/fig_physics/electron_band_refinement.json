@@ -1,0 +1,47 @@
+{
+  "p": 2.5,
+  "gaussian_Te_ev": 1392.0,
+  "matching_Te_ev": 967.3672769569738,
+  "bands": [
+    {
+      "n": 181,
+      "range_nm": [
+        280.0,
+        350.0
+      ],
+      "relative_l2": 0.903008214982154,
+      "gaussian_peak_nm": 330.55555555555554,
+      "supergaussian_peak_nm": 325.1111111111111
+    },
+    {
+      "n": 721,
+      "range_nm": [
+        280.0,
+        350.0
+      ],
+      "relative_l2": 0.9044683333388973,
+      "gaussian_peak_nm": 330.55555555555554,
+      "supergaussian_peak_nm": 325.30555555555554
+    },
+    {
+      "n": 1441,
+      "range_nm": [
+        280.0,
+        350.0
+      ],
+      "relative_l2": 0.9045081518142998,
+      "gaussian_peak_nm": 330.6041666666667,
+      "supergaussian_peak_nm": 325.25694444444446
+    }
+  ],
+  "iaw_relative_l2": 0.024369378533045483,
+  "raw_e_vdf_relative_l2": 0.13090387420663438,
+  "coarse_vs_fine_relative_l2": {
+    "gaussian": 0.0,
+    "sg": 0.04648415760602412
+  },
+  "721_vs_1441_relative_l2": {
+    "gaussian": 5.3878929739861646e-05,
+    "sg": 0.0010050857256206401
+  }
+}

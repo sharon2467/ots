@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1294.706188pt" height="750.456pt" viewBox="0 0 1294.706188 750.456" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-24T06:58:24.652116</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.8, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 750.456 
+L 1294.706188 750.456 
+L 1294.706188 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 81.542188 583.92 
+L 1273.106188 583.92 
+L 1273.106188 136.44 
+L 81.542188 136.44 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(149.245474 604.083437)">#02</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(146.707193 614.741125)">5k_a</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(264.931299 604.083437)">#03</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(262.145518 614.741125)">5k_b</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(380.617124 604.083437)">#04</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(378.317203 614.741125)">5k_c</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(496.30295 604.083437)">#05</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(496.316309 614.741125)">12k</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(611.988775 604.083437)">#06</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(596.332291 614.741125)">26k_low_lr</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(727.6746 604.083437)">#07</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(727.687959 614.741125)">26k</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(843.360425 604.083437)">#08</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(811.603082 614.741125)">w4_s1 [checkpoint</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(831.534566 625.398812)">restored]</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8"/>
+     <g id="text_8">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(959.046251 604.083437)">#09</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(954.13211 614.741125)">d2_s0</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(1074.732076 604.083437)">#10</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(1062.099732 614.741125)">26k_wide</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10"/>
+     <g id="text_10">
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(1190.417901 604.083437)">#11</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(1184.68462 614.741125)">w3_s0</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11">
+      <path d="M 81.542188 583.92 
+L 1273.106188 583.92 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12">
+      <defs>
+       <path id="m68d2ce8ce2" d="M 0 0 
+L -3.5 0 
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="583.92" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="588.297656" transform="rotate(-0 74.542188 588.297656)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_13">
+      <path d="M 81.542188 516.980221 
+L 1273.106188 516.980221 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="516.980221" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="521.357878" transform="rotate(-0 74.542188 521.357878)">2.5</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15">
+      <path d="M 81.542188 450.040443 
+L 1273.106188 450.040443 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="450.040443" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="454.418099" transform="rotate(-0 74.542188 454.418099)">5</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_17">
+      <path d="M 81.542188 383.100664 
+L 1273.106188 383.100664 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="383.100664" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="387.478321" transform="rotate(-0 74.542188 387.478321)">7.5</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_19">
+      <path d="M 81.542188 316.160886 
+L 1273.106188 316.160886 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="316.160886" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="320.538542" transform="rotate(-0 74.542188 320.538542)">10</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_21">
+      <path d="M 81.542188 249.221107 
+L 1273.106188 249.221107 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="249.221107" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="253.598764" transform="rotate(-0 74.542188 253.598764)">12.5</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_23">
+      <path d="M 81.542188 182.281329 
+L 1273.106188 182.281329 
+" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24">
+      <g>
+       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="182.281329" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: end" x="74.542188" y="186.658985" transform="rotate(-0 74.542188 186.658985)">15</text>
+     </g>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 15px; font-family: 'Noto Sans CJK JP'; text-anchor: middle" x="33.733594" y="360.18" transform="rotate(-90 33.733594 360.18)">测试宏平均 VDF 相对 L2 误差 (%)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 81.542188 583.92 
+L 81.542188 136.44 
+" style="fill: none; stroke: #64748b; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 81.542187 583.92 
+L 1273.106188 583.92 
+" style="fill: none; stroke: #64748b; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 116.826364 583.92 
+L 196.649584 583.92 
+L 196.649584 319.9068 
+L 116.826364 319.9068 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 232.512189 583.92 
+L 312.335409 583.92 
+L 312.335409 340.062528 
+L 232.512189 340.062528 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 348.198015 583.92 
+L 428.021234 583.92 
+L 428.021234 353.735311 
+L 348.198015 353.735311 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 463.88384 583.92 
+L 543.707059 583.92 
+L 543.707059 386.838914 
+L 463.88384 386.838914 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 579.569665 583.92 
+L 659.392885 583.92 
+L 659.392885 402.496783 
+L 579.569665 402.496783 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 695.25549 583.92 
+L 775.07871 583.92 
+L 775.07871 417.84285 
+L 695.25549 417.84285 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 810.941316 583.92 
+L 890.764535 583.92 
+L 890.764535 421.683229 
+L 810.941316 421.683229 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 926.627141 583.92 
+L 1006.45036 583.92 
+L 1006.45036 423.081228 
+L 926.627141 423.081228 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 1042.312966 583.92 
+L 1122.136186 583.92 
+L 1122.136186 423.081228 
+L 1042.312966 423.081228 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 1157.998791 583.92 
+L 1237.822011 583.92 
+L 1237.822011 423.134763 
+L 1157.998791 423.134763 
+z
+" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="156.737974" y="310.5418" transform="rotate(-0 156.737974 310.5418)">9.8601%</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(131.368638 179.574956)">参数 420,064</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(135.949052 191.816291)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(132.577802 204.057626)">宽 512×256</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(131.847138 216.427721)">训练池 5,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(136.197138 228.707281)">优化 4,250</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(126.896294 240.948616)">seed 20261020</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(137.884802 253.189951)">最佳轮 70</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(141.973802 265.431286)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(123.508052 277.672621)">raw loss 权重 0.1</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(136.71506 289.913956)">dropout 0</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="272.423799" y="330.697528" transform="rotate(-0 272.423799 330.697528)">9.1073%</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(247.054463 199.730684)">参数 420,064</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(251.634877 211.972019)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(248.263627 224.213354)">宽 512×256</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(247.532963 236.583449)">训练池 5,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(251.882963 248.863009)">优化 4,250</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(242.582119 261.104344)">seed 20261020</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(253.570627 273.345679)">最佳轮 70</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(257.659627 285.587014)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(242.817291 297.828349)">raw loss 权重 1</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(252.400885 310.069684)">dropout 0</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="388.109624" y="344.370311" transform="rotate(-0 388.109624 344.370311)">8.5967%</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(359.116874 225.644802)">参数 1,101,792</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(367.320703 237.886137)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(361.535203 250.127472)">宽 1024×512</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(363.218788 262.497567)">训练池 5,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(367.568788 274.777128)">优化 4,250</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(358.267945 287.018463)">seed 20261020</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(369.256453 299.259798)">最佳轮 93</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(373.345453 311.501133)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(358.503117 323.742468)">raw loss 权重 1</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="503.79545" y="377.473914" transform="rotate(-0 503.79545 377.473914)">7.3604%</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(474.8027 258.748405)">参数 1,101,792</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(483.006528 270.98974)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(477.221028 283.231075)">宽 1024×512</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(476.490364 295.60117)">训练池 12,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(480.840364 307.88073)">优化 10,200</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(473.95377 320.122065)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(484.942278 332.3634)">最佳轮 85</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(489.031278 344.604735)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(474.188942 356.84607)">raw loss 权重 1</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="619.481275" y="393.131783" transform="rotate(-0 619.481275 393.131783)">6.7756%</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(590.488525 274.406274)">参数 1,101,792</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(598.692353 286.647609)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(592.906853 298.888944)">宽 1024×512</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(592.176189 311.259039)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(596.526189 323.538599)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(589.639595 335.779934)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(598.213853 348.021269)">最佳轮 131</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(602.302853 360.262604)">lr 0.0003</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(589.874767 372.503939)">raw loss 权重 1</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="735.1671" y="408.47785" transform="rotate(-0 735.1671 408.47785)">6.2025%</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(706.17435 289.752341)">参数 1,101,792</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(714.378178 301.993676)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(708.592678 314.235011)">宽 1024×512</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(707.862014 326.605106)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(712.212014 338.884666)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(705.32542 351.126001)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(713.899678 363.367336)">最佳轮 147</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(720.402928 375.608671)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(705.560592 387.850006)">raw loss 权重 1</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="850.852925" y="412.318229" transform="rotate(-0 850.852925 412.318229)">6.0591%</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(821.860175 293.59272)">参数 5,354,941</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(830.064003 305.834055)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(821.864253 318.07539)">宽 2048×1855</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(823.547839 330.445485)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(827.897839 342.725046)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(821.011246 354.966381)">seed 20261032</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(829.585503 367.207716)">最佳轮 103</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(836.088753 379.449051)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(821.246418 391.690386)">raw loss 权重 1</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="966.538751" y="413.716228" transform="rotate(-0 966.538751 413.716228)">6.0068%</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(937.546001 294.990719)">参数 3,251,680</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(945.749829 307.232054)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(937.550079 319.473389)">宽 2048×1024</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(939.233665 331.843484)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(943.583665 344.123044)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(936.697071 356.364379)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(945.271329 368.605714)">最佳轮 157</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(951.774579 380.847049)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(936.932243 393.088384)">raw loss 权重 1</text>
+   </g>
+   <g id="text_35">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="1082.224576" y="413.716228" transform="rotate(-0 1082.224576 413.716228)">6.0068%</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1053.231826 294.990719)">参数 3,251,680</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1061.435654 307.232054)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1053.235904 319.473389)">宽 2048×1024</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1054.91949 331.843484)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1059.26949 344.123044)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1052.382896 356.364379)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1060.957154 368.605714)">最佳轮 157</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1067.460404 380.847049)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1052.618068 393.088384)">raw loss 权重 1</text>
+   </g>
+   <g id="text_37">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="1197.910401" y="413.769763" transform="rotate(-0 1197.910401 413.769763)">6.0048%</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1168.917651 295.044254)">参数 4,304,576</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1177.121479 307.285589)">隐藏层数 2</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1168.921729 319.526924)">宽 2048×1440</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1170.605315 331.897019)">训练池 26,000</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1174.955315 344.176579)">优化 22,100</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1168.068721 356.417914)">seed 20261030</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1176.642979 368.659249)">最佳轮 122</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1183.146229 380.900584)">lr 0.001</text>
+    <text style="font-size: 8.7px; font-family: 'Noto Sans CJK JP'; fill: #334155" transform="translate(1168.303893 393.141919)">raw loss 权重 1</text>
+   </g>
+  </g>
+  <g id="text_39">
+   <text style="font-weight: 700; font-size: 24px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="81.542188" y="42.19125" transform="rotate(-0 81.542188 42.19125)">Fig 模型明细 · 第 1/2 页</text>
+  </g>
+  <g id="text_40">
+   <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #475569" x="81.542188" y="76.571375" transform="rotate(-0 81.542188 76.571375)">同一现有测试集 · 1,024 个物理样本 · 全局 #02–#11 · 按测试宏平均误差从高到低排列（越低越好） · #01 smoke 见总览</text>
+  </g>
+  <g id="text_41">
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 661.576937)">柱高 = 各测试样本的 e / H / C 相对 L2 误差等权平均后，再对全部测试样本取平均；单位为百分比。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 677.3985)">参数为精确可训练参数量；训练池包含优化与验证样本。集成参数为成员总量，样本数按结果记录展示。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 694.038187)">共同配置：LayerNorm、dropout 0.02；差异在柱上注明。纵轴从 0 开始，无截断。所有明细分页使用共同纵轴；#01 smoke 完整展示于总览。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 710.743812)">恢复标记：partial = 部分重算，非历史最终权重；checkpoint restored = 最佳权重匹配历史，但训练尾部缺失。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 726.565375)">测试集 SHA256: 408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3</text>
+  </g>
+  <g id="legend_1">
+   <g id="patch_15">
+    <path d="M 86.718987 109.047375 
+L 106.718987 109.047375 
+L 106.718987 102.047375 
+L 86.718987 102.047375 
+z
+" style="fill: #3b82b8; stroke: #334155; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="114.718987" y="109.047375" transform="rotate(-0 114.718987 109.047375)">2 隐藏层</text>
+   </g>
+   <g id="patch_16">
+    <path d="M 172.509613 109.047375 
+L 192.509613 109.047375 
+L 192.509613 102.047375 
+L 172.509613 102.047375 
+z
+" style="fill: #9670b4; stroke: #334155; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="200.509613" y="109.047375" transform="rotate(-0 200.509613 109.047375)">3 隐藏层</text>
+   </g>
+   <g id="patch_17">
+    <path d="M 258.300237 109.047375 
+L 278.300237 109.047375 
+L 278.300237 102.047375 
+L 258.300237 102.047375 
+z
+" style="fill: #249c91; stroke: #334155; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="286.300237" y="109.047375" transform="rotate(-0 286.300237 109.047375)">4 隐藏层</text>
+   </g>
+   <g id="patch_18">
+    <path d="M 344.090863 109.047375 
+L 364.090863 109.047375 
+L 364.090863 102.047375 
+L 344.090863 102.047375 
+z
+" style="fill: url(#he37dab3743); stroke: #334155; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="372.090863" y="109.047375" transform="rotate(-0 372.090863 109.047375)">集成模型</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p7ce921a6a9">
+   <rect x="81.542188" y="136.44" width="1191.564" height="447.48"/>
+  </clipPath>
+ </defs>
+ <defs>
+  <pattern id="he37dab3743" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
+   <rect x="0" y="0" width="73" height="73" fill="#ffffff"/>
+   <path d="M -36 36 
+L 36 -36 
+M -32 40 
+L 40 -32 
+M -28 44 
+L 44 -28 
+M -24 48 
+L 48 -24 
+M -20 52 
+L 52 -20 
+M -16 56 
+L 56 -16 
+M -12 60 
+L 60 -12 
+M -8 64 
+L 64 -8 
+M -4 68 
+L 68 -4 
+M 0 72 
+L 72 0 
+M 4 76 
+L 76 4 
+M 8 80 
+L 80 8 
+M 12 84 
+L 84 12 
+M 16 88 
+L 88 16 
+M 20 92 
+L 92 20 
+M 24 96 
+L 96 24 
+M 28 100 
+L 100 28 
+M 32 104 
+L 104 32 
+M 36 108 
+L 108 36 
+" style="fill: #334155; stroke: #334155; stroke-width: 1.0; stroke-linecap: butt; stroke-linejoin: miter"/>
+  </pattern>
+ </defs>
+</svg>

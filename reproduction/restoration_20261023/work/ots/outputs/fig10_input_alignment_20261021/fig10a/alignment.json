@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-10-24T14:44:00.127575+08:00",
+  "operation": "Piecewise-linear interpolation along wavelength only",
+  "source": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+  "source_sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+  "original_copy": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+  "source_array": "measured_raw",
+  "source_shape_time_wavelength": [
+    556,
+    527
+  ],
+  "source_wavelength_nm": [
+    262.3006,
+    264.2994
+  ],
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "target_axis_source": "checkpoint.layout.wavelength_bands_nm[0], float64",
+  "target_rounds_exactly_to_checkpoint_float32_wavelengths": true,
+  "target_shape_time_wavelength": [
+    556,
+    319
+  ],
+  "target_wavelength_nm": [
+    262.31242236024843,
+    264.2875776397516
+  ],
+  "time_range_paper_ns": [
+    1.501199999999989,
+    4.498199999999989
+  ],
+  "all_target_points_bracketed_by_source": true,
+  "extrapolation": false,
+  "time_and_source_row_indices_unchanged": true,
+  "intensity_units": "Original counts; no new normalization",
+  "source_intensity_range": [
+    1691.0,
+    4891.0
+  ],
+  "aligned_intensity_range": [
+    1726.4785877729075,
+    4879.819875774892
+  ],
+  "existing_measured_equals_raw_divided_by_scale": true,
+  "existing_scale_equals_source_row_max": true,
+  "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/measured_raw_aligned.npz",
+  "output_sha256": "28ba21760a75efd0c1da7b4c9ffda9e5b3872465d7f9e1ea3d6cfe185faf8a6e",
+  "output_array": "intensity_counts",
+  "inference_executed": false,
+  "inference_gate": "Alignment retains original counts. Authorized normalization is applied only by the separate inference stage.",
+  "production_code_modified": false
+}

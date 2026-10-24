@@ -1,0 +1,298 @@
+{
+  "scope": "Independent all-row array recomputation; original files read only",
+  "forward_checked": true,
+  "protected": {
+    "files_checked": 149,
+    "changed": [],
+    "registry_links": {
+      "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry": 48,
+      "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/registry": 35
+    }
+  },
+  "constants": {
+    "ELEMENTARY_CHARGE": 1.602176634e-19,
+    "ELECTRON_MASS": 9.1093837015e-31,
+    "PROTON_MASS": 1.67262192369e-27
+  },
+  "moments": {
+    "fig10a": {
+      "e": {
+        "rows": 556,
+        "temperature_range_eV": [
+          1026.8717514498114,
+          1567.6133678400477
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 6.821210263296962e-13
+      },
+      "H": {
+        "rows": 556,
+        "temperature_range_eV": [
+          2066.7117786273234,
+          2396.8961124114835
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 9.094947017729282e-13
+      },
+      "C": {
+        "rows": 556,
+        "temperature_range_eV": [
+          752.0874328006381,
+          915.3656109776613
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 3.410605131648481e-13
+      }
+    },
+    "fig10b": {
+      "e": {
+        "rows": 480,
+        "temperature_range_eV": [
+          162.68875386047603,
+          1554.396327881499
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 4.547473508864641e-13
+      },
+      "H": {
+        "rows": 480,
+        "temperature_range_eV": [
+          648.4932023774861,
+          2525.0558976806915
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 9.094947017729282e-13
+      },
+      "C": {
+        "rows": 480,
+        "temperature_range_eV": [
+          417.02153318889793,
+          1522.870867724662
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 6.821210263296962e-13
+      }
+    },
+    "fig10c": {
+      "e": {
+        "rows": 480,
+        "temperature_range_eV": [
+          265.05337860630317,
+          1590.9982817926495
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 6.821210263296962e-13
+      },
+      "H": {
+        "rows": 480,
+        "temperature_range_eV": [
+          690.6238372777109,
+          2416.2547457372807
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 9.094947017729282e-13
+      },
+      "C": {
+        "rows": 480,
+        "temperature_range_eV": [
+          553.6190305470001,
+          1579.331909490589
+        ],
+        "negative_temperature_rows": 0,
+        "max_recomputed_temperature_error_eV": 4.547473508864641e-13
+      }
+    }
+  },
+  "total_species_rows": 4548,
+  "experimental": {
+    "counts": {
+      "T_e_ev": 27,
+      "T_i_ev": 27
+    },
+    "metrics": {
+      "e": {
+        "n": 27.0,
+        "MAE_eV": 505.9649940995612,
+        "RMSE_eV": 618.7160462997467,
+        "bias_eV": 492.7729893358898,
+        "mean_absolute_relative_difference": 1.6424992652662942
+      },
+      "H": {
+        "n": 27.0,
+        "MAE_eV": 1876.635227388104,
+        "RMSE_eV": 1901.5430815105242,
+        "bias_eV": 1876.635227388104,
+        "mean_absolute_relative_difference": 9.652206414281663
+      },
+      "C": {
+        "n": 27.0,
+        "MAE_eV": 479.2920976133392,
+        "RMSE_eV": 525.2758533952666,
+        "bias_eV": 477.69344115368375,
+        "mean_absolute_relative_difference": 2.8372874710184077
+      }
+    },
+    "ion_reference": "Same published Ti compared to H and C separately; no separate species truth"
+  },
+  "simulation_reference": {
+    "numeric_truth_available": false,
+    "independent_native_ink_rows_checked": 1739,
+    "limitations": [
+      "No distinct center curve reliably identified; colored outlines bound spatial-inhomogeneity shading.",
+      "Envelopes include stroke thickness and may miss edges obscured by experimental markers; both_physical_bounds_certified=false for every row.",
+      "Shading is plasma inhomogeneity, not measurement statistical error.",
+      "Experimental square values inferred by spectral fitting are not simulation truth.",
+      "Common Ti does not give separate H/C temperature truth.",
+      "No quantitative flow reference; text only says central flow and Doppler shift are small."
+    ]
+  },
+  "forward": {
+    "fig10a": {
+      "rows": 556,
+      "success_count": 556,
+      "all_spectra_finite": true,
+      "mean_relativeL2": 0.5591336727299621,
+      "preparation": {
+        "e": {
+          "temperature_delta_range_eV": [
+            53.89466743629123,
+            91.89240805929512
+          ],
+          "max_relativeL2": 0.0018996293941477343,
+          "max_grid_displacement_m_s": 8.4609375
+        },
+        "H": {
+          "temperature_delta_range_eV": [
+            60.10274567337365,
+            91.03209799157958
+          ],
+          "max_relativeL2": 0.0031823315345242695,
+          "max_grid_displacement_m_s": 0.169677734375
+        },
+        "C": {
+          "temperature_delta_range_eV": [
+            65.78536624483968,
+            109.63793067818972
+          ],
+          "max_relativeL2": 0.0033146644387164336,
+          "max_grid_displacement_m_s": 0.05462646484375
+        }
+      },
+      "independent_existing_public_PV_recomputations": [
+        {
+          "row": 92,
+          "time_ns": 1.9979999999999891,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 278,
+          "time_ns": 3.002399999999989,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 463,
+          "time_ns": 4.00139999999999,
+          "max_PV_absolute_difference": 0.0
+        }
+      ]
+    },
+    "fig10b": {
+      "rows": 480,
+      "success_count": 480,
+      "all_spectra_finite": true,
+      "mean_relativeL2": 0.3650480754547471,
+      "preparation": {
+        "e": {
+          "temperature_delta_range_eV": [
+            18.480759982638574,
+            118.50012550637061
+          ],
+          "max_relativeL2": 0.00510437887760713,
+          "max_grid_displacement_m_s": 8.4609375
+        },
+        "H": {
+          "temperature_delta_range_eV": [
+            23.136862443922155,
+            136.57615077276841
+          ],
+          "max_relativeL2": 0.003935393194823289,
+          "max_grid_displacement_m_s": 0.169677734375
+        },
+        "C": {
+          "temperature_delta_range_eV": [
+            30.970202366628428,
+            202.0916233337689
+          ],
+          "max_relativeL2": 0.004195944446501954,
+          "max_grid_displacement_m_s": 0.05462646484375
+        }
+      },
+      "independent_existing_public_PV_recomputations": [
+        {
+          "row": 78,
+          "time_ns": 1.9974093264248705,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 239,
+          "time_ns": 2.998445595854922,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 400,
+          "time_ns": 3.999481865284974,
+          "max_PV_absolute_difference": 0.0
+        }
+      ]
+    },
+    "fig10c": {
+      "rows": 480,
+      "success_count": 480,
+      "all_spectra_finite": true,
+      "mean_relativeL2": 0.3125998901933974,
+      "preparation": {
+        "e": {
+          "temperature_delta_range_eV": [
+            10.682203183693673,
+            101.26744541915997
+          ],
+          "max_relativeL2": 0.005273607361147277,
+          "max_grid_displacement_m_s": 8.4609375
+        },
+        "H": {
+          "temperature_delta_range_eV": [
+            16.13143869890166,
+            110.05215108193534
+          ],
+          "max_relativeL2": 0.003389881725304834,
+          "max_grid_displacement_m_s": 0.169677734375
+        },
+        "C": {
+          "temperature_delta_range_eV": [
+            26.261047640620404,
+            192.50345343504387
+          ],
+          "max_relativeL2": 0.003642535903445996,
+          "max_grid_displacement_m_s": 0.05462646484375
+        }
+      },
+      "independent_existing_public_PV_recomputations": [
+        {
+          "row": 78,
+          "time_ns": 1.9974093264248705,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 239,
+          "time_ns": 2.998445595854922,
+          "max_PV_absolute_difference": 0.0
+        },
+        {
+          "row": 400,
+          "time_ns": 3.999481865284974,
+          "max_PV_absolute_difference": 0.0
+        }
+      ]
+    }
+  }
+}

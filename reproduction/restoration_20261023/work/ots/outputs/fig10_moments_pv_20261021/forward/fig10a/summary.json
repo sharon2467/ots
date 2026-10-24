@@ -1,0 +1,58 @@
+{
+  "rows": 556,
+  "wavelength_points": 527,
+  "success_count": 556,
+  "failed_count": 0,
+  "comparison_valid_count": 556,
+  "relativeL2_mean": 0.5591336727299621,
+  "relativeL2_median": 0.5172557441953555,
+  "relativeL2_min": 0.4006591718455903,
+  "relativeL2_max": 0.8698557428972654,
+  "rmse_mean": 0.21564975755765123,
+  "forward_seconds_sum": 174.61661084511434,
+  "panel_wall_seconds": 177.39819018999697,
+  "preparation": [
+    {
+      "species": "e",
+      "maximum_grid_displacement_m_s": 8.4609375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.0013111106843265686,
+      "maximum_preparation_relativeL2": 0.0018996293941477343,
+      "original_T_min_eV": 1026.8717514498117,
+      "original_T_max_eV": 1567.6133678400477,
+      "processed_T_min_eV": 1090.3831490103626,
+      "processed_T_max_eV": 1650.3903854593023
+    },
+    {
+      "species": "H",
+      "maximum_grid_displacement_m_s": 0.169677734375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.0016641734951373687,
+      "maximum_preparation_relativeL2": 0.0031823315345242695,
+      "original_T_min_eV": 2066.711778627323,
+      "original_T_max_eV": 2396.8961124114835,
+      "processed_T_min_eV": 2129.04533164015,
+      "processed_T_max_eV": 2485.1031113598474
+    },
+    {
+      "species": "C",
+      "maximum_grid_displacement_m_s": 0.05462646484375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.002418588027978383,
+      "maximum_preparation_relativeL2": 0.0033146644387165997,
+      "original_T_min_eV": 752.0874328006379,
+      "original_T_max_eV": 915.365610977661,
+      "processed_T_min_eV": 850.0895706345998,
+      "processed_T_max_eV": 989.9760896664151
+    }
+  ],
+  "sources": {
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10a/predictions.npz": "3abdd8a7d3831d4ba0261ae347547bc1baebdffde6c06ae763f6f4db163280fe",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10a.npz": "11ab5068d6d0159a26a8626a2265058a5ec40070c2e6a1095c839ff93c1f7d2c"
+  },
+  "outputs": {
+    "forward_results.npz": "97e135f214fe016598b1b19f404972c271beece2c314ac2af9ef815a9021a11b",
+    "row_metrics.csv": "9491f88f4dec54a1f95ff2390169ce21aa9fe340daa6a60b0ca6dc57f89820f7",
+    "processed_vdfs.npz": "f08965d15585453304f04c017144c1805e9fc708bc886073a7da13021af28ed1"
+  }
+}

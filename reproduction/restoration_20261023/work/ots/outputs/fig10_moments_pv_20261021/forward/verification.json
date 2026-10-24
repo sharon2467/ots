@@ -1,0 +1,1109 @@
+{
+  "passed": true,
+  "checks_count": 275,
+  "checks": [
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/data.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/evaluation.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/extract_ots_data.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/fit_ots_experiments.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/improve_ots_pilot.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/main.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/model.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/spectral_fitting.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/train.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_fourier.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_superGaussian.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/compare_maxwellian_paths.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_data_t2.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_evaluation_t4.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_legacy_cleanup_t6.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_main_t5.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_model_train_t3.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_ots_full_fourier_t1.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_registry_t7.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_second_dataset_t8.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/prepare_datasets.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/processing_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plotting_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/fig10_cleaned_review.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plot_datasets.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10b.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10a.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10c.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10bc_zeroed_regions.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10abc_cleaned_spectra.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10a_cleaned_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10a_cleaned_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10c_cleaned_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10b_cleaned_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10bc_zeroed_regions.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10abc_cleaned_spectra.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10c_cleaned_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10b_cleaned_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/completion.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/prepare_datasets.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/processing_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plotting_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plot_datasets.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/fig10_nearest_row_review.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10b.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10a.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10c.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10b_nearest_row_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10a_nearest_row_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10b_nearest_row_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10c_nearest_row_spectrum.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10c_nearest_row_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/plots/fig10a_nearest_row_spectrum.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/inference_plan.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plot_fig10_best.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/infer_fig10_best.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/completion.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_representative_curves_focused.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/plotting_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_heatmaps_focused.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_representative_curves_focused.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_heatmaps_focused.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10_best_d4_all_plots.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_heatmaps_focused.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots_focus/fig10abc_d4_representative_curves_focused.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_heatmaps_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_representative_curves_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_representative_curves_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_representative_curves_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_heatmaps_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_representative_curves_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_heatmaps_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_heatmaps_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_representative_curves_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_representative_curves_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/plotting_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_representative_curves_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_representative_curves_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_heatmaps_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_heatmaps_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_heatmaps_full_range.svg",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_heatmaps_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10_best_d4_all_plots.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_heatmaps_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_representative_curves_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10b_d4_representative_curves_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_heatmaps_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_heatmaps_full_range.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10c_d4_representative_curves_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10a_d4_heatmaps_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/plots/fig10abc_d4_representative_curves_full_range.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/fig10c_representatives_vs_neighbors.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/fig10c_representatives_vs_neighbors.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/diagnostic_summary.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/fig10c_2ns_diagnostic.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/diagnose_fig10c.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/fig10c_timing_diagnostic/fig10c_2ns_diagnostic.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/summary.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10a/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10a/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10b/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10b/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10c/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10c/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/completion.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig_unified_test_20261021/results.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/adapter.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/combined_figures.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/infer_fig10_latest.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/README.initial.txt",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plot_fig10_latest.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/inference_plan.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/verification.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/numerical_comparison.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/verify_latest.py",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plot_summary.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10abc_latest_d4_heatmaps_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10b_latest_d4_heatmaps_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10c_latest_d4_representative_curves_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10a_latest_d4_heatmaps_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10c_latest_d4_representative_curves_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10abc_latest_d4_representative_curves_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10c_latest_d4_heatmaps_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10b_latest_d4_heatmaps_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10a_latest_d4_representative_curves_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10b_latest_d4_representative_curves_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10abc_latest_d4_representative_curves_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10a_latest_d4_representative_curves_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10abc_latest_d4_heatmaps_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10c_latest_d4_heatmaps_focus.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10b_latest_d4_representative_curves_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_focus/fig10a_latest_d4_heatmaps_focus.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_full/fig10abc_latest_d4_representative_curves_full.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_full/fig10abc_latest_d4_heatmaps_full.png",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_full/fig10abc_latest_d4_representative_curves_full.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/plots_full/fig10abc_latest_d4_heatmaps_full.pdf",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/summary.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10a/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10a/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10b/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10b/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10c/diagnostics.json",
+      "passed": true
+    },
+    {
+      "name": "protected SHA /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10c/predictions.npz",
+      "passed": true
+    },
+    {
+      "name": "fig10a original time_paper_ns",
+      "passed": true
+    },
+    {
+      "name": "fig10a original source_row_index",
+      "passed": true
+    },
+    {
+      "name": "fig10a original wavelength_nm",
+      "passed": true
+    },
+    {
+      "name": "fig10a raw observed bitwise",
+      "passed": true
+    },
+    {
+      "name": "fig10a observed normalization",
+      "passed": true
+    },
+    {
+      "name": "fig10a observed scale",
+      "passed": true
+    },
+    {
+      "name": "fig10a all statuses present",
+      "passed": true
+    },
+    {
+      "name": "fig10a successful rows finite",
+      "passed": true
+    },
+    {
+      "name": "fig10a failed rows NaN",
+      "passed": true
+    },
+    {
+      "name": "fig10a PV per-row maxabs",
+      "passed": true
+    },
+    {
+      "name": "fig10a residual",
+      "passed": true
+    },
+    {
+      "name": "fig10a metric relativeL2",
+      "passed": true
+    },
+    {
+      "name": "fig10a metric rmse",
+      "passed": true
+    },
+    {
+      "name": "fig10a mean summary",
+      "passed": true
+    },
+    {
+      "name": "fig10a e v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10a e uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10a e no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10a e preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10a e f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10a e f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10a e actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10a e negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10a H v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10a H uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10a H no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10a H preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10a H f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10a H f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10a H actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10a H negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10a C v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10a C uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10a C no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10a C preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10a C f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10a C f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10a C actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10a C negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10a original PV reevaluation row 0",
+      "passed": true
+    },
+    {
+      "name": "fig10a original PV reevaluation row 92",
+      "passed": true
+    },
+    {
+      "name": "fig10a original PV reevaluation row 278",
+      "passed": true
+    },
+    {
+      "name": "fig10a original PV reevaluation row 463",
+      "passed": true
+    },
+    {
+      "name": "fig10b original time_paper_ns",
+      "passed": true
+    },
+    {
+      "name": "fig10b original source_row_index",
+      "passed": true
+    },
+    {
+      "name": "fig10b original wavelength_nm",
+      "passed": true
+    },
+    {
+      "name": "fig10b raw observed bitwise",
+      "passed": true
+    },
+    {
+      "name": "fig10b observed normalization",
+      "passed": true
+    },
+    {
+      "name": "fig10b observed scale",
+      "passed": true
+    },
+    {
+      "name": "fig10b all statuses present",
+      "passed": true
+    },
+    {
+      "name": "fig10b successful rows finite",
+      "passed": true
+    },
+    {
+      "name": "fig10b failed rows NaN",
+      "passed": true
+    },
+    {
+      "name": "fig10b PV per-row maxabs",
+      "passed": true
+    },
+    {
+      "name": "fig10b residual",
+      "passed": true
+    },
+    {
+      "name": "fig10b metric relativeL2",
+      "passed": true
+    },
+    {
+      "name": "fig10b metric rmse",
+      "passed": true
+    },
+    {
+      "name": "fig10b mean summary",
+      "passed": true
+    },
+    {
+      "name": "fig10b e v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10b e uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10b e no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10b e preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10b e f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10b e f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10b e actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10b e negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10b H v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10b H uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10b H no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10b H preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10b H f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10b H f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10b H actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10b H negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10b C v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10b C uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10b C no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10b C preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10b C f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10b C f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10b C actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10b C negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10b original PV reevaluation row 0",
+      "passed": true
+    },
+    {
+      "name": "fig10b original PV reevaluation row 78",
+      "passed": true
+    },
+    {
+      "name": "fig10b original PV reevaluation row 239",
+      "passed": true
+    },
+    {
+      "name": "fig10b original PV reevaluation row 400",
+      "passed": true
+    },
+    {
+      "name": "fig10c original time_paper_ns",
+      "passed": true
+    },
+    {
+      "name": "fig10c original source_row_index",
+      "passed": true
+    },
+    {
+      "name": "fig10c original wavelength_nm",
+      "passed": true
+    },
+    {
+      "name": "fig10c raw observed bitwise",
+      "passed": true
+    },
+    {
+      "name": "fig10c observed normalization",
+      "passed": true
+    },
+    {
+      "name": "fig10c observed scale",
+      "passed": true
+    },
+    {
+      "name": "fig10c all statuses present",
+      "passed": true
+    },
+    {
+      "name": "fig10c successful rows finite",
+      "passed": true
+    },
+    {
+      "name": "fig10c failed rows NaN",
+      "passed": true
+    },
+    {
+      "name": "fig10c PV per-row maxabs",
+      "passed": true
+    },
+    {
+      "name": "fig10c residual",
+      "passed": true
+    },
+    {
+      "name": "fig10c metric relativeL2",
+      "passed": true
+    },
+    {
+      "name": "fig10c metric rmse",
+      "passed": true
+    },
+    {
+      "name": "fig10c mean summary",
+      "passed": true
+    },
+    {
+      "name": "fig10c e v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10c e uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10c e no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10c e preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10c e f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10c e f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10c e actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10c e negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10c H v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10c H uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10c H no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10c H preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10c H f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10c H f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10c H actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10c H negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10c C v endpoint-equivalent uniform",
+      "passed": true
+    },
+    {
+      "name": "fig10c C uniform tolerance",
+      "passed": true
+    },
+    {
+      "name": "fig10c C no extrapolation",
+      "passed": true
+    },
+    {
+      "name": "fig10c C preprocessing independently",
+      "passed": true
+    },
+    {
+      "name": "fig10c C f float64 finite nonnegative",
+      "passed": true
+    },
+    {
+      "name": "fig10c C f unit integrals",
+      "passed": true
+    },
+    {
+      "name": "fig10c C actual clip count",
+      "passed": true
+    },
+    {
+      "name": "fig10c C negative mass",
+      "passed": true
+    },
+    {
+      "name": "fig10c original PV reevaluation row 0",
+      "passed": true
+    },
+    {
+      "name": "fig10c original PV reevaluation row 78",
+      "passed": true
+    },
+    {
+      "name": "fig10c original PV reevaluation row 239",
+      "passed": true
+    },
+    {
+      "name": "fig10c original PV reevaluation row 400",
+      "passed": true
+    }
+  ],
+  "sampled_original_PV_rows_per_panel": 4,
+  "duration_seconds": 8.551646699997946,
+  "verification_scope": "All protected SHA and all processed arrays/metrics; sampled original public PV reevaluation. Does not rerun every PV row."
+}

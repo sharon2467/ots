@@ -1,0 +1,20 @@
+{
+  "validation_only": true,
+  "test_data_read": false,
+  "A_macro": 0.0956949966033967,
+  "B_macro": 0.08756110586361537,
+  "paired_A_minus_B_95_CI": [
+    0.006698429469037272,
+    0.009552739164987792
+  ],
+  "mean_improvement": 0.008133890739781335,
+  "relative_reduction": 0.08499807752219113,
+  "train_parquet_sha256": [
+    "b68a510abbcebd08b72cc4d82b4d21d6b42e35549561d9f9aff205cf40b12493",
+    "b68a510abbcebd08b72cc4d82b4d21d6b42e35549561d9f9aff205cf40b12493"
+  ],
+  "test_parquet_sha256": [
+    "ff94cfa5cfbe21b833ee5e6e569880cc6f895e90777489474a6d471ff1ad607d",
+    "ff94cfa5cfbe21b833ee5e6e569880cc6f895e90777489474a6d471ff1ad607d"
+  ]
+}

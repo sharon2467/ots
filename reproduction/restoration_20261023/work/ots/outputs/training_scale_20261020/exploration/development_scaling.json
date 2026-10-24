@@ -1,0 +1,110 @@
+{
+  "purpose": "Development only, no test reads",
+  "points": [
+    {
+      "kind": "fixed_ion",
+      "run": "study_fixed_c",
+      "category": "original",
+      "label": "Old C",
+      "pool": 5000,
+      "error": 0.06523924336887409,
+      "wall_seconds": 1139.788142
+    },
+    {
+      "kind": "fig1_fig11",
+      "run": "study_fig_c",
+      "category": "original",
+      "label": "Old C",
+      "pool": 5000,
+      "error": 0.08193120398764146,
+      "wall_seconds": 1387.347248
+    },
+    {
+      "kind": "fixed_ion",
+      "run": "scale_fixed_12k",
+      "category": "original",
+      "label": "12k",
+      "pool": 12000,
+      "error": 0.04586122859879404,
+      "wall_seconds": 2751.17286
+    },
+    {
+      "kind": "fixed_ion",
+      "run": "scale_fixed_30k",
+      "category": "original",
+      "label": "30k",
+      "pool": 30000,
+      "error": 0.037619295200069194,
+      "wall_seconds": 5994.978329
+    },
+    {
+      "kind": "fig1_fig11",
+      "run": "scale_fig_12k",
+      "category": "original",
+      "label": "12k",
+      "pool": 12000,
+      "error": 0.07067877843451818,
+      "wall_seconds": 2477.362737
+    },
+    {
+      "kind": "fig1_fig11",
+      "run": "scale_fig_26k",
+      "category": "original",
+      "label": "26k",
+      "pool": 26000,
+      "error": 0.060365983736130856,
+      "wall_seconds": 5871.605902
+    },
+    {
+      "kind": "fig1_fig11",
+      "run": "scale_fig_26k_low_lr",
+      "category": "low_lr",
+      "label": "LR 0.0003",
+      "pool": 26000,
+      "error": 0.06602600743662632,
+      "wall_seconds": 6233.095494
+    },
+    {
+      "kind": "fig1_fig11",
+      "run": "scale_fig_26k_wide",
+      "category": "width",
+      "label": "Wide 2048 x 1024",
+      "pool": 26000,
+      "error": 0.058569396687915415,
+      "wall_seconds": 6903.823728
+    }
+  ],
+  "sources": [
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/trials.json",
+      "sha256": "a82a468203ee9b34eeac3919ce0bd286113951c6505b093d9cc7df51b6553c0d"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/exploration/study_fixed_c_common_validation_metrics.json",
+      "sha256": "378ebf040566d9ccf7e100969a2063dd869479467a5bc3bda16ba9053c3a4285"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/logs/study_fixed_c.log",
+      "sha256": "fbe31c5d636c3fd5d43c3a408df0eb1d227669286e1d59926d7cde4904adfb42"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/exploration/study_fig_c_common_validation_metrics.json",
+      "sha256": "23f0a9b7b7480d2d6a54d0480ea18512e263c04a08de837767d99052dd02c7b3"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/logs/study_fig_c.log",
+      "sha256": "6bba7c7c1967f3b90b143a747432e826c4f4590cc25012cf0c55832a09a99e31"
+    }
+  ],
+  "test_artifacts_read": false,
+  "outputs": [
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/exploration/development_scaling.png",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/exploration/development_scaling.pdf"
+  ],
+  "cautions": [
+    "Adaptive reuse of common old 750 development states",
+    "Old C seed differs from expanded runs",
+    "Original architecture line does not connect width/low-LR tail variants",
+    "Tail timing conservatively includes entire parent all; old C includes three-candidate search"
+  ]
+}

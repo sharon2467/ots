@@ -1,0 +1,42 @@
+{
+  "pdf10-000.png": {
+    "bytes": 691433,
+    "sha256": "12351085858babb269cef716426a12ee8b01778895f9c7b5798b73e2c8de5b1e"
+  },
+  "paper_layout.txt": {
+    "bytes": 70903,
+    "sha256": "3c19b7a527608e7e0c56d3746311077375c86e7d0586857ca09f52b7459817c9"
+  },
+  "colorbar_c_native_crop.png": {
+    "bytes": 51595,
+    "sha256": "8f0caec5c4775fdd53a88865974299f9a235423404a068be8cc27f2ae9e76140"
+  },
+  "evidence.json": {
+    "bytes": 8470,
+    "sha256": "7bb09f6e92f075fe2fb2522d139c1cad57ad0f86cf0b1f8e8e2ae311dd04e7e4"
+  },
+  "pdf10-001.png": {
+    "bytes": 145206,
+    "sha256": "1cc2fbed4baa5fb1af3889c952e3afbc285be99251f7fd65deb7c7e2537e54ae"
+  },
+  "audit_native_figure.py": {
+    "bytes": 7352,
+    "sha256": "c63939792c99c18d1d0e6b83f39dc6afb1e632de1dac8f3ecf6cabe2360d05db"
+  },
+  "fig10_native.jpg": {
+    "bytes": 245241,
+    "sha256": "b733a74566922e00f3c344e49a57bfcd289bc0ae1c2de76d482687387b94a5a8"
+  },
+  "REPORT.txt": {
+    "bytes": 8245,
+    "sha256": "5fdd9e48af8ec7c78cbcba64106351a352ececd0a5bb1ad41b54a95733df19e6"
+  },
+  "colorbar_b_native_crop.png": {
+    "bytes": 54489,
+    "sha256": "d63ebc79eae424f4dc86a25be379303da9aa11ac99cbf7e11f59ce688d6a5d1b"
+  },
+  "fig1_native.jpg": {
+    "bytes": 600716,
+    "sha256": "6b61756910aa470520f21cd525c6ad1b92cbb48cf65602034d371c7b614f4f70"
+  }
+}

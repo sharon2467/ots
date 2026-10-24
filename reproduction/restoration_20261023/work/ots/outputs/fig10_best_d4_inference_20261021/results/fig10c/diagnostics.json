@@ -1,0 +1,116 @@
+{
+  "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/intensity_aligned.npz",
+  "input_sha256": "9fa41cf3f94d3860e18fbf4a7da3e21b3b058a466565b99d2253f70f41e93c43",
+  "input_array": "intensity",
+  "original_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+  "original_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+  "row_count": 480,
+  "time_range_ns": [
+    1.5124352331606217,
+    4.4906735751295335
+  ],
+  "peak_scale_range": [
+    0.0041753653444676075,
+    0.9979123173277662
+  ],
+  "normalized_peak_min_max": [
+    1.0,
+    1.0
+  ],
+  "normalization_precision": "Divide in float64, cast to model float32",
+  "wave_max_abs_difference_from_layout_nm": 0.0,
+  "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10c/predictions.npz",
+  "output_sha256": "9acd81b525bceafeaf328ac3e1afbe7bd9c6468e99d0c3497b3a87d21f169420",
+  "species": {
+    "e": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -168003152.0,
+        168003152.0
+      ],
+      "vdf_range_s_per_m": [
+        -1.4641370060797243e-10,
+        5.7680583864794244e-08
+      ],
+      "signed_integral_range": [
+        0.9997148861351717,
+        1.0005568337976811
+      ],
+      "signed_integral_mean": 1.000123189148586,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0009002607103291392,
+      "negative_mass_fraction_p95": 0.001286632887661392,
+      "negative_mass_fraction_max": 0.00354670454185197,
+      "negative_mass_fraction_max_array_row": 160,
+      "negative_mass_fraction_max_source_row_index": 175,
+      "negative_mass_fraction_max_time_ns": 2.5072538860103624,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "H": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -3263276.75,
+        3263276.75
+      ],
+      "vdf_range_s_per_m": [
+        -1.9919218630093383e-07,
+        4.794432697963202e-06
+      ],
+      "signed_integral_range": [
+        0.9990452182076683,
+        1.0006575733615382
+      ],
+      "signed_integral_mean": 1.0001843035242834,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0015160446938439777,
+      "negative_mass_fraction_p95": 0.0020200736073179315,
+      "negative_mass_fraction_max": 0.031051821795291253,
+      "negative_mass_fraction_max_array_row": 159,
+      "negative_mass_fraction_max_source_row_index": 174,
+      "negative_mass_fraction_max_time_ns": 2.5010362694300516,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    },
+    "C": {
+      "shape": [
+        480,
+        4097
+      ],
+      "finite": true,
+      "velocity_range_m_s": [
+        -966923.1875,
+        966923.1875
+      ],
+      "vdf_range_s_per_m": [
+        -1.5203957559606351e-07,
+        1.7663900507614017e-05
+      ],
+      "signed_integral_range": [
+        0.999149020333581,
+        1.0006423773966868
+      ],
+      "signed_integral_mean": 0.999892564509971,
+      "rows_with_nonpositive_integral": 0,
+      "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+      "negative_mass_fraction_mean": 0.0019863688105964997,
+      "negative_mass_fraction_p95": 0.0032736257373686233,
+      "negative_mass_fraction_max": 0.015390046998840067,
+      "negative_mass_fraction_max_array_row": 159,
+      "negative_mass_fraction_max_source_row_index": 174,
+      "negative_mass_fraction_max_time_ns": 2.5010362694300516,
+      "rows_with_any_negative_vdf": 480,
+      "ground_truth_available": false
+    }
+  }
+}

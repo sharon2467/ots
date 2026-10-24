@@ -1,0 +1,1 @@
+本目录是原独立矩与PV分析工作流的新重算。结果见REPORT.txt；命令入口为恢复根README.md中的fig_moments_pv和fig_moments_review。原生产物理、生成、训练和评估源码未修改。

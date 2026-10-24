@@ -1,0 +1,104 @@
+{
+  "best_epoch": 153,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1/training/model.pt",
+  "checkpoint_sha256": "0822eb940976225bbf6eaf196910efe73f15c1b1916510a602e8c4e0b53aaf0c",
+  "hidden_sizes": [
+    2048,
+    1024
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.6093403697013855,
+    "mean": 0.05737389624118805,
+    "median": 0.042453136295080185,
+    "p95": 0.14810419082641602
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.007877882570028305,
+      "coefficient_r2": 0.9931325316429138,
+      "coefficient_rmse": 0.019543243572115898,
+      "evdf_mae": 2.178278807329903e-10,
+      "evdf_r2": 0.9933223128318787,
+      "evdf_relative_l2_mean": 0.05962193384766579,
+      "evdf_relative_l2_median": 0.04344036057591438,
+      "evdf_rmse": 7.400722257244752e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.05423630774021149,
+        "mean": 0.0010523106902837753,
+        "median": 0.0003270431188866496,
+        "p95": 0.0045898547396063805
+      },
+      "negative_mass_fraction_mean": 0.0010523108066990972,
+      "relative_l2_distribution": {
+        "maximum": 0.3494935631752014,
+        "mean": 0.05962193384766579,
+        "median": 0.04344036057591438,
+        "p95": 0.17024923861026764
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.009833683259785175,
+      "coefficient_r2": 0.9910064339637756,
+      "coefficient_rmse": 0.02445240318775177,
+      "evdf_mae": 8.264435358285027e-09,
+      "evdf_r2": 0.9916986227035522,
+      "evdf_relative_l2_mean": 0.047561753541231155,
+      "evdf_relative_l2_median": 0.029045090079307556,
+      "evdf_rmse": 4.7630109634155815e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.046054646372795105,
+        "mean": 0.002328590489923954,
+        "median": 0.0009490876691415906,
+        "p95": 0.009468242526054382
+      },
+      "negative_mass_fraction_mean": 0.0023285907227545977,
+      "relative_l2_distribution": {
+        "maximum": 0.8674137592315674,
+        "mean": 0.047561753541231155,
+        "median": 0.029045090079307556,
+        "p95": 0.1422387808561325
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.013969837687909603,
+      "coefficient_r2": 0.9829397797584534,
+      "coefficient_rmse": 0.03456031531095505,
+      "evdf_mae": 4.01723205811777e-08,
+      "evdf_r2": 0.9839260578155518,
+      "evdf_relative_l2_mean": 0.0649380013346672,
+      "evdf_relative_l2_median": 0.03712187707424164,
+      "evdf_rmse": 2.2726885617885273e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.07937383651733398,
+        "mean": 0.0036956164985895157,
+        "median": 0.0016822894103825092,
+        "p95": 0.014354013837873936
+      },
+      "negative_mass_fraction_mean": 0.0036956164985895157,
+      "relative_l2_distribution": {
+        "maximum": 0.9141301512718201,
+        "mean": 0.0649380013346672,
+        "median": 0.03712187707424164,
+        "p95": 0.22131109237670898
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261032,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

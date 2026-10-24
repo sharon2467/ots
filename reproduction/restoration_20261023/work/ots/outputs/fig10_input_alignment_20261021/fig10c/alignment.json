@@ -1,0 +1,46 @@
+{
+  "created_at": "2026-10-24T14:44:01.988623+08:00",
+  "source": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+  "source_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+  "original_copy": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+  "source_array": "intensity",
+  "source_shape_time_wavelength": [
+    480,
+    320
+  ],
+  "source_wavelength_range_nm": [
+    262.30931677018634,
+    264.2906832298137
+  ],
+  "source_row_maximum_range": [
+    0.0041753653444676075,
+    0.9979123173277662
+  ],
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "target_axis_source": "checkpoint.layout.wavelength_bands_nm[0], float64",
+  "target_shape_time_wavelength": [
+    480,
+    319
+  ],
+  "target_wavelength_range_nm": [
+    262.31242236024843,
+    264.2875776397516
+  ],
+  "model_float32_axis_exactly_equal": true,
+  "operation": "Piecewise-linear interpolation along wavelength only",
+  "all_target_points_bracketed": true,
+  "extrapolation": false,
+  "mask_policy": "User instructed ignore mask: preserve all rows and use all existing intensity values. No valid-mask filtering or filling.",
+  "time_and_source_row_indices_unchanged": true,
+  "intensity_scale": "Original digitized colorbar scale; no normalization",
+  "aligned_row_maximum_range": [
+    0.0041753653444676075,
+    0.9979123173277662
+  ],
+  "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/intensity_aligned.npz",
+  "output_sha256": "9fa41cf3f94d3860e18fbf4a7da3e21b3b058a466565b99d2253f70f41e93c43",
+  "inference_executed": false,
+  "remaining_blocker": "Alignment retains native scale; authorized normalization is a separate inference stage",
+  "production_code_modified": false
+}

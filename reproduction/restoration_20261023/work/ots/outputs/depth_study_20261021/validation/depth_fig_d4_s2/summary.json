@@ -1,0 +1,106 @@
+{
+  "best_epoch": 130,
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s2/training/model.pt",
+  "checkpoint_sha256": "1919a7800f67471aa82688b3c8be57cafda7968eb914022277c2e8ba08da004d",
+  "hidden_sizes": [
+    2048,
+    1024,
+    1024,
+    1024
+  ],
+  "macro_relative_l2": {
+    "maximum": 0.7169728875160217,
+    "mean": 0.0535009391605854,
+    "median": 0.039396848529577255,
+    "p95": 0.13930733501911163
+  },
+  "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json",
+  "metrics": {
+    "e": {
+      "coefficient_mae": 0.0076924655586481094,
+      "coefficient_r2": 0.9932911396026611,
+      "coefficient_rmse": 0.019316265359520912,
+      "evdf_mae": 2.1725676813133532e-10,
+      "evdf_r2": 0.9934765100479126,
+      "evdf_relative_l2_mean": 0.05848820507526398,
+      "evdf_relative_l2_median": 0.04159332066774368,
+      "evdf_rmse": 7.314769345789784e-10,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.03900228813290596,
+        "mean": 0.0015139395836740732,
+        "median": 0.0010089464485645294,
+        "p95": 0.004346376750618219
+      },
+      "negative_mass_fraction_mean": 0.0015139398165047169,
+      "relative_l2_distribution": {
+        "maximum": 0.33440062403678894,
+        "mean": 0.05848820507526398,
+        "median": 0.04159332066774368,
+        "p95": 0.17066337168216705
+      }
+    },
+    "i1": {
+      "coefficient_mae": 0.009005604311823845,
+      "coefficient_r2": 0.9916616678237915,
+      "coefficient_rmse": 0.02354481630027294,
+      "evdf_mae": 8.080541569199795e-09,
+      "evdf_r2": 0.992303192615509,
+      "evdf_relative_l2_mean": 0.04482734203338623,
+      "evdf_relative_l2_median": 0.026922166347503662,
+      "evdf_rmse": 4.586280866192283e-08,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.04984329268336296,
+        "mean": 0.0029775153379887342,
+        "median": 0.0017490293830633163,
+        "p95": 0.00987088680267334
+      },
+      "negative_mass_fraction_mean": 0.002977515570819378,
+      "relative_l2_distribution": {
+        "maximum": 1.0661534070968628,
+        "mean": 0.04482734203338623,
+        "median": 0.026922166347503662,
+        "p95": 0.13663186132907867
+      }
+    },
+    "i2": {
+      "coefficient_mae": 0.012252381071448326,
+      "coefficient_r2": 0.9845879673957825,
+      "coefficient_rmse": 0.03284849226474762,
+      "evdf_mae": 3.6416256676830017e-08,
+      "evdf_r2": 0.985480010509491,
+      "evdf_relative_l2_mean": 0.05718725919723511,
+      "evdf_relative_l2_median": 0.030834561213850975,
+      "evdf_rmse": 2.1600421007406112e-07,
+      "hermitian_symmetry_mae": 0.0,
+      "negative_mass_distribution": {
+        "maximum": 0.05783135071396828,
+        "mean": 0.003817531280219555,
+        "median": 0.002434319816529751,
+        "p95": 0.011497464030981064
+      },
+      "negative_mass_fraction_mean": 0.003817531280219555,
+      "relative_l2_distribution": {
+        "maximum": 0.9179777503013611,
+        "mean": 0.05718725919723511,
+        "median": 0.030834561213850975,
+        "p95": 0.19820447266101837
+      }
+    }
+  },
+  "split_seed": 20261030,
+  "stage": "validation",
+  "statistics_sha256": {
+    "x_mean": "d5f05e38ffb74c1474e90ac3e1f3714a239a487011d83ccfd7f0e7992d9a77df",
+    "x_scale": "bec9e7acb30195e1f2e83cba636a84f73b521711ca6af39ab105796bd5002aa5",
+    "y_mean": "271bc8058035f24baf95a18f9d92cf38fa80775aacdf8c6d8f5f3a2e22b84af5",
+    "y_scale": "06fd32b46ad949404b56ee0721d794ebc509f906dbee7512bca16a5e47f43e76"
+  },
+  "test_data_accessed": false,
+  "train_sha256": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+  "training_samples": 22100,
+  "training_seed": 20261033,
+  "validation_indices_sha256": "e89af1f9a6880caddabc9f9eaa50ea8ee46b42a5482e24852b1bc80b4580cbc3",
+  "validation_samples": 3900
+}

@@ -1,0 +1,48 @@
+{
+  "datasets": [
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/data/dataset_test.parquet",
+      "sha256": "96a4b9c41edd57074d676e9f7deac54d14f282db52b19e78abbada308db9ec3a",
+      "physical_samples": 4,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/data/dataset_manifest.json"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_12k/data/dataset_test.parquet",
+      "sha256": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+      "physical_samples": 1024,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_12k/data/dataset_manifest.json"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_test.parquet",
+      "sha256": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+      "physical_samples": 1024,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_a/data/dataset_test.parquet",
+      "sha256": "ff94cfa5cfbe21b833ee5e6e569880cc6f895e90777489474a6d471ff1ad607d",
+      "physical_samples": 512,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_a/data/dataset_manifest.json"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_b/data/dataset_test.parquet",
+      "sha256": "ff94cfa5cfbe21b833ee5e6e569880cc6f895e90777489474a6d471ff1ad607d",
+      "physical_samples": 512,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_b/data/dataset_manifest.json"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/data/dataset_test.parquet",
+      "sha256": "ff94cfa5cfbe21b833ee5e6e569880cc6f895e90777489474a6d471ff1ad607d",
+      "physical_samples": 512,
+      "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/data/dataset_manifest.json"
+    }
+  ],
+  "largest_count": 1024,
+  "chosen": {
+    "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_test.parquet",
+    "sha256": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+    "physical_samples": 1024,
+    "manifest": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data/dataset_manifest.json"
+  },
+  "all_largest_numerical_files_identical": true
+}

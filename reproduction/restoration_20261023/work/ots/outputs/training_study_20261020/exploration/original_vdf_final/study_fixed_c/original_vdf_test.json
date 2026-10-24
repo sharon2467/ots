@@ -1,0 +1,107 @@
+{
+  "run_id": "study_fixed_c",
+  "checkpoint_id": "study_fixed_c_model",
+  "dataset_id": "study_fixed_c_data",
+  "purpose": "Final frozen-model comparison to original sampled VDF; no model or estimator selection",
+  "selection_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_study_20261020/frozen_selection.json",
+  "selection_file_sha256": "dc15833b254253243b3608a8a213e727dd7a00abb3efe84bd7a92073054bd13b",
+  "test_sample_count": 512,
+  "replay_seed": 20261021,
+  "cpu_threads": 1,
+  "fourier_replay_checks": [
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 0,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 46,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 92,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 139,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 185,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 232,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 278,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 325,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 371,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 418,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 464,
+      "max_abs_float32_coefficient_error": 0.0
+    },
+    {
+      "species": "e",
+      "test_sample_index_zero_based": 511,
+      "max_abs_float32_coefficient_error": 0.0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c/evaluation/predictions.npz",
+      "sha256": "72ed794c061469150b12540696747328b328d284ff66c9b2727174137eb57f89"
+    },
+    {
+      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c/data/dataset_manifest.json",
+      "sha256": "42426cefbe1bb64f747a082e274d63b6cfef60dc6ddb6988693a75d6a4c6bcb2"
+    }
+  ],
+  "numerics": "Replay original VDF on original float64 velocity axes. Reconstruct canonical float32 target/model coefficients in float64 on these axes; relative L2 uses unweighted sums, consistent with validation positivity diagnostic. This avoids counting lowpass label targets as original VDF truth.",
+  "species": {
+    "e": {
+      "model_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.07346769523328586,
+          "median": 0.04552378218033627,
+          "p95": 0.23765627148222354,
+          "max": 0.49247026665968435
+        }
+      },
+      "target_fourier_vs_original": {
+        "raw_vdf_relative_l2": {
+          "mean": 0.010075289310178759,
+          "median": 0.0020803937815037452,
+          "p95": 0.04099832411839314,
+          "max": 0.10840572197470383
+        }
+      }
+    }
+  },
+  "training_performed": false,
+  "pv_called": false,
+  "postprocessing": "None; original model Fourier coefficients are unchanged"
+}

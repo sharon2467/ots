@@ -1,0 +1,150 @@
+{
+  "study": "depth_study_20261021",
+  "frozen_at_utc": "2026-10-24T02:56:52.283234+00:00",
+  "status": "historical_protocol_rebound_for_regeneration",
+  "dataset_kind": "fig1_fig11",
+  "data_directory": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data",
+  "dataset_id": "scale_fig_26k_data",
+  "data_sha256": {
+    "dataset_train.parquet": "be358dcd10d49f00cf8d456214372fee657cf74c4073c18da070c8e486fe8212",
+    "dataset_test.parquet": "408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3",
+    "dataset_manifest.json": "1fa053179cbe974c9610b57c077ccf61cab7f4e2b0187402f40f5dbaed5f02a2"
+  },
+  "split_seed": 20261030,
+  "sample_counts": {
+    "train_pool": 26000,
+    "optimization": 22100,
+    "validation": 3900,
+    "existing_test": 1024
+  },
+  "split_index_sha256": {
+    "optimization": "4127453a058b00d3a52fa062f770ac03067525e39f1a4a61e5c0a52c96dd0be7",
+    "validation": "994094ee5f2bf50419de61045556c8005cc52fcfaf7c845e542c4bb41798842c"
+  },
+  "baseline_checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "baseline_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "fixed_training_config": {
+    "seed": 20261030,
+    "validation_fraction": 0.15,
+    "candidates": [
+      {
+        "hidden_sizes": [
+          2048,
+          1024
+        ],
+        "dropout": 0.02
+      }
+    ],
+    "batch_size": 128,
+    "max_epochs": 250,
+    "patience": 35,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "raw_loss_weight": 1.0,
+    "gradient_clip_norm": 5.0,
+    "optimizer": {
+      "name": "AdamW",
+      "parameters": {
+        "lr": 0.001,
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "eps": 1e-08,
+        "weight_decay": 1e-05,
+        "amsgrad": false
+      }
+    },
+    "scheduler": {
+      "name": "ReduceLROnPlateau",
+      "parameters": {
+        "mode": "min",
+        "factor": 0.5,
+        "patience": 7,
+        "threshold": 0.0001,
+        "threshold_mode": "rel",
+        "cooldown": 0,
+        "min_lr": 1e-06,
+        "eps": 1e-08
+      }
+    }
+  },
+  "architectures": {
+    "d2": {
+      "hidden_sizes": [
+        2048,
+        1024
+      ],
+      "parameter_count": 3251680,
+      "role": "existing baseline and exact replay"
+    },
+    "d3": {
+      "hidden_sizes": [
+        2048,
+        1024,
+        1024
+      ],
+      "parameter_count": 4303328,
+      "role": "append one 1024-wide hidden block"
+    },
+    "w3": {
+      "hidden_sizes": [
+        2048,
+        1440
+      ],
+      "parameter_count": 4304576,
+      "role": "two-hidden-layer parameter-count control for d3"
+    },
+    "d4": {
+      "hidden_sizes": [
+        2048,
+        1024,
+        1024,
+        1024
+      ],
+      "parameter_count": 5354976,
+      "role": "append two 1024-wide hidden blocks"
+    },
+    "w4": {
+      "hidden_sizes": [
+        2048,
+        1855
+      ],
+      "parameter_count": 5354941,
+      "role": "two-hidden-layer parameter-count control for d4"
+    }
+  },
+  "primary_training_seed": 20261030,
+  "repeat_training_seeds": [
+    20261032,
+    20261033
+  ],
+  "primary_run_ids": [
+    "depth_fig_d2_s0",
+    "depth_fig_d3_s0",
+    "depth_fig_w3_s0",
+    "depth_fig_d4_s0",
+    "depth_fig_w4_s0"
+  ],
+  "repeat_rule": "After all five seed0 validation results exist, choose lower macro VDF relative-L2 of d3/d4 on fixed3900validation (tie: fewer parameters). Freeze selected depth plus its parameter-matched width and d2; train all three at seeds20261032,20261033 without accessing new test metrics.",
+  "selection_metric": "mean over validation rows of mean(e,H,C relative L2); truth is inverse Fourier of stored target coefficients",
+  "epoch_selection": "unchanged canonical coefficient validation loss and patience35",
+  "test_policy": "Each README pipeline writes canonical test artifacts after its training; new test results remain unread until architecture and repeat checkpoints are frozen. Existing test seed20261031 has been examined previously; this is a reused benchmark, not a new unbiased test. No architecture/seed/lr decisions based on test.",
+  "statistical_plan": "Report all architectures at seed0 and selected depth/width/d2 at three seeds; paired sample bootstrap10000/95% CI with e,H,C grouped per row; seedwise effects and mean/std; conditional sample CI excludes optimizer randomness and multiplicity.",
+  "compute_budget": {
+    "threads_per_trial": 2,
+    "max_parallel_trials": 1,
+    "charged_previous_all_seconds": 5871.605902092997,
+    "tail_timeout_seconds": 1208,
+    "kill_grace_seconds": 30,
+    "maximum_charged_with_grace_seconds": 7109.605902092997,
+    "includes": "conservative entire old generation+training+evaluation plus new training+validation+evaluation wall time; each below7200sec; timeout is incomplete, not a valid accuracy comparison"
+  },
+  "source_policy": "21 existing Python files and canonical48 registry links immutable; all adaptations, runs and registry isolated under study; no residual/activation/loss/data changes",
+  "normalization_sha256": {
+    "x_mean": "85bcdbe7bcae56cc9811d6e5412175b972ac97e256da79a0fbdccffbf129cfcc",
+    "x_scale": "1f52df15701f39ef943b08207819a195b545b87fd8ff5e457ef7811d20888cd1",
+    "y_mean": "2fce59ec18abc943bbb678bbb4a650e741ed2aeab47c636593cd1d66eaa5ffdf",
+    "y_scale": "42c9cca1f2b9599fc60f57a576f9598b3aaf12d2391156ea217526d1ef2fe965"
+  }
+}

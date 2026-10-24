@@ -1,0 +1,159 @@
+{
+  "cases": [
+    {
+      "all_actual_validation_losses_bitwise_equal": true,
+      "all_checkpoint_fields_bitwise_equal": true,
+      "ast_audit": {
+        "canonical_train_source_sha256": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+        "edits": [
+          "insert pre-loop state restore tuple assignment",
+          "range starts at completed_epochs + 1"
+        ],
+        "epoch_body_ast_sha256": "506226e4fb498fbb56054468a8eef9f25e92e8488f897ac118b263765a069275",
+        "epoch_body_ast_unchanged": true,
+        "original_candidate_ast_sha256": "9d7bc6b26f802f72dd9edfefc0ca711ee68a0b2aa54ff99384c91b8a7eab234f",
+        "transformed_candidate_ast_sha256": "54fcd5613df75aef8cad5477ec38b519247e9b84a55dce87fd4b8340a4ca27e8",
+        "whole_ast_reverses_with_exactly_two_edits": true
+      },
+      "case": "d2_actual_validation",
+      "changed_configuration_and_statistics_rejected_before_output": true,
+      "completed_epochs": 8,
+      "completed_snapshot_and_invalid_history_rejected": true,
+      "current_best_optimizer_scheduler_rng_history_bitwise_equal": true,
+      "dropout": 0.3,
+      "hidden_sizes": [
+        8,
+        6
+      ],
+      "interruptions_after_epochs": [
+        2,
+        3
+      ],
+      "nontrivial_python_numpy_rng_draws_bitwise_equal": true
+    },
+    {
+      "all_actual_validation_losses_bitwise_equal": true,
+      "all_checkpoint_fields_bitwise_equal": true,
+      "ast_audit": {
+        "canonical_train_source_sha256": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+        "edits": [
+          "insert pre-loop state restore tuple assignment",
+          "range starts at completed_epochs + 1"
+        ],
+        "epoch_body_ast_sha256": "506226e4fb498fbb56054468a8eef9f25e92e8488f897ac118b263765a069275",
+        "epoch_body_ast_unchanged": true,
+        "original_candidate_ast_sha256": "9d7bc6b26f802f72dd9edfefc0ca711ee68a0b2aa54ff99384c91b8a7eab234f",
+        "transformed_candidate_ast_sha256": "54fcd5613df75aef8cad5477ec38b519247e9b84a55dce87fd4b8340a4ca27e8",
+        "whole_ast_reverses_with_exactly_two_edits": true
+      },
+      "case": "d2_plateau_early_stop",
+      "changed_configuration_and_statistics_rejected_before_output": true,
+      "completed_epochs": 4,
+      "completed_snapshot_and_invalid_history_rejected": true,
+      "current_best_optimizer_scheduler_rng_history_bitwise_equal": true,
+      "dropout": 0.3,
+      "hidden_sizes": [
+        8,
+        6
+      ],
+      "interruptions_after_epochs": [
+        2,
+        3
+      ],
+      "nontrivial_python_numpy_rng_draws_bitwise_equal": true
+    },
+    {
+      "all_actual_validation_losses_bitwise_equal": true,
+      "all_checkpoint_fields_bitwise_equal": true,
+      "ast_audit": {
+        "canonical_train_source_sha256": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+        "edits": [
+          "insert pre-loop state restore tuple assignment",
+          "range starts at completed_epochs + 1"
+        ],
+        "epoch_body_ast_sha256": "506226e4fb498fbb56054468a8eef9f25e92e8488f897ac118b263765a069275",
+        "epoch_body_ast_unchanged": true,
+        "original_candidate_ast_sha256": "9d7bc6b26f802f72dd9edfefc0ca711ee68a0b2aa54ff99384c91b8a7eab234f",
+        "transformed_candidate_ast_sha256": "54fcd5613df75aef8cad5477ec38b519247e9b84a55dce87fd4b8340a4ca27e8",
+        "whole_ast_reverses_with_exactly_two_edits": true
+      },
+      "case": "d4_actual_validation",
+      "changed_configuration_and_statistics_rejected_before_output": true,
+      "completed_epochs": 8,
+      "completed_snapshot_and_invalid_history_rejected": true,
+      "current_best_optimizer_scheduler_rng_history_bitwise_equal": true,
+      "dropout": 0.3,
+      "hidden_sizes": [
+        8,
+        6,
+        5,
+        4
+      ],
+      "interruptions_after_epochs": [
+        2,
+        3
+      ],
+      "nontrivial_python_numpy_rng_draws_bitwise_equal": true
+    },
+    {
+      "all_actual_validation_losses_bitwise_equal": true,
+      "all_checkpoint_fields_bitwise_equal": true,
+      "ast_audit": {
+        "canonical_train_source_sha256": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+        "edits": [
+          "insert pre-loop state restore tuple assignment",
+          "range starts at completed_epochs + 1"
+        ],
+        "epoch_body_ast_sha256": "506226e4fb498fbb56054468a8eef9f25e92e8488f897ac118b263765a069275",
+        "epoch_body_ast_unchanged": true,
+        "original_candidate_ast_sha256": "9d7bc6b26f802f72dd9edfefc0ca711ee68a0b2aa54ff99384c91b8a7eab234f",
+        "transformed_candidate_ast_sha256": "54fcd5613df75aef8cad5477ec38b519247e9b84a55dce87fd4b8340a4ca27e8",
+        "whole_ast_reverses_with_exactly_two_edits": true
+      },
+      "case": "d4_plateau_early_stop",
+      "changed_configuration_and_statistics_rejected_before_output": true,
+      "completed_epochs": 4,
+      "completed_snapshot_and_invalid_history_rejected": true,
+      "current_best_optimizer_scheduler_rng_history_bitwise_equal": true,
+      "dropout": 0.3,
+      "hidden_sizes": [
+        8,
+        6,
+        5,
+        4
+      ],
+      "interruptions_after_epochs": [
+        2,
+        3
+      ],
+      "nontrivial_python_numpy_rng_draws_bitwise_equal": true
+    }
+  ],
+  "cpu_threads": 1,
+  "official_snapshot_read_only_checks": [
+    {
+      "best_epoch": 62,
+      "completed_epochs": 64,
+      "next_epoch": 65,
+      "run_id": "depth_fig_d2_s1",
+      "snapshot_sha256": "38ddddc595fd740571c1ae34637bc8cead3b661e7355e59575a6f245a9edb19d"
+    },
+    {
+      "best_epoch": 23,
+      "completed_epochs": 29,
+      "next_epoch": 30,
+      "run_id": "depth_fig_d4_s1",
+      "snapshot_sha256": "c872d765b46d483487f254373f4890c7970ec95786b454dde496e63c94e70cb1"
+    }
+  ],
+  "official_training_started": false,
+  "protected_files_unchanged": true,
+  "script_sha256": {
+    "resume_adapter.py": "a270d523a08ca501fe393500298371550a3907a032e21c9209e925e7fe3b557c",
+    "validate_resume.py": "ae7313183d1717e677e0a36e6d5335ae1ef108ec598c8a59660246aa29fd14c2"
+  },
+  "status": "passed",
+  "test_data_read": false,
+  "torch_version": "2.6.0+cpu",
+  "validation_scope": "tiny synthetic train/validation arrays; original train_model and epoch body; two pauses and resumes per case"
+}

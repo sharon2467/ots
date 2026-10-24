@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "figure_count": 3,
+  "combined_pdf_pages": 3,
+  "plotted_values_exactly_equal_saved_data": true,
+  "artifacts_sha256": {
+    "plots/fig10a_nearest_row_spectrum.png": "335d8295a61a4a0dc89d8a75880f48dfdf379f76399ec5706cc98605b9b03612",
+    "plots/fig10a_nearest_row_spectrum.pdf": "1013ca63dcc5c02a7027269143e7c3a21421b7104fe553e50b71308eae12087e",
+    "plots/fig10b_nearest_row_spectrum.png": "b8a32e5460cafa1e7ca5b278e77c855dd1fd5b7c81c2c7471e9be3aea663d8a6",
+    "plots/fig10b_nearest_row_spectrum.pdf": "e33fc89f100e4a0e8491d24d697fb4b3eecbc3fab9da852b9d782f730c8e84ce",
+    "plots/fig10c_nearest_row_spectrum.png": "a6acdc3a0454e96a3a83f77b5be0fbca9e6007c30c4849020528f7cfffc52fdb",
+    "plots/fig10c_nearest_row_spectrum.pdf": "fa5d57a2ef02060eb098e11a1f98426111f90a52c57885bfa7a5937e5fb4ed98",
+    "fig10_nearest_row_review.pdf": "81b5d761266cb211496ec0823ce49e1b2473373653d7c311ab923a52df2f9fcb"
+  },
+  "processing_manifest_sha256": "60832618faabf725d9a86b0ca9a71a639562ea5a4ceca5765c188cfd558d4e27",
+  "script_sha256": "82537e0372977fcdbc2c156e060076229127d898fb5ad248a9474ebe9719265a"
+}

@@ -1,0 +1,678 @@
+{
+  "status": "saved_for_visual_review",
+  "datasets": {
+    "fig10a": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+      "source_sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+      "source_field": "measured_raw",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10a.npz",
+      "output_sha256": "11ab5068d6d0159a26a8626a2265058a5ec40070c2e6a1095c839ff93c1f7d2c",
+      "shape_time_wavelength": [
+        556,
+        527
+      ],
+      "intensity_units": "counts",
+      "operation": "original_measured_raw_minus_1691",
+      "rectangles": [],
+      "replacement_pixel_count": 0,
+      "values_changed_from_original": 293012,
+      "values_changed_from_previous_zero_version": 0,
+      "tie_count_left_preferred": 0,
+      "all_donors_original_valid": null,
+      "intensity_range": [
+        0.0,
+        3200.0
+      ],
+      "coordinates_and_source_indices_unchanged": true,
+      "outside_replacement_mask_unchanged": null
+    },
+    "fig10b": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "source_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "source_field": "intensity",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10b.npz",
+      "output_sha256": "34f8088fb2330ba75d8f7ba49d7ab52ad0871c148c845a31fa531cb009cc3116",
+      "shape_time_wavelength": [
+        480,
+        319
+      ],
+      "intensity_units": "digitized_colorbar_position_0_to_1",
+      "operation": "copy_nearest_original_unmasked_value_within_same_row",
+      "rectangles": [
+        {
+          "name": "panel_label",
+          "bounds_row_start_stop_col_start_stop": [
+            16,
+            58,
+            252,
+            303
+          ],
+          "time_centers_ns": [
+            1.611917098445596,
+            1.866839378238342
+          ],
+          "wavelength_centers_nm": [
+            263.8776397515528,
+            264.188198757764
+          ],
+          "pixel_count": 2142
+        },
+        {
+          "name": "top_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            0,
+            6,
+            157,
+            162
+          ],
+          "time_centers_ns": [
+            1.5124352331606217,
+            1.5435233160621762
+          ],
+          "wavelength_centers_nm": [
+            263.2875776397516,
+            263.31242236024843
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "bottom_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            474,
+            480,
+            157,
+            162
+          ],
+          "time_centers_ns": [
+            4.45958549222798,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            263.2875776397516,
+            263.31242236024843
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 20
+        },
+        {
+          "name": "right_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "left_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 25
+        },
+        {
+          "name": "right_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            0,
+            5
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            262.31242236024843,
+            262.33726708074533
+          ],
+          "pixel_count": 10
+        },
+        {
+          "name": "right_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            313,
+            319
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            264.25652173913045,
+            264.2875776397516
+          ],
+          "pixel_count": 12
+        }
+      ],
+      "replacement_pixel_count": 2488,
+      "values_changed_from_original": 1606,
+      "values_changed_from_previous_zero_version": 2277,
+      "tie_count_left_preferred": 54,
+      "all_donors_original_valid": true,
+      "intensity_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "coordinates_and_source_indices_unchanged": true,
+      "outside_replacement_mask_unchanged": true
+    },
+    "fig10c": {
+      "source_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+      "source_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "source_field": "intensity",
+      "output_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10c.npz",
+      "output_sha256": "e81ba6359ee285f742cb7b71e60eb2b79e4a3e238a57c23f592c3366bb456f75",
+      "shape_time_wavelength": [
+        480,
+        320
+      ],
+      "intensity_units": "digitized_colorbar_position_0_to_1",
+      "operation": "copy_nearest_original_unmasked_value_within_same_row",
+      "rectangles": [
+        {
+          "name": "panel_label",
+          "bounds_row_start_stop_col_start_stop": [
+            16,
+            58,
+            257,
+            305
+          ],
+          "time_centers_ns": [
+            1.611917098445596,
+            1.866839378238342
+          ],
+          "wavelength_centers_nm": [
+            263.9055900621118,
+            264.1975155279503
+          ],
+          "pixel_count": 2016
+        },
+        {
+          "name": "top_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            0,
+            6,
+            158,
+            163
+          ],
+          "time_centers_ns": [
+            1.5124352331606217,
+            1.5435233160621762
+          ],
+          "wavelength_centers_nm": [
+            263.2906832298137,
+            263.3155279503106
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "bottom_center_tick",
+          "bounds_row_start_stop_col_start_stop": [
+            474,
+            480,
+            158,
+            163
+          ],
+          "time_centers_ns": [
+            4.45958549222798,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            263.2906832298137,
+            263.3155279503106
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "right_tick_2ns",
+          "bounds_row_start_stop_col_start_stop": [
+            77,
+            81,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            1.9911917098445595,
+            2.0098445595854924
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 24
+        },
+        {
+          "name": "left_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_2.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            157,
+            162,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            2.48860103626943,
+            2.5134715025906735
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_3ns",
+          "bounds_row_start_stop_col_start_stop": [
+            237,
+            242,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            2.9860103626943006,
+            3.010880829015544
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_3.5ns",
+          "bounds_row_start_stop_col_start_stop": [
+            318,
+            323,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            3.489637305699482,
+            3.514507772020725
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "right_tick_4ns",
+          "bounds_row_start_stop_col_start_stop": [
+            398,
+            403,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            3.9870466321243523,
+            4.011917098445596
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 30
+        },
+        {
+          "name": "left_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            0,
+            6
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            262.30931677018634,
+            262.3403726708075
+          ],
+          "pixel_count": 12
+        },
+        {
+          "name": "right_tick_bottom_corner",
+          "bounds_row_start_stop_col_start_stop": [
+            478,
+            480,
+            314,
+            320
+          ],
+          "time_centers_ns": [
+            4.484455958549223,
+            4.4906735751295335
+          ],
+          "wavelength_centers_nm": [
+            264.25962732919254,
+            264.2906832298137
+          ],
+          "pixel_count": 12
+        }
+      ],
+      "replacement_pixel_count": 2388,
+      "values_changed_from_original": 1407,
+      "values_changed_from_previous_zero_version": 2180,
+      "tie_count_left_preferred": 12,
+      "all_donors_original_valid": true,
+      "intensity_range": [
+        0.0,
+        0.9979123173277662
+      ],
+      "coordinates_and_source_indices_unchanged": true,
+      "outside_replacement_mask_unchanged": true
+    }
+  },
+  "mask_source": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/processing_manifest.json",
+  "mask_source_sha256": "c60ce4a991dd4ee3d781b32689e83170a08b3b2c60ffab292742399a15f13eb1",
+  "nearest_rule": "Minimum native column index distance among unmasked columns of the same original row; equal distance takes left.",
+  "donors_are_original_values_not_previously_filled_values": true,
+  "global_valid_mask_filtering": false,
+  "smoothing": false,
+  "renormalization": false,
+  "coordinate_resampling": false,
+  "new_inference": false,
+  "protected_file_count": 43,
+  "protected_files_sha256": {
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/evaluation.py": "0b3e196ab5910242ce968c6bc7b50f268a3c6ac914c40ce7742e72b5d06d8a7f",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/extract_ots_data.py": "f655bd00609447173d385cadad6c2f546152fbe6851565d6b327fb7ac99f3668",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/fit_ots_experiments.py": "a8ed61703f8e988d1bc8ed0d29009f068aa60e62b3c496fe2d4d8cdd5a02c8e4",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/improve_ots_pilot.py": "b1e22e77eed865984a6abcb2f917d1a8a643a2a05262e686b554ea8b20099b57",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/main.py": "0b9d0c5e9c5f172fefd6369c7f42feccddf33821109f1a8d840dcb7e94807879",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/model.py": "ed6f0e84c2e57f14b264ba8750913104c131f286a5c0b5466c61a31c19913954",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/spectral_fitting.py": "9f8fdf641fb17de1583e7ec35802860553aafe0fbbc7ab99164104d360833bd7",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/train.py": "b16e638ec8462cb016e27679c076ed6b284e32b843e09f97bbac29d71e6c8f3e",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_fourier.py": "8408f63f53c2c4c26ca6fbc0f3d1d3132f1eaece684bf16556a765f3f218f905",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_full_fourier.py": "f48ad0b5f092a0021c1bd1d15430977617045ac72a736ab4f01470d83055b191",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/phyEqns/ots_superGaussian.py": "f0302b49650c584264488e33db2fe25615b7dca137d181181c6b3a4313fb1cac",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/compare_maxwellian_paths.py": "a5dff019e5e5269cc5fb7566afc9db4e8a90e0f56f812bf36696400ea38e6c04",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_data_t2.py": "46ea95e12db49330171a1df0dc2c8269081941ee251fd82ce38ff63914217c70",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_evaluation_t4.py": "d76bcc751a9d8b85846d89e521d66213f3909b48b41612c4cab84bcf211df973",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_legacy_cleanup_t6.py": "459c60d79c699d28b291f737f9efb14bb654891c529d549314f1437449f5ff83",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_main_t5.py": "113885d5ffcf02ba5e2ab649f05813e4606663e215ab9d3dc6461cec29e21110",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_model_train_t3.py": "d0f3a64d3f7f3c8d54a2125562312ce091abebe15fddebf3c622c33322c714c0",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_ots_full_fourier_t1.py": "1a123479604f293f4ffdb3cce449cd9e2c1e847e46899a412d02bf88ebd37d39",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_registry_t7.py": "e30ad12532fc15d0ccfffc60112a67e4e66253cf8fed53f694511a15a29ace7c",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/tests/test_second_dataset_t8.py": "1fe85c8d5b3728fb967ba71f285d1e8462b9c9a534c912b92838b333bcc6a865",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/prepare_datasets.py": "dbe04c4e219e10ba0c67540393ad6c741618b3d9ed736db68e1830c823d0760d",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/processing_manifest.json": "c60ce4a991dd4ee3d781b32689e83170a08b3b2c60ffab292742399a15f13eb1",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plotting_manifest.json": "fbf1b5238301bdc011a31c508963fdb41d6bc725fe31efd776a73f485b87c731",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/fig10_cleaned_review.pdf": "53d78fce532af953c27deec6e84e93fc6d347a760faaa28265365abacac7cf7c",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plot_datasets.py": "e81b3d4f6b04d4a6c7a1da1d7df8c136f59c19913d37b1d7b588f6849de54f33",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10b.npz": "cbadc26c6999a94fc613a3afab24096a53caf85a590b1d321501c1ab82e4d363",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10a.npz": "a5a678f7ad098e38027a114577923e6a7148b2c5bf52bef032684c47f99e3942",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/datasets/fig10c.npz": "0ed16c7351abc515cfc22fc24a8d244699f1776c05556a0fa2ad91d4e4279ff7",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10bc_zeroed_regions.png": "579cf8014a2ba9c173aaa85140e4216fbde81328d928658bed45f5c9474aedb6",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10abc_cleaned_spectra.pdf": "b02bf2d79950b61bfb0e78113f18340b1a1f1f514df18630bf5aab252a94c86a",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10a_cleaned_spectrum.pdf": "5c2f3b45ece7b1e6b314ea0b6b24657e5d11a130edd5f53750ed46cc284d867d",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10a_cleaned_spectrum.png": "482a04fae42ad651cc712709488d5ced8d1814efa9444b96670bbc1be3194015",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10c_cleaned_spectrum.pdf": "484fb67271d1353701fac0189947dde438ba6df244e9a44a81a468ee964b1cd4",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10b_cleaned_spectrum.png": "80815d9e316c50fb8a1646998fb5da0916c9cee3060dde9a4ff1a0f89b39bc5f",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10bc_zeroed_regions.pdf": "c78b8e7d07e7420fd749e1ab5edd9d96b6f890c3d0617afbf05db283c2171a86",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10abc_cleaned_spectra.png": "90f4b3906a83580cc6d51da01fb26337955d75f9048fc21e0e1e8a97f11776ae",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10c_cleaned_spectrum.png": "24b7b468d4c8d62323e9b225c2cf2bc35be8bab39925bbaf41f69b09c479fbf6",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/plots/fig10b_cleaned_spectrum.pdf": "58e447504ecfb7b018bb3cd814b6bc54b5ac4387e4c1360f51b0e426d8237b0c",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_cleaned_20261021/completion.json": "5fc3f142dddae90ec74b841ce1e794b5080ea5226a313a41fef4a3f6cf58b826"
+  },
+  "script_sha256": "f5e31ea4efe706afd1a07767b7bf16bc7e3453b3fba262f3d7e751c82878a812"
+}

@@ -1,0 +1,93 @@
+{
+  "panel": "fig10a",
+  "row": 0,
+  "shape": [
+    527
+  ],
+  "finite": true,
+  "range": [
+    0.01621037815310827,
+    1.0
+  ],
+  "forward_seconds": 0.386032337002689,
+  "torch_threads": 1,
+  "predictions_sha256": "3abdd8a7d3831d4ba0261ae347547bc1baebdffde6c06ae763f6f4db163280fe",
+  "dataset_sha256": "11ab5068d6d0159a26a8626a2265058a5ec40070c2e6a1095c839ff93c1f7d2c",
+  "config": {
+    "lm_0": 2.633e-07,
+    "n_e": 3.5e+26,
+    "Z_i1": 1.0,
+    "N_i1": 0.7058823529411765,
+    "m_i1": 1.67262192369e-27,
+    "Z_i2": 6.0,
+    "N_i2": 0.29411764705882354,
+    "m_i2": 2.0071463084280003e-26,
+    "V": 1.0000000000000002e-12,
+    "ss": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "k_sh": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "E_i0": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "u_e": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "u_i1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "u_i2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "fourier_modes": 80.0
+  },
+  "preparation": [
+    {
+      "species": "e",
+      "maximum_grid_displacement_m_s": 8.4609375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.0010804686276835386,
+      "maximum_preparation_relativeL2": 0.001630955715179388,
+      "original_T_min_eV": 1265.947625591579,
+      "original_T_max_eV": 1265.947625591579,
+      "processed_T_min_eV": 1339.025211349053,
+      "processed_T_max_eV": 1339.025211349053
+    },
+    {
+      "species": "H",
+      "maximum_grid_displacement_m_s": 0.169677734375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.0014419208911309635,
+      "maximum_preparation_relativeL2": 0.0027604025721946718,
+      "original_T_min_eV": 2318.1864329865093,
+      "original_T_max_eV": 2318.1864329865093,
+      "processed_T_min_eV": 2396.1730050529036,
+      "processed_T_max_eV": 2396.1730050529036
+    },
+    {
+      "species": "C",
+      "maximum_grid_displacement_m_s": 0.05462646484375,
+      "new_grid_relative_spacing_error": 0.0,
+      "maximum_original_negative_mass": 0.0020861787155888574,
+      "maximum_preparation_relativeL2": 0.0028921504262341365,
+      "original_T_min_eV": 831.3277529233352,
+      "original_T_max_eV": 831.3277529233352,
+      "processed_T_min_eV": 927.4392512264448,
+      "processed_T_max_eV": 927.4392512264448
+    }
+  ]
+}

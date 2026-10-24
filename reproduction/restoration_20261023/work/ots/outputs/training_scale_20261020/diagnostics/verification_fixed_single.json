@@ -1,0 +1,344 @@
+{
+  "status": "passed",
+  "kind": "fixed_ion",
+  "training_started": false,
+  "inference_run": false,
+  "canonical_evaluation_run": false,
+  "verifier_sha256": "16d8c5a31cf1458832cfa7aac53a6d3a03a34455b0bf56edb02bb594d1b38d7b",
+  "frozen_selection": {
+    "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/frozen_single_selection.json",
+    "sha256": "aa53407497f3741a216aa1fb1ab9356b558a9c73cac08be3fed407525e0cd53f",
+    "frozen": true
+  },
+  "protected_source": {
+    "count": 21,
+    "baseline_sha256": "bfd3c870da9130a6e8a9456077081646087afebc7317d75863cb561e5f3fe353",
+    "all_match": true
+  },
+  "registry": {
+    "all_existing_links_checked": 48,
+    "this_round_expected_links": 21,
+    "scope": "All existing registry links plus required scale_* run/dataset/checkpoint links",
+    "links": [
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/cloud_fig_e2198eeab80d",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/cloud_onboarding_c640a7880543",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_c640a7880543"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/cloud_onboarding_cf87129428e1",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_cf87129428e1"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_12k",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_12k"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_26k",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_26k_low_lr",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_low_lr"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_26k_low_lr_eval",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_low_lr_eval"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_26k_wide",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fig_26k_wide_eval",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide_eval"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fixed_12k",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_12k"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fixed_30k",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fixed_30k_wide",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k_wide"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/scale_fixed_30k_wide_eval",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k_wide_eval"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fig_a",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_a"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fig_b",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_b"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fig_c",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fixed_a",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_a"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fixed_b",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_b"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/runs/study_fixed_c",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/cloud_fig_e2198eeab80d_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/cloud_onboarding_c640a7880543_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_c640a7880543/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/cloud_onboarding_cf87129428e1_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_cf87129428e1/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/scale_fig_12k_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_12k/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/scale_fig_26k_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/scale_fixed_12k_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_12k/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/scale_fixed_30k_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fig_a_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_a/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fig_b_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_b/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fig_c_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fixed_a_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_a/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fixed_b_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_b/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/datasets/study_fixed_c_data",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c/data"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/cloud_fig_e2198eeab80d_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_fig_e2198eeab80d/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/cloud_onboarding_c640a7880543_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_c640a7880543/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/cloud_onboarding_cf87129428e1_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/cloud_onboarding_cf87129428e1/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fig_12k_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_12k/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fig_26k_low_lr_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_low_lr/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fig_26k_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fig_26k_wide_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fixed_12k_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_12k/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fixed_30k_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/scale_fixed_30k_wide_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k_wide/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fig_a_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_a/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fig_b_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_b/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fig_c_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fixed_a_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_a/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fixed_b_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_b/training"
+      },
+      {
+        "registry": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry/checkpoints/study_fixed_c_model",
+        "target": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c/training"
+      }
+    ],
+    "passed": true
+  },
+  "provenance": {
+    "checkpoint_sha256": "f94b62a60a7ee107ca86e215306c7d3ad042d8ec7df364184200a3ae12169240",
+    "final_json_sha256": "25ea401f277aef635a117c25df62e9a93fe156c5f8c604f936cb813347e70227",
+    "canonical_metrics_sha256": "140f3261b3ca8d2b0245622194ec7f0417fb399178c4903445878db14b65b83e",
+    "test_parquet_sha256": "320998f975c8db67b53a1a9f243a1dae1ff463904695837cbbdba92d382dc3a3",
+    "canonical_run": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fixed_30k_wide_eval",
+    "no_evaluation_fabricated": true
+  },
+  "species": {
+    "e": {
+      "arrays": {
+        "target_coefficients": {
+          "max_abs_difference": 0.0,
+          "relative_l2_difference": 0.0,
+          "exact": true,
+          "rtol": 0,
+          "atol": 0
+        },
+        "k_grid": {
+          "max_abs_difference": 0.0,
+          "relative_l2_difference": 0.0,
+          "exact": true,
+          "rtol": 0,
+          "atol": 0
+        },
+        "predicted_coefficients": {
+          "max_abs_difference": 3.5762786865234375e-07,
+          "relative_l2_difference": 1.0611142309069099e-07,
+          "exact": false,
+          "rtol": 3e-05,
+          "atol": 2e-06
+        },
+        "per_sample_vdf_relative_l2": {
+          "max_abs_difference": 2.330703048405991e-07,
+          "relative_l2_difference": 5.501848750622642e-07,
+          "exact": false,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "saved_vdf_relative_l2": {
+          "max_abs_difference": 2.330703048405991e-07,
+          "relative_l2_difference": 5.501848750622642e-07,
+          "exact": false,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        }
+      },
+      "metrics": {
+        "coefficient_mae": {
+          "independent": 0.008942659929743968,
+          "canonical": 0.008942659012973309,
+          "absolute_difference": 9.167706593871117e-10,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "coefficient_r2": {
+          "independent": 0.9922639225186312,
+          "canonical": 0.992263913154602,
+          "absolute_difference": 9.364029107672422e-09,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "coefficient_rmse": {
+          "independent": 0.02258693333761244,
+          "canonical": 0.02258693240582943,
+          "absolute_difference": 9.317830118593662e-10,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "evdf_mae": {
+          "independent": 9.653988220816034e-11,
+          "canonical": 9.653988025659643e-11,
+          "absolute_difference": 1.951563910473908e-18,
+          "rtol": 5e-05,
+          "atol": 1e-13
+        },
+        "evdf_r2": {
+          "independent": 0.9922350808711078,
+          "canonical": 0.9922350645065308,
+          "absolute_difference": 1.636457702680616e-08,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "evdf_relative_l2_mean": {
+          "independent": 0.03967788408662519,
+          "canonical": 0.03967788442969322,
+          "absolute_difference": 3.430680323157631e-10,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "evdf_relative_l2_median": {
+          "independent": 0.01972478154797825,
+          "canonical": 0.01972474530339241,
+          "absolute_difference": 3.624458583956214e-08,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "evdf_rmse": {
+          "independent": 5.974516444754671e-10,
+          "canonical": 5.97451643713498e-10,
+          "absolute_difference": 7.619691051793738e-19,
+          "rtol": 5e-05,
+          "atol": 1e-13
+        },
+        "hermitian_symmetry_mae": {
+          "independent": 0.0,
+          "canonical": 0.0,
+          "absolute_difference": 0.0,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        },
+        "negative_mass_fraction_mean": {
+          "independent": 0.003393766030058032,
+          "canonical": 0.003393766237422824,
+          "absolute_difference": 2.0736479200422764e-10,
+          "rtol": 5e-05,
+          "atol": 2e-07
+        }
+      },
+      "artifact_hashes": {
+        "independent_predictions": "a78b72e32eb5c1038c079a3ea06278a7e86ab0d18a72fdc47952ff6861469475",
+        "canonical_predictions": "774aa5f5e445b56b5b64bb1ac7595333cd593e2d86e8128fc4545973ff9f2c9d"
+      },
+      "passed": true
+    }
+  }
+}

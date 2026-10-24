@@ -1,0 +1,370 @@
+{
+  "created_at": "2026-10-24T14:44:06.409431+08:00",
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "checkpoint_sha256": "df9a43f15c7ac63917a46b8653db03466fca898931d825e626f991d9f2bf1a58",
+  "selection_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/training_scale_20261020/frozen_single_selection.json",
+  "selection_file_sha256": "aa53407497f3741a216aa1fb1ab9356b558a9c73cac08be3fed407525e0cd53f",
+  "model_choice": "Frozen best native single Fig model; no ensemble or retraining",
+  "input_dim": 319,
+  "output_dim": 480,
+  "dtype": "float32",
+  "preprocessing": [
+    "Use previously authorized wavelength alignment (a/c linear; b unchanged)",
+    "Ignore mask; use every existing value and every row",
+    "Divide each aligned spectrum by its own max(abs(intensity))",
+    "Apply unchanged checkpoint x_mean/x_scale inside predict_coefficients"
+  ],
+  "output_procedure": "Canonical y de-standardization and Hermitian projection, then canonical inverse Fourier on each species checkpoint velocity grid.",
+  "excluded_operations": [
+    "background subtraction",
+    "smoothing",
+    "instrument correction",
+    "mask filling",
+    "row filtering",
+    "additional wavelength/time shifts",
+    "VDF clipping",
+    "VDF renormalization",
+    "temperature fitting"
+  ],
+  "units": {
+    "velocity": "m/s",
+    "vdf": "s/m",
+    "time": "ns",
+    "wavelength": "nm"
+  },
+  "ground_truth_available": false,
+  "interpretation": "Direct model predictions for experimental/image-derived spectra; synthetic held-out accuracy does not measure accuracy on these data.",
+  "datasets": {
+    "fig10a": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/measured_raw_aligned.npz",
+      "input_sha256": "28ba21760a75efd0c1da7b4c9ffda9e5b3872465d7f9e1ea3d6cfe185faf8a6e",
+      "input_array": "intensity_counts",
+      "original_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10a/original/saved_spectral_image.npz",
+      "original_sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+      "row_count": 556,
+      "time_range_ns": [
+        1.501199999999989,
+        4.498199999999989
+      ],
+      "peak_scale_range": [
+        1949.5573716901895,
+        4879.819875774892
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 0.0,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_inference_20261021/results/fig10a/predictions.npz",
+      "output_sha256": "13e7a3e1c363656035c5d08cb06eb58c767d8d5b5d7e043579328600ab6ad854",
+      "species": {
+        "e": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -2.0435521330686157e-11,
+            3.608507981311959e-08
+          ],
+          "signed_integral_range": [
+            0.9999991511416962,
+            1.0000395181240316
+          ],
+          "signed_integral_mean": 1.0000192033083344,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0008159218793656073,
+          "negative_mass_fraction_p95": 0.0008380085434050707,
+          "negative_mass_fraction_max": 0.0008601598503587783,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -2.0092725261378064e-09,
+            1.0812507298396667e-06
+          ],
+          "signed_integral_range": [
+            0.9997668740213528,
+            0.9999001412713524
+          ],
+          "signed_integral_mean": 0.9998290000021869,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.00099251793830343,
+          "negative_mass_fraction_p95": 0.0010506660810395564,
+          "negative_mass_fraction_max": 0.0010871893459418179,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -9.858655225514212e-09,
+            5.5817135944380425e-06
+          ],
+          "signed_integral_range": [
+            0.9997374651021615,
+            0.9997926426955245
+          ],
+          "signed_integral_mean": 0.9997635780751305,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0017721259429740632,
+          "negative_mass_fraction_p95": 0.0018392764969206075,
+          "negative_mass_fraction_max": 0.0019045161486406547,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        }
+      }
+    },
+    "fig10b": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "input_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "input_array": "intensity",
+      "original_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10b/original/digitized_spectra.npz",
+      "original_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "row_count": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "peak_scale_range": [
+        0.0041753653444676075,
+        0.9979123173277662
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 5.684341886080802e-14,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_inference_20261021/results/fig10b/predictions.npz",
+      "output_sha256": "8b64faef4f11c6d675b5311370b18b66b5c672e6527d7a9eaa808b7f9690c236",
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -2.0258991706434415e-10,
+            8.487086233799346e-08
+          ],
+          "signed_integral_range": [
+            0.9995344588610671,
+            1.0007686847837787
+          ],
+          "signed_integral_mean": 1.0001031277533887,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0008364139649053836,
+          "negative_mass_fraction_p95": 0.001460857995422926,
+          "negative_mass_fraction_max": 0.00237991910190601,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -1.3361448054638458e-06,
+            9.358665010950062e-06
+          ],
+          "signed_integral_range": [
+            0.9987878817518274,
+            1.000437493872015
+          ],
+          "signed_integral_mean": 0.9996901017588298,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0032233981345314994,
+          "negative_mass_fraction_p95": 0.0028521055276914857,
+          "negative_mass_fraction_max": 0.19229675849240505,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -2.5106535304075805e-06,
+            2.4817409212118946e-05
+          ],
+          "signed_integral_range": [
+            0.9994241093490496,
+            1.000456515403663
+          ],
+          "signed_integral_mean": 0.9999724942157212,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.003202940328883407,
+          "negative_mass_fraction_p95": 0.0030934647785647263,
+          "negative_mass_fraction_max": 0.14789642677965795,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        }
+      }
+    },
+    "fig10c": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/intensity_aligned.npz",
+      "input_sha256": "9fa41cf3f94d3860e18fbf4a7da3e21b3b058a466565b99d2253f70f41e93c43",
+      "input_array": "intensity",
+      "original_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz",
+      "original_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "row_count": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "peak_scale_range": [
+        0.0041753653444676075,
+        0.9979123173277662
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 0.0,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_inference_20261021/results/fig10c/predictions.npz",
+      "output_sha256": "f361716b389f4b42d03809e1de5e147fd07af5953913cd8028cb0ad3b348a8a2",
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -6.043263112154307e-11,
+            5.833794958221006e-08
+          ],
+          "signed_integral_range": [
+            0.9996022408963663,
+            1.0009241236858881
+          ],
+          "signed_integral_mean": 0.9999437736510386,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0007457373113541609,
+          "negative_mass_fraction_p95": 0.0011822301910320765,
+          "negative_mass_fraction_max": 0.0020933912365445895,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -1.6988199149636785e-06,
+            1.0301220754627138e-05
+          ],
+          "signed_integral_range": [
+            0.9988368931389286,
+            1.0002109171361466
+          ],
+          "signed_integral_mean": 0.9998331180584579,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0035231591002192076,
+          "negative_mass_fraction_p95": 0.0018759971087422144,
+          "negative_mass_fraction_max": 0.22999795434048248,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -3.507005203573499e-06,
+            2.5308356271125376e-05
+          ],
+          "signed_integral_range": [
+            0.9992567767211264,
+            1.0001618283372946
+          ],
+          "signed_integral_mean": 0.9999301445410048,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0034730852649439968,
+          "negative_mass_fraction_p95": 0.0024734362328222913,
+          "negative_mass_fraction_max": 0.16983119766557567,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        }
+      }
+    }
+  },
+  "verification": {
+    "protected_source_files_unchanged": 21,
+    "checkpoint_unchanged": true,
+    "original_and_aligned_inputs_unchanged": true,
+    "registry_links_unchanged": 48,
+    "saved_arrays_roundtrip_exact": true,
+    "all_predictions_finite": true
+  },
+  "inference_and_artifact_wall_seconds": 4.379633753007511,
+  "inference_script_sha256": "02e4d02dc71bb64b3d0906c0fe409029d6f9b0ce347e7551017872ae65e51476"
+}

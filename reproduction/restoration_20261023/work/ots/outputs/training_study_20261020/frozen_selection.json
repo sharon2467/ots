@@ -1,0 +1,61 @@
+{
+  "frozen": true,
+  "frozen_at_utc": "2026-10-24T02:45:51.970138+00:00",
+  "best": {
+    "fixed_ion": {
+      "run_id": "study_fixed_c",
+      "checkpoint_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fixed_c/training/model.pt",
+      "checkpoint_sha256": "09d61d9ecd72ac81a056867b6f47bfbfb152d169b5a4780b22bfafa69dfcf6a7",
+      "selected_candidate": {
+        "best_epoch": 75,
+        "best_validation_loss": 0.051925820867220564,
+        "dropout": 0.02,
+        "hidden_sizes": [
+          1024,
+          1024
+        ]
+      },
+      "validation_macro_relative_l2_mean": 0.06523924336887409
+    },
+    "fig1_fig11": {
+      "run_id": "study_fig_c",
+      "checkpoint_path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/study_fig_c/training/model.pt",
+      "checkpoint_sha256": "f16c7f9fec74264cf185ac4a1fa63bbb50a3ced7bafc7e743dda469c2e7d20c1",
+      "selected_candidate": {
+        "best_epoch": 93,
+        "best_validation_loss": 0.14324508905410765,
+        "dropout": 0.02,
+        "hidden_sizes": [
+          1024,
+          512
+        ]
+      },
+      "validation_macro_relative_l2_mean": 0.08193120398764146
+    }
+  },
+  "auxiliary_temperature": {
+    "method": "taylor_even4_odd3_n3",
+    "selected_using": "A/B validation and analytic Gaussian sign/unit check, same method for all species. No per-sample truth-based window selection.",
+    "changes_model_output": false
+  },
+  "postprocessing": "No VDF clipping, normalization or projection in reported canonical models",
+  "validation_summary_sha256": "90734664ae2735da76f9cdcd3d5117f56a041832f2199f8751f4bf3b2dc0501f",
+  "recomputed_validation_ranking": {
+    "fixed_ion": [
+      "study_fixed_c",
+      "study_fixed_b",
+      "study_fixed_a"
+    ],
+    "fig1_fig11": [
+      "study_fig_c",
+      "study_fig_b",
+      "study_fig_a"
+    ]
+  },
+  "provenance": "historical_model_choices_replayed_with_new_weights",
+  "historical_selection_path": "/workspace/ots_rebuild_20261024T025750_CST/recovered_text/outputs/training_study_20261020/frozen_selection.json",
+  "historical_selection_sha256": "c249b6b10a39ebe7b6c1be530c92ed8214bc74c5c3d6593bf7a6e2c58fbe0037",
+  "new_weights_are_not_originals": true,
+  "new_test_results_used_to_select": false,
+  "choice_rule": "Preserve historical run IDs and mixture weights for restoration; report new validation ranks separately"
+}

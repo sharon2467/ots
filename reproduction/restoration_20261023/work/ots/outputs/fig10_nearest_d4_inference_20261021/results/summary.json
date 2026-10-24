@@ -1,0 +1,496 @@
+{
+  "created_at": "2026-10-24T14:49:03.730255+08:00",
+  "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
+  "checkpoint_sha256": "b822cac9b18878dd45ee324c2bbf2e480f4ece56742e10e1126a571bcc737019",
+  "selection_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig_unified_test_20261021/results.json",
+  "selection_file_sha256": "233e0ecb9936f1e41a2ad62c1adc68503bd9cb487247963fda27755c939bf34b",
+  "model_choice": "Minimum unified test macro relative-L2 across all 20 completed Fig entries, as requested; frozen checkpoint",
+  "model_id": "depth_fig_d4_s0",
+  "checkpoint_id": "depth_fig_d4_s0_model",
+  "hidden_sizes": [
+    2048,
+    1024,
+    1024,
+    1024
+  ],
+  "parameter_count": 5354976,
+  "unified_test_macro_relative_l2": {
+    "mean": 0.054572444409132004,
+    "median": 0.03840833157300949,
+    "p95": 0.15825214982032776,
+    "maximum": 0.5419562458992004
+  },
+  "original_choice": "Depth study selected depth_fig_d4_s0 by validation before opening its test; this inference identifies the same model by the requested unified test minimum.",
+  "earlier_native_fig10_checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/runs/scale_fig_26k_wide/training/model.pt",
+  "previous_fig10_result_directory": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results",
+  "inference_plan": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/inference_plan.json",
+  "inference_plan_sha256": "58c6bd2f8d2347857bef3bbb33f8c2ad3067cda47f1cf15450e37d6e6e9f5b85",
+  "input_dim": 319,
+  "output_dim": 480,
+  "dtype": "float32",
+  "preprocessing": [
+    "Use latest prepared intensity; a already subtracts 1691, b/c already filled; a/c np.interp without extrapolation, b unchanged",
+    "Ignore mask; use every existing value and every row",
+    "Divide each aligned spectrum by its own max(abs(intensity))",
+    "Apply unchanged checkpoint x_mean/x_scale inside predict_coefficients"
+  ],
+  "output_procedure": "Canonical y de-standardization and Hermitian projection, then canonical inverse Fourier on each species checkpoint velocity grid.",
+  "excluded_operations": [
+    "additional/repeated background subtraction",
+    "smoothing",
+    "instrument correction",
+    "additional artifact filling",
+    "row filtering",
+    "additional wavelength/time shifts",
+    "VDF clipping",
+    "VDF renormalization",
+    "temperature fitting"
+  ],
+  "units": {
+    "velocity": "m/s",
+    "vdf": "s/m",
+    "time": "ns",
+    "wavelength": "nm"
+  },
+  "ground_truth_available": false,
+  "interpretation": "Direct model predictions for experimental/image-derived spectra; synthetic held-out accuracy does not measure accuracy on these data.",
+  "datasets": {
+    "fig10a": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10a.npz",
+      "input_sha256": "11ab5068d6d0159a26a8626a2265058a5ec40070c2e6a1095c839ff93c1f7d2c",
+      "input_array": "intensity",
+      "native_intensity_shape": [
+        556,
+        527
+      ],
+      "alignment": "float64 np.interp on wavelength only; no extrapolation",
+      "native_input_fields_preserved": [
+        "intensity",
+        "time_paper_ns",
+        "wavelength_nm",
+        "source_row_index",
+        "replacement_mask",
+        "donor_column_index",
+        "background_subtracted_counts",
+        "intensity_units",
+        "source_file_sha256",
+        "source_intensity_key",
+        "processing_version"
+      ],
+      "native_provenance_prefix": "native_ (mask and donor indices stay on the native grid)",
+      "upstream_original_sha256": "1e34392d96e33e97eb2403ddd89b1705f067a2dbd6d78e3e423178f5ed5c2771",
+      "background_already_subtracted_counts": 1691.0,
+      "native_replacement_pixel_count": 0,
+      "repeated_subtraction_or_filling": false,
+      "row_count": 556,
+      "time_range_ns": [
+        1.501199999999989,
+        4.498199999999989
+      ],
+      "peak_scale_range": [
+        258.55737169018954,
+        3188.8198757748924
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 0.0,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10a/predictions.npz",
+      "output_sha256": "3abdd8a7d3831d4ba0261ae347547bc1baebdffde6c06ae763f6f4db163280fe",
+      "species": {
+        "e": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -3.572465240297973e-11,
+            3.658975700204792e-08
+          ],
+          "signed_integral_range": [
+            1.0000239400363178,
+            1.0003348339598097
+          ],
+          "signed_integral_mean": 1.0001936298714462,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.001067819847511517,
+          "negative_mass_fraction_p95": 0.001232729756602058,
+          "negative_mass_fraction_max": 0.0013074611321359634,
+          "negative_mass_fraction_max_array_row": 360,
+          "negative_mass_fraction_max_source_row_index": 504,
+          "negative_mass_fraction_max_time_ns": 3.445199999999989,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -3.6165397343523864e-09,
+            1.064118237081857e-06
+          ],
+          "signed_integral_range": [
+            1.0003796603357449,
+            1.0007065536207764
+          ],
+          "signed_integral_mean": 1.000554079556382,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0013817359123160042,
+          "negative_mass_fraction_p95": 0.001525321915109968,
+          "negative_mass_fraction_max": 0.0016578235670702702,
+          "negative_mass_fraction_max_array_row": 200,
+          "negative_mass_fraction_max_source_row_index": 344,
+          "negative_mass_fraction_max_time_ns": 2.5811999999999893,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            556,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -1.5394139296631693e-08,
+            6.497270987892989e-06
+          ],
+          "signed_integral_range": [
+            0.9999222131953088,
+            1.0002808611114513
+          ],
+          "signed_integral_mean": 1.000079287346641,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0018729725252666274,
+          "negative_mass_fraction_p95": 0.0022169502654622057,
+          "negative_mass_fraction_max": 0.0024066426103406097,
+          "negative_mass_fraction_max_array_row": 85,
+          "negative_mass_fraction_max_source_row_index": 229,
+          "negative_mass_fraction_max_time_ns": 1.960199999999989,
+          "rows_with_any_negative_vdf": 556,
+          "ground_truth_available": false
+        }
+      }
+    },
+    "fig10b": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10b.npz",
+      "input_sha256": "34f8088fb2330ba75d8f7ba49d7ab52ad0871c148c845a31fa531cb009cc3116",
+      "input_array": "intensity",
+      "native_intensity_shape": [
+        480,
+        319
+      ],
+      "alignment": "none: float32 axis identical; float64 difference < 1e-12 nm",
+      "native_input_fields_preserved": [
+        "intensity",
+        "time_paper_ns",
+        "wavelength_nm",
+        "source_row_index",
+        "replacement_mask",
+        "donor_column_index",
+        "background_subtracted_counts",
+        "intensity_units",
+        "source_file_sha256",
+        "source_intensity_key",
+        "processing_version",
+        "source_col_index"
+      ],
+      "native_provenance_prefix": "native_ (mask and donor indices stay on the native grid)",
+      "upstream_original_sha256": "ed8421ee00c4df0e2038b91fbac8829202a1291e3583bfeb4066f1daf89db334",
+      "background_already_subtracted_counts": 0.0,
+      "native_replacement_pixel_count": 2488,
+      "repeated_subtraction_or_filling": false,
+      "row_count": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "peak_scale_range": [
+        0.0041753653444676075,
+        0.9979123173277662
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 5.684341886080802e-14,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10b/predictions.npz",
+      "output_sha256": "6b340419d91dfd2c07f9458fdb184d0e15ec1651e5b840ee5be3da5948503e5a",
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -2.1470264455203392e-10,
+            9.020890701094686e-08
+          ],
+          "signed_integral_range": [
+            0.9998497363889289,
+            1.0006457472444938
+          ],
+          "signed_integral_mean": 1.0002875025199576,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0013848829579048056,
+          "negative_mass_fraction_p95": 0.0030268646772673314,
+          "negative_mass_fraction_max": 0.00421815172916009,
+          "negative_mass_fraction_max_array_row": 73,
+          "negative_mass_fraction_max_source_row_index": 88,
+          "negative_mass_fraction_max_time_ns": 1.966321243523316,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -4.4816785838008855e-09,
+            1.8366462199992384e-06
+          ],
+          "signed_integral_range": [
+            0.9993649183359767,
+            1.0007100527636845
+          ],
+          "signed_integral_mean": 1.0001352509163275,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0012742370133981145,
+          "negative_mass_fraction_p95": 0.0019709255756779603,
+          "negative_mass_fraction_max": 0.00223165922191943,
+          "negative_mass_fraction_max_array_row": 229,
+          "negative_mass_fraction_max_source_row_index": 244,
+          "negative_mass_fraction_max_time_ns": 2.9362694300518135,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -1.736663968188168e-08,
+            8.341485226992518e-06
+          ],
+          "signed_integral_range": [
+            0.999242865895194,
+            1.0007634680258017
+          ],
+          "signed_integral_mean": 1.0000992527808128,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0021430140660820066,
+          "negative_mass_fraction_p95": 0.003180145017334657,
+          "negative_mass_fraction_max": 0.003622563664510662,
+          "negative_mass_fraction_max_array_row": 38,
+          "negative_mass_fraction_max_source_row_index": 53,
+          "negative_mass_fraction_max_time_ns": 1.7487046632124352,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        }
+      }
+    },
+    "fig10c": {
+      "input_file": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_row_fill_20261021/datasets/fig10c.npz",
+      "input_sha256": "e81ba6359ee285f742cb7b71e60eb2b79e4a3e238a57c23f592c3366bb456f75",
+      "input_array": "intensity",
+      "native_intensity_shape": [
+        480,
+        320
+      ],
+      "alignment": "float64 np.interp on wavelength only; no extrapolation",
+      "native_input_fields_preserved": [
+        "intensity",
+        "time_paper_ns",
+        "wavelength_nm",
+        "source_row_index",
+        "replacement_mask",
+        "donor_column_index",
+        "background_subtracted_counts",
+        "intensity_units",
+        "source_file_sha256",
+        "source_intensity_key",
+        "processing_version",
+        "source_col_index"
+      ],
+      "native_provenance_prefix": "native_ (mask and donor indices stay on the native grid)",
+      "upstream_original_sha256": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+      "background_already_subtracted_counts": 0.0,
+      "native_replacement_pixel_count": 2388,
+      "repeated_subtraction_or_filling": false,
+      "row_count": 480,
+      "time_range_ns": [
+        1.5124352331606217,
+        4.4906735751295335
+      ],
+      "peak_scale_range": [
+        0.0031315240083602588,
+        0.9979123173277662
+      ],
+      "normalized_peak_min_max": [
+        1.0,
+        1.0
+      ],
+      "normalization_precision": "Divide in float64, cast to model float32",
+      "wave_max_abs_difference_from_layout_nm": 0.0,
+      "output": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/results/fig10c/predictions.npz",
+      "output_sha256": "2e144fdf8fdff214f609b37e3c70f39ef0cad723cab4e6feaa26af0bd3d78bad",
+      "species": {
+        "e": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -168003152.0,
+            168003152.0
+          ],
+          "vdf_range_s_per_m": [
+            -1.821755385433832e-10,
+            5.79324037630613e-08
+          ],
+          "signed_integral_range": [
+            0.9997584061750849,
+            1.0005568337976811
+          ],
+          "signed_integral_mean": 1.0001241927169313,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0008857546363772752,
+          "negative_mass_fraction_p95": 0.0012395322631336338,
+          "negative_mass_fraction_max": 0.004285809121958005,
+          "negative_mass_fraction_max_array_row": 80,
+          "negative_mass_fraction_max_source_row_index": 95,
+          "negative_mass_fraction_max_time_ns": 2.0098445595854924,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "H": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -3263276.75,
+            3263276.75
+          ],
+          "vdf_range_s_per_m": [
+            -4.07494527010499e-09,
+            1.8232757383884746e-06
+          ],
+          "signed_integral_range": [
+            0.9999379242002584,
+            1.0006575733615382
+          ],
+          "signed_integral_mean": 1.000244080358266,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0011760303045816125,
+          "negative_mass_fraction_p95": 0.0017049378690851844,
+          "negative_mass_fraction_max": 0.0019506165638866408,
+          "negative_mass_fraction_max_array_row": 44,
+          "negative_mass_fraction_max_source_row_index": 59,
+          "negative_mass_fraction_max_time_ns": 1.7860103626943005,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        },
+        "C": {
+          "shape": [
+            480,
+            4097
+          ],
+          "finite": true,
+          "velocity_range_m_s": [
+            -966923.1875,
+            966923.1875
+          ],
+          "vdf_range_s_per_m": [
+            -1.5349041149193e-08,
+            6.837819000793388e-06
+          ],
+          "signed_integral_range": [
+            0.9992967552179464,
+            1.0006423773966868
+          ],
+          "signed_integral_mean": 0.9998647668685636,
+          "rows_with_nonpositive_integral": 0,
+          "negative_mass_fraction_definition": "integral(max(-f,0))/integral(abs(f))",
+          "negative_mass_fraction_mean": 0.0019209412337043699,
+          "negative_mass_fraction_p95": 0.0032729470907627446,
+          "negative_mass_fraction_max": 0.0032869839296718654,
+          "negative_mass_fraction_max_array_row": 132,
+          "negative_mass_fraction_max_source_row_index": 147,
+          "negative_mass_fraction_max_time_ns": 2.333160621761658,
+          "rows_with_any_negative_vdf": 480,
+          "ground_truth_available": false
+        }
+      }
+    }
+  },
+  "verification": {
+    "protected_source_files_unchanged": 21,
+    "checkpoint_unchanged": true,
+    "latest_native_inputs_unchanged": true,
+    "registry_links_unchanged": {
+      "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/registry": 48,
+      "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/registry": 35
+    },
+    "protected_artifacts_unchanged": 113,
+    "layout_and_axes_equal_previous_checkpoint": true,
+    "latest_prepared_inputs_used": true,
+    "native_fields_preserved_and_alignment_explicit": true,
+    "saved_arrays_roundtrip_exact": true,
+    "all_predictions_finite": true
+  },
+  "status": "completed",
+  "total_rows": 1516,
+  "runtime_versions": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "numpy": "2.2.3",
+    "torch": "2.6.0+cpu"
+  },
+  "inference_and_artifact_wall_seconds": 5.471771962998901,
+  "inference_script_sha256": "027f8d90ad155db8131aa94fe94a9fe87f6145831fb59238d815f10366741924"
+}

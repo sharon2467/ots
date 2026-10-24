@@ -1,0 +1,112 @@
+{
+  "status": "complete_read_only_diagnostic",
+  "no_new_inference": true,
+  "no_input_or_prediction_changes": true,
+  "protected_files_verified": 50,
+  "existing_inference_files_verified": 45,
+  "records": [
+    {
+      "row_index": 77,
+      "source_row_index": 92,
+      "actual_time_ns": 1.9911917098445595,
+      "e_vdf_peak_s_m": 5.596873720037365e-08,
+      "half_max_grid_span_km_s": 16570.623046875,
+      "normalized_edge_max_first_last_5": 0.011799409985542297,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 78,
+      "source_row_index": 93,
+      "actual_time_ns": 1.9974093264248705,
+      "e_vdf_peak_s_m": 3.675534543390313e-08,
+      "half_max_grid_span_km_s": 25840.328125,
+      "normalized_edge_max_first_last_5": 0.6991150379180908,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 79,
+      "source_row_index": 94,
+      "actual_time_ns": 2.003626943005181,
+      "e_vdf_peak_s_m": 3.673325110753467e-08,
+      "half_max_grid_span_km_s": 25840.328125,
+      "normalized_edge_max_first_last_5": 0.7032641172409058,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 80,
+      "source_row_index": 95,
+      "actual_time_ns": 2.0098445595854924,
+      "e_vdf_peak_s_m": 5.661549451474457e-08,
+      "half_max_grid_span_km_s": 16570.623046875,
+      "normalized_edge_max_first_last_5": 0.020771512761712074,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 238,
+      "source_row_index": 253,
+      "actual_time_ns": 2.9922279792746114,
+      "e_vdf_peak_s_m": 3.2605129263174604e-08,
+      "half_max_grid_span_km_s": 27645.05078125,
+      "normalized_edge_max_first_last_5": 0.02380952425301075,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 239,
+      "source_row_index": 254,
+      "actual_time_ns": 2.998445595854922,
+      "e_vdf_peak_s_m": 3.6010014525800216e-08,
+      "half_max_grid_span_km_s": 26578.623046875,
+      "normalized_edge_max_first_last_5": 1.0,
+      "normalized_interior_max_excluding_5_edges": 0.08768267184495926
+    },
+    {
+      "row_index": 240,
+      "source_row_index": 255,
+      "actual_time_ns": 3.0046632124352333,
+      "e_vdf_peak_s_m": 3.2368863145393334e-08,
+      "half_max_grid_span_km_s": 27891.1484375,
+      "normalized_edge_max_first_last_5": 0.0476190485060215,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 399,
+      "source_row_index": 414,
+      "actual_time_ns": 3.993264248704663,
+      "e_vdf_peak_s_m": 2.3754104461204406e-08,
+      "half_max_grid_span_km_s": 39703.87109375,
+      "normalized_edge_max_first_last_5": 0.008333333767950535,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    },
+    {
+      "row_index": 400,
+      "source_row_index": 415,
+      "actual_time_ns": 3.999481865284974,
+      "e_vdf_peak_s_m": 3.524915825892094e-08,
+      "half_max_grid_span_km_s": 26906.75390625,
+      "normalized_edge_max_first_last_5": 1.0,
+      "normalized_interior_max_excluding_5_edges": 0.5020661354064941
+    },
+    {
+      "row_index": 401,
+      "source_row_index": 416,
+      "actual_time_ns": 4.005699481865285,
+      "e_vdf_peak_s_m": 2.3469025833833257e-08,
+      "half_max_grid_span_km_s": 40442.1640625,
+      "normalized_edge_max_first_last_5": 0.0,
+      "normalized_interior_max_excluding_5_edges": 1.0
+    }
+  ],
+  "raw_and_predictions_sha256": {
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_input_alignment_20261021/fig10c/original/digitized_spectra.npz": "3937bb3ec1d790576b57e208c8182941d3031a805356514f0cd62b990ea02291",
+    "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/results/fig10c/predictions.npz": "9acd81b525bceafeaf328ac3e1afbe7bd9c6468e99d0c3497b3a87d21f169420"
+  },
+  "figures_sha256": {
+    "fig10c_2ns_diagnostic.png": "0e40a526aaff43b6866ffdcb84904c476e19dc2d6a01b8344712c0c2c238aef7",
+    "fig10c_2ns_diagnostic.pdf": "b66d47c08956a9df620a1ebcee29efebfb9950bd1997051eb954b49030e7313c",
+    "fig10c_representatives_vs_neighbors.png": "9a79ba09410b7b183cf626c862d0a8cd40f02fb34bc4bdeac2007f0bcc1549d4",
+    "fig10c_representatives_vs_neighbors.pdf": "397cd6405c8002bd6473c16816057e476e9d2b3e40cd07b0e7a32c6920a5c574"
+  },
+  "script_sha256": "1cedb7f81e6c632cc911311906cd3f98575f2d4df793e5984d82df6a459805e9",
+  "width_note": "Span of native grid samples above half maximum, not a temperature fit.",
+  "causality_limit": "Edge anomalies and prediction changes correspond; no corrected-input counterfactual was run."
+}

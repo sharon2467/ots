@@ -1,0 +1,1 @@
+This is a new replay of the historical latest-data D4 workflow. Original processed-input SHA checks are recorded separately. The model is retrained, not an original recovered weight file. All authorized processing remains unchanged.

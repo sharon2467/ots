@@ -1,0 +1,18 @@
+{
+  "original_working_sources_modified": false,
+  "publication_copy_path_changes": [
+    {
+      "path": "OTS_code_share/NN_hotE_large_lmRange/data.py",
+      "source_sha256": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+      "public_sha256": "ad364dc40c2af651deeb9f9828405b84be685913179835ed1c3249bc1037e388",
+      "change": "single default points_csv path literal only; numerical AST unchanged"
+    },
+    {
+      "path": "reproduction/restoration_20261023/work/ots/OTS_code_share/NN_hotE_large_lmRange/data.py",
+      "source_sha256": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
+      "public_sha256": "ad364dc40c2af651deeb9f9828405b84be685913179835ed1c3249bc1037e388",
+      "change": "single default points_csv path literal only; numerical AST unchanged"
+    }
+  ],
+  "scientific_AST_comparison": "identical after replacing the single documented default points_csv string"
+}

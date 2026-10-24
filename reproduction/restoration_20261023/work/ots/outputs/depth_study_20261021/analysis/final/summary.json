@@ -1,0 +1,1210 @@
+{
+  "comparisons": [
+    {
+      "candidate": "depth_fig_w3_s0",
+      "label": "W3",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.0005370859158574604,
+          0.0005005335895248208
+        ],
+        "difference_candidate_minus_reference": -1.9995587535959203e-05,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_d2_s0",
+      "reference_label": "D2",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.00043657685253037923,
+            0.0010372510740921824
+          ],
+          "difference_candidate_minus_reference": 0.0003010408022419142,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0007194626670184335,
+            0.0009549591694167246
+          ],
+          "difference_candidate_minus_reference": 0.00011094164437963627,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0015355367044321611,
+            0.0005478229025584366
+          ],
+          "difference_candidate_minus_reference": -0.00047196926880133105,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261030
+    },
+    {
+      "candidate": "depth_fig_d4_s0",
+      "label": "D4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.0065505759804182166,
+          -0.0044434210930148765
+        ],
+        "difference_candidate_minus_reference": -0.005496010949173069,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_d2_s0",
+      "reference_label": "D2",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0028524068218189315,
+            -4.2656703521970836e-05
+          ],
+          "difference_candidate_minus_reference": -0.0014596836858800089,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.00662088089828785,
+            -0.0034296466408704875
+          ],
+          "difference_candidate_minus_reference": -0.005018200794438599,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.011660457584628147,
+            -0.008420852130859658
+          ],
+          "difference_candidate_minus_reference": -0.010010148492028748,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261030
+    },
+    {
+      "candidate": "depth_fig_d4_s0",
+      "label": "D4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.006345964095180534,
+          -0.00417341616050635
+        ],
+        "difference_candidate_minus_reference": -0.005261263304419117,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_w4_s0",
+      "reference_label": "W4",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.003091445503810064,
+            -0.0003941902624319495
+          ],
+          "difference_candidate_minus_reference": -0.0017492982765361376,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.006257025581749076,
+            -0.00311570904209475
+          ],
+          "difference_candidate_minus_reference": -0.0046687084268342005,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.011051907788601056,
+            -0.0076996243307064565
+          ],
+          "difference_candidate_minus_reference": -0.009365783432031094,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261030
+    },
+    {
+      "candidate": "depth_fig_w4_s0",
+      "label": "W4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.0007671321260431796,
+          0.00030707335088209215
+        ],
+        "difference_candidate_minus_reference": -0.00023474764475395204,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_d2_s0",
+      "reference_label": "D2",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0005160530609259695,
+            0.0011001095406527382
+          ],
+          "difference_candidate_minus_reference": 0.0002896145906561287,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0011984184904235916,
+            0.0004755165884262162
+          ],
+          "difference_candidate_minus_reference": -0.00034949236760439817,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.001687517116147319,
+            0.00035858728901985146
+          ],
+          "difference_candidate_minus_reference": -0.0006443650599976536,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261030
+    },
+    {
+      "candidate": "depth_fig_d4_s1",
+      "label": "D4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.00413356613552196,
+          -0.002391706180628717
+        ],
+        "difference_candidate_minus_reference": -0.003244290004204231,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_d2_s1",
+      "reference_label": "D2",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.0028674337027723594,
+            -0.0006302348045437613
+          ],
+          "difference_candidate_minus_reference": -0.001754120279201743,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.002479499455535006,
+            0.00013104718857448442
+          ],
+          "difference_candidate_minus_reference": -0.0011568396039365325,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.008314240357117341,
+            -0.0052890577330344975
+          ],
+          "difference_candidate_minus_reference": -0.006821910143116838,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261032
+    },
+    {
+      "candidate": "depth_fig_d4_s1",
+      "label": "D4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          -0.006069696473400654,
+          -0.003994349754975701
+        ],
+        "difference_candidate_minus_reference": -0.005032296604440489,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_w4_s1",
+      "reference_label": "W4",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.005103909143042529,
+            -0.002720937283947933
+          ],
+          "difference_candidate_minus_reference": -0.003865470831442508,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.004903184624498636,
+            -0.001829160127584828
+          ],
+          "difference_candidate_minus_reference": -0.0033733201078121056,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.009545404649554712,
+            -0.006159751934285398
+          ],
+          "difference_candidate_minus_reference": -0.007858098566430272,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261032
+    },
+    {
+      "candidate": "depth_fig_w4_s1",
+      "label": "W4",
+      "macro": {
+        "bootstrap_seed": 20261021,
+        "ci95_percentile": [
+          0.0010569196645064949,
+          0.0025161116092363043
+        ],
+        "difference_candidate_minus_reference": 0.0017880066002362582,
+        "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+        "repetitions": 10000
+      },
+      "reference": "depth_fig_d2_s1",
+      "reference_label": "D2",
+      "species": {
+        "e": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            0.0011633509039484125,
+            0.003086780695048219
+          ],
+          "difference_candidate_minus_reference": 0.002111350552240765,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i1": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            0.0011747459961554795,
+            0.0032279055545131993
+          ],
+          "difference_candidate_minus_reference": 0.002216480503875573,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        },
+        "i2": {
+          "bootstrap_seed": 20261021,
+          "ci95_percentile": [
+            -0.00023662876304797464,
+            0.0022716114832974196
+          ],
+          "difference_candidate_minus_reference": 0.0010361884233134333,
+          "interpretation": "Negative favors candidate. Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed.",
+          "repetitions": 10000
+        }
+      },
+      "training_seed": 20261032
+    }
+  ],
+  "runs": [
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0/training/model.pt",
+      "checkpoint_sha256": "65839d7acef427f149138d033c9c453998bab4e8bf4d061837650fa2c45429e3",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "D2",
+      "macro_relative_l2": {
+        "maximum": 0.4008423388004303,
+        "mean": 0.06006845831871033,
+        "median": 0.04497098922729492,
+        "p95": 0.16108635067939758
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007903782650828362,
+            "coefficient_r2": 0.9930670857429504,
+            "coefficient_rmse": 0.0195313710719347,
+            "evdf_mae": 2.2545920685956844e-10,
+            "evdf_r2": 0.9932378530502319,
+            "evdf_relative_l2_mean": 0.06134361773729324,
+            "evdf_relative_l2_median": 0.04513604938983917,
+            "evdf_rmse": 7.396437906592723e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0013684994773939252
+          },
+          "negative_mass": {
+            "maximum": 0.029544344171881676,
+            "mean": 0.0013684994773939252,
+            "median": 0.000633206102065742,
+            "p95": 0.004888561088591814
+          },
+          "relative_l2": {
+            "maximum": 0.36740705370903015,
+            "mean": 0.06134361773729324,
+            "median": 0.04513604938983917,
+            "p95": 0.1712789088487625
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.010910667479038239,
+            "coefficient_r2": 0.9888640642166138,
+            "coefficient_rmse": 0.027269426733255386,
+            "evdf_mae": 9.076253526529854e-09,
+            "evdf_r2": 0.9897329807281494,
+            "evdf_relative_l2_mean": 0.05053144693374634,
+            "evdf_relative_l2_median": 0.03042782098054886,
+            "evdf_rmse": 5.3105740249748123e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.002873331308364868
+          },
+          "negative_mass": {
+            "maximum": 0.052843786776065826,
+            "mean": 0.002873331308364868,
+            "median": 0.0013862024061381817,
+            "p95": 0.010842214338481426
+          },
+          "relative_l2": {
+            "maximum": 0.5470630526542664,
+            "mean": 0.05053144693374634,
+            "median": 0.03042782098054886,
+            "p95": 0.17137226462364197
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.015048123896121979,
+            "coefficient_r2": 0.9814794063568115,
+            "coefficient_rmse": 0.036255791783332825,
+            "evdf_mae": 4.3526725335141236e-08,
+            "evdf_r2": 0.982623815536499,
+            "evdf_relative_l2_mean": 0.068330317735672,
+            "evdf_relative_l2_median": 0.03970842808485031,
+            "evdf_rmse": 2.384117578912992e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.004545134026557207
+          },
+          "negative_mass": {
+            "maximum": 0.054744720458984375,
+            "mean": 0.004545134026557207,
+            "median": 0.0022907285019755363,
+            "p95": 0.015227282419800758
+          },
+          "relative_l2": {
+            "maximum": 0.6510937809944153,
+            "mean": 0.0683303102850914,
+            "median": 0.03970842808485031,
+            "p95": 0.23203042149543762
+          }
+        }
+      },
+      "run_id": "depth_fig_d2_s0",
+      "training_pipeline_completed": true,
+      "training_seed": 20261030
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0/training/model.pt",
+      "checkpoint_sha256": "c185a3312f6d888d3ba5ed0225b668932b710fa18509727e3f4c20ad10b89e4b",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "W3",
+      "macro_relative_l2": {
+        "maximum": 0.3774353563785553,
+        "mean": 0.06004846468567848,
+        "median": 0.04569012671709061,
+        "p95": 0.16175514459609985
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007870158180594444,
+            "coefficient_r2": 0.9930480122566223,
+            "coefficient_rmse": 0.019558297470211983,
+            "evdf_mae": 2.2721431680583493e-10,
+            "evdf_r2": 0.9932191967964172,
+            "evdf_relative_l2_mean": 0.06164465844631195,
+            "evdf_relative_l2_median": 0.04603264480829239,
+            "evdf_rmse": 7.406635305073905e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.001441217609681189
+          },
+          "negative_mass": {
+            "maximum": 0.02366051822900772,
+            "mean": 0.0014412177260965109,
+            "median": 0.0007312905509024858,
+            "p95": 0.005132895894348621
+          },
+          "relative_l2": {
+            "maximum": 0.3992947041988373,
+            "mean": 0.061644650995731354,
+            "median": 0.04603264480829239,
+            "p95": 0.1683569997549057
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.010878955945372581,
+            "coefficient_r2": 0.9887349009513855,
+            "coefficient_rmse": 0.02742716483771801,
+            "evdf_mae": 9.114697441248154e-09,
+            "evdf_r2": 0.9896135926246643,
+            "evdf_relative_l2_mean": 0.05064238980412483,
+            "evdf_relative_l2_median": 0.029561340808868408,
+            "evdf_rmse": 5.341359354815722e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0029703755863010883
+          },
+          "negative_mass": {
+            "maximum": 0.056827593594789505,
+            "mean": 0.0029703755863010883,
+            "median": 0.0015389416366815567,
+            "p95": 0.011100313626229763
+          },
+          "relative_l2": {
+            "maximum": 0.589832603931427,
+            "mean": 0.050642386078834534,
+            "median": 0.029561340808868408,
+            "p95": 0.16499580442905426
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.014936083927750587,
+            "coefficient_r2": 0.9812352657318115,
+            "coefficient_rmse": 0.036493949592113495,
+            "evdf_mae": 4.330819791675822e-08,
+            "evdf_r2": 0.9823941588401794,
+            "evdf_relative_l2_mean": 0.06785834580659866,
+            "evdf_relative_l2_median": 0.03816262260079384,
+            "evdf_rmse": 2.3998228471100447e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0046600778587162495
+          },
+          "negative_mass": {
+            "maximum": 0.05084986612200737,
+            "mean": 0.004660078324377537,
+            "median": 0.002494867192581296,
+            "p95": 0.016637010499835014
+          },
+          "relative_l2": {
+            "maximum": 0.6440843939781189,
+            "mean": 0.06785834580659866,
+            "median": 0.03816262260079384,
+            "p95": 0.23271752893924713
+          }
+        }
+      },
+      "run_id": "depth_fig_w3_s0",
+      "training_pipeline_completed": true,
+      "training_seed": 20261030
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
+      "checkpoint_sha256": "b822cac9b18878dd45ee324c2bbf2e480f4ece56742e10e1126a571bcc737019",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "D4",
+      "macro_relative_l2": {
+        "maximum": 0.5419562458992004,
+        "mean": 0.054572444409132004,
+        "median": 0.03840833157300949,
+        "p95": 0.15825214982032776
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007671642117202282,
+            "coefficient_r2": 0.9930628538131714,
+            "coefficient_rmse": 0.019537361338734627,
+            "evdf_mae": 2.2074041206021633e-10,
+            "evdf_r2": 0.9932337403297424,
+            "evdf_relative_l2_mean": 0.05988393351435661,
+            "evdf_relative_l2_median": 0.04196196421980858,
+            "evdf_rmse": 7.39868388777154e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0014001959934830666
+          },
+          "negative_mass": {
+            "maximum": 0.023643063381314278,
+            "mean": 0.0014001961098983884,
+            "median": 0.0007817753939889371,
+            "p95": 0.0047785211354494095
+          },
+          "relative_l2": {
+            "maximum": 0.36824536323547363,
+            "mean": 0.05988393351435661,
+            "median": 0.04196196421980858,
+            "p95": 0.1668216437101364
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.009505358524620533,
+            "coefficient_r2": 0.9895923733711243,
+            "coefficient_rmse": 0.02636266127228737,
+            "evdf_mae": 8.275301333071639e-09,
+            "evdf_r2": 0.9904009103775024,
+            "evdf_relative_l2_mean": 0.04551324248313904,
+            "evdf_relative_l2_median": 0.025708477944135666,
+            "evdf_rmse": 5.134926794880812e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.002747544553130865
+          },
+          "negative_mass": {
+            "maximum": 0.04040762409567833,
+            "mean": 0.002747544553130865,
+            "median": 0.0014188687782734632,
+            "p95": 0.009981886483728886
+          },
+          "relative_l2": {
+            "maximum": 0.7875250577926636,
+            "mean": 0.04551324248313904,
+            "median": 0.025708477944135666,
+            "p95": 0.14556704461574554
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.012991097755730152,
+            "coefficient_r2": 0.9830814003944397,
+            "coefficient_rmse": 0.03465230017900467,
+            "evdf_mae": 3.721431696135369e-08,
+            "evdf_r2": 0.9841258525848389,
+            "evdf_relative_l2_mean": 0.05832016468048096,
+            "evdf_relative_l2_median": 0.028357047587633133,
+            "evdf_rmse": 2.2787463649365236e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.003546555293723941
+          },
+          "negative_mass": {
+            "maximum": 0.03602803498506546,
+            "mean": 0.0035465555265545845,
+            "median": 0.0019389090593904257,
+            "p95": 0.012081274762749672
+          },
+          "relative_l2": {
+            "maximum": 0.6588718891143799,
+            "mean": 0.058320168405771255,
+            "median": 0.028357047587633133,
+            "p95": 0.2315853238105774
+          }
+        }
+      },
+      "run_id": "depth_fig_d4_s0",
+      "training_pipeline_completed": false,
+      "training_seed": 20261030
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0/training/model.pt",
+      "checkpoint_sha256": "988e60b5dfed3a0f0485266fa38879c6cd833c7e2a9808375c06f964cab2f714",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "W4",
+      "macro_relative_l2": {
+        "maximum": 0.3783339262008667,
+        "mean": 0.05983371287584305,
+        "median": 0.0446171760559082,
+        "p95": 0.16432037949562073
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007879950106143951,
+            "coefficient_r2": 0.993066132068634,
+            "coefficient_rmse": 0.019532741978764534,
+            "evdf_mae": 2.2760024420698244e-10,
+            "evdf_r2": 0.9932368993759155,
+            "evdf_relative_l2_mean": 0.06163322925567627,
+            "evdf_relative_l2_median": 0.04582037404179573,
+            "evdf_rmse": 7.396960821637322e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0014489172026515007
+          },
+          "negative_mass": {
+            "maximum": 0.022741226479411125,
+            "mean": 0.0014489172026515007,
+            "median": 0.0007947059348225594,
+            "p95": 0.005038876086473465
+          },
+          "relative_l2": {
+            "maximum": 0.35853174328804016,
+            "mean": 0.06163322925567627,
+            "median": 0.04582037404179573,
+            "p95": 0.16664552688598633
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.010876785963773727,
+            "coefficient_r2": 0.9886200428009033,
+            "coefficient_rmse": 0.02756660059094429,
+            "evdf_mae": 9.06690633684093e-09,
+            "evdf_r2": 0.9895071983337402,
+            "evdf_relative_l2_mean": 0.050181951373815536,
+            "evdf_relative_l2_median": 0.029131872579455376,
+            "evdf_rmse": 5.3686427747834387e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0030660340562462807
+          },
+          "negative_mass": {
+            "maximum": 0.053959108889102936,
+            "mean": 0.0030660340562462807,
+            "median": 0.0015587278176099062,
+            "p95": 0.011463448405265808
+          },
+          "relative_l2": {
+            "maximum": 0.5608528256416321,
+            "mean": 0.050181955099105835,
+            "median": 0.029131872579455376,
+            "p95": 0.16229626536369324
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.015005526132881641,
+            "coefficient_r2": 0.9809402823448181,
+            "coefficient_rmse": 0.036779679358005524,
+            "evdf_mae": 4.337164227763424e-08,
+            "evdf_r2": 0.9821171164512634,
+            "evdf_relative_l2_mean": 0.06768594682216644,
+            "evdf_relative_l2_median": 0.03722698986530304,
+            "evdf_rmse": 2.4186317659768974e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.004671991802752018
+          },
+          "negative_mass": {
+            "maximum": 0.07540708035230637,
+            "mean": 0.004671991802752018,
+            "median": 0.002315209247171879,
+            "p95": 0.015977375209331512
+          },
+          "relative_l2": {
+            "maximum": 0.6550992727279663,
+            "mean": 0.06768594682216644,
+            "median": 0.03722698986530304,
+            "p95": 0.24732311069965363
+          }
+        }
+      },
+      "run_id": "depth_fig_w4_s0",
+      "training_pipeline_completed": false,
+      "training_seed": 20261030
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1/training/model.pt",
+      "checkpoint_sha256": "0822eb940976225bbf6eaf196910efe73f15c1b1916510a602e8c4e0b53aaf0c",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "D2",
+      "macro_relative_l2": {
+        "maximum": 0.38187599182128906,
+        "mean": 0.058802567422389984,
+        "median": 0.04496438801288605,
+        "p95": 0.16013751924037933
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007785761263221502,
+            "coefficient_r2": 0.9931929111480713,
+            "coefficient_rmse": 0.0193533506244421,
+            "evdf_mae": 2.2246923747637481e-10,
+            "evdf_r2": 0.9933605790138245,
+            "evdf_relative_l2_mean": 0.06086501479148865,
+            "evdf_relative_l2_median": 0.044134028255939484,
+            "evdf_rmse": 7.329010731638164e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0010747009655460715
+          },
+          "negative_mass": {
+            "maximum": 0.01862363889813423,
+            "mean": 0.0010747009655460715,
+            "median": 0.00028842518804594874,
+            "p95": 0.00466402480378747
+          },
+          "relative_l2": {
+            "maximum": 0.35617098212242126,
+            "mean": 0.060865018516778946,
+            "median": 0.044134028255939484,
+            "p95": 0.16232068836688995
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.010537574999034405,
+            "coefficient_r2": 0.989391028881073,
+            "coefficient_rmse": 0.026616452261805534,
+            "evdf_mae": 8.610976820477845e-09,
+            "evdf_r2": 0.9902198314666748,
+            "evdf_relative_l2_mean": 0.04849262908101082,
+            "evdf_relative_l2_median": 0.02815767005085945,
+            "evdf_rmse": 5.183137119502135e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.002311940770596266
+          },
+          "negative_mass": {
+            "maximum": 0.03452574461698532,
+            "mean": 0.0023119410034269094,
+            "median": 0.0008887145668268204,
+            "p95": 0.009017475880682468
+          },
+          "relative_l2": {
+            "maximum": 0.5371759533882141,
+            "mean": 0.04849262535572052,
+            "median": 0.02815767005085945,
+            "p95": 0.15718793869018555
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.014888484962284565,
+            "coefficient_r2": 0.9811605215072632,
+            "coefficient_rmse": 0.0365665964782238,
+            "evdf_mae": 4.2053397208974275e-08,
+            "evdf_r2": 0.9823229908943176,
+            "evdf_relative_l2_mean": 0.06705004721879959,
+            "evdf_relative_l2_median": 0.03652024641633034,
+            "evdf_rmse": 2.4046667590482684e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.00396218616515398
+          },
+          "negative_mass": {
+            "maximum": 0.06723889708518982,
+            "mean": 0.00396218616515398,
+            "median": 0.0016591718886047602,
+            "p95": 0.01627735234797001
+          },
+          "relative_l2": {
+            "maximum": 0.6345558166503906,
+            "mean": 0.06705005466938019,
+            "median": 0.03652024641633034,
+            "p95": 0.2503529191017151
+          }
+        }
+      },
+      "run_id": "depth_fig_d2_s1",
+      "training_pipeline_completed": true,
+      "training_seed": 20261032
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1/training/model.pt",
+      "checkpoint_sha256": "3f22d50aab05bb2f70452af75a0f7cbf43ed6842d64d4d6fb15b66419163b5cf",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "D4",
+      "macro_relative_l2": {
+        "maximum": 0.38441240787506104,
+        "mean": 0.05555827543139458,
+        "median": 0.04047609120607376,
+        "p95": 0.15315018594264984
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007590065244585276,
+            "coefficient_r2": 0.9933062791824341,
+            "coefficient_rmse": 0.019191546365618706,
+            "evdf_mae": 2.2158136436800646e-10,
+            "evdf_r2": 0.9934711456298828,
+            "evdf_relative_l2_mean": 0.05911089479923248,
+            "evdf_relative_l2_median": 0.04106355458498001,
+            "evdf_rmse": 7.267723645121293e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.001902576070278883
+          },
+          "negative_mass": {
+            "maximum": 0.021636107936501503,
+            "mean": 0.001902576070278883,
+            "median": 0.001303615514189005,
+            "p95": 0.005342454649507999
+          },
+          "relative_l2": {
+            "maximum": 0.3656754791736603,
+            "mean": 0.05911089852452278,
+            "median": 0.04106355458498001,
+            "p95": 0.16455991566181183
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.009879176504909992,
+            "coefficient_r2": 0.9897602796554565,
+            "coefficient_rmse": 0.026149163022637367,
+            "evdf_mae": 8.758383351903376e-09,
+            "evdf_r2": 0.9905574917793274,
+            "evdf_relative_l2_mean": 0.04733578860759735,
+            "evdf_relative_l2_median": 0.027135197073221207,
+            "evdf_rmse": 5.0928761652357935e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.003551372792571783
+          },
+          "negative_mass": {
+            "maximum": 0.032865919172763824,
+            "mean": 0.003551372792571783,
+            "median": 0.0022126375697553158,
+            "p95": 0.010982430540025234
+          },
+          "relative_l2": {
+            "maximum": 0.596439778804779,
+            "mean": 0.047335781157016754,
+            "median": 0.027135197073221207,
+            "p95": 0.1491691619157791
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.013293161988258362,
+            "coefficient_r2": 0.9832170009613037,
+            "coefficient_rmse": 0.034513164311647415,
+            "evdf_mae": 3.9349508540453826e-08,
+            "evdf_r2": 0.9842535853385925,
+            "evdf_relative_l2_mean": 0.0602281391620636,
+            "evdf_relative_l2_median": 0.0314633846282959,
+            "evdf_rmse": 2.2695611789913528e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.004674017895013094
+          },
+          "negative_mass": {
+            "maximum": 0.03827967122197151,
+            "mean": 0.004674017429351807,
+            "median": 0.00301026226952672,
+            "p95": 0.013629737310111523
+          },
+          "relative_l2": {
+            "maximum": 0.6045648455619812,
+            "mean": 0.060228146612644196,
+            "median": 0.0314633846282959,
+            "p95": 0.23744156956672668
+          }
+        }
+      },
+      "run_id": "depth_fig_d4_s1",
+      "training_pipeline_completed": false,
+      "training_seed": 20261032
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1/training/model.pt",
+      "checkpoint_sha256": "b3acc516a944e290f735cfa63bbb5748aa1baec7f41dccb92b985c482d985b12",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "W4",
+      "macro_relative_l2": {
+        "maximum": 0.3730402886867523,
+        "mean": 0.06059056892991066,
+        "median": 0.0459129735827446,
+        "p95": 0.16042165458202362
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.00803804025053978,
+            "coefficient_r2": 0.9929031729698181,
+            "coefficient_rmse": 0.019760966300964355,
+            "evdf_mae": 2.3281288008547563e-10,
+            "evdf_r2": 0.9930778741836548,
+            "evdf_relative_l2_mean": 0.06297636777162552,
+            "evdf_relative_l2_median": 0.04720427095890045,
+            "evdf_rmse": 7.483417774345469e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.002116602845489979
+          },
+          "negative_mass": {
+            "maximum": 0.034226659685373306,
+            "mean": 0.0021166023798286915,
+            "median": 0.0009990143589675426,
+            "p95": 0.006967512425035238
+          },
+          "relative_l2": {
+            "maximum": 0.41652947664260864,
+            "mean": 0.06297636032104492,
+            "median": 0.04720427095890045,
+            "p95": 0.16864944994449615
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.01096324808895588,
+            "coefficient_r2": 0.9883347749710083,
+            "coefficient_rmse": 0.027909966185688972,
+            "evdf_mae": 9.220996410874704e-09,
+            "evdf_r2": 0.9892434477806091,
+            "evdf_relative_l2_mean": 0.050709109753370285,
+            "evdf_relative_l2_median": 0.029218468815088272,
+            "evdf_rmse": 5.435708771983627e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0030687556136399508
+          },
+          "negative_mass": {
+            "maximum": 0.05909634381532669,
+            "mean": 0.0030687558464705944,
+            "median": 0.001646586460992694,
+            "p95": 0.010965829715132713
+          },
+          "relative_l2": {
+            "maximum": 0.5539656281471252,
+            "mean": 0.05070910602807999,
+            "median": 0.029218468815088272,
+            "p95": 0.1661330908536911
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.015002792701125145,
+            "coefficient_r2": 0.9804014563560486,
+            "coefficient_rmse": 0.03729595988988876,
+            "evdf_mae": 4.38916636369413e-08,
+            "evdf_r2": 0.9816103577613831,
+            "evdf_relative_l2_mean": 0.06808624416589737,
+            "evdf_relative_l2_median": 0.03708597272634506,
+            "evdf_rmse": 2.45265908915826e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.004937296733260155
+          },
+          "negative_mass": {
+            "maximum": 0.060712967067956924,
+            "mean": 0.004937296733260155,
+            "median": 0.002635636832565069,
+            "p95": 0.0160459503531456
+          },
+          "relative_l2": {
+            "maximum": 0.6299427151679993,
+            "mean": 0.06808623671531677,
+            "median": 0.03708597272634506,
+            "p95": 0.24411442875862122
+          }
+        }
+      },
+      "run_id": "depth_fig_w4_s1",
+      "training_pipeline_completed": false,
+      "training_seed": 20261032
+    },
+    {
+      "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2/training/model.pt",
+      "checkpoint_sha256": "cd925c096379992c567ce898192822dc1346bbd2eb31f1ea998811a3dccae340",
+      "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2_eval/evaluation",
+      "historical_checkpoint_bytes_match": true,
+      "label": "D2",
+      "macro_relative_l2": {
+        "maximum": 0.3813755512237549,
+        "mean": 0.059181954711675644,
+        "median": 0.04395715147256851,
+        "p95": 0.16006237268447876
+      },
+      "metrics": {
+        "e": {
+          "canonical": {
+            "coefficient_mae": 0.007932132109999657,
+            "coefficient_r2": 0.9930683374404907,
+            "coefficient_rmse": 0.01952965557575226,
+            "evdf_mae": 2.246617336609802e-10,
+            "evdf_r2": 0.9932389855384827,
+            "evdf_relative_l2_mean": 0.06134415417909622,
+            "evdf_relative_l2_median": 0.045513320714235306,
+            "evdf_rmse": 7.395803969245662e-10,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0011978528928011656
+          },
+          "negative_mass": {
+            "maximum": 0.02397298812866211,
+            "mean": 0.0011978528928011656,
+            "median": 0.0004120925150346011,
+            "p95": 0.004790967795997858
+          },
+          "relative_l2": {
+            "maximum": 0.36458757519721985,
+            "mean": 0.06134415417909622,
+            "median": 0.045513320714235306,
+            "p95": 0.16562487185001373
+          }
+        },
+        "i1": {
+          "canonical": {
+            "coefficient_mae": 0.010632331483066082,
+            "coefficient_r2": 0.9891319870948792,
+            "coefficient_rmse": 0.026939447969198227,
+            "evdf_mae": 8.781694482706826e-09,
+            "evdf_r2": 0.9899802803993225,
+            "evdf_relative_l2_mean": 0.04919721186161041,
+            "evdf_relative_l2_median": 0.028257425874471664,
+            "evdf_rmse": 5.246223011567963e-08,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.0025594679173082113
+          },
+          "negative_mass": {
+            "maximum": 0.03973064199090004,
+            "mean": 0.002559468150138855,
+            "median": 0.0011453470215201378,
+            "p95": 0.0096964156255126
+          },
+          "relative_l2": {
+            "maximum": 0.6262655854225159,
+            "mean": 0.04919721931219101,
+            "median": 0.028257425874471664,
+            "p95": 0.15785805881023407
+          }
+        },
+        "i2": {
+          "canonical": {
+            "coefficient_mae": 0.014787441119551659,
+            "coefficient_r2": 0.9811496138572693,
+            "coefficient_rmse": 0.03657718375325203,
+            "evdf_mae": 4.24752037986309e-08,
+            "evdf_r2": 0.9823132753372192,
+            "evdf_relative_l2_mean": 0.06700449436903,
+            "evdf_relative_l2_median": 0.035853274166584015,
+            "evdf_rmse": 2.40532983752928e-07,
+            "hermitian_symmetry_mae": 0.0,
+            "negative_mass_fraction_mean": 0.004127325024455786
+          },
+          "negative_mass": {
+            "maximum": 0.04954775422811508,
+            "mean": 0.004127325490117073,
+            "median": 0.001984099391847849,
+            "p95": 0.016207782551646233
+          },
+          "relative_l2": {
+            "maximum": 0.6221847534179688,
+            "mean": 0.06700449436903,
+            "median": 0.035853274166584015,
+            "p95": 0.2543082535266876
+          }
+        }
+      },
+      "run_id": "depth_fig_d2_s2",
+      "training_pipeline_completed": true,
+      "training_seed": 20261033
+    }
+  ],
+  "seed_summary": [
+    {
+      "candidate_label": "D4",
+      "deltas": [
+        -0.005496010949173069,
+        -0.003244290004204231
+      ],
+      "mean_delta": -0.00437015047668865,
+      "negative_delta_count": 2,
+      "note": "Descriptive training-seed replication; sample CI is not a seed CI.",
+      "reference_label": "D2",
+      "sample_std_delta": 0.001592207149527246,
+      "seed_count": 2,
+      "seeds": [
+        20261030,
+        20261032
+      ]
+    },
+    {
+      "candidate_label": "D4",
+      "deltas": [
+        -0.005261263304419117,
+        -0.005032296604440489
+      ],
+      "mean_delta": -0.005146779954429803,
+      "negative_delta_count": 2,
+      "note": "Descriptive training-seed replication; sample CI is not a seed CI.",
+      "reference_label": "W4",
+      "sample_std_delta": 0.0001619039062207934,
+      "seed_count": 2,
+      "seeds": [
+        20261030,
+        20261032
+      ]
+    },
+    {
+      "candidate_label": "W3",
+      "deltas": [
+        -1.9995587535959203e-05
+      ],
+      "mean_delta": -1.9995587535959203e-05,
+      "negative_delta_count": 1,
+      "note": "Descriptive training-seed replication; sample CI is not a seed CI.",
+      "reference_label": "D2",
+      "sample_std_delta": null,
+      "seed_count": 1,
+      "seeds": [
+        20261030
+      ]
+    },
+    {
+      "candidate_label": "W4",
+      "deltas": [
+        -0.00023474764475395204,
+        0.0017880066002362582
+      ],
+      "mean_delta": 0.0007766294777411531,
+      "negative_delta_count": 1,
+      "note": "Descriptive training-seed replication; sample CI is not a seed CI.",
+      "reference_label": "D2",
+      "sample_std_delta": 0.0014303032433064528,
+      "seed_count": 2,
+      "seeds": [
+        20261030,
+        20261032
+      ]
+    }
+  ],
+  "selection_bias": "Architecture selected using validation. This previously exposed test is not a new unbiased confirmation set.",
+  "species": [
+    "e",
+    "i1",
+    "i2"
+  ],
+  "stage": "test",
+  "target_hashes": {
+    "e": {
+      "k_grid": "d9116483a20fa453263abcfe46016b67c0e50fb4fc0a4f512b742bf6b6c83aba",
+      "target_coefficients": "4a3364d01d110c223b5df0dae2ba44d4fe39416b16996aededa3d001d016fd91",
+      "velocity_m_s": "04285a0fb2c0841e6ba2edea9cebc9fa058ea1193b5e201cbcec34c60540967e"
+    },
+    "i1": {
+      "k_grid": "364985f84092e82cc99be9dcf52c62ac1dcd1dab28cd40ecdf61945d2f5b3cef",
+      "target_coefficients": "72f53bf23ee800f519eae124f4cc62c88ee8c96230b827c8097cf5d0c487a0a6",
+      "velocity_m_s": "56cc28ee7747d212177da587fb7226ee5fb93e3d133c566aff4304f8273c4a8f"
+    },
+    "i2": {
+      "k_grid": "6782b1ceda0a1db52c39d0281547725830e533af35aa9b32d848d6d61659a508",
+      "target_coefficients": "c0de0ff62b20f94cf6dfdfaec6714aa234029dd8fea37f67c3a76735d6ff2342",
+      "velocity_m_s": "c7ce9eea0f616cb34969368cb4efb71356e0cdd652573661c5daca25d1743f24"
+    }
+  },
+  "uncertainty_scope": "Paired bootstrap over physical sample rows, keeping species together. Conditional on these trained checkpoints; excludes training-seed and model-selection uncertainty. Existing seed20261031 test was previously exposed."
+}
