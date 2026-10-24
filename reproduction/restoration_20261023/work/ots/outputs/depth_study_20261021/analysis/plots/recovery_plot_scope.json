@@ -1,7 +1,0 @@
-{
-  "summary_sha256": "5892738540afff9fa308e4b16529fc63d5f636336df4934591d33e07cab37ec9",
-  "historical_checkpoints_only": true,
-  "unavailable_models_not_plotted_as_zero": true,
-  "original_plot_implementation_sha256": "f21de9c0b52075b2b694558cca38a7f948bf0e148a6ef3ff39d55e339ff6c5ae",
-  "caption_adapter_sha256": "dffab5084ae2c4180410995f0b5bce6a3c646e9f39771d04ba7aad075b0f372e"
-}

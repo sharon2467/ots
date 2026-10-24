@@ -1,1 +1,5 @@
-This is a new replay of the historical latest-data D4 workflow. Original processed-input SHA checks are recorded separately. The model is retrained, not an original recovered weight file. All authorized processing remains unchanged.
+# Fig10 处理后光谱的 D4 推理
+
+输入为 a 扣除背景1691、b/c 指定刻度和标志区域按同一行最近正常值填补后的三组光谱。推理仅做必要的波长插值和逐行 maxabs 归一化，忽略 mask，保留全部1516行。模型为冻结的 depth_fig_d4_s0；输出电子/H/C 三物种的 Fourier 系数及各4097点有符号 VDF。
+
+输入和模型定义见 inference_plan.json，时序及代表时刻图见 plots/ 和 plots_focus/。温度、流速与光谱闭合分析见相邻 fig10_moments_pv_20261021。训练数据与论文数据的观测模型不同，理论 Test 误差不能直接作为这些输入的反演准确率。

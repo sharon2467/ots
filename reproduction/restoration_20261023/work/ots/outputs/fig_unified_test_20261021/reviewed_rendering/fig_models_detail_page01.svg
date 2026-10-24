@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-24T06:58:24.652116</dc:date>
+    <dc:date>2026-10-24T17:27:44.427042</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -21,19 +21,19 @@
  </defs>
  <g id="figure_1">
   <g id="patch_1">
-   <path d="M 0 750.456 
-L 1294.706188 750.456 
-L 1294.706188 0 
-L 0 0 
+   <path d="M 0 750.456
+L 1294.706188 750.456
+L 1294.706188 0
+L 0 0
 z
 " style="fill: #ffffff"/>
   </g>
   <g id="axes_1">
    <g id="patch_2">
-    <path d="M 81.542188 583.92 
-L 1273.106188 583.92 
-L 1273.106188 136.44 
-L 81.542188 136.44 
+    <path d="M 81.542188 583.92
+L 1273.106188 583.92
+L 1273.106188 136.44
+L 81.542188 136.44
 z
 " style="fill: #ffffff"/>
    </g>
@@ -84,8 +84,7 @@ z
      <g id="line2d_7"/>
      <g id="text_7">
       <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(843.360425 604.083437)">#08</text>
-      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(811.603082 614.741125)">w4_s1 [checkpoint</text>
-      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(831.534566 625.398812)">restored]</text>
+      <text style="font-size: 9px; font-family: 'Noto Sans CJK JP'" transform="translate(820.266285 614.741125)">w4_s1 [frozen]</text>
      </g>
     </g>
     <g id="xtick_8">
@@ -113,18 +112,18 @@ z
    <g id="matplotlib.axis_2">
     <g id="ytick_1">
      <g id="line2d_11">
-      <path d="M 81.542188 583.92 
-L 1273.106188 583.92 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 583.92
+L 1273.106188 583.92
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_12">
       <defs>
-       <path id="m68d2ce8ce2" d="M 0 0 
-L -3.5 0 
+       <path id="m3c54802a42" d="M 0 0
+L -3.5 0
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="583.92" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="583.92" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
@@ -133,13 +132,13 @@ L -3.5 0
     </g>
     <g id="ytick_2">
      <g id="line2d_13">
-      <path d="M 81.542188 516.980221 
-L 1273.106188 516.980221 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 516.980221
+L 1273.106188 516.980221
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_14">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="516.980221" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="516.980221" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_12">
@@ -148,13 +147,13 @@ L 1273.106188 516.980221
     </g>
     <g id="ytick_3">
      <g id="line2d_15">
-      <path d="M 81.542188 450.040443 
-L 1273.106188 450.040443 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 450.040443
+L 1273.106188 450.040443
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_16">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="450.040443" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="450.040443" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_13">
@@ -163,13 +162,13 @@ L 1273.106188 450.040443
     </g>
     <g id="ytick_4">
      <g id="line2d_17">
-      <path d="M 81.542188 383.100664 
-L 1273.106188 383.100664 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 383.100664
+L 1273.106188 383.100664
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_18">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="383.100664" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="383.100664" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_14">
@@ -178,13 +177,13 @@ L 1273.106188 383.100664
     </g>
     <g id="ytick_5">
      <g id="line2d_19">
-      <path d="M 81.542188 316.160886 
-L 1273.106188 316.160886 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 316.160886
+L 1273.106188 316.160886
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_20">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="316.160886" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="316.160886" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_15">
@@ -193,13 +192,13 @@ L 1273.106188 316.160886
     </g>
     <g id="ytick_6">
      <g id="line2d_21">
-      <path d="M 81.542188 249.221107 
-L 1273.106188 249.221107 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 249.221107
+L 1273.106188 249.221107
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_22">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="249.221107" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="249.221107" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_16">
@@ -208,13 +207,13 @@ L 1273.106188 249.221107
     </g>
     <g id="ytick_7">
      <g id="line2d_23">
-      <path d="M 81.542188 182.281329 
-L 1273.106188 182.281329 
-" clip-path="url(#p7ce921a6a9)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
+      <path d="M 81.542188 182.281329
+L 1273.106188 182.281329
+" clip-path="url(#pcbca285431)" style="fill: none; stroke: #dce3eb; stroke-width: 0.8; stroke-linecap: square"/>
      </g>
      <g id="line2d_24">
       <g>
-       <use xlink:href="#m68d2ce8ce2" x="81.542188" y="182.281329" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m3c54802a42" x="81.542188" y="182.281329" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_17">
@@ -226,94 +225,94 @@ L 1273.106188 182.281329
     </g>
    </g>
    <g id="patch_3">
-    <path d="M 81.542188 583.92 
-L 81.542188 136.44 
+    <path d="M 81.542188 583.92
+L 81.542188 136.44
 " style="fill: none; stroke: #64748b; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_4">
-    <path d="M 81.542187 583.92 
-L 1273.106188 583.92 
+    <path d="M 81.542187 583.92
+L 1273.106188 583.92
 " style="fill: none; stroke: #64748b; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="patch_5">
-    <path d="M 116.826364 583.92 
-L 196.649584 583.92 
-L 196.649584 319.9068 
-L 116.826364 319.9068 
+    <path d="M 116.826364 583.92
+L 196.649584 583.92
+L 196.649584 319.9068
+L 116.826364 319.9068
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_6">
-    <path d="M 232.512189 583.92 
-L 312.335409 583.92 
-L 312.335409 340.062528 
-L 232.512189 340.062528 
+    <path d="M 232.512189 583.92
+L 312.335409 583.92
+L 312.335409 340.062528
+L 232.512189 340.062528
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_7">
-    <path d="M 348.198015 583.92 
-L 428.021234 583.92 
-L 428.021234 353.735311 
-L 348.198015 353.735311 
+    <path d="M 348.198015 583.92
+L 428.021234 583.92
+L 428.021234 353.735311
+L 348.198015 353.735311
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_8">
-    <path d="M 463.88384 583.92 
-L 543.707059 583.92 
-L 543.707059 386.838914 
-L 463.88384 386.838914 
+    <path d="M 463.88384 583.92
+L 543.707059 583.92
+L 543.707059 386.838914
+L 463.88384 386.838914
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_9">
-    <path d="M 579.569665 583.92 
-L 659.392885 583.92 
-L 659.392885 402.496783 
-L 579.569665 402.496783 
+    <path d="M 579.569665 583.92
+L 659.392885 583.92
+L 659.392885 402.496783
+L 579.569665 402.496783
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_10">
-    <path d="M 695.25549 583.92 
-L 775.07871 583.92 
-L 775.07871 417.84285 
-L 695.25549 417.84285 
+    <path d="M 695.25549 583.92
+L 775.07871 583.92
+L 775.07871 417.84285
+L 695.25549 417.84285
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_11">
-    <path d="M 810.941316 583.92 
-L 890.764535 583.92 
-L 890.764535 421.683229 
-L 810.941316 421.683229 
+    <path d="M 810.941316 583.92
+L 890.764535 583.92
+L 890.764535 421.683229
+L 810.941316 421.683229
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_12">
-    <path d="M 926.627141 583.92 
-L 1006.45036 583.92 
-L 1006.45036 423.081228 
-L 926.627141 423.081228 
+    <path d="M 926.627141 583.92
+L 1006.45036 583.92
+L 1006.45036 423.081228
+L 926.627141 423.081228
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_13">
-    <path d="M 1042.312966 583.92 
-L 1122.136186 583.92 
-L 1122.136186 423.081228 
-L 1042.312966 423.081228 
+    <path d="M 1042.312966 583.92
+L 1122.136186 583.92
+L 1122.136186 423.081228
+L 1042.312966 423.081228
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="patch_14">
-    <path d="M 1157.998791 583.92 
-L 1237.822011 583.92 
-L 1237.822011 423.134763 
-L 1157.998791 423.134763 
+    <path d="M 1157.998791 583.92
+L 1237.822011 583.92
+L 1237.822011 423.134763
+L 1157.998791 423.134763
 z
-" clip-path="url(#p7ce921a6a9)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
+" clip-path="url(#pcbca285431)" style="fill: #3b82b8; stroke: #334155; stroke-width: 0.6; stroke-linejoin: miter"/>
    </g>
    <g id="text_19">
     <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK JP'; text-anchor: middle; fill: #172033" x="156.737974" y="310.5418" transform="rotate(-0 156.737974 310.5418)">9.8601%</text>
@@ -465,18 +464,18 @@ z
    <text style="font-size: 13px; font-family: 'Noto Sans CJK JP'; text-anchor: start; fill: #475569" x="81.542188" y="76.571375" transform="rotate(-0 81.542188 76.571375)">同一现有测试集 · 1,024 个物理样本 · 全局 #02–#11 · 按测试宏平均误差从高到低排列（越低越好） · #01 smoke 见总览</text>
   </g>
   <g id="text_41">
-   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 661.576937)">柱高 = 各测试样本的 e / H / C 相对 L2 误差等权平均后，再对全部测试样本取平均；单位为百分比。</text>
-   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 677.3985)">参数为精确可训练参数量；训练池包含优化与验证样本。集成参数为成员总量，样本数按结果记录展示。</text>
-   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 694.038187)">共同配置：LayerNorm、dropout 0.02；差异在柱上注明。纵轴从 0 开始，无截断。所有明细分页使用共同纵轴；#01 smoke 完整展示于总览。</text>
-   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 710.743812)">恢复标记：partial = 部分重算，非历史最终权重；checkpoint restored = 最佳权重匹配历史，但训练尾部缺失。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 662.411)">柱高 = 各测试样本的 e / H / C 相对 L2 误差等权平均后，再对全部测试样本取平均；单位为百分比。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 678.232562)">参数为精确可训练参数量；训练池包含优化与验证样本。集成参数为成员总量，样本数按结果记录展示。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 694.87225)">共同配置：LayerNorm、dropout 0.02；差异在柱上注明。纵轴从 0 开始，无截断。所有明细分页使用共同纵轴；#01 smoke 完整展示于总览。</text>
+   <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 710.743812)">状态：intermediate = 中间权重，仅作探索比较；frozen = 已选定权重，但训练尾段未完成。</text>
    <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; fill: #475569" transform="translate(81.542188 726.565375)">测试集 SHA256: 408ba21ea903d850fcc449c4b215a296d421c838e62361343c05d7608a6aedf3</text>
   </g>
   <g id="legend_1">
    <g id="patch_15">
-    <path d="M 86.718987 109.047375 
-L 106.718987 109.047375 
-L 106.718987 102.047375 
-L 86.718987 102.047375 
+    <path d="M 86.718987 109.047375
+L 106.718987 109.047375
+L 106.718987 102.047375
+L 86.718987 102.047375
 z
 " style="fill: #3b82b8; stroke: #334155; stroke-linejoin: miter"/>
    </g>
@@ -484,10 +483,10 @@ z
     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="114.718987" y="109.047375" transform="rotate(-0 114.718987 109.047375)">2 隐藏层</text>
    </g>
    <g id="patch_16">
-    <path d="M 172.509613 109.047375 
-L 192.509613 109.047375 
-L 192.509613 102.047375 
-L 172.509613 102.047375 
+    <path d="M 172.509613 109.047375
+L 192.509613 109.047375
+L 192.509613 102.047375
+L 172.509613 102.047375
 z
 " style="fill: #9670b4; stroke: #334155; stroke-linejoin: miter"/>
    </g>
@@ -495,10 +494,10 @@ z
     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="200.509613" y="109.047375" transform="rotate(-0 200.509613 109.047375)">3 隐藏层</text>
    </g>
    <g id="patch_17">
-    <path d="M 258.300237 109.047375 
-L 278.300237 109.047375 
-L 278.300237 102.047375 
-L 258.300237 102.047375 
+    <path d="M 258.300237 109.047375
+L 278.300237 109.047375
+L 278.300237 102.047375
+L 258.300237 102.047375
 z
 " style="fill: #249c91; stroke: #334155; stroke-linejoin: miter"/>
    </g>
@@ -506,12 +505,12 @@ z
     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="286.300237" y="109.047375" transform="rotate(-0 286.300237 109.047375)">4 隐藏层</text>
    </g>
    <g id="patch_18">
-    <path d="M 344.090863 109.047375 
-L 364.090863 109.047375 
-L 364.090863 102.047375 
-L 344.090863 102.047375 
+    <path d="M 344.090863 109.047375
+L 364.090863 109.047375
+L 364.090863 102.047375
+L 344.090863 102.047375
 z
-" style="fill: url(#he37dab3743); stroke: #334155; stroke-linejoin: miter"/>
+" style="fill: url(#h5ff3448345); stroke: #334155; stroke-linejoin: miter"/>
    </g>
    <g id="text_45">
     <text style="font-size: 10px; font-family: 'Noto Sans CJK JP'; text-anchor: start" x="372.090863" y="109.047375" transform="rotate(-0 372.090863 109.047375)">集成模型</text>
@@ -519,51 +518,51 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p7ce921a6a9">
+  <clipPath id="pcbca285431">
    <rect x="81.542188" y="136.44" width="1191.564" height="447.48"/>
   </clipPath>
  </defs>
  <defs>
-  <pattern id="he37dab3743" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
+  <pattern id="h5ff3448345" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
    <rect x="0" y="0" width="73" height="73" fill="#ffffff"/>
-   <path d="M -36 36 
-L 36 -36 
-M -32 40 
-L 40 -32 
-M -28 44 
-L 44 -28 
-M -24 48 
-L 48 -24 
-M -20 52 
-L 52 -20 
-M -16 56 
-L 56 -16 
-M -12 60 
-L 60 -12 
-M -8 64 
-L 64 -8 
-M -4 68 
-L 68 -4 
-M 0 72 
-L 72 0 
-M 4 76 
-L 76 4 
-M 8 80 
-L 80 8 
-M 12 84 
-L 84 12 
-M 16 88 
-L 88 16 
-M 20 92 
-L 92 20 
-M 24 96 
-L 96 24 
-M 28 100 
-L 100 28 
-M 32 104 
-L 104 32 
-M 36 108 
-L 108 36 
+   <path d="M -36 36
+L 36 -36
+M -32 40
+L 40 -32
+M -28 44
+L 44 -28
+M -24 48
+L 48 -24
+M -20 52
+L 52 -20
+M -16 56
+L 56 -16
+M -12 60
+L 60 -12
+M -8 64
+L 64 -8
+M -4 68
+L 68 -4
+M 0 72
+L 72 0
+M 4 76
+L 76 4
+M 8 80
+L 80 8
+M 12 84
+L 84 12
+M 16 88
+L 88 16
+M 20 92
+L 92 20
+M 24 96
+L 96 24
+M 28 100
+L 100 28
+M 32 104
+L 104 32
+M 36 108
+L 108 36
 " style="fill: #334155; stroke: #334155; stroke-width: 1.0; stroke-linecap: butt; stroke-linejoin: miter"/>
   </pattern>
  </defs>

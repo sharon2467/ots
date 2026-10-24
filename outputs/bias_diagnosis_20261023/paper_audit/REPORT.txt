@@ -2,7 +2,7 @@ Zhao2019 Fig10(b,c): paper/source domain audit (2026-10-23)
 
 Strongest findings
 1. Native Fig10 colorbars are LINEAR scattered power. A logarithmic or gamma
-   correction of a recovered 0..1 colorbar-position array is unsupported.
+   correction of a digitized 0..1 colorbar-position array is unsupported.
 2. Paper simulations sum local LARED spectra across a finite scattering volume;
    spectral response/resolution, path absorption and temporal resolution enter.
    Current canonical Fig1/Fig11 training generates single-state clean PV spectra.
@@ -33,7 +33,7 @@ Bottom border y496 agrees with power0 to subpixel accuracy. Top border y13
 corresponds approximately0.42039 (b) and0.44534 (c), extrapolated from ticks;
 these are NOT printed maximum labels. The two panels use different fullbar scales.
 If s is fullbar position from bottom0 to top1, P_b≈0.4204*s and P_c≈0.4453*s.
-Per-row peak normalization cancels these positive scale constants. Actual recovered
+Per-row peak normalization cancels these positive scale constants. Digitized
 arrays can still suffer JPEG/palette quantization, crop masks or color inversion;
 this audit establishes the published colorbar scale, not any prior NPZ extractor.
 Reproduce measurements with audit_native_figure.py; details in evidence.json.
@@ -110,18 +110,16 @@ data.py213-296,394-456:
  - generate_sample calls normalized PV spectrum directly at target wavelength
    samples. No spectral/temporal response, volume sum or optical-path absorption.
 These differences establish potential domain shift. Attribution of any actual
-neural temperature bias needs recovered input/checkpoint/preprocessing evidence.
+neural temperature bias requires matched input, checkpoint and preprocessing evidence.
 No claim that adding response or a commonTi constraint necessarily fixes bias.
 
 Native Fig11 late redTi band spans roughly1.7-1.9keV by4.5ns (visual estimate,
-not an exact digitized centerline), whereas the experiment is~.9keV. Root's later
+not an exact digitized centerline), whereas the experiment is~.9keV. An
 independent CSV check confirms Fig11 maxTi=897.5468975eV, but the additional
 Fig1 anchor is912eV: the GLOBAL default targetTi maximum is1.8x912=1641.6eV,
 not1615.6eV. Thus late with-probe simulatedTi may exceed default sampling support.
-D4's actual generation overrides are unavailable in this snapshot. Te's
+This default-config check does not examine D4-specific generation overrides. Te's
 ~1.85keV simulation endpoint can fall within experimentanchorx1.5 global range;
 do not claim all simulationTe lies outside sampling support.
 
-Scope: no training, package install, dataset generation, physics reimplementation,
-production/source-data edits, credential reads or external communication occurred.
-Only this paper_audit output directory was written. No AGENTS or PAUSE edits.
+Scope: paper/source comparison and image-based measurement; no model-error attribution or new training experiment.

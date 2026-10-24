@@ -6,4 +6,6 @@ fig11_simulation_ink_envelopes.csv: native-image saturated color-ink envelopes o
 
 Fig10b=blue without probe, Fig10c=red with probe. Common Ti does not give separate TH/TC. Fig11 has no flow curve; prose small flow does not mean exactly zero. 3.5e20 cm^-3 is fully-ionized fill baseline only.
 
-Reproduce: /workspace/ots_rebuild_20261024T025750_CST/work/ots/.venv/bin/python /workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_moments_pv_20261021/references/prepare_fig11_references.py
+Reproduce from the project root with the configured analysis environment:
+python -B outputs/fig10_moments_pv_20261021/references/prepare_fig11_references.py
+Map the script’s external input paths to the matching paper and CSV before running.

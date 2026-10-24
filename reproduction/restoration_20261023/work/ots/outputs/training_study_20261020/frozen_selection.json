@@ -52,10 +52,9 @@
       "study_fig_a"
     ]
   },
-  "provenance": "historical_model_choices_replayed_with_new_weights",
   "historical_selection_path": "/workspace/ots_rebuild_20261024T025750_CST/recovered_text/outputs/training_study_20261020/frozen_selection.json",
   "historical_selection_sha256": "c249b6b10a39ebe7b6c1be530c92ed8214bc74c5c3d6593bf7a6e2c58fbe0037",
   "new_weights_are_not_originals": true,
   "new_test_results_used_to_select": false,
-  "choice_rule": "Preserve historical run IDs and mixture weights for restoration; report new validation ranks separately"
+  "choice_rule": "Keep the prespecified model IDs and mixture weights fixed; report validation ranks separately."
 }

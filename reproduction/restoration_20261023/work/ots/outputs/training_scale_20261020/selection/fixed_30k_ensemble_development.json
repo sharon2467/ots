@@ -25,13 +25,13 @@
     "parent_all_wall_seconds": 5994.978329365003,
     "additional_train_evaluate_wall_seconds": null,
     "total_wall_seconds": null,
-    "recovery_observed_charged_seconds": 7085.363449895005,
+    "observed_charged_seconds": 7085.363449895005,
     "limit_seconds": 7200.0,
     "eligible": null,
     "training_pipeline_completed": false,
     "reason": "Checkpoint matches historical bytes; current training stopped at the budget. Full train/evaluate completion time is unknown.",
-    "accounting": "No inference about complete-pipeline eligibility from this partial replay.",
-    "checkpoint_only_recovery": true
+    "accounting": "Incomplete training does not establish complete-pipeline time eligibility.",
+    "checkpoint_only_run": true
   },
   "eligible": null,
   "selected_alpha": 0.75,

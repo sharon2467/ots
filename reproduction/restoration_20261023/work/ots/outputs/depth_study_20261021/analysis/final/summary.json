@@ -349,7 +349,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0/training/model.pt",
       "checkpoint_sha256": "65839d7acef427f149138d033c9c453998bab4e8bf4d061837650fa2c45429e3",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "D2",
       "macro_relative_l2": {
         "maximum": 0.4008423388004303,
@@ -445,7 +444,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0/training/model.pt",
       "checkpoint_sha256": "c185a3312f6d888d3ba5ed0225b668932b710fa18509727e3f4c20ad10b89e4b",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "W3",
       "macro_relative_l2": {
         "maximum": 0.3774353563785553,
@@ -541,7 +539,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0/training/model.pt",
       "checkpoint_sha256": "b822cac9b18878dd45ee324c2bbf2e480f4ece56742e10e1126a571bcc737019",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "D4",
       "macro_relative_l2": {
         "maximum": 0.5419562458992004,
@@ -637,7 +634,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0/training/model.pt",
       "checkpoint_sha256": "988e60b5dfed3a0f0485266fa38879c6cd833c7e2a9808375c06f964cab2f714",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "W4",
       "macro_relative_l2": {
         "maximum": 0.3783339262008667,
@@ -733,7 +729,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1/training/model.pt",
       "checkpoint_sha256": "0822eb940976225bbf6eaf196910efe73f15c1b1916510a602e8c4e0b53aaf0c",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "D2",
       "macro_relative_l2": {
         "maximum": 0.38187599182128906,
@@ -829,7 +824,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1/training/model.pt",
       "checkpoint_sha256": "3f22d50aab05bb2f70452af75a0f7cbf43ed6842d64d4d6fb15b66419163b5cf",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "D4",
       "macro_relative_l2": {
         "maximum": 0.38441240787506104,
@@ -925,7 +919,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1/training/model.pt",
       "checkpoint_sha256": "b3acc516a944e290f735cfa63bbb5748aa1baec7f41dccb92b985c482d985b12",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "W4",
       "macro_relative_l2": {
         "maximum": 0.3730402886867523,
@@ -1021,7 +1014,6 @@
       "checkpoint": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2/training/model.pt",
       "checkpoint_sha256": "cd925c096379992c567ce898192822dc1346bbd2eb31f1ea998811a3dccae340",
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "label": "D2",
       "macro_relative_l2": {
         "maximum": 0.3813755512237549,

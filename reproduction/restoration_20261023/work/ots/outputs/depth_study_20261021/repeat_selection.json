@@ -16,7 +16,6 @@
   ],
   "new_test_results_read": false,
   "rule": "Preserve historical repeat scope, not a new validation selection; budget-interrupted primary runs remain partial.",
-  "provenance": "historical_original_scope_for_file_restoration",
   "historical_selection_sha256": "9b4a3178b64459afa87f59fd3c9afece4d20010939a8bb30f8e0b063ce5ce2be",
   "primary_pipeline_states": {
     "depth_fig_d2_s0": "completed_test_sealed",

@@ -182,13 +182,13 @@
         "parent_all_wall_seconds": 5994.978329365003,
         "additional_train_evaluate_wall_seconds": null,
         "total_wall_seconds": null,
-        "recovery_observed_charged_seconds": 7085.363449895005,
+        "observed_charged_seconds": 7085.363449895005,
         "limit_seconds": 7200.0,
         "eligible": null,
         "training_pipeline_completed": false,
         "reason": "Checkpoint matches historical bytes; current training stopped at the budget. Full train/evaluate completion time is unknown.",
-        "accounting": "No inference about complete-pipeline eligibility from this partial replay.",
-        "checkpoint_only_recovery": true
+        "accounting": "Incomplete training does not establish complete-pipeline time eligibility.",
+        "checkpoint_only_run": true
       }
     },
     "baseline": {
@@ -23525,6 +23525,6 @@
     "Paired CIs use common finite pairs. Ratio is selected mean error divided by baseline mean error; positive absolute improvement means baseline minus selected.",
     "Representative examples independently choose median and worst Fourier-target error for each role.",
     "No training, PV, clipping, renormalization, post-test weight adjustment, or method selection occurred. The frozen physical-Fourier average is the declared selected ensemble.",
-    "Historical mixture weights were preserved. Current fixed-wide replay is incomplete; budget eligibility is unknown. Recovered best checkpoint matches historical bytes. Numerical evaluation is unchanged."
+    "Mixture weights were fixed before evaluation. The fixed-wide training run is incomplete; complete-pipeline budget eligibility is unknown. Evaluation uses its selected frozen checkpoint."
   ]
 }

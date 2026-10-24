@@ -7,7 +7,7 @@ Two constructed, everywhere-positive H VDF perturbations produce approximately *
 | 209 / 78 eV | 78.000 eV | 1882.008 eV | +1804.008 eV | 2.3264% | 1.4685% |
 | 1392 / 912 eV | 912.000 eV | 2700.996 eV | +1788.996 eV | 3.2660% | 0.80225% |
 
-The baseline arrays and baseline spectra come directly from the previously saved [controlled_arrays.npz](controlled_arrays.npz), states 1 and 2. The two modified H distributions are constructed by
+The baseline arrays and baseline spectra come directly from the previously saved `controlled_arrays.npz`, states 1 and 2. The two modified H distributions are constructed by
 
 `g(v) = normalize[exp(−(v−0.95V)²/(2(0.02V)²)) + exp(−(v+0.95V)²/(2(0.02V)²))]`
 
@@ -27,4 +27,6 @@ The remote Gaussian tails are truncated at the original grid endpoints and have 
 
 This is a mathematical sensitivity example in positive VDF space. The constructed remote-tail family is **not** the existing sampler's actual distribution family, an existing data row, or a D4 prediction. It has not been shown to lie exactly in the image of the M80 inverse. Consequently, it establishes that temperature sensitivity is not exclusively a clipping phenomenon, while it does not attribute the actual D4 H temperature result to such tails or quantify that model's error. The earlier Gaussian inverse control establishes a separate clipping mechanism; both mechanisms should be distinguished when interpreting a model output.
 
-Reproducible script: [positive_tail_sensitivity.py](positive_tail_sensitivity.py). Detailed results: [positive_tail_results.json](positive_tail_results.json). New toy arrays only: [positive_tail_arrays.npz](positive_tail_arrays.npz). Hashes verify the original source, datasets, model and baseline diagnostic arrays remained unchanged. No additional states, fitting, training or dataset generation were performed.
+Reproducible script: [positive_tail_sensitivity.py](positive_tail_sensitivity.py). Detailed results: [positive_tail_results.json](positive_tail_results.json). New toy arrays only: `positive_tail_arrays.npz`. Hashes verify the original source, datasets, model and baseline diagnostic arrays remained unchanged. No additional states, fitting, training or dataset generation were performed.
+
+The NPZ arrays named here are external numerical inputs/results and are not included in this public code-and-report branch.

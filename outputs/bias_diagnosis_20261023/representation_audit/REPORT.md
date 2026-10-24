@@ -2,13 +2,13 @@
 
 The current evaluation VDF error compares a neural prediction with the **inverse transform of its Fourier label**, not with the original physical VDF. Even exact labels can give small VDF relative-L2 but large temperature and spectrum changes after clipping negative sidelobes. This was reproduced without a neural-network call, using existing sampler, Fourier, inverse, moment and PV APIs.
 
-## Provenance and scope
+## Inputs and study scope
 
 - Current source HEAD: `a092bd7d4de26acb695415155f9c608594b9a0dc`. Source and input SHA-256 hashes are in [results.json](results.json); source/data/model hashes before and after the existing-row audit match.
 - Eight deterministic existing physical rows: all four `cloud_fig_e2198eeab80d` test rows and the first four train rows. Its checkpoint was read **only for layout/coordinates**, with no model creation, inference, training, or claimed model-performance result.
 - Three additional standalone **diagnostic states**, explicitly authorized as controlled analysis: Gaussian Te/Ti = 100/60, 209/78, 1392/912 eV, all mean velocities zero, ne = 3.5e26 m^-3. They are not existing-row replay or newly generated training datasets. No Parquet or registry output was written.
-- The snapshot contains 16+4 Fig smoke rows and a small checkpoint, but no dataset manifest, no saved original VDFs and no per-row original ne/T/u. Those absent quantities cannot be inferred uniquely from Fourier labels. Existing-row original-f errors and PV-at-original-ne comparisons therefore remain unmeasured.
-- The prior D4/best checkpoint, 26k dataset and earlier diagnostic outputs are absent. This report does not recompute D4, evaluate the best model, or establish whether this source matches the source used by that model.
+- The existing-row checks use labels and layout from the 16+4 Fig smoke dataset. They do not establish each row’s original physical VDF or ne/T/u, which cannot be inferred uniquely from Fourier labels. Original-f errors and PV-at-original-ne comparisons therefore remain unmeasured for these rows.
+- These are target-label and known-truth controls, not a performance evaluation of D4. They do not identify the contributions to D4 prediction error.
 
 ## What the code measures
 
@@ -48,7 +48,7 @@ Full tables: [moments.csv](moments.csv), [results.json](results.json). Physical 
 | train index 2 | H | 52.490 eV | 197.994 eV | see CSV |
 | test index 1 | H | 101.047 eV | 144.958 eV | see CSV |
 
-Across the eight rows, raw norms are close to one (H range 0.9999980–1.0000034). Electron clipping changes T by at most 1.259 eV in these particular rows. These are representation/postprocessing differences of saved exact target labels. Without their original manifest, neither raw nor clipped temperatures can be declared correct against original physical truth.
+Across the eight rows, raw norms are close to one (H range 0.9999980–1.0000034). Electron clipping changes T by at most 1.259 eV in these particular rows. These are representation/postprocessing differences of saved exact target labels. Without an original-f comparison for these rows, neither raw nor clipped temperatures can be declared correct against physical truth.
 
 ## M80 grid, aliases, and sensitivity
 
@@ -66,6 +66,8 @@ PV closure is additionally sensitive to local f and its discrete derivative, a p
 
 An additional strictly limited [positive-tail control](POSITIVE_TAIL_REPORT.md) separates temperature sensitivity from clipping: changing only H by a symmetric 1.8% remote-tail mixture changes its physical temperature 78→1882 eV or 912→2701 eV, at VDF L2 2.33–3.27% and normalized spectral L2 0.80–1.47%, with no negative values, clipping, inverse or NN. It is a deliberately constructed VDF-space perturbation, not an existing-sampler draw or D4 attribution.
 
-The evidence supports a representation/postprocessing contribution to the temperature and spectral disagreement. In particular, a high VDF score against reconstructed labels cannot certify temperature accuracy against original f, and clipping is consequential. The evidence does not quantify neural-model error for D4 or prove that its approximately 2 keV hydrogen result is wholly caused by Fourier representation. Establishing that attribution requires the original D4 checkpoint, its matching manifest/data/source, then comparison of original f, exact-label inverse and neural inverse under the same signed and clip-normalized conventions and true ne.
+The evidence supports a representation/postprocessing contribution to the temperature and spectral disagreement. In particular, a high VDF score against reconstructed labels cannot certify temperature accuracy against original f, and clipping is consequential. The evidence does not quantify neural-model error for D4 or prove that its approximately 2 keV hydrogen result is wholly caused by Fourier representation. Establishing that attribution requires a frozen D4 checkpoint and matched manifest/data/source, followed by a comparison of original f, exact-label inverse and neural inverse under the same signed and clip-normalized conventions and true ne.
 
-Reproduce the standalone scripts with `/workspace/ots/.venv/bin/python` in order: [audit_representation.py](audit_representation.py), [controlled_states.py](controlled_states.py), [make_figure.py](make_figure.py). Numerical results are [controlled_results.json](controlled_results.json), [controlled_arrays.npz](controlled_arrays.npz), [target_reconstructions.npz](target_reconstructions.npz); figure exports are [PNG](representation_control.png) and [PDF](representation_control.pdf). No production code, original dataset/model, PAUSE flag, registry or training state was changed.
+Reproduce the standalone scripts with `/workspace/ots/.venv/bin/python` in order: [audit_representation.py](audit_representation.py), [controlled_states.py](controlled_states.py), [make_figure.py](make_figure.py). Numerical results are [controlled_results.json](controlled_results.json), `controlled_arrays.npz`, `target_reconstructions.npz`; figure exports are [PNG](representation_control.png) and [PDF](representation_control.pdf). The diagnostics are separate from the production training workflow.
+
+The NPZ arrays named here are external numerical inputs/results and are not included in this public code-and-report branch.

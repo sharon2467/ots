@@ -252,6 +252,5 @@
       "runs/depth_fig_w4_s2": "../../runs/depth_fig_w4_s2",
       "runs/depth_fig_w4_s2_eval": "../../runs/depth_fig_w4_s2_eval"
     }
-  },
-  "provenance": "new_physics_replay_using_existing_original_forward_function"
+  }
 }

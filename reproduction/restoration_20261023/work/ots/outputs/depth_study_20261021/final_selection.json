@@ -11,7 +11,6 @@
       "validation_macro_relative_l2": 0.05812356621026993,
       "parameter_count": 3251680,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": true
     },
     {
@@ -24,7 +23,6 @@
       "validation_macro_relative_l2": 0.05793957784771919,
       "parameter_count": 4304576,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w3_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": true
     },
     {
@@ -37,7 +35,6 @@
       "validation_macro_relative_l2": 0.0529763363301754,
       "parameter_count": 5354976,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": false
     },
     {
@@ -50,7 +47,6 @@
       "validation_macro_relative_l2": 0.05808110162615776,
       "parameter_count": 5354941,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": false
     },
     {
@@ -63,7 +59,6 @@
       "validation_macro_relative_l2": 0.05737389624118805,
       "parameter_count": 3251680,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": true
     },
     {
@@ -76,7 +71,6 @@
       "validation_macro_relative_l2": 0.053791411221027374,
       "parameter_count": 5354976,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": false
     },
     {
@@ -89,7 +83,6 @@
       "validation_macro_relative_l2": 0.058507151901721954,
       "parameter_count": 5354941,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s1_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": false
     },
     {
@@ -102,11 +95,10 @@
       "validation_macro_relative_l2": 0.057637132704257965,
       "parameter_count": 3251680,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d2_s2_eval/evaluation",
-      "historical_checkpoint_bytes_match": true,
       "training_pipeline_completed": true
     }
   ],
-  "partial_recomputed_checkpoints": [
+  "intermediate_checkpoints": [
     {
       "run_id": "depth_fig_d3_s0",
       "label": "D3",
@@ -117,7 +109,6 @@
       "validation_macro_relative_l2": 0.05407519266009331,
       "parameter_count": 4303328,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d3_s0_eval/evaluation",
-      "historical_checkpoint_bytes_match": false,
       "training_pipeline_completed": false
     },
     {
@@ -130,7 +121,6 @@
       "validation_macro_relative_l2": 0.0535009391605854,
       "parameter_count": 5354976,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s2_eval/evaluation",
-      "historical_checkpoint_bytes_match": false,
       "training_pipeline_completed": false
     },
     {
@@ -143,7 +133,6 @@
       "validation_macro_relative_l2": 0.05748007819056511,
       "parameter_count": 5354941,
       "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_w4_s2_eval/evaluation",
-      "historical_checkpoint_bytes_match": false,
       "training_pipeline_completed": false
     }
   ],
@@ -157,11 +146,10 @@
     "validation_macro_relative_l2": 0.0529763363301754,
     "parameter_count": 5354976,
     "evaluation_dir": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/depth_study_20261021/runs/depth_fig_d4_s0_eval/evaluation",
-    "historical_checkpoint_bytes_match": true,
     "training_pipeline_completed": false
   },
-  "selection_rule": "Minimum validation macro among eight byte-identical historical checkpoints recovered; three missing historical finals are excluded.",
-  "original_eleven_run_experiment_fully_restored": false,
+  "selection_rule": "Minimum validation macro among eight frozen checkpoints; three intermediate models are excluded.",
+  "complete_eleven_final_checkpoint_comparison": false,
   "new_test_results_read": false,
   "protocol_sha256": "dc0bc025e3b97e32490a66e7496658d03f73478c3b1e94d67c3f167325bb05a2",
   "repeat_selection_sha256": "45f7b00c5124b5249bd4f54bf4c477fd752b97d5ac617b05cdb1c707e24509da",

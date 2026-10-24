@@ -1,16 +1,16 @@
-# Fixed ion / Fig 初始训练研究：本轮重算报告
+# Fixed ion / Fig：损失权重与模型容量研究
 
-本报告全部数值读取本轮执行产物。历史报告保存在 recovered_text，历史报告中的旧结论不等于本轮结果；重训权重不是找回的历史权重。
+比较 fixed_ion 与 fig1_fig11 两个合成反演任务，依次考察损失权重和网络容量。下表来自保存的训练记录、冻结模型及独立评估结果。
 
 报告生成时间：2026-10-24T02:51:30.301401+00:00。
 
-完整耗时使用本轮运行器的 monotonic 实测；兼容旧汇总器的 real 行是该实测值的文本表示，不是额外运行 Bash time。使用缓存数据的尾流程还计回父 all 的完整耗时。
+完整流程耗时由 monotonic 时钟实测，包括数据生成、训练和评估；使用缓存数据的后续候选仍计入基础 all 流程成本。
 
 宏平均是物种等权的 VDF 相对 L2 误差，越小越好。它比较 Fourier 低通标签，不能直接代表原始物理分布、温度矩或重建光谱的误差。
 
-恢复目标是原六次流程及其研究产物，不进行新的调参。A→B 只把 raw-loss 权重从 0.1 调到 1；C 按历史候选扩展容量，候选内部按原 validation loss 选择 checkpoint。最终分析保留历史选定的 run 身份；本轮 validation 排名在下表单独列出。
+六次流程沿两条调参方向展开。A→B 只把 raw-loss 权重从 0.1 调到 1，以加强原始系数误差的约束；C 扩展候选网络容量，检查小网络是否受表示能力限制。候选内部按 validation loss 选择 checkpoint，跨 run 的模型选择与 validation 排名分列如下，Test 仅用于冻结后的比较。
 
-| 数据族 | 历史选择的本轮重训 run | 本轮 validation 排名（好→差） |
+| 数据族 | 选定 run | validation 排名（好→差） |
 | --- | --- | --- |
 | fixed_ion | study_fixed_c | study_fixed_c, study_fixed_b, study_fixed_a |
 | fig1_fig11 | study_fig_c | study_fig_c, study_fig_b, study_fig_a |
@@ -71,4 +71,4 @@
 
 原研究脚本生成的温度诊断、原始 VDF 对照及物理探针保存在 exploration。这些诊断不改变训练、标签或已冻结模型。
 
-![本轮研究汇总](study_summary.png)
+![训练研究汇总](study_summary.png)

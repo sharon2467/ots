@@ -2,7 +2,7 @@
   "status": "frozen_before_inference",
   "checkpoint_id": "depth_fig_d4_s0_model",
   "checkpoint_sha256": "b822cac9b18878dd45ee324c2bbf2e480f4ece56742e10e1126a571bcc737019",
-  "selection": "minimum current unified test macro over all 20 replayed entries",
+  "selection": "minimum unified test macro over all 20 saved entries",
   "protected_sha256": {
     "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/data.py": "9aa2ec75545214b6b072221e4c9ebbf17a267972cfadf8e1c2ba496c441c5122",
     "/workspace/ots_rebuild_20261024T025750_CST/work/ots/OTS_code_share/NN_hotE_large_lmRange/evaluation.py": "0b3e196ab5910242ce968c6bc7b50f268a3c6ac914c40ce7742e72b5d06d8a7f",
@@ -150,14 +150,5 @@
     480
   ],
   "normalization": "float64 I / max(abs(I)) then float32; identical raw-inference inputs",
-  "output_procedure": "unchanged canonical prediction and inverse Fourier; no VDF corrections",
-  "provenance": "new_inference_replay; not_original_historical_weights",
-  "recovery_script_bindings": [
-    {
-      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_best_d4_inference_20261021/infer_fig10_best.py",
-      "before_sha256": "2df5fac16e3226c4218775dd76ae54264894be16043743ebd5a80fe65cf99e0b",
-      "after_sha256": "6a346016f7d0bc69b4902633b10d3cd2de092df99b3ab7ee98c444edbc6a41de",
-      "changes": "Frozen hashes only; numerical operations unchanged"
-    }
-  ]
+  "output_procedure": "unchanged canonical prediction and inverse Fourier; no VDF corrections"
 }

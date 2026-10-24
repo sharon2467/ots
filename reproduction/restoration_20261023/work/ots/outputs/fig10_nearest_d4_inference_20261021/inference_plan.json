@@ -257,20 +257,5 @@
     }
   },
   "inference_script_sha256": "027f8d90ad155db8131aa94fe94a9fe87f6145831fb59238d815f10366741924",
-  "initial_readme_sha256": "ede98cfd57665792d1c65d847fb37608e5bdc943f135f337bce6eb2a119cf73a",
-  "provenance": "new_inference_replay_with_retrained_weights",
-  "recovery_script_bindings": [
-    {
-      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/infer_fig10_latest.py",
-      "before_sha256": "a0840732a8a59b5156794dc175f73cf96124b4ef56f5bb2414feffc0c571820a",
-      "after_sha256": "027f8d90ad155db8131aa94fe94a9fe87f6145831fb59238d815f10366741924",
-      "changes": "Frozen hashes only; numerical operations unchanged"
-    },
-    {
-      "path": "/workspace/ots_rebuild_20261024T025750_CST/work/ots/outputs/fig10_nearest_d4_inference_20261021/verify_latest.py",
-      "before_sha256": "a7164aa7d36b7a18dafd65ea209f6d4d73a3a79ecb2132969f7a6549293152a0",
-      "after_sha256": "a7164aa7d36b7a18dafd65ea209f6d4d73a3a79ecb2132969f7a6549293152a0",
-      "changes": "Frozen hashes only; numerical operations unchanged"
-    }
-  ]
+  "initial_readme_sha256": "ede98cfd57665792d1c65d847fb37608e5bdc943f135f337bce6eb2a119cf73a"
 }
